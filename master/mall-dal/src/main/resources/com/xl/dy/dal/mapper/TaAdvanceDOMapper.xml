@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaAdvanceDOMapper">
+    <!-- ???��????,请修?? TA_ADVANCE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaAdvanceDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="NOTICE" property="notice" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="CATEGORY_SET" property="categorySet" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_BUY_LIMIT" property="perBuyLimit" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ADVANCE_STATUS" property="advanceStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_REGISTE_LIMIT" property="perRegisteLimit" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,NAME,NOTICE,REMARK,END_TIME,ALTER_EMPL,ALTER_TIME,START_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,CATEGORY_SET,PER_BUY_LIMIT,VALID_STATUS,ADVANCE_STATUS,PER_REGISTE_LIMIT
+    </sql>
+
+
+    <!--???�表:TA_ADVANCE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ADVANCE(
+            ID
+            ,NAME
+            ,NOTICE
+            ,REMARK
+            ,END_TIME
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,START_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,CATEGORY_SET
+            ,PER_BUY_LIMIT
+            ,VALID_STATUS
+            ,ADVANCE_STATUS
+            ,PER_REGISTE_LIMIT
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{name,jdbcType=VARCHAR}
+            , #{notice,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{endTime,jdbcType=TIMESTAMP}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{startTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{categorySet,jdbcType=VARCHAR}
+            , #{perBuyLimit,jdbcType=INTEGER}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{advanceStatus,jdbcType=VARCHAR}
+            , #{perRegisteLimit,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ADVANCE-->
+    <update id="update" >
+        UPDATE /*MS-TA-ADVANCE-UPDATE*/ TA_ADVANCE
+        SET
+            NAME            = #{name,jdbcType=VARCHAR}
+            ,NOTICE          = #{notice,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,END_TIME        = #{endTime,jdbcType=TIMESTAMP}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,START_TIME      = #{startTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,CATEGORY_SET    = #{categorySet,jdbcType=VARCHAR}
+            ,PER_BUY_LIMIT   = #{perBuyLimit,jdbcType=INTEGER}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,ADVANCE_STATUS  = #{advanceStatus,jdbcType=VARCHAR}
+            ,PER_REGISTE_LIMIT = #{perRegisteLimit,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ADVANCE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ADVANCE-DELETEBYPRIMARY*/ FROM
+            TA_ADVANCE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ADVANCE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ADVANCE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ADVANCE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--查询秒杀列表:TA_ADVANCE pageCount-->
+    <select id="findAdvancePageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = #{advanceStatus,jdbcType=VARCHAR}
+        <if test="searchStr !=null">
+            AND `NAME` LIKE #{searchStr,jdbcType=VARCHAR}
+        </if>
+        AND VALID_STATUS = 1
+    </select>
+    <!--查询秒杀列表:TA_ADVANCE pageResult-->
+    <select id="findAdvancePageResult"  resultType="java.util.Map">
+        SELECT
+        ID advanceId,
+        `NAME` advanceName,
+        START_TIME startTime,
+        END_TIME endTime,
+        NOTICE notice
+        FROM
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = #{advanceStatus,jdbcType=VARCHAR}
+        <if test="searchStr !=null">
+            AND `NAME` LIKE #{searchStr,jdbcType=VARCHAR}
+        </if>
+        AND VALID_STATUS = 1
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

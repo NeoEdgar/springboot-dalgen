@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.xl.ds.dao.SqlTempletMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map" >
+	</resultMap>
+	<select id="select" parameterType="java.lang.String" resultType="HashMap" >
+		${value}
+	</select>
+	<update id="update" parameterType="java.lang.String">
+		${value}
+	</update>
+	<insert id="insert" parameterType="java.lang.String">
+		${value}
+	</insert>
+	<delete id="delete" parameterType="java.lang.String">
+		${value}
+	</delete>
+	<update id="resultpaing" parameterType="map" statementType="CALLABLE">
+  		{call proc_page(#{sqlStr,jdbcType=VARCHAR,mode=IN},#{param.pageno,jdbcType=INTEGER,mode=IN},#{param.pagesize,jdbcType=INTEGER,mode=IN},#{param.totalPage,jdbcType=INTEGER,mode=OUT},#{param.totalCount,jdbcType=INTEGER,mode=OUT},#{param.result,jdbcType=CURSOR,mode=OUT,resultMap=com.xl.ds.dao.SqlTempletMapper.BaseResultMap})}
+  </update>
+</mapper>  

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopGoodsPayModeDOMapper">
+    <!-- ???��????,请修?? TA_SHOP_GOODS_PAY_MODE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopGoodsPayModeDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_DISC" property="isDisc" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PAY_MODE_ID" property="payModeId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PAY_MODE_NAME" property="payModeName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="HIPAY_CURRENCY" property="hipayCurrency" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,IS_DISC,REMARK,SHOP_ID,GOODS_ID,ALTER_EMPL,ALTER_TIME,PAY_MODE_ID,TIMESTAMP,CREATE_EMPL,CREATE_TIME,PAY_MODE_NAME,VALID_STATUS,HIPAY_CURRENCY
+    </sql>
+
+
+    <!--插入表:TA_SHOP_GOODS_PAY_MODE-->
+    <insert id="insert" >
+        INSERT INTO TA_SHOP_GOODS_PAY_MODE(
+        ID
+        ,IS_DISC
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,PAY_MODE_ID
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,PAY_MODE_NAME
+        ,VALID_STATUS
+        ,HIPAY_CURRENCY
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{isDisc,jdbcType=INTEGER}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{payModeId,jdbcType=BIGINT}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{payModeName,jdbcType=VARCHAR}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{hipayCurrency,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_GOODS_PAY_MODE-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-GOODS-PAY-MODE-UPDATE*/ TA_SHOP_GOODS_PAY_MODE
+        SET
+        IS_DISC = #{isDisc,jdbcType=INTEGER}
+        ,REMARK = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID = #{shopId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,PAY_MODE_ID = #{payModeId,jdbcType=BIGINT}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,PAY_MODE_NAME = #{payModeName,jdbcType=VARCHAR}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,HIPAY_CURRENCY = #{hipayCurrency,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_PAY_MODE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-GOODS-PAY-MODE-DELETEBYPRIMARY*/ FROM
+        TA_SHOP_GOODS_PAY_MODE
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GOODS_PAY_MODE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PAY-MODE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PAY_MODE
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_PAY_MODE-->
+    <delete id="deleteShopGoodsPayMode" >
+        DELETE /*MS-TA-SHOP-GOODS-PAY-MODE-DELETESHOPGOODSPAYMODE*/ FROM
+        TA_SHOP_GOODS_PAY_MODE
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GOODS_PAY_MODE-->
+    <select id="getByShopIdAndGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PAY-MODE-GETBYSHOPIDANDGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PAY_MODE
+        WHERE
+        SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </select>
+</mapper>

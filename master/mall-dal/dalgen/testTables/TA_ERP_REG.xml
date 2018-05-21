@@ -1,0 +1,70 @@
+<!DOCTYPE table SYSTEM "../config/table-config-1.0.dtd">
+<table sqlname="TA_ERP_REG" physicalName="TA_ERP_REG" remark="TA_ERP_REG">
+    <!--  特殊字符说明  &lt;&gt;   <> -->
+
+    <operation name="insert" paramtype="object" remark="插入�?:TA_ERP_REG">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ERP_REG(
+            ID
+            ,DRIVE
+            ,REMARK
+            ,ERP_TYPE
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,INIT_PARAM
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,ERP_REG_NAME
+            ,VALID_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{drive,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{erpType,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{initParam,jdbcType=VARCHAR}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{erpRegName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+        )
+    </operation>
+
+    <operation name="update" paramtype="object" remark="更新�?:TA_ERP_REG">
+        UPDATE TA_ERP_REG
+        SET
+            DRIVE           = #{drive,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ERP_TYPE        = #{erpType,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,INIT_PARAM      = #{initParam,jdbcType=VARCHAR}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,ERP_REG_NAME    = #{erpRegName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </operation>
+
+    <operation name="deleteByPrimary" multiplicity="one" remark="根据主键删除数据:TA_ERP_REG">
+        DELETE FROM
+            TA_ERP_REG
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </operation>
+
+    <operation name="getByPrimary" multiplicity="one" remark="根据主键获取数据:TA_ERP_REG">
+        SELECT *
+        FROM TA_ERP_REG
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </operation>
+</table>

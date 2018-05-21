@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaRoleDOMapper">
+    <!-- 自动生成,请修改 TA_ROLE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaRoleDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="FR" property="fr" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LEV" property="lev" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PID" property="pid" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CODE" property="code" jdbcType="VARCHAR" javaType="String"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="UNIT_ID" property="unitId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ROLE_STATUS" property="roleStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PLATFORM_TYPE" property="platformType" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        FR,ID,LEV,PID,CODE,NAME,REMARK,UNIT_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,ROLE_STATUS,VALID_STATUS,PLATFORM_TYPE
+    </sql>
+
+
+    <!--插入表:TA_ROLE-->
+    <insert id="insert" >
+        INSERT INTO TA_ROLE(
+            FR
+            ,ID
+            ,LEV
+            ,PID
+            ,CODE
+            ,NAME
+            ,REMARK
+            ,UNIT_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,ROLE_STATUS
+            ,VALID_STATUS
+            ,PLATFORM_TYPE
+        )VALUES(
+             #{fr,jdbcType=VARCHAR}
+            , #{id,jdbcType=BIGINT}
+            , #{lev,jdbcType=INTEGER}
+            , #{pid,jdbcType=BIGINT}
+            , #{code,jdbcType=VARCHAR}
+            , #{name,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{unitId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{roleStatus,jdbcType=INTEGER}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{platformType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_ROLE-->
+    <update id="update" >
+        UPDATE /*MS-TA-ROLE-UPDATE*/ TA_ROLE
+        SET
+            FR              = #{fr,jdbcType=VARCHAR}
+            ,LEV             = #{lev,jdbcType=INTEGER}
+            ,PID             = #{pid,jdbcType=BIGINT}
+            ,CODE            = #{code,jdbcType=VARCHAR}
+            ,NAME            = #{name,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,UNIT_ID         = #{unitId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,ROLE_STATUS     = #{roleStatus,jdbcType=INTEGER}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_ROLE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ROLE-DELETEBYPRIMARY*/ FROM
+            TA_ROLE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_ROLE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ROLE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ROLE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取全路径:FR-->
+    <select id="getFr" resultType="java.lang.String">
+        call
+        P_GET_TREE_PARENT_IDS(#{argChildId,jdbcType=BIGINT},#{argTableName,jdbcType=VARCHAR},#{argIdColName,jdbcType=VARCHAR},#{argPidColName,jdbcType=VARCHAR})
+    </select>
+
+    <!--根据主键获取数据:TA_ROLE-->
+    <select id="getChildRoleList" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ROLE-GETCHILDROLELIST*/  <include refid="Base_Column_List" />
+        FROM TA_ROLE
+        WHERE
+        VALID_STATUS = 1
+        AND
+        FR	like #{fr,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据父级ID找子角色-->
+    <select id="getChildRoleListByFrId" resultMap="BaseResultMap">
+        SELECT
+        ID ,NAME,LEV,ROLE_STATUS
+        FROM TA_ROLE
+        WHERE
+        VALID_STATUS = 1
+        AND
+        PID = #{pid,jdbcType=BIGINT}
+    </select>
+
+    <!--获取同级中最大code-->
+    <select id="getMaxCodeOfOneLev" resultType="String">
+        SELECT /*MS-TA-ROLE-GETMAXCODEOFONELEV*/  MAX(CODE)
+        FROM TA_ROLE
+        WHERE
+        VALID_STATUS = 1
+        AND LEV = #{lev,jdbcType=INTEGER}
+    </select>
+
+    <!--根据主键获取数据:TA_ROLE-->
+    <select id="getByPrimarySelective" resultType="Map">
+        SELECT /*MS-TA-ROLE-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_ROLE
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND  VALID_STATUS = 1
+    </select>
+
+    <!--更新表:TA_ROLE-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-ROLE-UPDATESELECTIVE*/ TA_ROLE
+        <set>
+            <if test="fr != null"> FR = #{fr,jdbcType=VARCHAR},</if>
+            <if test="lev != null">LEV = #{lev,jdbcType=INTEGER},</if>
+            <if test="pid != null">PID = #{pid,jdbcType=BIGINT},</if>
+            <if test="code != null">CODE = #{code,jdbcType=VARCHAR},</if>
+            <if test="name != null">NAME = #{name,jdbcType=VARCHAR},</if>
+            <if test="remark != null">REMARK = #{remark,jdbcType=VARCHAR},</if>
+            <if test="alterEmpl != null">ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},</if>
+            <if test="alterTime != null">ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},</if>
+            <if test="timestamp != null">TIMESTAMP = #{timestamp,jdbcType=BIGINT},</if>
+            <if test="createEmpl != null">CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="validStatus != null">VALID_STATUS = #{validStatus,jdbcType=INTEGER},</if>
+            <if test="platformType != null">PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR},</if>
+            <if test="roleStatus != null">ROLE_STATUS = #{roleStatus,jdbcType=INTEGER},</if>
+        </set>
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据单位Id获取数据:TA_ROLE-->
+    <select id="getByUnitId" resultMap="BaseResultMap">
+        SELECT
+        FR
+        ,ID
+        ,LEV
+        ,PID
+        ,CODE
+        ,NAME
+        ,REMARK
+        ,UNIT_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,ROLE_STATUS
+        ,VALID_STATUS
+        ,PLATFORM_TYPE
+        FROM TA_ROLE
+        WHERE
+        UNIT_ID         = #{unitId,jdbcType=BIGINT}
+        AND  VALID_STATUS = 1
+    </select>
+
+    <!--根据平台类型获取数据:TA_ROLE-->
+    <select id="getByPlatformType" resultMap="BaseResultMap">
+        SELECT
+        FR
+        ,ID
+        ,LEV
+        ,PID
+        ,CODE
+        ,NAME
+        ,REMARK
+        ,UNIT_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,ROLE_STATUS
+        ,VALID_STATUS
+        ,PLATFORM_TYPE
+        FROM TA_ROLE
+        WHERE
+        PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR}
+        AND  VALID_STATUS = 1
+    </select>
+
+    <!--根据单位ID和角色等级获取该单位的管理员信息:TA_ROLE-->
+    <select id="getManagerInfoByLevAndUnitId" resultMap="BaseResultMap">
+        SELECT
+        FR
+        ,ID
+        ,LEV
+        ,PID
+        ,CODE
+        ,NAME
+        ,REMARK
+        ,UNIT_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,ROLE_STATUS
+        ,VALID_STATUS
+        ,PLATFORM_TYPE
+        FROM TA_ROLE
+        WHERE
+        UNIT_ID         = #{unitId,jdbcType=BIGINT}
+        AND LEV = 1
+        AND  VALID_STATUS = 1
+    </select>
+</mapper>

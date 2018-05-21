@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.ShechemEsPropDOMapper">
+    <!-- 自动生成,请修改 SHECHEM_ES_PROP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.ShechemEsPropDO">
+        <result column="JSON" property="json" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        JSON
+    </sql>
+
+
+    <!--插入表:SHECHEM_ES_PROP-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO SHECHEM_ES_PROP(
+            ID
+            ,JSON
+        )VALUES(
+             #{id,jdbcType=INTEGER}
+            , #{json,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:SHECHEM_ES_PROP-->
+    <update id="update" >
+        UPDATE /*MS-SHECHEM-ES-PROP-UPDATE*/ SHECHEM_ES_PROP
+        SET
+            JSON            = #{json,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据主键删除数据:SHECHEM_ES_PROP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-SHECHEM-ES-PROP-DELETEBYPRIMARY*/ FROM
+            SHECHEM_ES_PROP
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据主键获取数据:SHECHEM_ES_PROP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-SHECHEM-ES-PROP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM SHECHEM_ES_PROP
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!--根据主键获取数据:SHECHEM_ES_PROP-->
+    <select id="getSkuList" resultMap="BaseResultMap">
+        SELECT /*MS-SHECHEM-ES-PROP-GETSKULIST*/  <include refid="Base_Column_List" />
+        FROM SHECHEM_ES_PROP
+    </select>
+</mapper>

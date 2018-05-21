@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaMessageDOMapper">
+    <!-- 自动生成,请修改 TA_MESSAGE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaMessageDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="LINK" property="link" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TAGS" property="tags" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALIAS" property="alias" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_PUSH" property="isPush" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_READ" property="isRead" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CONTENT" property="content" jdbcType="VARCHAR" javaType="String"/>
+        <result column="FIND_TIME" property="findTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RECIVE_ID" property="reciveId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_SUCCESS" property="isSuccess" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PLATFORM_TYPE" property="platformType" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,LINK,TAGS,ALIAS,IS_PUSH,IS_READ,CONTENT,FIND_TIME,RECIVE_ID,ALTER_EMPL,ALTER_TIME,IS_SUCCESS,TIMESTAMP,CREATE_EMPL,CREATE_TIME,PLATFORM_TYPE
+    </sql>
+
+
+    <!--插入表:TA_MESSAGE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_MESSAGE(
+        ID
+        ,LINK
+        ,TAGS
+        ,ALIAS
+        ,IS_PUSH
+        ,IS_READ
+        ,CONTENT
+        ,FIND_TIME
+        ,RECIVE_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,IS_SUCCESS
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,PLATFORM_TYPE
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{link,jdbcType=VARCHAR}
+        , #{tags,jdbcType=VARCHAR}
+        , #{alias,jdbcType=VARCHAR}
+        , #{isPush,jdbcType=INTEGER}
+        , #{isRead,jdbcType=INTEGER}
+        , #{content,jdbcType=VARCHAR}
+        , #{findTime,jdbcType=TIMESTAMP}
+        , #{reciveId,jdbcType=BIGINT}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{isSuccess,jdbcType=INTEGER}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{platformType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_MESSAGE-->
+    <update id="update" >
+        UPDATE /*MS-TA-MESSAGE-UPDATE*/ TA_MESSAGE
+        SET
+        LINK = #{link,jdbcType=VARCHAR}
+        ,TAGS = #{tags,jdbcType=VARCHAR}
+        ,ALIAS = #{alias,jdbcType=VARCHAR}
+        ,IS_PUSH = #{isPush,jdbcType=INTEGER}
+        ,IS_READ = #{isRead,jdbcType=INTEGER}
+        ,CONTENT = #{content,jdbcType=VARCHAR}
+        ,FIND_TIME = #{findTime,jdbcType=TIMESTAMP}
+        ,RECIVE_ID = #{reciveId,jdbcType=BIGINT}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,IS_SUCCESS = #{isSuccess,jdbcType=INTEGER}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR}
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_MESSAGE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-MESSAGE-DELETEBYPRIMARY*/ FROM
+        TA_MESSAGE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_MESSAGE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MESSAGE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_MESSAGE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据推送目标获取未读数据:TA_MESSAGE-->
+    <select id="getByTargetUnread" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MESSAGE-GETBYTARGETUNREAD*/  <include refid="Base_Column_List" />
+        FROM TA_MESSAGE
+        WHERE
+            PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR}
+            AND RECIVE_ID = #{reciveId,jdbcType=BIGINT}
+            AND IS_READ = 0
+        ORDER BY
+            CREATE_TIME DESC
+    </select>
+
+    <!--根据推送目标获取已读数据:TA_MESSAGE-->
+    <select id="getByTargetRead" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MESSAGE-GETBYTARGETREAD*/  <include refid="Base_Column_List" />
+        FROM TA_MESSAGE
+        WHERE
+            PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR}
+            AND RECIVE_ID = #{reciveId,jdbcType=BIGINT}
+            AND IS_READ = 1
+        ORDER BY
+            CREATE_TIME DESC
+    </select>
+
+    <!--根据推送目标获取所有数据:TA_MESSAGE-->
+    <select id="getByTarget" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MESSAGE-GETBYTARGET*/  <include refid="Base_Column_List" />
+        FROM TA_MESSAGE
+        WHERE
+            PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR}
+            AND RECIVE_ID = #{reciveId,jdbcType=BIGINT}
+        ORDER BY
+            CREATE_TIME DESC
+    </select>
+
+    <!--讲消息标记为已读:TA_MESSAGE-->
+    <select id="markedAsRead" resultMap="BaseResultMap">
+        UPDATE TA_MESSAGE
+        SET
+        IS_READ = #{isRead,jdbcType=INTEGER}
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--增加查询时间:TA_MESSAGE-->
+    <select id="addFindTime" resultMap="BaseResultMap">
+        UPDATE TA_MESSAGE
+        SET
+        FIND_TIME = #{findTime,jdbcType=TIMESTAMP}
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据推送目标获取已读数据:TA_MESSAGE-->
+    <select id="getByTags" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MESSAGE-GETBYTAGS*/  <include refid="Base_Column_List" />
+        FROM TA_MESSAGE
+        WHERE
+            AND TAGS = #{tags,jdbcType=VARCHAR},
+            ADN IS_PUSH = 1
+    </select>
+</mapper>

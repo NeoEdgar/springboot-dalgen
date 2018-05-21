@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TgDosMerchGoodsDetDOMapper">
+    <!-- 自动生成,请修改 TG_DOS_MERCH_GOODS_DET.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TgDosMerchGoodsDetDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DOS_ID" property="dosId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DOS_DATE" property="dosDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SALES_AMT" property="salesAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CATEGORY_ID" property="categoryId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SALES_VOLUME" property="salesVolume" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="CATEGORY_NAME" property="categoryName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_QUANTITY" property="orderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PURCHASE_USERS_NUMBER" property="purchaseUsersNumber" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REFUND_ORDER_QUANTITY" property="refundOrderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,DOS_ID,SKU_ID,REMARK,DOS_DATE,GOODS_ID,SALES_AMT,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CATEGORY_ID,CREATE_EMPL,CREATE_TIME,SALES_VOLUME,CATEGORY_NAME,ORDER_QUANTITY,PURCHASE_USERS_NUMBER,REFUND_ORDER_QUANTITY
+    </sql>
+
+
+    <!--插入表:TG_DOS_MERCH_GOODS_DET-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TG_DOS_MERCH_GOODS_DET(
+            ID
+            ,DOS_ID
+            ,SKU_ID
+            ,REMARK
+            ,DOS_DATE
+            ,GOODS_ID
+            ,SALES_AMT
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CATEGORY_ID
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,SALES_VOLUME
+            ,CATEGORY_NAME
+            ,ORDER_QUANTITY
+            ,PURCHASE_USERS_NUMBER
+            ,REFUND_ORDER_QUANTITY
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{dosId,jdbcType=BIGINT}
+            , #{skuId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{dosDate,jdbcType=TIMESTAMP}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{salesAmt,jdbcType=DECIMAL}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{categoryId,jdbcType=VARCHAR}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{salesVolume,jdbcType=DECIMAL}
+            , #{categoryName,jdbcType=VARCHAR}
+            , #{orderQuantity,jdbcType=INTEGER}
+            , #{purchaseUsersNumber,jdbcType=INTEGER}
+            , #{refundOrderQuantity,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TG_DOS_MERCH_GOODS_DET-->
+    <update id="update" >
+        UPDATE /*MS-TG-DOS-MERCH-GOODS-DET-UPDATE*/ TG_DOS_MERCH_GOODS_DET
+        SET
+            DOS_ID          = #{dosId,jdbcType=BIGINT}
+            ,SKU_ID          = #{skuId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,DOS_DATE        = #{dosDate,jdbcType=TIMESTAMP}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,SALES_AMT       = #{salesAmt,jdbcType=DECIMAL}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CATEGORY_ID     = #{categoryId,jdbcType=VARCHAR}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,SALES_VOLUME    = #{salesVolume,jdbcType=DECIMAL}
+            ,CATEGORY_NAME   = #{categoryName,jdbcType=VARCHAR}
+            ,ORDER_QUANTITY  = #{orderQuantity,jdbcType=INTEGER}
+            ,PURCHASE_USERS_NUMBER = #{purchaseUsersNumber,jdbcType=INTEGER}
+            ,REFUND_ORDER_QUANTITY = #{refundOrderQuantity,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TG_DOS_MERCH_GOODS_DET-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TG-DOS-MERCH-GOODS-DET-DELETEBYPRIMARY*/ FROM
+            TG_DOS_MERCH_GOODS_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH_GOODS_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取月份上有效商品数量,销量10个以上的SKU:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getMonthlyEffectiveGoodsQuantity" resultType="java.lang.Integer">
+            SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETMONTHLYEFFECTIVEGOODSQUANTITY*/  COUNT(*) effectiveQuantity FROM
+                (
+                SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETMONTHLYEFFECTIVEGOODSQUANTITY*/  SUM(SALES_VOLUME) salesVolume,SKU_ID FROM  TG_DOS_MERCH_GOODS_DET
+                WHERE
+                    DATE_FORMAT(DOS_DATE,'%Y%m') = DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{index,jdbcType=INTEGER} MONTH), '%Y%m')
+                    GROUP BY SKU_ID
+                ) a
+        WHERE a.salesVolume &gt; 10
+    </select>
+
+    <!--获取专业公司下商品数,所有和在售:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getCompanyShopGoodsCount" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPGOODSCOUNT*/  COUNT(SKU_ID) FROM ta_shop s
+        LEFT JOIN ta_shop_goods_prop p ON s.ID = p.SHOP_ID
+        LEFT JOIN ta_shop_goods g ON p.GOODS_ID = g.GOODS_ID
+        WHERE
+            s.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            <if test="shopStatus != null">
+                AND s.SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="shopGoodsSaleStatus != null">
+                AND p.SHOP_GOODS_SALE_STATUS = #{shopGoodsSaleStatus,jdbcType=VARCHAR}
+            </if>
+    </select>
+
+    <!--获取专业公司下商品数,按类目:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getCompanyShopGoodsCountByCategoryList" resultType="java.util.Map">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPGOODSCOUNTBYCATEGORYLIST*/  COUNT(sg.SKU_ID) companyShopGoodsCount, m.NAME categoryName ,m.ID categoryId
+        FROM ta_shop s
+        LEFT JOIN ta_shop_goods_prop sp ON s.ID = sp.SHOP_ID
+        LEFT JOIN ta_shop_goods sg ON sp.GOODS_ID = sg.GOODS_ID
+        LEFT JOIN ta_goods g ON sg.GOODS_ID = g.ID
+        LEFT JOIN tg_mg_category m ON m.ID = SUBSTRING_INDEX(SUBSTRING_INDEX(g.MG_FR_ID,",",2),",",-1)
+        WHERE
+            s.COMPANY_ID= #{companyId,jdbcType=BIGINT}
+            <if test="shopStatus != null">
+                AND s.SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="shopGoodsSaleStatus != null">
+                AND sp.SHOP_GOODS_SALE_STATUS = #{shopGoodsSaleStatus,jdbcType=VARCHAR}
+            </if>
+        GROUP BY m.ID
+    </select>
+
+    <!--获取商场下商品数,所有:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getMallShopGoodsCount" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETMALLSHOPGOODSCOUNT*/  COUNT(SKU_ID) FROM ta_shop s
+        LEFT JOIN ta_shop_goods_prop p ON s.ID = p.SHOP_ID
+        LEFT JOIN ta_shop_goods g ON p.GOODS_ID = g.GOODS_ID
+        WHERE
+        s.MALL_ID = #{mallId,jdbcType=BIGINT}
+    </select>
+
+    <!--获取天新上架的商品数量:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getNewOnSaleShopGoods" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETNEWONSALESHOPGOODS*/  COUNT(SKU_ID) FROM ta_shop s
+        LEFT JOIN ta_shop_goods_prop p ON s.ID = p.SHOP_ID
+        LEFT JOIN ta_shop_goods g ON p.GOODS_ID = g.GOODS_ID
+        WHERE
+        s.MALL_ID = #{mallId,jdbcType=BIGINT}
+        AND DATE_FORMAT(p.CREATE_TIME,'%Y%m%d') BETWEEN DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{beginIndex,jdbcType=INTEGER} DAY), '%Y%m%d') AND DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{endIndex,jdbcType=INTEGER} DAY), '%Y%m%d')
+    </select>
+
+    <!--获取日周的有售商品数sku:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getSaleGoodsCount" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETSALEGOODSCOUNT*/  COUNT(*) FROM
+        (
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETSALEGOODSCOUNT*/  dg.SKU_ID FROM tg_dos_merch d
+        LEFT JOIN tg_dos_merch_goods_det dg ON d.ID = dg.DOS_ID
+        <where>
+            <if test="mallId != null">
+                AND MALL_ID = #{mallId,jdbcType=BIGINT}
+            </if>
+            <if test="companyId != null">
+                AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId != null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+            AND DATE_FORMAT(d.DOS_DATE,'%Y%m%d')
+                BETWEEN DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{beginIndex,jdbcType=INTEGER} DAY), '%Y%m%d')
+                AND DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{endIndex,jdbcType=INTEGER} DAY), '%Y%m%d')
+            GROUP BY dg.SKU_ID
+        </where>
+        ) a
+    </select>
+
+    <!--本月按类目获取订单数据:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getOrderDataByCategoryList" resultType="java.util.Map">
+        SELECT
+            CATEGORY_ID categoryId,CATEGORY_NAME categoryName, SUM(dg.SALES_AMT) salesAmt,SUM(dg.ORDER_QUANTITY) orderQuantity
+            ,SUM(dg.PURCHASE_USERS_NUMBER) purchaseUsersNumber,COUNT(dg.SKU_ID) companySaleGoodsCount FROM tg_dos_merch d
+        LEFT JOIN tg_dos_merch_goods_det dg ON d.ID = dg.DOS_ID
+        WHERE
+            d.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            AND DATE_FORMAT(d.DOS_DATE,'%Y%m') = DATE_FORMAT(DATE_SUB(curdate(), INTERVAL 0 MONTH), '%Y%m')
+            GROUP BY dg.CATEGORY_ID
+    </select>
+
+    <!--获取专业公司按类目下的店铺数量:TG_DOS_MERCH_GOODS_DET-->
+    <select id="getCompanyShopCountByCategoryList" resultType="java.util.Map">
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPCOUNTBYCATEGORYLIST*/  b.companyShopCount, b.mgCategoryId, gc.NAME categoryName FROM
+        (
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPCOUNTBYCATEGORYLIST*/  COUNT(a.SHOP_ID) companyShopCount, a.MG_CATEGORY_ID mgCategoryId FROM
+        (
+        SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPCOUNTBYCATEGORYLIST*/  SHOP_ID, MG_CATEGORY_ID FROM `ta_shop`  s
+        LEFT JOIN ta_shop_mc_category sc ON s.ID = sc.SHOP_ID
+        WHERE s.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        ) a
+        WHERE a.MG_CATEGORY_ID IN
+        (SELECT /*MS-TG-DOS-MERCH-GOODS-DET-GETCOMPANYSHOPCOUNTBYCATEGORYLIST*/  MG_CATEGORY_ID FROM ta_company_mc_category c WHERE  c.COMPANY_ID = #{companyId,jdbcType=BIGINT})
+        GROUP BY a.MG_CATEGORY_ID
+        ) b
+        LEFT JOIN tg_mg_category gc ON gc.ID = b.mgCategoryId
+    </select>
+</mapper>

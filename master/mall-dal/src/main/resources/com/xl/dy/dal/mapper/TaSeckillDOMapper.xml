@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaSeckillDOMapper">
+    <!-- ???��????,请修?? TA_SECKILL.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaSeckillDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="NOTICE" property="notice" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="CATEGORY_SET" property="categorySet" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_BUY_LIMIT" property="perBuyLimit" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PUTAWAY_TIME" property="putawayTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SOLDOUT_TIME" property="soldoutTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SECKILL_STATUS" property="seckillStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_REGISTE_LIMIT" property="perRegisteLimit" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,NAME,NOTICE,REMARK,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,CATEGORY_SET,PER_BUY_LIMIT,PUTAWAY_TIME,SOLDOUT_TIME,VALID_STATUS,SECKILL_STATUS,PER_REGISTE_LIMIT
+    </sql>
+
+
+    <!--???�表:TA_SECKILL-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SECKILL(
+            ID
+            ,INX
+            ,NAME
+            ,NOTICE
+            ,REMARK
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,CATEGORY_SET
+            ,PER_BUY_LIMIT
+            ,PUTAWAY_TIME
+            ,SOLDOUT_TIME
+            ,VALID_STATUS
+            ,SECKILL_STATUS
+            ,PER_REGISTE_LIMIT
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{name,jdbcType=VARCHAR}
+            , #{notice,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{categorySet,jdbcType=VARCHAR}
+            , #{perBuyLimit,jdbcType=INTEGER}
+            , #{putawayTime,jdbcType=TIMESTAMP}
+            , #{soldoutTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{seckillStatus,jdbcType=VARCHAR}
+            , #{perRegisteLimit,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--?��?�表:TA_SECKILL-->
+    <update id="update" >
+        UPDATE /*MS-TA-SECKILL-UPDATE*/ TA_SECKILL
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,NAME            = #{name,jdbcType=VARCHAR}
+            ,NOTICE          = #{notice,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,CATEGORY_SET    = #{categorySet,jdbcType=VARCHAR}
+            ,PER_BUY_LIMIT   = #{perBuyLimit,jdbcType=INTEGER}
+            ,PUTAWAY_TIME    = #{putawayTime,jdbcType=TIMESTAMP}
+            ,SOLDOUT_TIME    = #{soldoutTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,SECKILL_STATUS  = #{seckillStatus,jdbcType=VARCHAR}
+            ,PER_REGISTE_LIMIT = #{perRegisteLimit,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_SECKILL-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SECKILL-DELETEBYPRIMARY*/ FROM
+            TA_SECKILL
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_SECKILL-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SECKILL-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SECKILL
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--查询店铺列表 pageCount-->
+    <select id="showSpikeActivityListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        (SELECT ID,NAME,NOTICE,
+        CONCAT(PUTAWAY_TIME,'/',SOLDOUT_TIME )
+        ACTIVITYTIME ,CREATE_TIME from
+        ta_seckill
+        <where>
+            <if test="searchStr !=null"> CONCAT(IFNULL(NAME,'')) like
+                #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ) A
+        LEFT JOIN
+        (SELECT SECKILL_ID,IFNULL(COUNT(*),0) UNCHECK_NUM from
+        TA_SECKILL_REVIEW WHERE
+        SECKILL_REVIEW_STATUS ='UNCHECK' GROUP BY
+        SECKILL_ID) B
+        ON A.ID = b.SECKILL_ID
+        LEFT JOIN
+        (SELECT SECKILL_ID,
+        IFNULL(COUNT(*),0) CHECK_NUM from TA_SECKILL_REVIEW WHERE
+        SECKILL_REVIEW_STATUS ='PASS' GROUP BY SECKILL_ID) C
+        ON A.ID =
+        C.SECKILL_ID
+        
+    </select>
+    <!--查询店铺列表 pageResult-->
+    <select id="showSpikeActivityListResult"  resultMap="BaseResultMap">
+        SELECT /*MS-TA-SECKILL-SHOWSPIKEACTIVITYLIST*/  A.ID,A.NAME,A.NOTICE, A.ACTIVITYTIME
+        ,A.CREATE_TIME,B.UNCHECK_NUM,C.CHECK_NUM FROM
+        (SELECT /*MS-TA-SECKILL-SHOWSPIKEACTIVITYLIST*/  ID,NAME,NOTICE,
+        CONCAT(PUTAWAY_TIME,'/',SOLDOUT_TIME )
+        ACTIVITYTIME ,CREATE_TIME from
+        ta_seckill
+        <where>
+            <if test="searchStr !=null"> CONCAT(IFNULL(NAME,'')) like
+                #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ) A
+        LEFT JOIN
+        (SELECT /*MS-TA-SECKILL-SHOWSPIKEACTIVITYLIST*/  SECKILL_ID,IFNULL(COUNT(*),0) UNCHECK_NUM from
+        TA_SECKILL_REVIEW WHERE
+        SECKILL_REVIEW_STATUS ='UNCHECK' GROUP BY
+        SECKILL_ID) B
+        ON A.ID = b.SECKILL_ID
+        LEFT JOIN
+        (SELECT /*MS-TA-SECKILL-SHOWSPIKEACTIVITYLIST*/  SECKILL_ID,
+        IFNULL(COUNT(*),0) CHECK_NUM from TA_SECKILL_REVIEW WHERE
+        SECKILL_REVIEW_STATUS ='PASS' GROUP BY SECKILL_ID) C
+        ON A.ID =
+        C.SECKILL_ID
+        ORDER BY A.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取数据:TA_SECKILL-->
+    <select id="getSpikeActivityInfo" resultType="java.util.Map">
+        SELECT /*MS-TA-SECKILL-GETSPIKEACTIVITYINFO*/   C.ID,C.NAME,C.ACTIVITYTIME , C.NOTICE,B.NAMES FROM
+        (SELECT /*MS-TA-SECKILL-GETSPIKEACTIVITYINFO*/ 
+        GROUP_CONCAT(A.NAME SEPARATOR ',') NAMES
+        FROM
+        `tg_mg_category` A
+        WHERE
+        find_in_set(A.`ID`,(SELECT /*MS-TA-SECKILL-GETSPIKEACTIVITYINFO*/  CATEGORY_SET
+        FROM TA_SECKILL WHERE
+        ID = #{id,jdbcType=BIGINT})) &gt;0 ) B,
+        (SELECT /*MS-TA-SECKILL-GETSPIKEACTIVITYINFO*/ 
+        ID,NAME,CONCAT(PUTAWAY_TIME,'/',SOLDOUT_TIME )
+        ACTIVITYTIME ,
+        NOTICE
+        FROM TA_SECKILL WHERE
+        ID = #{id,jdbcType=BIGINT} ) C
+    </select>
+
+    <!--查询秒杀列表:TA_SECKILL pageCount-->
+    <select id="findSeckillPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_seckill
+        WHERE
+        SECKILL_STATUS = #{seckillStatus,jdbcType=VARCHAR}
+        <if test="searchStr !=null">
+            AND `NAME` LIKE #{searchStr,jdbcType=VARCHAR}
+        </if>
+        AND VALID_STATUS = 1
+    </select>
+    <!--查询秒杀列表:TA_SECKILL pageResult-->
+    <select id="findSeckillPageResult"  resultType="java.util.Map">
+        SELECT
+        ID seckillId,
+        `NAME` seckillName,
+        PUTAWAY_TIME putawayTime,
+        SOLDOUT_TIME solDoutTime,
+        NOTICE notice
+        FROM
+        ta_seckill
+        WHERE
+        SECKILL_STATUS = #{seckillStatus,jdbcType=VARCHAR}
+        <if test="searchStr !=null">
+            AND `NAME` LIKE #{searchStr,jdbcType=VARCHAR}
+        </if>
+        AND VALID_STATUS = 1
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

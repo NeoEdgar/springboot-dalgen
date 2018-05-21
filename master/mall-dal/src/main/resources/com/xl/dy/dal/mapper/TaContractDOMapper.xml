@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaContractDOMapper">
+    <!-- 自动生成,请修改 TA_CONTRACT.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaContractDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PA_ID" property="paId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PB_ID" property="pbId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="END_DATE" property="endDate" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_FOREVER" property="isForever" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="START_DATE" property="startDate" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="CONTRACT_LEV" property="contractLev" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CONTRACT_NAME" property="contractName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONTRACT_TEXT" property="contractText" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="CONTRACT_TYPE" property="contractType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ACCOUNT_UNIT_ID" property="accountUnitId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CONTRACT_NUMBER" property="contractNumber" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONTRACT_STATUS" property="contractStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MG_CATEGORY_TEXT" property="mgCategoryText" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,PA_ID,PB_ID,REMARK,END_DATE,ALTER_EMPL,ALTER_TIME,IS_FOREVER,START_DATE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,CONTRACT_LEV,VALID_STATUS,CONTRACT_NAME,CONTRACT_TEXT,CONTRACT_TYPE,ACCOUNT_UNIT_ID,CONTRACT_NUMBER,CONTRACT_STATUS,MG_CATEGORY_TEXT
+    </sql>
+
+
+    <!--插入表:TA_CONTRACT-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_CONTRACT(
+        ID
+        ,PA_ID
+        ,PB_ID
+        ,REMARK
+        ,END_DATE
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,IS_FOREVER
+        ,START_DATE
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,CONTRACT_LEV
+        ,VALID_STATUS
+        ,CONTRACT_NAME
+        ,CONTRACT_TEXT
+        ,CONTRACT_TYPE
+        ,ACCOUNT_UNIT_ID
+        ,CONTRACT_NUMBER
+        ,CONTRACT_STATUS
+        ,MG_CATEGORY_TEXT
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{paId,jdbcType=BIGINT}
+        , #{pbId,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{endDate,jdbcType=DATE}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{isForever,jdbcType=INTEGER}
+        , #{startDate,jdbcType=DATE}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{contractLev,jdbcType=INTEGER}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{contractName,jdbcType=VARCHAR}
+        , #{contractText,jdbcType=LONGVARCHAR}
+        , #{contractType,jdbcType=VARCHAR}
+        , #{accountUnitId,jdbcType=BIGINT}
+        , #{contractNumber,jdbcType=VARCHAR}
+        , #{contractStatus,jdbcType=VARCHAR}
+        , #{mgCategoryText,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_CONTRACT-->
+    <update id="update" >
+        UPDATE /*MS-TA-CONTRACT-UPDATE*/ TA_CONTRACT
+        SET
+        PA_ID           = #{paId,jdbcType=BIGINT}
+        ,PB_ID           = #{pbId,jdbcType=BIGINT}
+        ,REMARK          = #{remark,jdbcType=VARCHAR}
+        ,END_DATE        = #{endDate,jdbcType=DATE}
+        ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+        ,IS_FOREVER      = #{isForever,jdbcType=INTEGER}
+        ,START_DATE      = #{startDate,jdbcType=DATE}
+        ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+        ,CONTRACT_LEV    = #{contractLev,jdbcType=INTEGER}
+        ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        ,CONTRACT_NAME   = #{contractName,jdbcType=VARCHAR}
+        ,CONTRACT_TEXT   = #{contractText,jdbcType=LONGVARCHAR}
+        ,CONTRACT_TYPE   = #{contractType,jdbcType=VARCHAR}
+        ,ACCOUNT_UNIT_ID = #{accountUnitId,jdbcType=BIGINT}
+        ,CONTRACT_NUMBER = #{contractNumber,jdbcType=VARCHAR}
+        ,CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR}
+        ,MG_CATEGORY_TEXT = #{mgCategoryText,jdbcType=VARCHAR}
+        WHERE
+        ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_CONTRACT-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-CONTRACT-DELETEBYPRIMARY*/ FROM
+        TA_CONTRACT
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_CONTRACT-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-CONTRACT-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_CONTRACT
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据商场id和合同状态获取数据:TA_CONTRACT-->
+    <select id="getContractByStatus" resultType="java.util.Map">
+        SELECT /*MS-TA-CONTRACT-GETCONTRACTBYSTATUS*/  ID contractId,CONTRACT_NUMBER contractNumber,START_DATE startDate,END_DATE endDate,CONTRACT_STATUS status,ACCOUNT_UNIT_ID accountUnitId
+        FROM TA_CONTRACT
+        WHERE
+        PB_ID= #{mallId,jdbcType=BIGINT} and CONTRACT_STATUS= #{contractStatus,jdbcType=VARCHAR} and VALID_STATUS = 1
+    </select>
+
+    <!--改变合同状态:TA_CONTRACT-->
+    <select id="changeContractStatus" resultMap="BaseResultMap">
+        UPDATE TA_CONTRACT
+        SET CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR},
+        ALTER_EMPL= #{alterEmplId,jdbcType=BIGINT},
+        ALTER_TIME= #{alterTime,jdbcType=TIMESTAMP},
+        TIMESTAMP= #{timeStamp,jdbcType=BIGINT}
+        WHERE
+        ID = #{id,jdbcType=BIGINT} and VALID_STATUS = 1
+    </select>
+
+    <!--获取历史合同列表:TA_CONTRACT pageCount-->
+    <select id="getContractListByMallCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        TA_CONTRACT a
+        LEFT JOIN TA_EMPL_ROLE_AUTH c ON a.CREATE_EMPL = c.EMPL_ID
+        WHERE
+        a.PB_ID = #{mallId,jdbcType=BIGINT} AND
+        a.CONTRACT_STATUS = 'TERMINATION' AND
+        a.VALID_STATUS = 1
+        <if test="firstTime !=null">
+            <if test="lastTime != null">
+                AND date(START_DATE) between #{firstTime,jdbcType=TIMESTAMP} and #{lastTime,jdbcType=TIMESTAMP}
+            </if>
+        </if>
+    </select>
+    <!--获取历史合同列表:TA_CONTRACT pageResult-->
+    <select id="getContractListByMallResult"  resultType="java.util.Map">
+        SELECT
+        a.ID contractId,
+        a.CONTRACT_NUMBER contractNumber,
+        a.START_DATE startDate,
+        a.END_DATE endDate,
+        a.CONTRACT_STATUS STATUS,
+        a.CREATE_TIME createTime,
+        c.NAME createName
+        FROM
+        TA_CONTRACT a
+        LEFT JOIN TA_EMPL_ROLE_AUTH c ON a.CREATE_EMPL = c.EMPL_ID
+        WHERE
+        a.PB_ID = #{mallId,jdbcType=BIGINT} AND
+        a.CONTRACT_STATUS = 'TERMINATION' AND
+        a.VALID_STATUS = 1
+        <if test="firstTime !=null">
+            <if test="lastTime != null">
+                AND date(START_DATE) between #{firstTime,jdbcType=TIMESTAMP} and #{lastTime,jdbcType=TIMESTAMP}
+            </if>
+        </if>
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

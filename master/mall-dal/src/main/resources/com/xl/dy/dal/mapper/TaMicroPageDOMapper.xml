@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaMicroPageDOMapper">
+    <!-- ???��????,请修?? TA_MICRO_PAGE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaMicroPageDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="HTML_DATA" property="htmlData" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_ENABLED" property="isEnabled" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="QUICK_VIEW_URL" property="quickViewUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EXTENSION_NAME" property="extensionName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EXTENSION_TYPE" property="extensionType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MICRO_PAGE_LINK" property="microPageLink" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MICRO_PAGE_NAME" property="microPageName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MICRO_PAGE_TYPE" property="microPageType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EXTENSION_DESCRIPTION" property="extensionDescription" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,MALL_ID,REMARK,HTML_DATA,ALTER_EMPL,ALTER_TIME,IS_ENABLED,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,QUICK_VIEW_URL,EXTENSION_NAME,EXTENSION_TYPE,MICRO_PAGE_LINK,MICRO_PAGE_NAME,MICRO_PAGE_TYPE,EXTENSION_DESCRIPTION
+    </sql>
+
+
+    <!--???�表:TA_MICRO_PAGE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_MICRO_PAGE(
+            ID
+            ,INX
+            ,MALL_ID
+            ,REMARK
+            ,HTML_DATA
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,IS_ENABLED
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,QUICK_VIEW_URL
+            ,EXTENSION_NAME
+            ,EXTENSION_TYPE
+            ,MICRO_PAGE_LINK
+            ,MICRO_PAGE_NAME
+            ,MICRO_PAGE_TYPE
+            ,EXTENSION_DESCRIPTION
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{htmlData,jdbcType=LONGVARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{isEnabled,jdbcType=INTEGER}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{quickViewUrl,jdbcType=VARCHAR}
+            , #{extensionName,jdbcType=VARCHAR}
+            , #{extensionType,jdbcType=VARCHAR}
+            , #{microPageLink,jdbcType=VARCHAR}
+            , #{microPageName,jdbcType=VARCHAR}
+            , #{microPageType,jdbcType=VARCHAR}
+            , #{extensionDescription,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_MICRO_PAGE-->
+    <update id="update" >
+        UPDATE /*MS-TA-MICRO-PAGE-UPDATE*/ TA_MICRO_PAGE
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,HTML_DATA       = #{htmlData,jdbcType=LONGVARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,IS_ENABLED      = #{isEnabled,jdbcType=INTEGER}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,QUICK_VIEW_URL  = #{quickViewUrl,jdbcType=VARCHAR}
+            ,EXTENSION_NAME  = #{extensionName,jdbcType=VARCHAR}
+            ,EXTENSION_TYPE  = #{extensionType,jdbcType=VARCHAR}
+            ,MICRO_PAGE_LINK = #{microPageLink,jdbcType=VARCHAR}
+            ,MICRO_PAGE_NAME = #{microPageName,jdbcType=VARCHAR}
+            ,MICRO_PAGE_TYPE = #{microPageType,jdbcType=VARCHAR}
+            ,EXTENSION_DESCRIPTION = #{extensionDescription,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_MICRO_PAGE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-MICRO-PAGE-DELETEBYPRIMARY*/ FROM
+            TA_MICRO_PAGE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_MICRO_PAGE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MICRO-PAGE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_MICRO_PAGE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取MicroPage分页列表:TA_MICRO_PAGE pageCount-->
+    <select id="findMicroPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_MICRO_PAGE
+        WHERE
+        MICRO_PAGE_TYPE = #{microPageType,jdbcType=VARCHAR}
+        <if test="mallId != null">
+            AND  MALL_ID         = #{mallId,jdbcType=BIGINT}
+        </if>
+        
+    </select>
+    <!--获取MicroPage分页列表:TA_MICRO_PAGE pageResult-->
+    <select id="findMicroPageResult"  resultMap="BaseResultMap">
+        SELECT /*MS-TA-MICRO-PAGE-FINDMICROPAGE*/  <include refid="Base_Column_List" /> FROM TA_MICRO_PAGE
+        WHERE
+        MICRO_PAGE_TYPE = #{microPageType,jdbcType=VARCHAR}
+        <if test="mallId != null">
+            AND  MALL_ID         = #{mallId,jdbcType=BIGINT}
+        </if>
+        ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

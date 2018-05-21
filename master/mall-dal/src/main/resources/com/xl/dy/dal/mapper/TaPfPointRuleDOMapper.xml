@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaPfPointRuleDOMapper">
+    <!-- 自动生成,请修改 TA_PF_POINT_RULE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaPfPointRuleDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MA_END_TIME" property="maEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MA_POINT_RULE" property="maPointRule" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MA_START_TIME" property="maStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MONTH_FIXED_DAY" property="monthFixedDay" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="POINT_RULE_TYPE" property="pointRuleType" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,ALTER_EMPL,ALTER_TIME,MA_END_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,MA_POINT_RULE,MA_START_TIME,VALID_STATUS,MONTH_FIXED_DAY,POINT_RULE_TYPE
+    </sql>
+
+
+    <!--插入表:TA_PF_POINT_RULE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_PF_POINT_RULE(
+            ID
+            ,REMARK
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,MA_END_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,MA_POINT_RULE
+            ,MA_START_TIME
+            ,VALID_STATUS
+            ,MONTH_FIXED_DAY
+            ,POINT_RULE_TYPE
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{maEndTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{maPointRule,jdbcType=INTEGER}
+            , #{maStartTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{monthFixedDay,jdbcType=INTEGER}
+            , #{pointRuleType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_PF_POINT_RULE-->
+    <update id="update" >
+        UPDATE /*MS-TA-PF-POINT-RULE-UPDATE*/ TA_PF_POINT_RULE
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,MA_END_TIME     = #{maEndTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,MA_POINT_RULE   = #{maPointRule,jdbcType=INTEGER}
+            ,MA_START_TIME   = #{maStartTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,MONTH_FIXED_DAY = #{monthFixedDay,jdbcType=INTEGER}
+            ,POINT_RULE_TYPE = #{pointRuleType,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_PF_POINT_RULE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-PF-POINT-RULE-DELETEBYPRIMARY*/ FROM
+            TA_PF_POINT_RULE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_PF_POINT_RULE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-PF-POINT-RULE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_PF_POINT_RULE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_PF_POINT_RULE-->
+    <select id="getPointRule" resultType="java.util.Map">
+        SELECT /*MS-TA-PF-POINT-RULE-GETPOINTRULE*/  ID,MA_POINT_RULE,POINT_RULE_TYPE,MONTH_FIXED_DAY,MA_START_TIME,MA_END_TIME
+        FROM TA_PF_POINT_RULE
+        WHERE
+            VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_PF_POINT_RULE-->
+    <select id="getPointRuleByMonthDay" resultMap="BaseResultMap">
+        SELECT /*MS-TA-PF-POINT-RULE-GETPOINTRULEBYMONTHDAY*/  <include refid="Base_Column_List" />
+        FROM TA_PF_POINT_RULE
+        WHERE
+            VALID_STATUS = 1
+        AND MONTH_FIXED_DAY = #{monthDay,jdbcType=INTEGER}
+    </select>
+
+    <!--根据主键获取数据:TA_PF_POINT_RULE-->
+    <select id="getPointRuleTime" resultMap="BaseResultMap">
+        SELECT /*MS-TA-PF-POINT-RULE-GETPOINTRULETIME*/  <include refid="Base_Column_List" />
+        FROM TA_PF_POINT_RULE
+        WHERE
+            VALID_STATUS = 1
+        <if test="maTime!=null">
+             AND  UNIX_TIMESTAMP(MA_START_TIME) &lt;= #{maTime,jdbcType=BIGINT}
+             AND  UNIX_TIMESTAMP(MA_END_TIME) &gt;= #{maTime,jdbcType=BIGINT}
+        </if> 
+    </select>
+</mapper>

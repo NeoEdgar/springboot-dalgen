@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaEmplDOMapper">
+    <!-- 自动生成,请修改 TA_EMPL.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaEmplDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MAIL" property="mail" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_ADMIN" property="isAdmin" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PAPER_NO" property="paperNo" jdbcType="VARCHAR" javaType="String"/>
+        <result column="USER_PWD" property="userPwd" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EMPL_NAME" property="emplName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MOBILE_TEL" property="mobileTel" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="EMPL_STATUS" property="emplStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PLATFORM_ID" property="platformId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PLATFORM_TYPE" property="platformType" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MAIL,REMARK,IS_ADMIN,PAPER_NO,USER_PWD,EMPL_NAME,USER_NAME,ALTER_EMPL,ALTER_TIME,MOBILE_TEL,TIMESTAMP,CREATE_EMPL,CREATE_TIME,EMPL_STATUS,PLATFORM_ID,VALID_STATUS,PLATFORM_TYPE
+    </sql>
+
+
+    <!--插入表:TA_EMPL-->
+    <insert id="insert" >
+		INSERT
+		INTO TA_EMPL(
+		ID
+		,MAIL
+		,REMARK
+		,IS_ADMIN
+		,PAPER_NO
+		,USER_PWD
+		,EMPL_NAME
+		,USER_NAME
+		,ALTER_EMPL
+		,ALTER_TIME
+		,MOBILE_TEL
+		,TIMESTAMP
+		,CREATE_EMPL
+		,CREATE_TIME
+		,EMPL_STATUS
+		,PLATFORM_ID
+		,VALID_STATUS
+		,PLATFORM_TYPE
+		)VALUES(
+		#{id,jdbcType=BIGINT}
+		, #{mail,jdbcType=VARCHAR}
+		,
+		#{remark,jdbcType=VARCHAR}
+		, #{isAdmin,jdbcType=INTEGER}
+		,
+		#{paperNo,jdbcType=VARCHAR}
+		, #{userPwd,jdbcType=VARCHAR}
+		,
+		#{emplName,jdbcType=VARCHAR}
+		, #{userName,jdbcType=VARCHAR}
+		,
+		#{alterEmpl,jdbcType=BIGINT}
+		, #{alterTime,jdbcType=TIMESTAMP}
+		,
+		#{mobileTel,jdbcType=VARCHAR}
+		, #{timestamp,jdbcType=BIGINT}
+		,
+		#{createEmpl,jdbcType=BIGINT}
+		, #{createTime,jdbcType=TIMESTAMP}
+		,
+		#{emplStatus,jdbcType=VARCHAR}
+		, #{platformId,jdbcType=BIGINT}
+		,
+		#{validStatus,jdbcType=INTEGER}
+		, #{platformType,jdbcType=VARCHAR}
+		)
+    </insert>
+
+    <!--更新表:TA_EMPL-->
+    <update id="update" >
+		UPDATE
+		TA_EMPL
+		SET
+		MAIL = #{mail,jdbcType=VARCHAR}
+		,REMARK =
+		#{remark,jdbcType=VARCHAR}
+		,IS_ADMIN = #{isAdmin,jdbcType=INTEGER}
+		,PAPER_NO = #{paperNo,jdbcType=VARCHAR}
+		,USER_PWD =
+		#{userPwd,jdbcType=VARCHAR}
+		,EMPL_NAME = #{emplName,jdbcType=VARCHAR}
+		,USER_NAME = #{userName,jdbcType=VARCHAR}
+		,ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,MOBILE_TEL =
+		#{mobileTel,jdbcType=VARCHAR}
+		,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+		,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+		,CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP}
+		,EMPL_STATUS =
+		#{emplStatus,jdbcType=VARCHAR}
+		,PLATFORM_ID =
+		#{platformId,jdbcType=BIGINT}
+		,VALID_STATUS =
+		#{validStatus,jdbcType=INTEGER}
+		,PLATFORM_TYPE =
+		#{platformType,jdbcType=VARCHAR}
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_EMPL-->
+    <delete id="deleteByPrimary" >
+		DELETE /*MS-TA-EMPL-DELETEBYPRIMARY*/ FROM
+		TA_EMPL
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_EMPL-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据该平台和平台ID,用户名和手机号查询该平台员工-->
+    <select id="getByMobileAndUsernameForPlatform" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYMOBILEANDUSERNAMEFORPLATFORM*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		PLATFORM_ID =
+		#{platformId,jdbcType=BIGINT}
+		AND PLATFORM_TYPE =
+		#{platformType,jdbcType=VARCHAR}
+		AND (USER_NAME LIKE
+		CONCAT('%',(#{searchKey,jdbcType=VARCHAR}),'%')
+		OR MOBILE_TEL LIKE
+		CONCAT('%',(#{searchKey,jdbcType=VARCHAR}),'%'))
+    </select>
+
+    <!--查询个平台主负责人账号-->
+    <select id="getAdminForPlatform" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETADMINFORPLATFORM*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		PLATFORM_ID =
+		#{platformId,jdbcType=BIGINT}
+		AND PLATFORM_TYPE =
+		#{platformType,jdbcType=VARCHAR}
+		AND IS_ADMIN = 1
+		AND EMPL_STATUS =
+		'NORMAL'
+    </select>
+
+    <!--根据用户名获取账号登录:TA_EMPL-->
+    <select id="getByUsername" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYUSERNAME*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		USER_NAME =
+		#{userName,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据手机号获取账号登录:TA_EMPL-->
+    <select id="getByMobileTel" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYMOBILETEL*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		MOBILE_TEL =
+		#{mobileTel,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据邮箱获取账号登录:TA_EMPL-->
+    <select id="getByMail" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE MAIL = #{mail,jdbcType=VARCHAR}
+    </select>
+
+    <!--选择性更新表:TA_EMPL-->
+    <update id="updateByPrimarySelective" >
+		UPDATE /*MS-TA-EMPL-UPDATEBYPRIMARYSELECTIVE*/ TA_EMPL
+		<set>
+			<if test="mail != null">
+				MAIL = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="isAdmin != null">
+				IS_ADMIN = #{isAdmin,jdbcType=INTEGER},
+			</if>
+			<if test="paperNo != null">
+				PAPER_NO = #{paperNo,jdbcType=VARCHAR},
+			</if>
+			<if test="userPwd != null">
+				USER_PWD = #{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="emplName != null">
+				EMPL_NAME = #{emplName,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				USER_NAME = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="alterEmpl != null">
+				ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="alterTime != null">
+				ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mobileTel != null">
+				MOBILE_TEL = #{mobileTel,jdbcType=VARCHAR},
+			</if>
+			<if test="timestamp != null">
+				TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+			</if>
+			<if test="createEmpl != null">
+				CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="emplStatus != null">
+				EMPL_STATUS = #{emplStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="platformId != null">
+				PLATFORM_ID = #{platformId,jdbcType=BIGINT},
+			</if>
+			<if test="validStatus != null">
+				VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+			</if>
+			<if test="platformType != null">
+				PLATFORM_TYPE = #{platformType,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--查询平台账号 pageCount-->
+    <select id="listAccountCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+
+		(select a.id id,a.PLATFORM_TYPE
+		PLATFORM_TYPE,a.PLATFORM_ID
+		PLATFORM_ID,a.IS_ADMIN IS_ADMIN,a.USER_NAME
+		USER_NAME,a.EMPL_NAME
+		EMPL_NAME,a.MAIL MAIL,a.MOBILE_TEL
+		MOBILE_TEL,a.PAPER_NO
+		PAPER_NO,a.EMPL_STATUS EMPL_STATUS,a.CREATE_EMPL
+		CREATE_EMPL,a.CREATE_TIME CREATE_TIME,a.ALTER_EMPL
+		ALTER_EMPL,a.ALTER_TIME ALTER_TIME,
+		GROUP_CONCAT(b.role_id
+		SEPARATOR
+		',') ROLE_IDS,GROUP_CONCAT(b.name
+		SEPARATOR ',') ROLE_NAMES from
+		TA_EMPL a JOIN TA_EMPL_ROLE_AUTH b ON
+		a.ID=b.EMPL_ID
+		LEFT JOIN `ta_role`
+		c on b.role_id= c.id
+		WHERE b.VALID_STATUS=1
+		AND
+		a.PLATFORM_TYPE=#{platformType,jdbcType=VARCHAR}
+		<if test="value!=null and value != ''">
+			and (a.USER_NAME like #{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_NAME like #{value,jdbcType=VARCHAR}
+			OR
+			a.MOBILE_TEL like #{value,jdbcType=VARCHAR})
+		</if>
+		<if test="emplStatus != null and emplStatus != ''">
+			AND a.EMPL_STATUS=#{emplStatus,jdbcType=VARCHAR}
+		</if>
+		GROUP BY a.id ) e
+		
+    </select>
+    <!--查询平台账号 pageResult-->
+    <select id="listAccountResult"  resultType="java.util.Map">
+		select /*MS-TA-EMPL-LISTACCOUNT*/ e.id ,e.PLATFORM_TYPE,e.PLATFORM_ID,e.IS_ADMIN ,e.USER_NAME
+		,e.EMPL_NAME
+		,e.MAIL,e.MOBILE_TEL ,e.PAPER_NO
+		,e.EMPL_STATUS
+		,e.CREATE_EMPL
+		,e.CREATE_TIME,e.ALTER_EMPL
+		,e.ALTER_TIME,
+		e.ROLE_IDS,e.ROLE_NAMES from
+		(select /*MS-TA-EMPL-LISTACCOUNT*/ a.id id,a.PLATFORM_TYPE
+		PLATFORM_TYPE,a.PLATFORM_ID
+		PLATFORM_ID,a.IS_ADMIN IS_ADMIN,a.USER_NAME
+		USER_NAME,a.EMPL_NAME
+		EMPL_NAME,a.MAIL MAIL,a.MOBILE_TEL
+		MOBILE_TEL,a.PAPER_NO
+		PAPER_NO,a.EMPL_STATUS EMPL_STATUS,a.CREATE_EMPL
+		CREATE_EMPL,a.CREATE_TIME CREATE_TIME,a.ALTER_EMPL
+		ALTER_EMPL,a.ALTER_TIME ALTER_TIME,
+		GROUP_CONCAT(b.role_id
+		SEPARATOR
+		',') ROLE_IDS,GROUP_CONCAT(b.name
+		SEPARATOR ',') ROLE_NAMES from
+		TA_EMPL a JOIN TA_EMPL_ROLE_AUTH b ON
+		a.ID=b.EMPL_ID
+		LEFT JOIN `ta_role`
+		c on b.role_id= c.id
+		WHERE b.VALID_STATUS=1
+		AND
+		a.PLATFORM_TYPE=#{platformType,jdbcType=VARCHAR}
+		<if test="value!=null and value != ''">
+			and (a.USER_NAME like #{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_NAME like #{value,jdbcType=VARCHAR}
+			OR
+			a.MOBILE_TEL like #{value,jdbcType=VARCHAR})
+		</if>
+		<if test="emplStatus != null and emplStatus != ''">
+			AND a.EMPL_STATUS=#{emplStatus,jdbcType=VARCHAR}
+		</if>
+		GROUP BY a.id ) e
+		ORDER BY e.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据平台类型和平台ID,获取用户名-->
+    <select id="getUserNameByTypeAndId" resultType="String">
+		SELECT /*MS-TA-EMPL-GETUSERNAMEBYTYPEANDID*/  USER_NAME
+		FROM TA_EMPL
+		WHERE
+		ID =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TA_EMPL-->
+    <update id="updateAccountStatus" >
+		UPDATE
+		TA_EMPL
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP =
+		#{timestamp,jdbcType=BIGINT}
+		,EMPL_STATUS =
+		#{emplStatus,jdbcType=VARCHAR}
+		WHERE
+		PLATFORM_ID =
+		#{platformId,jdbcType=BIGINT}
+		AND
+		PLATFORM_TYPE =
+		#{platformType,jdbcType=VARCHAR}
+    </update>
+
+    <!--根据id获取账户所有信息:TA_EMPL-->
+    <select id="getAccountInfoById" resultType="java.util.Map">
+		select /*MS-TA-EMPL-GETACCOUNTINFOBYID*/ a.id,a.PLATFORM_TYPE
+		,a.PLATFORM_ID
+		,a.IS_ADMIN ,a.USER_NAME
+		,a.EMPL_NAME
+		,a.MAIL
+		,a.MOBILE_TEL
+		,a.PAPER_NO
+		,a.EMPL_STATUS
+		,a.CREATE_EMPL
+		,a.CREATE_TIME
+		,a.ALTER_EMPL
+		,a.ALTER_TIME,d.user_name CREATE_NAME,
+		GROUP_CONCAT(b.role_id
+		SEPARATOR
+		',') ROLE_ID,GROUP_CONCAT(c.name
+		SEPARATOR
+		',') ROLE_NAME from TA_EMPL a JOIN TA_EMPL_ROLE_AUTH b ON
+		a.ID=b.EMPL_ID
+		LEFT JOIN ta_role c on c.`ID` =b.role_id
+		LEFT JOIN ta_empl d
+		on a.create_empl=d.id
+		WHERE b.VALID_STATUS=1
+		AND
+		a.ID=#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据用户ID获取其所属平台ID-->
+    <select id="getIdByUserId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETIDBYUSERID*/  PLATFORM_ID
+		FROM TA_EMPL
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_EMPL-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+		SELECT
+		ID
+		,MAIL
+		,REMARK
+		,IS_ADMIN
+		,PAPER_NO
+		,USER_PWD
+		,EMPL_NAME
+		,USER_NAME
+		,ALTER_EMPL
+		,ALTER_TIME
+		,MOBILE_TEL
+		,TIMESTAMP
+		,CREATE_EMPL
+		,CREATE_TIME
+		,EMPL_STATUS
+		,PLATFORM_ID
+		,VALID_STATUS
+		,PLATFORM_TYPE
+		FROM TA_EMPL
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+		AND
+		VALID_STATUS = 1
+    </select>
+
+    <!--查询平台账号 pageCount-->
+    <select id="mallListAccountCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+
+		(SELECT a.id,a.PLATFORM_TYPE
+		PLATFORM_TYPE,a.PLATFORM_ID
+		PLATFORM_ID,a.IS_ADMIN
+		IS_ADMIN,a.USER_NAME
+		USER_NAME,a.EMPL_NAME
+		EMPL_NAME,a.MAIL
+		MAIL,a.MOBILE_TEL
+		MOBILE_TEL,a.PAPER_NO
+		PAPER_NO,a.EMPL_STATUS
+		EMPL_STATUS,a.CREATE_EMPL
+		CREATE_EMPL,a.CREATE_TIME
+		CREATE_TIME,a.ALTER_EMPL
+		ALTER_EMPL,a.ALTER_TIME ALTER_TIME,
+		GROUP_CONCAT(e.id
+		SEPARATOR
+		',')ROLE_IDS,GROUP_CONCAT(e.NAME
+		SEPARATOR
+		',')
+		ROLE_NAMES FROM ta_empl a
+		LEFT JOIN TA_EMPL_ROLE_AUTH b ON
+		a.ID=b.EMPL_ID JOIN
+		TA_ROLE e ON
+		b.ROLE_ID = e.ID
+		WHERE b.VALID_STATUS=1
+		AND
+		a.PLATFORM_TYPE="MALLPLATFORM"
+		<if test="value!=null and value != ''">
+			and (a.USER_NAME=#{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_NAME=#{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_STATUS=#{value,jdbcType=VARCHAR}
+			OR
+			a.MOBILE_TEL=#{value,jdbcType=VARCHAR})
+		</if>
+		GROUP BY a.id) f
+		LEFT JOIN
+		(SELECT c.id ,GROUP_CONCAT(
+		d.SHOP_NAME
+		SEPARATOR
+		',') SHOP_NAMES FROM ta_empl c
+		left JOIN TA_EMPL_SHOP h ON
+		h.EMPL_ID=c.ID
+		LEFT JOIN TA_shop d
+		ON
+		h.shop_ID=d.id
+		GROUP BY c.id) g
+		ON
+		f.ID= g.id
+		
+    </select>
+    <!--查询平台账号 pageResult-->
+    <select id="mallListAccountResult"  resultType="java.util.Map">
+		SELECT /*MS-TA-EMPL-MALLLISTACCOUNT*/  f.id,f.PLATFORM_TYPE PLATFORM_TYPE,f.PLATFORM_ID
+		PLATFORM_ID,f.IS_ADMIN
+		IS_ADMIN,f.USER_NAME USER_NAME,f.EMPL_NAME
+		EMPL_NAME,f.MAIL
+		MAIL,f.MOBILE_TEL MOBILE_TEL,f.PAPER_NO
+		PAPER_NO,f.EMPL_STATUS
+		EMPL_STATUS,f.CREATE_EMPL
+		CREATE_EMPL,f.CREATE_TIME
+		CREATE_TIME,f.ALTER_EMPL
+		ALTER_EMPL,f.ALTER_TIME ALTER_TIME,
+		f.ROLE_NAMES ,f.ROLE_IDS,
+		g.SHOP_NAMES FROM
+		(SELECT /*MS-TA-EMPL-MALLLISTACCOUNT*/  a.id,a.PLATFORM_TYPE
+		PLATFORM_TYPE,a.PLATFORM_ID
+		PLATFORM_ID,a.IS_ADMIN
+		IS_ADMIN,a.USER_NAME
+		USER_NAME,a.EMPL_NAME
+		EMPL_NAME,a.MAIL
+		MAIL,a.MOBILE_TEL
+		MOBILE_TEL,a.PAPER_NO
+		PAPER_NO,a.EMPL_STATUS
+		EMPL_STATUS,a.CREATE_EMPL
+		CREATE_EMPL,a.CREATE_TIME
+		CREATE_TIME,a.ALTER_EMPL
+		ALTER_EMPL,a.ALTER_TIME ALTER_TIME,
+		GROUP_CONCAT(e.id
+		SEPARATOR
+		',')ROLE_IDS,GROUP_CONCAT(e.NAME
+		SEPARATOR
+		',')
+		ROLE_NAMES FROM ta_empl a
+		LEFT JOIN TA_EMPL_ROLE_AUTH b ON
+		a.ID=b.EMPL_ID JOIN
+		TA_ROLE e ON
+		b.ROLE_ID = e.ID
+		WHERE b.VALID_STATUS=1
+		AND
+		a.PLATFORM_TYPE="MALLPLATFORM"
+		<if test="value!=null and value != ''">
+			and (a.USER_NAME=#{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_NAME=#{value,jdbcType=VARCHAR}
+			OR
+			a.EMPL_STATUS=#{value,jdbcType=VARCHAR}
+			OR
+			a.MOBILE_TEL=#{value,jdbcType=VARCHAR})
+		</if>
+		GROUP BY a.id) f
+		LEFT JOIN
+		(SELECT /*MS-TA-EMPL-MALLLISTACCOUNT*/  c.id ,GROUP_CONCAT(
+		d.SHOP_NAME
+		SEPARATOR
+		',') SHOP_NAMES FROM ta_empl c
+		left JOIN TA_EMPL_SHOP h ON
+		h.EMPL_ID=c.ID
+		LEFT JOIN TA_shop d
+		ON
+		h.shop_ID=d.id
+		GROUP BY c.id) g
+		ON
+		f.ID= g.id
+		ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取数据:TA_EMPL-->
+    <select id="getByPlatformId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYPLATFORMID*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		PLATFORM_ID =
+		#{platformId,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_EMPL-->
+    <select id="getByPlatformIdAndEmplName" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-GETBYPLATFORMIDANDEMPLNAME*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL
+		WHERE
+		PLATFORM_ID = #{platformId,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+</mapper>

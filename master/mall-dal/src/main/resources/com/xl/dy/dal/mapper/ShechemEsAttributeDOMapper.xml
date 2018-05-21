@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.ShechemEsAttributeDOMapper">
+    <!-- 自动生成,请修改 SHECHEM_ES_ATTRIBUTE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.ShechemEsAttributeDO">
+        <id column="ID" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MID" property="mid" jdbcType="CHAR" javaType="String"/>
+        <result column="UID" property="uid" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TURN" property="turn" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TYPE" property="type" jdbcType="BIT" javaType="Boolean"/>
+        <result column="TITLE" property="title" jdbcType="VARCHAR" javaType="String"/>
+        <result column="STATUS" property="status" jdbcType="BIT" javaType="Boolean"/>
+        <result column="TYPE_ID" property="typeId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALUES" property="values" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="DISPLAY" property="display" jdbcType="BIT" javaType="Boolean"/>
+        <result column="ISTHUMB" property="isthumb" jdbcType="BIT" javaType="Boolean"/>
+        <result column="STORE_ID" property="storeId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_LINKED" property="isLinked" jdbcType="BIT" javaType="Boolean"/>
+        <result column="ATTR_GROUP" property="attrGroup" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INPUT_TYPE" property="inputType" jdbcType="BIT" javaType="Boolean"/>
+        <result column="INPUTTIME" property="inputtime" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SEARCH_TYPE" property="searchType" jdbcType="BIT" javaType="Boolean"/>
+        <result column="UPDATETIME" property="updatetime" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MID,UID,TURN,TYPE,TITLE,STATUS,TYPE_ID,VALUES,DISPLAY,ISTHUMB,STORE_ID,IS_LINKED,ATTR_GROUP,INPUT_TYPE,INPUTTIME,SEARCH_TYPE,UPDATETIME
+    </sql>
+
+
+    <!--插入表:SHECHEM_ES_ATTRIBUTE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO SHECHEM_ES_ATTRIBUTE(
+            ID
+            ,_UID
+            ,MID
+            ,UID
+            ,TURN
+            ,TYPE
+            ,TITLE
+            ,STATUS
+            ,TYPE_ID
+            ,VALUES
+            ,DISPLAY
+            ,ISTHUMB
+            ,STORE_ID
+            ,IS_LINKED
+            ,ATTR_GROUP
+            ,INPUT_TYPE
+            ,INPUTTIME
+            ,SEARCH_TYPE
+            ,UPDATETIME
+        )VALUES(
+             #{id,jdbcType=INTEGER}
+            , #{Uid,jdbcType=INTEGER}
+            , #{mid,jdbcType=CHAR}
+            , #{uid,jdbcType=INTEGER}
+            , #{turn,jdbcType=INTEGER}
+            , #{type,jdbcType=BIT}
+            , #{title,jdbcType=VARCHAR}
+            , #{status,jdbcType=BIT}
+            , #{typeId,jdbcType=INTEGER}
+            , #{values,jdbcType=LONGVARCHAR}
+            , #{display,jdbcType=BIT}
+            , #{isthumb,jdbcType=BIT}
+            , #{storeId,jdbcType=INTEGER}
+            , #{isLinked,jdbcType=BIT}
+            , #{attrGroup,jdbcType=VARCHAR}
+            , #{inputType,jdbcType=BIT}
+            , #{inputtime,jdbcType=INTEGER}
+            , #{searchType,jdbcType=BIT}
+            , #{updatetime,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:SHECHEM_ES_ATTRIBUTE-->
+    <update id="update" >
+        UPDATE /*MS-SHECHEM-ES-ATTRIBUTE-UPDATE*/ SHECHEM_ES_ATTRIBUTE
+        SET
+            _UID            = #{Uid,jdbcType=INTEGER}
+            ,MID             = #{mid,jdbcType=CHAR}
+            ,UID             = #{uid,jdbcType=INTEGER}
+            ,TURN            = #{turn,jdbcType=INTEGER}
+            ,TYPE            = #{type,jdbcType=BIT}
+            ,TITLE           = #{title,jdbcType=VARCHAR}
+            ,STATUS          = #{status,jdbcType=BIT}
+            ,TYPE_ID         = #{typeId,jdbcType=INTEGER}
+            ,VALUES          = #{values,jdbcType=LONGVARCHAR}
+            ,DISPLAY         = #{display,jdbcType=BIT}
+            ,ISTHUMB         = #{isthumb,jdbcType=BIT}
+            ,STORE_ID        = #{storeId,jdbcType=INTEGER}
+            ,IS_LINKED       = #{isLinked,jdbcType=BIT}
+            ,ATTR_GROUP      = #{attrGroup,jdbcType=VARCHAR}
+            ,INPUT_TYPE      = #{inputType,jdbcType=BIT}
+            ,INPUTTIME       = #{inputtime,jdbcType=INTEGER}
+            ,SEARCH_TYPE     = #{searchType,jdbcType=BIT}
+            ,UPDATETIME      = #{updatetime,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据主键删除数据:SHECHEM_ES_ATTRIBUTE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-SHECHEM-ES-ATTRIBUTE-DELETEBYPRIMARY*/ FROM
+            SHECHEM_ES_ATTRIBUTE
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据主键获取数据:SHECHEM_ES_ATTRIBUTE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-SHECHEM-ES-ATTRIBUTE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM SHECHEM_ES_ATTRIBUTE
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

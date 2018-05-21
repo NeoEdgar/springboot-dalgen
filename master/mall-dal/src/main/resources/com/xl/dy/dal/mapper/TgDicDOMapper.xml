@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TgDicDOMapper">
+    <!-- 自动生成,请修�? TG_DIC.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TgDicDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DIC_INX" property="dicInx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="DIC_KEY" property="dicKey" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DIC_TYPE" property="dicType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DIC_VALUE" property="dicValue" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="DIC_TYPE_NAME" property="dicTypeName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+    <resultMap id="ErpTypeVO"  type="com.xl.dy.dal.resultmap.ErpTypeVO">
+        <result column="dicKey" property="dickey"  javaType="String"/>
+        <result column="dicValue" property="dicvalue"  javaType="String"/>
+        <result column="remark" property="remark"  javaType="String"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,DIC_INX,DIC_KEY,REMARK,DIC_TYPE,DIC_VALUE,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,DIC_TYPE_NAME,VALID_STATUS
+    </sql>
+
+
+    <!--插入表:TG_DIC-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TG_DIC(
+            ID
+            ,DIC_INX
+            ,DIC_KEY
+            ,REMARK
+            ,DIC_TYPE
+            ,DIC_VALUE
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,DIC_TYPE_NAME
+            ,VALID_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{dicInx,jdbcType=INTEGER}
+            , #{dicKey,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{dicType,jdbcType=VARCHAR}
+            , #{dicValue,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{dicTypeName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TG_DIC-->
+    <update id="update" >
+        UPDATE /*MS-TG-DIC-UPDATE*/ TG_DIC
+        SET
+            DIC_INX         = #{dicInx,jdbcType=INTEGER}
+            ,DIC_KEY         = #{dicKey,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,DIC_TYPE        = #{dicType,jdbcType=VARCHAR}
+            ,DIC_VALUE       = #{dicValue,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,DIC_TYPE_NAME   = #{dicTypeName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TG_DIC-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TG-DIC-DELETEBYPRIMARY*/ FROM
+            TG_DIC
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TG_DIC-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DIC-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TG_DIC
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TG_DIC-->
+    <select id="findErpType" resultMap="ErpTypeVO">
+        SELECT /*MS-TG-DIC-FINDERPTYPE*/  DIC_KEY AS dicKey
+        ,DIC_VALUE AS dicValue
+        ,REMARK AS remark
+        FROM TG_DIC
+        WHERE
+            VALID_STATUS=1
+            AND DIC_TYPE='ERP_TYPE'
+    </select>
+</mapper>

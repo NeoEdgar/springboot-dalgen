@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaOrderDetDOMapper">
+    <!-- 自动生成,请修改 TA_ORDER_DET.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaOrderDetDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PA_ID" property="paId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PB_ID" property="pbId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_ERP" property="isErp" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="POINT" property="point" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="BRAND_ID" property="brandId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_POINT" property="isPoint" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SALE_QTY" property="saleQty" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ERP_ACC_ID" property="erpAccId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_COUPON" property="isCoupon" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_REFUND" property="isRefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PAR_VALUE" property="parValue" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SALE_TYPE" property="saleType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SKU_TITLE" property="skuTitle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="BRAND_NAME" property="brandName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_CODE" property="orderCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="POINT_RATE" property="pointRate" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="PRICE_TYPE" property="priceType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SECKILL_ID" property="seckillId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CONTRACT_DP" property="contractDp" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="CONTRACT_ID" property="contractId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ERP_GOODS_ID" property="erpGoodsId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_PRICE" property="goodsPrice" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ORI_ORDER_ID" property="oriOrderId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="AL_REFUND_AMT" property="alRefundAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="CONSUME_CODE" property="consumeCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_LOCK_CODE" property="erpLockCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_SALE_CODE" property="erpSaleCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_SALE_DEPT" property="erpSaleDept" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MA_POINT_RULE" property="maPointRule" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="POINT_AMT_DET" property="pointAmtDet" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SKU_PROP_JSON" property="skuPropJson" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="BROKERAGE_AMT" property="brokerageAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="CANVER_STATUS" property="canverStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONTRACT_TYPE" property="contractType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="COUPON_AMT_DET" property="couponAmtDet" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COUPON_USER_ID" property="couponUserId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ERP_TRADE_CODE" property="erpTradeCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_WRITE_TIME" property="erpWriteTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ORI_ORDER_CODE" property="oriOrderCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ACCOUNT_UNIT_ID" property="accountUnitId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ERP_LOCK_STATUS" property="erpLockStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_WRITE_ERROR" property="erpWriteError" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORI_ORDER_DET_ID" property="oriOrderDetId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PAY_POSTAGE_AMT" property="payPostageAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SHOP_GOODS_CODE" property="shopGoodsCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_GOODS_NAME" property="shopGoodsName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONTRACT_NUMBER" property="contractNumber" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_WRITE_STATUS" property="erpWriteStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_PAY_TOTAL_AMT" property="perPayTotalAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="POINT_TRADE_CODE" property="pointTradeCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="POINT_WRITE_TIME" property="pointWriteTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="POINT_WRITE_ERROR" property="pointWriteError" jdbcType="VARCHAR" javaType="String"/>
+        <result column="POINT_WRITE_STATUS" property="pointWriteStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_GOODS_PHOTO_URL" property="shopGoodsPhotoUrl" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <resultMap id="GroupVO"  type="com.xl.dy.dal.resultmap.GroupVO">
+        <result column="vipId" property="vipid"  javaType="Long"/>
+        <result column="skuId" property="skuid"  javaType="Long"/>
+        <result column="groupId" property="groupid"  javaType="Long"/>
+        <result column="userGroupId" property="usergroupid"  javaType="Long"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,PA_ID,PB_ID,IS_ERP,POINT,SKU_ID,REMARK,BRAND_ID,GOODS_ID,IS_POINT,ORDER_ID,SALE_QTY,ERP_ACC_ID,IS_COUPON,IS_REFUND,PAR_VALUE,SALE_TYPE,SKU_TITLE,ALTER_EMPL,ALTER_TIME,BRAND_NAME,GOODS_CODE,GOODS_TYPE,ORDER_CODE,POINT_RATE,PRICE_TYPE,SECKILL_ID,TIMESTAMP,CONTRACT_DP,CONTRACT_ID,CREATE_EMPL,CREATE_TIME,ERP_GOODS_ID,GOODS_PRICE,ORI_ORDER_ID,AL_REFUND_AMT,CONSUME_CODE,ERP_LOCK_CODE,ERP_SALE_CODE,ERP_SALE_DEPT,MA_POINT_RULE,POINT_AMT_DET,SKU_PROP_JSON,VALID_STATUS,BROKERAGE_AMT,CANVER_STATUS,CONTRACT_TYPE,COUPON_AMT_DET,COUPON_USER_ID,ERP_TRADE_CODE,ERP_WRITE_TIME,ORI_ORDER_CODE,ACCOUNT_UNIT_ID,ERP_LOCK_STATUS,ERP_WRITE_ERROR,ORI_ORDER_DET_ID,PAY_POSTAGE_AMT,SHOP_GOODS_CODE,SHOP_GOODS_NAME,CONTRACT_NUMBER,ERP_WRITE_STATUS,PER_PAY_TOTAL_AMT,POINT_TRADE_CODE,POINT_WRITE_TIME,POINT_WRITE_ERROR,POINT_WRITE_STATUS,SHOP_GOODS_PHOTO_URL
+    </sql>
+
+
+    <!--???�表:TA_ORDER_DET-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ORDER_DET(
+            ID
+            ,PA_ID
+            ,PB_ID
+            ,IS_ERP
+            ,POINT
+            ,SKU_ID
+            ,REMARK
+            ,BRAND_ID
+            ,GOODS_ID
+            ,IS_POINT
+            ,ORDER_ID
+            ,SALE_QTY
+            ,ERP_ACC_ID
+            ,IS_COUPON
+            ,IS_REFUND
+            ,PAR_VALUE
+            ,SALE_TYPE
+            ,SKU_TITLE
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,BRAND_NAME
+            ,GOODS_CODE
+            ,GOODS_TYPE
+            ,ORDER_CODE
+            ,POINT_RATE
+            ,PRICE_TYPE
+            ,SECKILL_ID
+            ,TIMESTAMP
+            ,CONTRACT_DP
+            ,CONTRACT_ID
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,ERP_GOODS_ID
+            ,GOODS_PRICE
+            ,ORI_ORDER_ID
+            ,AL_REFUND_AMT
+            ,CONSUME_CODE
+            ,ERP_LOCK_CODE
+            ,ERP_SALE_CODE
+            ,ERP_SALE_DEPT
+            ,MA_POINT_RULE
+            ,POINT_AMT_DET
+            ,SKU_PROP_JSON
+            ,VALID_STATUS
+            ,BROKERAGE_AMT
+            ,CANVER_STATUS
+            ,CONTRACT_TYPE
+            ,COUPON_AMT_DET
+            ,COUPON_USER_ID
+            ,ERP_TRADE_CODE
+            ,ERP_WRITE_TIME
+            ,ORI_ORDER_CODE
+            ,ACCOUNT_UNIT_ID
+            ,ERP_LOCK_STATUS
+            ,ERP_WRITE_ERROR
+            ,ORI_ORDER_DET_ID
+            ,PAY_POSTAGE_AMT
+            ,SHOP_GOODS_CODE
+            ,SHOP_GOODS_NAME
+            ,CONTRACT_NUMBER
+            ,ERP_WRITE_STATUS
+            ,PER_PAY_TOTAL_AMT
+            ,POINT_TRADE_CODE
+            ,POINT_WRITE_TIME
+            ,POINT_WRITE_ERROR
+            ,POINT_WRITE_STATUS
+            ,SHOP_GOODS_PHOTO_URL
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{paId,jdbcType=BIGINT}
+            , #{pbId,jdbcType=BIGINT}
+            , #{isErp,jdbcType=INTEGER}
+            , #{point,jdbcType=DECIMAL}
+            , #{skuId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{brandId,jdbcType=BIGINT}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{isPoint,jdbcType=INTEGER}
+            , #{orderId,jdbcType=BIGINT}
+            , #{saleQty,jdbcType=DECIMAL}
+            , #{erpAccId,jdbcType=BIGINT}
+            , #{isCoupon,jdbcType=INTEGER}
+            , #{isRefund,jdbcType=INTEGER}
+            , #{parValue,jdbcType=DECIMAL}
+            , #{saleType,jdbcType=VARCHAR}
+            , #{skuTitle,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{brandName,jdbcType=VARCHAR}
+            , #{goodsCode,jdbcType=VARCHAR}
+            , #{goodsType,jdbcType=VARCHAR}
+            , #{orderCode,jdbcType=VARCHAR}
+            , #{pointRate,jdbcType=DECIMAL}
+            , #{priceType,jdbcType=VARCHAR}
+            , #{seckillId,jdbcType=BIGINT}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{contractDp,jdbcType=DECIMAL}
+            , #{contractId,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{erpGoodsId,jdbcType=VARCHAR}
+            , #{goodsPrice,jdbcType=DECIMAL}
+            , #{oriOrderId,jdbcType=BIGINT}
+            , #{alRefundAmt,jdbcType=DECIMAL}
+            , #{consumeCode,jdbcType=VARCHAR}
+            , #{erpLockCode,jdbcType=VARCHAR}
+            , #{erpSaleCode,jdbcType=VARCHAR}
+            , #{erpSaleDept,jdbcType=VARCHAR}
+            , #{maPointRule,jdbcType=INTEGER}
+            , #{pointAmtDet,jdbcType=DECIMAL}
+            , #{skuPropJson,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{brokerageAmt,jdbcType=DECIMAL}
+            , #{canverStatus,jdbcType=VARCHAR}
+            , #{contractType,jdbcType=VARCHAR}
+            , #{couponAmtDet,jdbcType=DECIMAL}
+            , #{couponUserId,jdbcType=BIGINT}
+            , #{erpTradeCode,jdbcType=VARCHAR}
+            , #{erpWriteTime,jdbcType=TIMESTAMP}
+            , #{oriOrderCode,jdbcType=VARCHAR}
+            , #{accountUnitId,jdbcType=BIGINT}
+            , #{erpLockStatus,jdbcType=VARCHAR}
+            , #{erpWriteError,jdbcType=VARCHAR}
+            , #{oriOrderDetId,jdbcType=BIGINT}
+            , #{payPostageAmt,jdbcType=DECIMAL}
+            , #{shopGoodsCode,jdbcType=VARCHAR}
+            , #{shopGoodsName,jdbcType=VARCHAR}
+            , #{contractNumber,jdbcType=VARCHAR}
+            , #{erpWriteStatus,jdbcType=VARCHAR}
+            , #{perPayTotalAmt,jdbcType=DECIMAL}
+            , #{pointTradeCode,jdbcType=VARCHAR}
+            , #{pointWriteTime,jdbcType=TIMESTAMP}
+            , #{pointWriteError,jdbcType=VARCHAR}
+            , #{pointWriteStatus,jdbcType=VARCHAR}
+            , #{shopGoodsPhotoUrl,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ORDER_DET-->
+    <update id="update" >
+        UPDATE /*MS-TA-ORDER-DET-UPDATE*/ TA_ORDER_DET
+        SET
+            PA_ID           = #{paId,jdbcType=BIGINT}
+            ,PB_ID           = #{pbId,jdbcType=BIGINT}
+            ,IS_ERP          = #{isErp,jdbcType=INTEGER}
+            ,POINT           = #{point,jdbcType=DECIMAL}
+            ,SKU_ID          = #{skuId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,BRAND_ID        = #{brandId,jdbcType=BIGINT}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,IS_POINT        = #{isPoint,jdbcType=INTEGER}
+            ,ORDER_ID        = #{orderId,jdbcType=BIGINT}
+            ,SALE_QTY        = #{saleQty,jdbcType=DECIMAL}
+            ,ERP_ACC_ID      = #{erpAccId,jdbcType=BIGINT}
+            ,IS_COUPON       = #{isCoupon,jdbcType=INTEGER}
+            ,IS_REFUND       = #{isRefund,jdbcType=INTEGER}
+            ,PAR_VALUE       = #{parValue,jdbcType=DECIMAL}
+            ,SALE_TYPE       = #{saleType,jdbcType=VARCHAR}
+            ,SKU_TITLE       = #{skuTitle,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,BRAND_NAME      = #{brandName,jdbcType=VARCHAR}
+            ,GOODS_CODE      = #{goodsCode,jdbcType=VARCHAR}
+            ,GOODS_TYPE      = #{goodsType,jdbcType=VARCHAR}
+            ,ORDER_CODE      = #{orderCode,jdbcType=VARCHAR}
+            ,POINT_RATE      = #{pointRate,jdbcType=DECIMAL}
+            ,PRICE_TYPE      = #{priceType,jdbcType=VARCHAR}
+            ,SECKILL_ID      = #{seckillId,jdbcType=BIGINT}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CONTRACT_DP     = #{contractDp,jdbcType=DECIMAL}
+            ,CONTRACT_ID     = #{contractId,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,ERP_GOODS_ID    = #{erpGoodsId,jdbcType=VARCHAR}
+            ,GOODS_PRICE     = #{goodsPrice,jdbcType=DECIMAL}
+            ,ORI_ORDER_ID    = #{oriOrderId,jdbcType=BIGINT}
+            ,AL_REFUND_AMT   = #{alRefundAmt,jdbcType=DECIMAL}
+            ,CONSUME_CODE    = #{consumeCode,jdbcType=VARCHAR}
+            ,ERP_LOCK_CODE   = #{erpLockCode,jdbcType=VARCHAR}
+            ,ERP_SALE_CODE   = #{erpSaleCode,jdbcType=VARCHAR}
+            ,ERP_SALE_DEPT   = #{erpSaleDept,jdbcType=VARCHAR}
+            ,MA_POINT_RULE   = #{maPointRule,jdbcType=INTEGER}
+            ,POINT_AMT_DET   = #{pointAmtDet,jdbcType=DECIMAL}
+            ,SKU_PROP_JSON   = #{skuPropJson,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,BROKERAGE_AMT   = #{brokerageAmt,jdbcType=DECIMAL}
+            ,CANVER_STATUS   = #{canverStatus,jdbcType=VARCHAR}
+            ,CONTRACT_TYPE   = #{contractType,jdbcType=VARCHAR}
+            ,COUPON_AMT_DET  = #{couponAmtDet,jdbcType=DECIMAL}
+            ,COUPON_USER_ID  = #{couponUserId,jdbcType=BIGINT}
+            ,ERP_TRADE_CODE  = #{erpTradeCode,jdbcType=VARCHAR}
+            ,ERP_WRITE_TIME  = #{erpWriteTime,jdbcType=TIMESTAMP}
+            ,ORI_ORDER_CODE  = #{oriOrderCode,jdbcType=VARCHAR}
+            ,ACCOUNT_UNIT_ID = #{accountUnitId,jdbcType=BIGINT}
+            ,ERP_LOCK_STATUS = #{erpLockStatus,jdbcType=VARCHAR}
+            ,ERP_WRITE_ERROR = #{erpWriteError,jdbcType=VARCHAR}
+            ,ORI_ORDER_DET_ID = #{oriOrderDetId,jdbcType=BIGINT}
+            ,PAY_POSTAGE_AMT = #{payPostageAmt,jdbcType=DECIMAL}
+            ,SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+            ,SHOP_GOODS_NAME = #{shopGoodsName,jdbcType=VARCHAR}
+            ,CONTRACT_NUMBER = #{contractNumber,jdbcType=VARCHAR}
+            ,ERP_WRITE_STATUS = #{erpWriteStatus,jdbcType=VARCHAR}
+            ,PER_PAY_TOTAL_AMT = #{perPayTotalAmt,jdbcType=DECIMAL}
+            ,POINT_TRADE_CODE = #{pointTradeCode,jdbcType=VARCHAR}
+            ,POINT_WRITE_TIME = #{pointWriteTime,jdbcType=TIMESTAMP}
+            ,POINT_WRITE_ERROR = #{pointWriteError,jdbcType=VARCHAR}
+            ,POINT_WRITE_STATUS = #{pointWriteStatus,jdbcType=VARCHAR}
+            ,SHOP_GOODS_PHOTO_URL = #{shopGoodsPhotoUrl,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ORDER_DET-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ORDER-DET-DELETEBYPRIMARY*/ FROM
+            TA_ORDER_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ORDER_DET-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ORDER-DET-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ORDER_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--?��??主�???��???��??:TA_ORDER_DET-->
+    <select id="getOrderPrimary" resultMap="BaseResultMap">
+        SELECT
+        b.IS_REFUND isRefund,
+        b.ORI_ORDER_CODE oriOrderCode,
+        b.ORDER_STATUS orderStatus,
+        b.COMPANY_ID companyId,
+        b.COMPANY_NAME companyName,
+        b.MALL_ID mallId,
+        b.MALL_NAME mallName,
+        b.SHOP_ID shopId,
+        b.SHOP_NAME shopName,
+        a.GOODS_ID goodsId,
+        a.SHOP_GOODS_NAME shopGoodsName,
+        a.SKU_PROP_JSON skuPropJson,
+        c.ERP_ACC_NAME erpAccName,
+        a.ERP_SALE_CODE erpSaleCode,
+        a.ERP_SALE_DEPT erpSaleDept,
+        a.ID orderDetId,
+        a.ORDER_CODE orderCode,
+        a.ERP_TRADE_CODE erpTradeCode,
+        a.ERP_WRITE_TIME erpWriteTime,
+        a.ERP_WRITE_STATUS erpWriteStatus,
+        a.SALE_QTY saleQty,
+        a.PER_PAY_TOTAL_AMT-IFNULL(a.COUPON_AMT_DET,0)-IFNULL(a.POINT_AMT_DET,0) salePayment,
+        a.AL_REFUND_AMT alRefunAmt,
+        d.PAY_MODE_NAME payModeName,
+        a.PAY_POSTAGE_AMT payPostageAmt
+        FROM
+        ta_order_det a
+        LEFT JOIN
+        ta_order b ON a.ORDER_CODE = b.ORDER_CODE
+        LEFT JOIN ta_erp_acc c ON c.ID = a.ERP_ACC_ID
+        LEFT JOIN ta_order_funds d on d.ORDER_ID = b.ID
+        WHERE
+        a.VALID_STATUS IS NULL
+        AND b.VALID_STATUS IS NULL
+        AND date_format(b.CREATE_TIME,'%Y-%m-%d %H') BETWEEN date_format(DATE_ADD(NOW(),INTERVAL -3 HOUR),'%Y-%m-%d %H') AND date_format(now(),'%Y-%m-%d %H')
+    </select>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getByOrderId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-ORDER-DET-GETBYORDERID*/  <include refid="Base_Column_List" />
+		FROM TA_ORDER_DET
+		WHERE
+		IS_REFUND = 0
+		AND
+		ORDER_ID =
+		#{orderId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getInfoByOrderId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-ORDER-DET-GETINFOBYORDERID*/  ID,SKU_TITLE,SKU_PROP_JSON,SALE_QTY,GOODS_PRICE,PAY_POSTAGE_AMT
+		FROM TA_ORDER_DET
+		WHERE
+		IS_REFUND = 0
+		AND
+		ORDER_ID =
+		#{orderId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键更新数据:TA_ORDER_DET-->
+    <update id="updateByPrimarySelective" >
+		UPDATE /*MS-TA-ORDER-DET-UPDATEBYPRIMARYSELECTIVE*/ TA_ORDER_DET
+		<set>
+			<if test="paId != null">
+				PA_ID = #{paId,jdbcType=BIGINT},
+			</if>
+			<if test="pbId != null">
+				PB_ID = #{pbId,jdbcType=BIGINT},
+			</if>
+			<if test="isErp != null">
+				IS_ERP = #{isErp,jdbcType=INTEGER},
+			</if>
+			<if test="point != null">
+				POINT = #{point,jdbcType=DECIMAL},
+			</if>
+			<if test="skuId != null">
+				SKU_ID = #{skuId,jdbcType=BIGINT},
+			</if>
+			<if test="brandId != null">
+				BRAND_ID = #{brandId,jdbcType=BIGINT},
+			</if>
+			<if test="goodsId != null">
+				GOODS_ID = #{goodsId,jdbcType=BIGINT},
+			</if>
+			<if test="orderId != null">
+				ORDER_ID = #{orderId,jdbcType=BIGINT},
+			</if>
+			<if test="saleQty != null">
+				SALE_QTY = #{saleQty,jdbcType=DECIMAL},
+			</if>
+			<if test="erpAccId != null">
+				ERP_ACC_ID = #{erpAccId,jdbcType=BIGINT},
+			</if>
+			<if test="isRefund != null">
+				IS_REFUND = #{isRefund,jdbcType=INTEGER},
+			</if>
+			<if test="saleType != null">
+				SALE_TYPE = #{saleType,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsType != null">
+				GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},
+			</if>
+			<if test="skuTitle != null">
+				SKU_TITLE = #{skuTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="brandName != null">
+				BRAND_NAME = #{brandName,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsCode != null">
+				GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+			</if>
+			<if test="shopGoodsCode != null">
+				SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR},
+			</if>
+			<if test="orderCode != null">
+				ORDER_CODE = #{orderCode,jdbcType=VARCHAR},
+			</if>
+			<if test="pointRate != null">
+				POINT_RATE = #{pointRate,jdbcType=DECIMAL},
+			</if>
+			<if test="priceType != null">
+				PRICE_TYPE = #{priceType,jdbcType=VARCHAR},
+			</if>
+			<if test="consumeCode != null">
+				CONSUME_CODE = #{consumeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="contractDp != null">
+				CONTRACT_DP = #{contractDp,jdbcType=DECIMAL},
+			</if>
+			<if test="contractId != null">
+				CONTRACT_ID = #{contractId,jdbcType=BIGINT},
+			</if>
+			<if test="erpGoodsId != null">
+				ERP_GOODS_ID = #{erpGoodsId,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsPrice != null">
+				GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="oriOrderId != null">
+				ORI_ORDER_ID = #{oriOrderId,jdbcType=BIGINT},
+			</if>
+			<if test="alRefundAmt != null">
+				AL_REFUND_AMT = #{alRefundAmt,jdbcType=DECIMAL},
+			</if>
+			<if test="erpLockCode != null">
+				ERP_LOCK_CODE = #{erpLockCode,jdbcType=VARCHAR},
+			</if>
+			<if test="erpSaleCode != null">
+				ERP_SALE_CODE = #{erpSaleCode,jdbcType=VARCHAR},
+			</if>
+			<if test="erpSaleDept != null">
+				ERP_SALE_DEPT = #{erpSaleDept,jdbcType=VARCHAR},
+			</if>
+			<if test="maPointRule != null">
+				MA_POINT_RULE = #{maPointRule,jdbcType=INTEGER},
+			</if>
+			<if test="seckillId != null">
+				SECKILL_ID = #{seckillId,jdbcType=BIGINT},
+			</if>
+			<if test="perPayTotalAmt != null">
+				PER_PAY_TOTAL_AMT = #{perPayTotalAmt,jdbcType=DECIMAL},
+			</if>
+			<if test="perPayTotalAmt != null">
+				PER_PAY_TOTAL_AMT = #{perPayTotalAmt,jdbcType=DECIMAL},
+			</if>
+			<if test="payPostageAmt != null">
+				PAY_POSTAGE_AMT = #{payPostageAmt,jdbcType=DECIMAL},
+			</if>
+			<if test="pointAmtDet != null">
+				POINT_AMT_DET = #{pointAmtDet,jdbcType=DECIMAL},
+			</if>
+			<if test="skuPropJson != null">
+				SKU_PROP_JSON = #{skuPropJson,jdbcType=VARCHAR},
+			</if>
+			<if test="brokerageAmt != null">
+				BROKERAGE_AMT = #{brokerageAmt,jdbcType=DECIMAL}
+			</if>
+			<if test="canverStatus != null">
+				CANVER_STATUS = #{canverStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="contractType != null">
+				CONTRACT_TYPE = #{contractType,jdbcType=VARCHAR},
+			</if>
+			<if test="couponAmtDet != null">
+				COUPON_AMT_DET = #{couponAmtDet,jdbcType=DECIMAL},
+			</if>
+			<if test="isCoupon != null">
+				IS_COUPON = #{isCoupon,jdbcType=INTEGER},
+			</if>
+			<if test="isPoint != null">
+				IS_POINT = #{isPoint,jdbcType=INTEGER},
+			</if>
+			<if test="parValue != null">
+				PAR_VALUE = = #{parValue,jdbcType=DECIMAL},
+			</if>
+			<if test="couponUserId != null">
+				COUPON_USER_ID = #{couponUserId,jdbcType=BIGINT},
+			</if>
+			<if test="erpTradeCode != null">
+				ERP_TRADE_CODE = #{erpTradeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="erpWriteTime != null">
+				ERP_WRITE_TIME = #{erpWriteTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="oriOrderCode != null">
+				ORI_ORDER_CODE = #{oriOrderCode,jdbcType=VARCHAR},
+			</if>
+			<if test="shopGoodsPhotoUrl != null">
+				SHOP_GOODS_PHOTO_URL =
+				#{shopGoodsPhotoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="accountUnitId != null">
+				ACCOUNT_UNIT_ID = #{accountUnitId,jdbcType=BIGINT},
+			</if>
+			<if test="erpLockStatus != null">
+				ERP_LOCK_STATUS = #{erpLockStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="erpWriteError != null">
+				ERP_WRITE_ERROR = #{erpWriteError,jdbcType=VARCHAR},
+			</if>
+			<if test="oriOrderDetId != null">
+				ORI_ORDER_DET_ID = #{oriOrderDetId,jdbcType=BIGINT},
+			</if>
+			<if test="shopGoodsName != null">
+				SHOP_GOODS_NAME = #{shopGoodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="contractNumber != null">
+				CONTRACT_NUMBER = #{contractNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="erpWriteStatus != null">
+				ERP_WRITE_STATUS = #{erpWriteStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="pointTradeCode != null">
+				POINT_TRADE_CODE = #{pointTradeCode,jdbcType=VARCHAR},
+			</if>
+			<if test="pointWriteTime != null">
+				POINT_WRITE_TIME = #{pointWriteTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="pointWriteError != null">
+				POINT_WRITE_ERROR = #{pointWriteError,jdbcType=VARCHAR},
+			</if>
+			<if test="alterEmpl != null">
+				ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="alterTime != null">
+				ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="timestamp != null">
+				TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+			</if>
+			<if test="createEmpl != null">
+				CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="validStatus != null">
+				VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getByOrderCode" resultMap="BaseResultMap">
+		SELECT /*MS-TA-ORDER-DET-GETBYORDERCODE*/  <include refid="Base_Column_List" />
+		FROM TA_ORDER_DET
+		WHERE
+		IS_REFUND = 0
+		AND
+		ORDER_CODE =
+		#{orderCode,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据mallId获取不同类型的订单:TA_ORDER pageCount-->
+    <select id="getCompanyOrderListCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ORDER a LEFT JOIN TA_ORDER_DET b ON a.ID = b.ORDER_ID
+		WHERE
+		a.ORDER_TYPE =
+		#{orderType,jdbcType=VARCHAR}
+		AND
+		IS_REFUND = 0
+		AND
+		COMPANY_ID =
+		#{companyId,jdbcType=BIGINT}
+		<if test="orderCode != null and orderCode != '' ">
+			AND a.ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+		</if>
+		<if test="mallName != null and mallName != '' ">
+			a.AND MALL_NAME = #{mallName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND a.ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="shopName != null and shopName != '' ">
+			AND a.SHOP_NAME = #{shopName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderRefundStatus != null and orderRefundStatus != '' ">
+			AND a.ORDER_REFUND_STATUS =
+			#{orderRefundStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="getGoodsMode != null and getGoodsMode != '' ">
+			AND a.GET_GOODS_MODE = #{getGoodsMode,jdbcType=VARCHAR}
+		</if>
+		<if test="sTime != null">
+			AND a.CREATE_TIME &gt;= #{sTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="eTime != null">
+			AND a.CREATE_TIME &lt;= #{eTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="GOODS_CODE != null">
+			AND b.GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+		</if>
+		<if test="shopGoodsCode != null">
+			AND b.SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+		</if>
+		ORDER_BY a.ORDER_ID,a.CREATE_TIME DESC
+    </select>
+    <!--根据mallId获取不同类型的订单:TA_ORDER pageResult-->
+    <select id="getCompanyOrderListResult"  resultMap="BaseResultMap">
+		SELECT
+		b.SHOP_GOODS_NAME,b.SHOP_GOODS_PHOTO_URL,b.SKU_TITLE,b.GOODS_PRICE,b.SALE_QTY,b.ORDER_ID,b.SKU_PROP_JSON
+		FROM TA_ORDER a LEFT JOIN TA_ORDER_DET b ON a.ID = b.ORDER_ID
+		WHERE
+		a.ORDER_TYPE =
+		#{orderType,jdbcType=VARCHAR}
+		AND
+		IS_REFUND = 0
+		AND
+		COMPANY_ID =
+		#{companyId,jdbcType=BIGINT}
+		<if test="orderCode != null and orderCode != '' ">
+			AND a.ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+		</if>
+		<if test="mallName != null and mallName != '' ">
+			a.AND MALL_NAME = #{mallName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND a.ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="shopName != null and shopName != '' ">
+			AND a.SHOP_NAME = #{shopName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderRefundStatus != null and orderRefundStatus != '' ">
+			AND a.ORDER_REFUND_STATUS =
+			#{orderRefundStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="getGoodsMode != null and getGoodsMode != '' ">
+			AND a.GET_GOODS_MODE = #{getGoodsMode,jdbcType=VARCHAR}
+		</if>
+		<if test="sTime != null">
+			AND a.CREATE_TIME &gt;= #{sTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="eTime != null">
+			AND a.CREATE_TIME &lt;= #{eTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="GOODS_CODE != null">
+			AND b.GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+		</if>
+		<if test="shopGoodsCode != null">
+			AND b.SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+		</if>
+		ORDER_BY a.ORDER_ID,a.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据mallId获取不同类型的订单:TA_ORDER pageCount-->
+    <select id="getMallOrderListCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ORDER WHERE ORDER_TYPE =
+		#{orderType,jdbcType=VARCHAR}
+		AND MALL_ID = #{mallId,jdbcType=BIGINT}
+		<if test="orderCode != null and orderCode != '' ">
+			AND ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+		</if>
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="shopName != null and shopName != '' ">
+			AND SHOP_NAME = #{shopName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderRefundStatus != null and orderRefundStatus != '' ">
+			AND ORDER_REFUND_STATUS =
+			#{orderRefundStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="getGoodsMode != null and getGoodsMode != '' ">
+			AND GET_GOODS_MODE = #{getGoodsMode,jdbcType=VARCHAR}
+		</if>
+		<if test="sTime != null">
+			AND CREATE_TIME &gt;= #{sTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="eTime != null">
+			AND CREATE_TIME &lt;= #{eTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="GOODS_CODE != null">
+			AND b.GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+		</if>
+		<if test="shopGoodsCode != null">
+			AND b.SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+		</if>
+		ORDER_BY a.ORDER_ID,a.CREATE_TIME DESC
+    </select>
+    <!--根据mallId获取不同类型的订单:TA_ORDER pageResult-->
+    <select id="getMallOrderListResult"  resultMap="BaseResultMap">
+		SELECT /*MS-TA-ORDER-DET-GETMALLORDERLIST*/  <include refid="Base_Column_List" /> FROM TA_ORDER WHERE ORDER_TYPE =
+		#{orderType,jdbcType=VARCHAR}
+		AND MALL_ID = #{mallId,jdbcType=BIGINT}
+		<if test="orderCode != null and orderCode != '' ">
+			AND ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+		</if>
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="shopName != null and shopName != '' ">
+			AND SHOP_NAME = #{shopName,jdbcType=VARCHAR}
+		</if>
+		<if test="orderRefundStatus != null and orderRefundStatus != '' ">
+			AND ORDER_REFUND_STATUS =
+			#{orderRefundStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="getGoodsMode != null and getGoodsMode != '' ">
+			AND GET_GOODS_MODE = #{getGoodsMode,jdbcType=VARCHAR}
+		</if>
+		<if test="sTime != null">
+			AND CREATE_TIME &gt;= #{sTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="eTime != null">
+			AND CREATE_TIME &lt;= #{eTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="GOODS_CODE != null">
+			AND b.GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+		</if>
+		<if test="shopGoodsCode != null">
+			AND b.SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+		</if>
+		ORDER_BY a.ORDER_ID,a.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getOrderDetCountByOrderId" resultType="Integer">
+		SELECT /*MS-TA-ORDER-DET-GETORDERDETCOUNTBYORDERID*/  COUNT(*)
+		FROM TA_ORDER_DET
+		WHERE
+		ORDER_ID = #{orderId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getOrderDetByOrderId" resultMap="GroupVO">
+		SELECT /*MS-TA-ORDER-DET-GETORDERDETBYORDERID*/  b.`VIP_ID` vipId ,a.`SKU_ID` skuId
+		,b.`GROUP_ID` groupId
+		,b.`USER_GROUP_ID` userGroupId FROM
+		`ta_order_det` a LEFT JOIN
+		`ta_order` b on a.`ORDER_ID` =b.`ID` WHERE
+		b.`ID` = =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据电子券消费码和店铺id获取订单明细:TA_ORDER_DET-->
+    <select id="getOrderDetByCodeAndShopId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-ORDER-DET-GETORDERDETBYCODEANDSHOPID*/  a.ID ,a.ORDER_CODE,a.CANVER_STATUS FROM ta_order_det a
+		LEFT JOIN
+		ta_order b ON a.ORDER_CODE = b.ORDER_CODE
+		WHERE b.SHOP_ID =
+		#{shopId,jdbcType=BIGINT}
+		AND
+		a.CONSUME_CODE =
+		#{consumeCode,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据电子券消费码和核销状态获取订单明细统计个数:TA_ORDER_DET-->
+    <select id="getConveredOrderDetByCode" resultType="Integer">
+		SELECT /*MS-TA-ORDER-DET-GETCONVEREDORDERDETBYCODE*/  COUNT(*) FROM TA_ORDER_DET
+		WHERE
+		CONSUME_CODE = 'NONECANVER'
+		AND
+		ORDER_CODE =
+		#{orderCode,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据主键获取数据:TA_ORDER_DET-->
+    <select id="getShopIdAndGoodsIdByPayId" resultType="java.util.Map">
+		SELECT /*MS-TA-ORDER-DET-GETSHOPIDANDGOODSIDBYPAYID*/  b.SHOP_ID shopId,a.GOODS_ID goodsId FROM ta_order_det a LEFT JOIN
+		ta_order b ON a.ORDER_ID = b.ID
+		LEFT JOIN ta_funds_order c ON c.ORDER_ID = b.ID
+		LEFT JOIN ta_pay_funds d ON d.ID = c.PAY_FUNDS_ID
+		WHERE
+		a.VALID_STATUS IS NOT NULL
+		AND
+		d.PAY_ID = #{payId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_ORDER_DET-->
+    <delete id="deleteByOriOrderCode" >
+		DELETE /*MS-TA-ORDER-DET-DELETEBYORIORDERCODE*/ FROM
+		TA_ORDER_DET
+		WHERE
+		,ORI_ORDER_CODE =
+		#{oriOrderCode,jdbcType=VARCHAR}
+    </delete>
+</mapper>

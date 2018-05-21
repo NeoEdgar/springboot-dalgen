@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopGoodsLogiDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_GOODS_LOGI.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopGoodsLogiDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="LOGI_MODE" property="logiMode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SEND_ADDR_ID" property="sendAddrId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REFUND_ADDR_ID" property="refundAddrId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_FREIGHT_TEMPLET_ID" property="shopFreightTempletId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_PICKUP_LOCATION_ID" property="shopPickupLocationId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,SHOP_ID,GOODS_ID,LOGI_MODE,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,SEND_ADDR_ID,VALID_STATUS,REFUND_ADDR_ID,SHOP_FREIGHT_TEMPLET_ID,SHOP_PICKUP_LOCATION_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_GOODS_LOGI-->
+    <insert id="insert" >
+        INSERT INTO TA_SHOP_GOODS_LOGI(
+        ID
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,LOGI_MODE
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,SEND_ADDR_ID
+        ,VALID_STATUS
+        ,REFUND_ADDR_ID
+        ,SHOP_FREIGHT_TEMPLET_ID
+        ,SHOP_PICKUP_LOCATION_ID
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{logiMode,jdbcType=VARCHAR}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{sendAddrId,jdbcType=BIGINT}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{refundAddrId,jdbcType=BIGINT}
+        , #{shopFreightTempletId,jdbcType=BIGINT}
+        , #{shopPickupLocationId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_GOODS_LOGI-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-GOODS-LOGI-UPDATE*/ TA_SHOP_GOODS_LOGI
+        SET
+        REMARK = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID = #{shopId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,LOGI_MODE = #{logiMode,jdbcType=VARCHAR}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,SEND_ADDR_ID = #{sendAddrId,jdbcType=BIGINT}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,REFUND_ADDR_ID = #{refundAddrId,jdbcType=BIGINT}
+        ,SHOP_FREIGHT_TEMPLET_ID = #{shopFreightTempletId,jdbcType=BIGINT}
+        ,SHOP_PICKUP_LOCATION_ID = #{shopPickupLocationId,jdbcType=BIGINT}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_LOGI-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-GOODS-LOGI-DELETEBYPRIMARY*/ FROM
+        TA_SHOP_GOODS_LOGI
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GOODS_LOGI-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-LOGI-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_LOGI
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据商品ID和店铺Id获取数据:TA_SHOP_GOODS_LOGI-->
+    <select id="getLogiBySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-LOGI-GETLOGIBYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_LOGI
+        <where>
+            VALID_STATUS = 1
+            <if test="goodsId!=null">
+                AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId!=null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_LOGI-->
+    <delete id="deleteShopGoodsLogi" >
+        DELETE /*MS-TA-SHOP-GOODS-LOGI-DELETESHOPGOODSLOGI*/ FROM
+        TA_SHOP_GOODS_LOGI
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+</mapper>

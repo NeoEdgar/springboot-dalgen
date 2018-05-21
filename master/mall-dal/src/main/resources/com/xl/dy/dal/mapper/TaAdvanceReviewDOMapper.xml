@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaAdvanceReviewDOMapper">
+    <!-- ???��????,请修?? TA_ADVANCE_REVIEW.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaAdvanceReviewDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SALES" property="sales" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DEPOSIT" property="deposit" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="DISCOUNT" property="discount" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ADVANCE_ID" property="advanceId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RETAINAGE" property="retainage" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="DEPOSIT_END_TIME" property="depositEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ACTIVE_INVENTORY" property="activeInventory" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="DEPOSIT_START_TIME" property="depositStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RETAINAGE_END_TIME" property="retainageEndTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_RETAINAGE_CHGINV" property="isRetainageChginv" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="RETAINAGE_START_TIME" property="retainageStartTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ADVANCE_REVIEW_STATUS" property="advanceReviewStatus" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,SALES,SKU_ID,REASON,REMARK,SHOP_ID,DEPOSIT,DISCOUNT,ADVANCE_ID,ALTER_EMPL,ALTER_TIME,RETAINAGE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,DEPOSIT_END_TIME,ACTIVE_INVENTORY,DEPOSIT_START_TIME,RETAINAGE_END_TIME,IS_RETAINAGE_CHGINV,RETAINAGE_START_TIME,ADVANCE_REVIEW_STATUS
+    </sql>
+
+
+    <!--???�表:TA_ADVANCE_REVIEW-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ADVANCE_REVIEW(
+            ID
+            ,INX
+            ,SALES
+            ,SKU_ID
+            ,REASON
+            ,REMARK
+            ,SHOP_ID
+            ,DEPOSIT
+            ,DISCOUNT
+            ,ADVANCE_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,RETAINAGE
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,DEPOSIT_END_TIME
+            ,ACTIVE_INVENTORY
+            ,DEPOSIT_START_TIME
+            ,RETAINAGE_END_TIME
+            ,IS_RETAINAGE_CHGINV
+            ,RETAINAGE_START_TIME
+            ,ADVANCE_REVIEW_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{sales,jdbcType=DECIMAL}
+            , #{skuId,jdbcType=BIGINT}
+            , #{reason,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{deposit,jdbcType=DECIMAL}
+            , #{discount,jdbcType=DECIMAL}
+            , #{advanceId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{retainage,jdbcType=DECIMAL}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{depositEndTime,jdbcType=TIMESTAMP}
+            , #{activeInventory,jdbcType=DECIMAL}
+            , #{depositStartTime,jdbcType=TIMESTAMP}
+            , #{retainageEndTime,jdbcType=TIMESTAMP}
+            , #{isRetainageChginv,jdbcType=INTEGER}
+            , #{retainageStartTime,jdbcType=TIMESTAMP}
+            , #{advanceReviewStatus,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ADVANCE_REVIEW-->
+    <update id="update" >
+        UPDATE /*MS-TA-ADVANCE-REVIEW-UPDATE*/ TA_ADVANCE_REVIEW
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,SALES           = #{sales,jdbcType=DECIMAL}
+            ,SKU_ID          = #{skuId,jdbcType=BIGINT}
+            ,REASON          = #{reason,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,DEPOSIT         = #{deposit,jdbcType=DECIMAL}
+            ,DISCOUNT        = #{discount,jdbcType=DECIMAL}
+            ,ADVANCE_ID      = #{advanceId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,RETAINAGE       = #{retainage,jdbcType=DECIMAL}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,DEPOSIT_END_TIME = #{depositEndTime,jdbcType=TIMESTAMP}
+            ,ACTIVE_INVENTORY = #{activeInventory,jdbcType=DECIMAL}
+            ,DEPOSIT_START_TIME = #{depositStartTime,jdbcType=TIMESTAMP}
+            ,RETAINAGE_END_TIME = #{retainageEndTime,jdbcType=TIMESTAMP}
+            ,IS_RETAINAGE_CHGINV = #{isRetainageChginv,jdbcType=INTEGER}
+            ,RETAINAGE_START_TIME = #{retainageStartTime,jdbcType=TIMESTAMP}
+            ,ADVANCE_REVIEW_STATUS = #{advanceReviewStatus,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ADVANCE_REVIEW-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ADVANCE-REVIEW-DELETEBYPRIMARY*/ FROM
+            TA_ADVANCE_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ADVANCE_REVIEW-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ADVANCE-REVIEW-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ADVANCE_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取预售报名数:TA_ADVANCE_REVIEW-->
+    <select id="getCountByAdvence" resultType="java.lang.Long">
+        SELECT
+        count(*)
+        FROM
+        TA_ADVANCE_REVIEW
+        WHERE
+        ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+    </select>
+
+    <!--获取拼团报名商品:TA_ADVANCE_REVIEW pageCount-->
+    <select id="getGoodsByAdvanceIdCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_advance_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_sku f ON f.ID = a.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SKU_ID = a.SKU_ID
+        LEFT JOIN ta_goods_photo h on h.SKU_ID = f.ID
+        WHERE
+        a.ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+        AND ADVANCE_REVIEW_STATUS = "PASS"
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND f.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND h.VALID_STATUS = 1
+        
+    </select>
+    <!--获取拼团报名商品:TA_ADVANCE_REVIEW pageResult-->
+    <select id="getGoodsByAdvanceIdResult"  resultType="java.util.Map">
+        SELECT
+        a.ID advanceReviewId,
+        b.SHOP_NAME shopName,
+        c.MALL_NAME mallName,
+        d.COMPANY_NAME companyName,
+        h.PHOTO_URL skuPhotoUrl,
+        f.SKU_TITLE skutitle,
+        a.INX inx,
+        a.ACTIVE_INVENTORY activeInventory,
+        a.SALES sales
+        FROM
+        ta_advance_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_sku f ON f.ID = a.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SKU_ID = a.SKU_ID
+        LEFT JOIN ta_goods_photo h on h.SKU_ID = f.ID
+        WHERE
+        a.ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+        AND ADVANCE_REVIEW_STATUS = "PASS"
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND f.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND h.VALID_STATUS = 1
+        ORDER BY
+        a.INX ASC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取审核商品:TA_ADVANCE_REVIEW pageCount-->
+    <select id="getExamineAdvanceGoodsCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_advance_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_sku f ON f.ID = a.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SKU_ID = a.SKU_ID
+        LEFT JOIN ta_goods_photo h ON h.SKU_ID = f.ID
+        WHERE
+        a.ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+        AND ADVANCE_REVIEW_STATUS = #{advanceReviewStatus,jdbcType=VARCHAR}
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND f.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND h.VALID_STATUS = 1
+        <if test="companyName!=null">
+            AND d.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName!=null">
+            AND c.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName!=null">
+            AND b.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="skutitle!=null">
+            AND f.SKU_TITLE LIKE #{skutitle,jdbcType=VARCHAR}
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--获取审核商品:TA_ADVANCE_REVIEW pageResult-->
+    <select id="getExamineAdvanceGoodsResult"  resultType="java.util.Map">
+        SELECT
+        a.ID advanceReviewId,
+        b.SHOP_NAME shopName,
+        c.MALL_NAME mallName,
+        d.COMPANY_NAME companyName,
+        h.PHOTO_URL skuPhotoUrl,
+        f.SKU_TITLE skutitle,
+        g.GOODS_PRICE goodsPrice,
+        a.DEPOSIT deposit,
+        a.ACTIVE_INVENTORY activeInventory,
+        a.SALES sales,
+        a.IS_RETAINAGE_CHGINV isRetainageChginv,
+        a.ADVANCE_REVIEW_STATUS advanceReviewStatus,
+        a.REASON reason
+        FROM
+        ta_advance_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_sku f ON f.ID = a.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SKU_ID = a.SKU_ID
+        LEFT JOIN ta_goods_photo h ON h.SKU_ID = f.ID
+        WHERE
+        a.ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+        AND ADVANCE_REVIEW_STATUS = #{advanceReviewStatus,jdbcType=VARCHAR}
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND f.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND h.VALID_STATUS = 1
+        <if test="companyName!=null">
+            AND d.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName!=null">
+            AND c.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName!=null">
+            AND b.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="skutitle!=null">
+            AND f.SKU_TITLE LIKE #{skutitle,jdbcType=VARCHAR}
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--允许报名列表:TA_ADVANCE_REVIEW pageCount-->
+    <select id="showAllowAdvanceListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = 'ING'
+        AND VALID_STATUS = 1
+        AND ID NOT IN ( SELECT ADVANCE_ID FROM ta_advance_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+    </select>
+    <!--允许报名列表:TA_ADVANCE_REVIEW pageResult-->
+    <select id="showAllowAdvanceListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-ADVANCE-REVIEW-SHOWALLOWADVANCELIST*/ 
+        id advanceId,
+        `NAME` advanceName,
+        START_TIME startTime,
+        END_TIME endTime,
+        PER_REGISTE_LIMIT perRegisteLimit,
+        PER_BUY_LIMIT perBuyLimit,
+        NOTICE NOTICE
+        FROM
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = 'ING'
+        AND VALID_STATUS = 1
+        AND ID NOT IN ( SELECT /*MS-TA-ADVANCE-REVIEW-SHOWALLOWADVANCELIST*/  ADVANCE_ID FROM ta_advance_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--已报名列表:TA_ADVANCE_REVIEW pageCount-->
+    <select id="showRegisteredAdvanceListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = 'ING'
+        AND VALID_STATUS = 1
+        AND ID IN ( SELECT ADVANCE_ID FROM ta_advance_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+    </select>
+    <!--已报名列表:TA_ADVANCE_REVIEW pageResult-->
+    <select id="showRegisteredAdvanceListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-ADVANCE-REVIEW-SHOWREGISTEREDADVANCELIST*/ 
+        id advanceId,
+        `NAME` advanceName,
+        START_TIME startTime,
+        END_TIME endTime,
+        PER_REGISTE_LIMIT perRegisteLimit,
+        PER_BUY_LIMIT perBuyLimit,
+        NOTICE NOTICE
+        FROM
+        ta_advance
+        WHERE
+        ADVANCE_STATUS = 'ING'
+        AND VALID_STATUS = 1
+        AND ID IN ( SELECT /*MS-TA-ADVANCE-REVIEW-SHOWREGISTEREDADVANCELIST*/  ADVANCE_ID FROM ta_advance_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取已经报名的商品数量:TA_ADVANCE_REVIEW-->
+    <select id="getAleadyRegisteNum" resultType="java.lang.Long">
+        SELECT
+        IFNULL(SUM(ACTIVE_INVENTORY),0)
+        FROM
+        ta_advance_review
+        WHERE
+        ADVANCE_ID = #{adavnceId,jdbcType=BIGINT}
+        AND SKU_ID = #{skuId,jdbcType=BIGINT}
+    </select>
+
+    <!--获得店铺已报名的预售商品:TA_ADVANCE_REVIEW-->
+    <select id="getRegistedAdvanceShopGoods" resultType="java.util.Map">
+        SELECT
+        a.ID advanceReviewId,
+        a.ADVANCE_REVIEW_STATUS anvanceReviewStatus,
+        a.REASON REASON,
+        c.SKU_TITLE skuTitle
+        FROM
+        ta_advance_review a
+        LEFT JOIN ta_shop_goods b ON a.SKU_ID =b.SKU_ID
+        LEFT JOIN ta_sku c ON a.SKU_ID = c.ID
+        LEFT JOIN ta_goods_photo d on d.SKU_ID = a.SKU_ID
+        WHERE
+        a.ADVANCE_ID = #{advanceId,jdbcType=BIGINT}
+        AND a.SHOP_ID =#{shopId,jdbcType=BIGINT}
+    </select>
+</mapper>

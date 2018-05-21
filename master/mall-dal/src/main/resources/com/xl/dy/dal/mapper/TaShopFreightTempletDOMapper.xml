@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopFreightTempletDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_FREIGHT_TEMPLET.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopFreightTempletDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_DEFAULT_TEMPLET" property="isDefaultTemplet" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="FREIGHT_TEMPLET_NAME" property="freightTempletName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_FREIGHT_TEMPLET_ID" property="shopFreightTempletId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+    <resultMap id="TemplateVO"  type="com.xl.dy.dal.resultmap.TemplateVO">
+        <result column="id" property="id"  javaType="Long"/>
+        <result column="shopId" property="shopid"  javaType="Long"/>
+        <result column="freightTempletName" property="freighttempletname"  javaType="String"/>
+        <result column="freeCode" property="freecode"  javaType="String"/>
+        <result column="freeAddrName" property="freeaddrname"  javaType="String"/>
+        <result column="reviceCode" property="revicecode"  javaType="String"/>
+        <result column="reciveAddrName" property="reciveaddrname"  javaType="String"/>
+        <result column="freightCountMode" property="freightcountmode"  javaType="String"/>
+        <result column="firstUnit" property="firstunit"  javaType="BigDecimal"/>
+        <result column="firstUnitFare" property="firstunitfare"  javaType="BigDecimal"/>
+        <result column="contUnit" property="contunit"  javaType="BigDecimal"/>
+        <result column="contUnitFare" property="contunitfare"  javaType="BigDecimal"/>
+        <result column="isDefault" property="isdefault"  javaType="Integer"/>
+        <result column="createTime" property="createtime"  javaType="Date"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,REMARK,SHOP_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,IS_DEFAULT_TEMPLET,FREIGHT_TEMPLET_NAME,SHOP_FREIGHT_TEMPLET_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_FREIGHT_TEMPLET-->
+    <insert id="insert" >
+		INSERT INTO TA_SHOP_FREIGHT_TEMPLET(
+		ID
+		,REMARK
+		,SHOP_ID
+		,ALTER_EMPL
+		,ALTER_TIME
+		,TIMESTAMP
+		,CREATE_EMPL
+		,CREATE_TIME
+		,VALID_STATUS
+		,IS_DEFAULT_TEMPLET
+		,FREIGHT_TEMPLET_NAME
+		,SHOP_FREIGHT_TEMPLET_ID
+		)VALUES(
+		#{id,jdbcType=BIGINT}
+		, #{remark,jdbcType=VARCHAR}
+		,
+		#{shopId,jdbcType=BIGINT}
+		, #{alterEmpl,jdbcType=BIGINT}
+		,
+		#{alterTime,jdbcType=TIMESTAMP}
+		, #{timestamp,jdbcType=BIGINT}
+		,
+		#{createEmpl,jdbcType=BIGINT}
+		, #{createTime,jdbcType=TIMESTAMP}
+		,
+		#{validStatus,jdbcType=INTEGER}
+		, #{isDefaultTemplet,jdbcType=INTEGER}
+		, #{freightTempletName,jdbcType=VARCHAR}
+		,
+		#{shopFreightTempletId,jdbcType=BIGINT}
+		)
+    </insert>
+
+    <!--更新表:TA_SHOP_FREIGHT_TEMPLET-->
+    <update id="update" >
+		UPDATE /*MS-TA-SHOP-FREIGHT-TEMPLET-UPDATE*/ TA_SHOP_FREIGHT_TEMPLET
+		SET
+		REMARK =
+		#{remark,jdbcType=VARCHAR}
+		,SHOP_ID = #{shopId,jdbcType=BIGINT}
+		,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP =
+		#{timestamp,jdbcType=BIGINT}
+		,CREATE_EMPL =
+		#{createEmpl,jdbcType=BIGINT}
+		,CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP}
+		,VALID_STATUS =
+		#{validStatus,jdbcType=INTEGER}
+		,IS_DEFAULT_TEMPLET =
+		#{isDefaultTemplet,jdbcType=INTEGER}
+		,FREIGHT_TEMPLET_NAME =
+		#{freightTempletName,jdbcType=VARCHAR}
+		,SHOP_FREIGHT_TEMPLET_ID =
+		#{shopFreightTempletId,jdbcType=BIGINT}
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_FREIGHT_TEMPLET-->
+    <delete id="deleteByPrimary" >
+		DELETE /*MS-TA-SHOP-FREIGHT-TEMPLET-DELETEBYPRIMARY*/ FROM
+		TA_SHOP_FREIGHT_TEMPLET
+		WHERE
+		ID =
+		#{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_TEMPLET-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FREIGHT-TEMPLET-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_FREIGHT_TEMPLET
+		WHERE
+		ID =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_TEMPLET-->
+    <select id="getDefaultTemplate" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FREIGHT-TEMPLET-GETDEFAULTTEMPLATE*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_FREIGHT_TEMPLET
+		WHERE
+		SHOP_ID =
+		#{shopId,jdbcType=BIGINT}
+		AND IS_DEFAULT_TEMPLET = 1
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_TEMPLET-->
+    <select id="getByShopId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FREIGHT-TEMPLET-GETBYSHOPID*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_FREIGHT_TEMPLET
+		WHERE
+		SHOP_ID =
+		#{shopId,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TA_SHOP_FREIGHT_TEMPLET-->
+    <update id="updateOtherFreightTempletNotDefault" >
+		UPDATE /*MS-TA-SHOP-FREIGHT-TEMPLET-UPDATEOTHERFREIGHTTEMPLETNOTDEFAULT*/ TA_SHOP_FREIGHT_TEMPLET
+		SET
+		ALTER_EMPL
+		= #{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME
+		=#{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP
+		=#{timestamp,jdbcType=BIGINT}
+		,IS_DEFAULT_TEMPLET =
+		#{isDefaultTemplet,jdbcType=INTEGER}
+		WHERE
+		SHOP_ID =
+		#{shopId,jdbcType=BIGINT}
+		AND
+		ID &lt;&gt;#{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_SHOP_FREIGHT_TEMPLET-->
+    <update id="updateFreightTempletDefault" >
+		UPDATE /*MS-TA-SHOP-FREIGHT-TEMPLET-UPDATEFREIGHTTEMPLETDEFAULT*/ TA_SHOP_FREIGHT_TEMPLET
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME
+		=#{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP
+		=#{timestamp,jdbcType=BIGINT}
+		,IS_DEFAULT_TEMPLET =
+		#{isDefaultTemplet,jdbcType=INTEGER}
+		WHERE
+		ID =#{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_TEMPLET-->
+    <select id="getFreightTemplateList" resultMap="TemplateVO">
+		SELECT /*MS-TA-SHOP-FREIGHT-TEMPLET-GETFREIGHTTEMPLATELIST*/  a.ID id,a.SHOP_ID shopId,a.FREIGHT_TEMPLET_NAME
+		freightTempletName ,a.create_time  createTime,a.IS_DEFAULT_TEMPLET isDefault,b.ADDR_CODES freeCode ,b.ADDR_NAMES  freeAddrName,c.ADDR_CODES reviceCode
+		,c.ADDR_NAMES  reciveAddrName ,c.FREIGHT_COUNT_MODE freightCountMode,c.FIRST_UNIT
+		firstUnit,c.FIRST_UNIT_FARE firstUnitFare,c.CONT_UNIT
+		contUnit,c.CONT_UNIT_FARE contUnitFare FROM ta_shop_freight_templet a
+		LEFT JOIN ta_shop_freight_freeship b ON a.ID =
+		b.SHOP_FREIGHT_TEMPLET_ID
+		LEFT JOIN ta_shop_freight_receive c ON a.ID = c.SHOP_FREIGHT_TEMPLET_ID
+		WHERE a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+		ORDER BY a.create_time
+    </select>
+</mapper>

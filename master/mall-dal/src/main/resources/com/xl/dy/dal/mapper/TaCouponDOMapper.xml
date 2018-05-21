@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaCouponDOMapper">
+    <!-- ???��????,请修?? TA_COUPON.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaCouponDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="NOTICE" property="notice" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PRE_DAY" property="preDay" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAR_VALUE" property="parValue" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="QUANTITY" property="quantity" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_LIMITED" property="isLimited" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="EFFECT_TIME" property="effectTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="EXPIRY_TIME" property="expiryTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PLATFORM_ID" property="platformId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CATEGORY_SET" property="categorySet" jdbcType="VARCHAR" javaType="String"/>
+        <result column="RECEIVE_TIME" property="receiveTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COUPON_STATUS" property="couponStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DISCOUNT_FORM" property="discountForm" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DISCOUNT_RATE" property="discountRate" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="INSTRUCTIONS" property="instructions" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_OVERLAP_USE" property="isOverlapUse" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PLATFORM_TYPE" property="platformType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LIMITED_AMOUNT" property="limitedAmount" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="MEMBER_LEVEL_SET" property="memberLevelSet" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PER_RECEIVE_LIMIT" property="perReceiveLimit" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_EXPIRATION_REMIND" property="isExpirationRemind" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,NAME,NOTICE,PRE_DAY,REMARK,PAR_VALUE,QUANTITY,ALTER_EMPL,ALTER_TIME,IS_LIMITED,TIMESTAMP,CREATE_EMPL,CREATE_TIME,EFFECT_TIME,EXPIRY_TIME,PLATFORM_ID,CATEGORY_SET,RECEIVE_TIME,VALID_STATUS,COUPON_STATUS,DISCOUNT_FORM,DISCOUNT_RATE,INSTRUCTIONS,IS_OVERLAP_USE,PLATFORM_TYPE,LIMITED_AMOUNT,MEMBER_LEVEL_SET,PER_RECEIVE_LIMIT,IS_EXPIRATION_REMIND
+    </sql>
+
+
+    <!--???�表:TA_COUPON-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_COUPON(
+            ID
+            ,NAME
+            ,NOTICE
+            ,PRE_DAY
+            ,REMARK
+            ,PAR_VALUE
+            ,QUANTITY
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,IS_LIMITED
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,EFFECT_TIME
+            ,EXPIRY_TIME
+            ,PLATFORM_ID
+            ,CATEGORY_SET
+            ,RECEIVE_TIME
+            ,VALID_STATUS
+            ,COUPON_STATUS
+            ,DISCOUNT_FORM
+            ,DISCOUNT_RATE
+            ,INSTRUCTIONS
+            ,IS_OVERLAP_USE
+            ,PLATFORM_TYPE
+            ,LIMITED_AMOUNT
+            ,MEMBER_LEVEL_SET
+            ,PER_RECEIVE_LIMIT
+            ,IS_EXPIRATION_REMIND
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{name,jdbcType=VARCHAR}
+            , #{notice,jdbcType=VARCHAR}
+            , #{preDay,jdbcType=INTEGER}
+            , #{remark,jdbcType=VARCHAR}
+            , #{parValue,jdbcType=DECIMAL}
+            , #{quantity,jdbcType=INTEGER}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{isLimited,jdbcType=INTEGER}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{effectTime,jdbcType=TIMESTAMP}
+            , #{expiryTime,jdbcType=TIMESTAMP}
+            , #{platformId,jdbcType=BIGINT}
+            , #{categorySet,jdbcType=VARCHAR}
+            , #{receiveTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{couponStatus,jdbcType=VARCHAR}
+            , #{discountForm,jdbcType=VARCHAR}
+            , #{discountRate,jdbcType=DECIMAL}
+            , #{instructions,jdbcType=VARCHAR}
+            , #{isOverlapUse,jdbcType=INTEGER}
+            , #{platformType,jdbcType=VARCHAR}
+            , #{limitedAmount,jdbcType=DECIMAL}
+            , #{memberLevelSet,jdbcType=VARCHAR}
+            , #{perReceiveLimit,jdbcType=INTEGER}
+            , #{isExpirationRemind,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--?��?�表:TA_COUPON-->
+    <update id="update" >
+        UPDATE /*MS-TA-COUPON-UPDATE*/ TA_COUPON
+        SET
+            NAME            = #{name,jdbcType=VARCHAR}
+            ,NOTICE          = #{notice,jdbcType=VARCHAR}
+            ,PRE_DAY         = #{preDay,jdbcType=INTEGER}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,PAR_VALUE       = #{parValue,jdbcType=DECIMAL}
+            ,QUANTITY        = #{quantity,jdbcType=INTEGER}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,IS_LIMITED      = #{isLimited,jdbcType=INTEGER}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,EFFECT_TIME     = #{effectTime,jdbcType=TIMESTAMP}
+            ,EXPIRY_TIME     = #{expiryTime,jdbcType=TIMESTAMP}
+            ,PLATFORM_ID     = #{platformId,jdbcType=BIGINT}
+            ,CATEGORY_SET    = #{categorySet,jdbcType=VARCHAR}
+            ,RECEIVE_TIME    = #{receiveTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,COUPON_STATUS   = #{couponStatus,jdbcType=VARCHAR}
+            ,DISCOUNT_FORM   = #{discountForm,jdbcType=VARCHAR}
+            ,DISCOUNT_RATE   = #{discountRate,jdbcType=DECIMAL}
+            ,INSTRUCTIONS    = #{instructions,jdbcType=VARCHAR}
+            ,IS_OVERLAP_USE  = #{isOverlapUse,jdbcType=INTEGER}
+            ,PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR}
+            ,LIMITED_AMOUNT  = #{limitedAmount,jdbcType=DECIMAL}
+            ,MEMBER_LEVEL_SET = #{memberLevelSet,jdbcType=VARCHAR}
+            ,PER_RECEIVE_LIMIT = #{perReceiveLimit,jdbcType=INTEGER}
+            ,IS_EXPIRATION_REMIND = #{isExpirationRemind,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--获取优惠卷列表:TA_COUPON pageCount-->
+    <select id="findCouponPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_coupon
+        where
+        VALID_STATUS = 1
+        <if test="couponStatus != null">
+            AND COUPON_STATUS   = #{couponStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="platformType != null">
+            AND PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR}
+        </if>
+        <if test="platformId != null">
+            AND PLATFORM_ID     = #{platformId,jdbcType=BIGINT}
+        </if>
+        <if test="condition != null">
+            AND NAME     like #{condition,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <!--获取优惠卷列表:TA_COUPON pageResult-->
+    <select id="findCouponPageResult"  resultType="java.util.Map">
+        SELECT
+        ID couponId,
+        `NAME` couponName,
+        PAR_VALUE parvalue,
+        RECEIVE_TIME receiveTime,
+        EFFECT_TIME effectTime,
+        EXPIRY_TIME expiryTime,
+        QUANTITY quantity
+        FROM
+        ta_coupon
+        where
+        VALID_STATUS = 1
+        <if test="couponStatus != null">
+            AND COUPON_STATUS   = #{couponStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="platformType != null">
+            AND PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR}
+        </if>
+        <if test="platformId != null">
+            AND PLATFORM_ID     = #{platformId,jdbcType=BIGINT}
+        </if>
+        <if test="condition != null">
+            AND NAME     like #{condition,jdbcType=VARCHAR}
+        </if>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键删除数据:TA_COUPON-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-COUPON-DELETEBYPRIMARY*/ FROM
+        TA_COUPON
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_COUPON-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COUPON-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_COUPON
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_COUPON-->
+    <select id="getByPrimaryAndValidStatus" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COUPON-GETBYPRIMARYANDVALIDSTATUS*/  <include refid="Base_Column_List" />
+        FROM TA_COUPON
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+    </select>
+
+    <!--拼接类目、会员等级等详情-->
+    <select id="getCouponDetailByPrimary" resultType="java.util.Map">
+        SELECT /*MS-TA-COUPON-GETCOUPONDETAILBYPRIMARY*/  NAME name, PER_RECEIVE_LIMIT  perReceiveLimit, EFFECT_TIME effectTime, EXPIRY_TIME expiryTime,
+        DISCOUNT_FORM discountForm, PAR_VALUE parValue, QUANTITY quantity,
+        IS_LIMITED isLimited, LIMITED_AMOUNT limitedAmount ,catName
+        FROM
+        (SELECT /*MS-TA-COUPON-GETCOUPONDETAILBYPRIMARY*/  <include refid="Base_Column_List" /> FROM TA_COUPON WHERE ID = #{id,jdbcType=BIGINT}) a,
+        (SELECT /*MS-TA-COUPON-GETCOUPONDETAILBYPRIMARY*/  GROUP_CONCAT(NAME) catName FROM tg_mg_category WHERE FIND_IN_SET(ID,(SELECT /*MS-TA-COUPON-GETCOUPONDETAILBYPRIMARY*/  CATEGORY_SET FROM ta_coupon WHERE ID = #{id,jdbcType=BIGINT}))) b
+    </select>
+
+    <!--店铺获取未报名可报名的优惠卷活动 pageCount-->
+    <select id="findNoSignUpCouponActivityPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ ta_coupon
+        WHERE
+        PLATFORM_TYPE != "SHOPPLATFORM"
+        AND COUPON_STATUS = "ING"
+        AND ID NOT IN (
+        SELECT COUPON_ID FROM TA_COUPON_REVIEW
+        WHERE SHOP_ID = #{shopId,jdbcType=BIGINT}
+        GROUP BY COUPON_ID)
+        
+    </select>
+    <!--店铺获取未报名可报名的优惠卷活动 pageResult-->
+    <select id="findNoSignUpCouponActivityPageResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-COUPON-FINDNOSIGNUPCOUPONACTIVITYPAGE*/  <include refid="Base_Column_List" />
+        FROM ta_coupon
+        WHERE
+        PLATFORM_TYPE != "SHOPPLATFORM"
+        AND COUPON_STATUS = "ING"
+        AND ID NOT IN (
+        SELECT /*MS-TA-COUPON-FINDNOSIGNUPCOUPONACTIVITYPAGE*/  COUPON_ID FROM TA_COUPON_REVIEW
+        WHERE SHOP_ID = #{shopId,jdbcType=BIGINT}
+        GROUP BY COUPON_ID)
+        ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--店铺获取已经报名可报名的优惠卷活动 pageCount-->
+    <select id="findAlreadySignUpCouponActivityPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ ta_coupon
+        WHERE
+        PLATFORM_TYPE != "SHOPPLATFORM"
+        AND COUPON_STATUS != "INIT"
+        AND ID IN (
+        SELECT COUPON_ID FROM TA_COUPON_REVIEW
+        WHERE SHOP_ID = #{shopId,jdbcType=BIGINT}
+        GROUP BY COUPON_ID)
+        <if test="PLATFORM_TYPE = 'COMPANYPLATFORM'">
+            LEFT JOIN ta_company c ON c.id = p.platform_id
+        </if>
+        
+    </select>
+    <!--店铺获取已经报名可报名的优惠卷活动 pageResult-->
+    <select id="findAlreadySignUpCouponActivityPageResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-COUPON-FINDALREADYSIGNUPCOUPONACTIVITYPAGE*/  <include refid="Base_Column_List" />
+        FROM ta_coupon
+        WHERE
+        PLATFORM_TYPE != "SHOPPLATFORM"
+        AND COUPON_STATUS != "INIT"
+        AND ID IN (
+        SELECT /*MS-TA-COUPON-FINDALREADYSIGNUPCOUPONACTIVITYPAGE*/  COUPON_ID FROM TA_COUPON_REVIEW
+        WHERE SHOP_ID = #{shopId,jdbcType=BIGINT}
+        GROUP BY COUPON_ID)
+        <if test="PLATFORM_TYPE = 'COMPANYPLATFORM'">
+            LEFT JOIN ta_company c ON c.id = p.platform_id
+        </if>
+        ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--更新表:TA_COUPON-->
+    <update id="updateByPrimarySelective" >
+        UPDATE /*MS-TA-COUPON-UPDATEBYPRIMARYSELECTIVE*/ TA_COUPON
+        <set>
+            <if test="name != null ">
+                NAME            = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="notice != null ">
+                NOTICE          = #{notice,jdbcType=VARCHAR},
+            </if>
+            <if test="preDay != null ">
+                PRE_DAY         = #{preDay,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null ">
+                REMARK          = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="parValue != null ">
+                PAR_VALUE       = #{parValue,jdbcType=DECIMAL},
+            </if>
+            <if test="quantity != null ">
+                QUANTITY        = #{quantity,jdbcType=INTEGER},
+            </if>
+            <if test="alterEmpl != null ">
+                ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime != null ">
+                ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isLimited != null ">
+                IS_LIMITED      = #{isLimited,jdbcType=INTEGER},
+            </if>
+            <if test="timestamp != null ">
+                TIMESTAMP       = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl != null ">
+                CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="effectTime != null ">
+                EFFECT_TIME     = #{effectTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expiryTime != null ">
+                EXPIRY_TIME     = #{expiryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="platformId != null ">
+                PLATFORM_ID     = #{platformId,jdbcType=BIGINT},
+            </if>
+            <if test="categorySet != null ">
+                CATEGORY_SET    = #{categorySet,jdbcType=VARCHAR},
+            </if>
+            <if test="validStatus != null ">
+                VALID_STATUS    = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="couponStatus != null ">
+                COUPON_STATUS   = #{couponStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="discountForm != null ">
+                DISCOUNT_FORM   = #{discountForm,jdbcType=VARCHAR},
+            </if>
+            <if test="discountRate != null ">
+                DISCOUNT_RATE   = #{discountRate,jdbcType=DECIMAL},
+            </if>
+            <if test="instructions != null ">
+                INSTRUCTIONS    = #{instructions,jdbcType=VARCHAR},
+            </if>
+            <if test="isOverlapUse != null ">
+                IS_OVERLAP_USE  = #{isOverlapUse,jdbcType=INTEGER},
+            </if>
+            <if test="platformType != null ">
+                PLATFORM_TYPE   = #{platformType,jdbcType=VARCHAR},
+            </if>
+            <if test="limitedAmount != null ">
+                LIMITED_AMOUNT  = #{limitedAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="memberLevelSet != null ">
+                MEMBER_LEVEL_SET = #{memberLevelSet,jdbcType=VARCHAR},
+            </if>
+            <if test="perReceiveLimit != null ">
+                PER_RECEIVE_LIMIT = #{perReceiveLimit,jdbcType=INTEGER},
+            </if>
+            <if test="isExpirationRemind != null ">
+                IS_EXPIRATION_REMIND = #{isExpirationRemind,jdbcType=INTEGER},
+            </if>
+            <if test="receiveTime != null ">
+                RECEIVE_TIME = #{receiveTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        WHERE
+        ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取有效数据:TA_COUPON-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COUPON-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_COUPON
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND
+        VALID_STATUS    = 1
+    </select>
+
+    <!--获取店铺优惠券:TA_COUPON pageCount-->
+    <select id="findShopCouponPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_coupon
+        WHERE
+        VALID_STATUS = 1
+        <if test="shopId != null">
+        AND PLATFORM_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+        <if test="platformType != null">
+            AND PLATFORM_TYPE != #{platformType,jdbcType=VARCHAR}
+        </if>
+        AND COUPON_STATUS = #{couponStatus,jdbcType=VARCHAR}
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--获取店铺优惠券:TA_COUPON pageResult-->
+    <select id="findShopCouponPageResult"  resultType="java.util.Map">
+        SELECT
+        id couponId,
+        `NAME` couponName,
+        PLATFORM_TYPE platformType,
+        PAR_VALUE parValue,
+        PLATFORM_TYPE platformType,
+        PLATFORM_ID platformId,
+        LIMITED_AMOUNT limitAmount,
+        EFFECT_TIME effectTime,
+        EXPIRY_TIME expiryTime,
+        CATEGORY_SET categorySet,
+        QUANTITY quantity,
+        INSTRUCTIONS instructions
+        FROM
+        ta_coupon
+        WHERE
+        VALID_STATUS = 1
+        <if test="shopId != null">
+        AND PLATFORM_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+        <if test="platformType != null">
+            AND PLATFORM_TYPE != #{platformType,jdbcType=VARCHAR}
+        </if>
+        AND COUPON_STATUS = #{couponStatus,jdbcType=VARCHAR}
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取优惠券数量:TA_COUPON-->
+    <select id="getQuantityByPrimary" resultType="java.lang.Integer">
+        SELECT
+        QUANTITY quantity
+        FROM
+        TA_COUPON
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取已报名第三方优惠券:TA_COUPON pageCount-->
+    <select id="findEnrolledCrossCouponPageCount"  resultType="int">
+    SELECT
+          COUNT(*) AS total 
+        FROM
+
+    ta_coupon
+    WHERE
+    VALID_STATUS =1
+    AND PLATFORM_TYPE !="SHOPPLATFORM"
+    AND	ID IN (SELECT COUPON_ID FROM ta_coupon_review WHERE SHOP_ID =#{shopId,jdbcType=BIGINT})
+    </select>
+    <!--获取已报名第三方优惠券:TA_COUPON pageResult-->
+    <select id="findEnrolledCrossCouponPageResult"  resultType="java.util.Map">
+    SELECT /*MS-TA-COUPON-FINDENROLLEDCROSSCOUPONPAGE*/ 
+        ID couponId,
+    `NAME` couponName,
+    CATEGORY_SET categorySet,
+    PER_RECEIVE_LIMIT perReceivelimit,
+    RECEIVE_TIME receiveTime,
+    PLATFORM_TYPE platformType,
+    PLATFORM_ID platformId,
+    EFFECT_TIME effectTime,
+    EXPIRY_TIME expiryTime,
+    PAR_VALUE parvalue,
+    LIMITED_AMOUNT limitedAmount,
+    INSTRUCTIONS instructions
+    FROM
+    ta_coupon
+    WHERE
+    VALID_STATUS =1
+    AND PLATFORM_TYPE !="SHOPPLATFORM"
+    AND	ID IN (SELECT /*MS-TA-COUPON-FINDENROLLEDCROSSCOUPONPAGE*/  COUPON_ID FROM ta_coupon_review WHERE SHOP_ID =#{shopId,jdbcType=BIGINT})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取可报名第三方优惠券:TA_COUPON pageCount-->
+    <select id="findEnrollCrossCouponPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_coupon
+        WHERE
+        VALID_STATUS =1
+        AND (PLATFORM_TYPE = "PLATFORM" OR
+            PLATFORM_ID = (SELECT MALL_ID FROM ta_shop WHERE ID = #{shopId,jdbcType=BIGINT}) OR
+            PLATFORM_ID = (SELECT COMPANY_ID FROM ta_shop WHERE ID = #{shopId,jdbcType=BIGINT})
+        )
+        AND ID NOT IN (SELECT COUPON_ID FROM ta_coupon_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        AND COUPON_STATUS !="INIT"
+    </select>
+    <!--获取可报名第三方优惠券:TA_COUPON pageResult-->
+    <select id="findEnrollCrossCouponPageResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-COUPON-FINDENROLLCROSSCOUPONPAGE*/ 
+        ID couponId,
+        `NAME` couponName,
+        CATEGORY_SET categorySet,
+        PER_RECEIVE_LIMIT perReceivelimit,
+        RECEIVE_TIME receiveTime,
+        PLATFORM_TYPE platformType,
+        PLATFORM_ID platformId,
+        EFFECT_TIME effectTime,
+        EXPIRY_TIME expiryTime,
+        PAR_VALUE parvalue,
+        LIMITED_AMOUNT limitedAmount,
+        INSTRUCTIONS instructions
+        FROM
+        ta_coupon
+        WHERE
+        VALID_STATUS =1
+        AND (PLATFORM_TYPE = "PLATFORM" OR
+            PLATFORM_ID = (SELECT /*MS-TA-COUPON-FINDENROLLCROSSCOUPONPAGE*/  MALL_ID FROM ta_shop WHERE ID = #{shopId,jdbcType=BIGINT}) OR
+            PLATFORM_ID = (SELECT /*MS-TA-COUPON-FINDENROLLCROSSCOUPONPAGE*/  COMPANY_ID FROM ta_shop WHERE ID = #{shopId,jdbcType=BIGINT})
+        )
+        AND ID NOT IN (SELECT /*MS-TA-COUPON-FINDENROLLCROSSCOUPONPAGE*/  COUPON_ID FROM ta_coupon_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        AND COUPON_STATUS !="INIT"
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--微页面获取优惠券信息:TA_COUPON pageCount-->
+    <select id="getCouponForMicroPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_coupon
+        WHERE
+        VALID_STATUS = 1
+        AND COUPON_STATUS = "ING"
+        AND (ID = #{couponId,jdbcType=BIGINT}
+        OR `NAME` LIKE #{couponName,jdbcType=VARCHAR})
+    </select>
+    <!--微页面获取优惠券信息:TA_COUPON pageResult-->
+    <select id="getCouponForMicroPageResult"  resultType="java.util.Map">
+        SELECT
+        ID couponId,
+        `NAME` couponName,
+        IS_LIMITED isLimited,
+        LIMITED_AMOUNT limitedAmount,
+        PAR_VALUE parValue,
+        EFFECT_TIME effectTime,
+        EXPIRY_TIME expiryTime
+        FROM
+        ta_coupon
+        WHERE
+        VALID_STATUS = 1
+        AND COUPON_STATUS = "ING"
+        AND (ID = #{couponId,jdbcType=BIGINT}
+        OR `NAME` LIKE #{couponName,jdbcType=VARCHAR})
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

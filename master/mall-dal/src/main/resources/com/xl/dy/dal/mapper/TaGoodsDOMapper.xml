@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaGoodsDOMapper">
+    <!-- 自动生成,请修改 TA_GOODS.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaGoodsDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MG_FR_ID" property="mgFrId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MK_FR_ID" property="mkFrId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="BRAND_ID" property="brandId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MONGO_ID" property="mongoId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INNER_CODE" property="innerCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REG_EMPL_ID" property="regEmplId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REG_SHOP_ID" property="regShopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_SPELL" property="goodsSpell" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REG_EMPL_NAME" property="regEmplName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REG_SHOP_NAME" property="regShopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="GOODS_BARCODE" property="goodsBarcode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MG_CATEGORY_ID" property="mgCategoryId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MK_CATEGORY_ID" property="mkCategoryId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REG_COMPANY_ID" property="regCompanyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_SPEC_JSON" property="goodsSpecJson" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INNER_ANCC_CODE" property="innerAnccCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REG_GOODS_STYLE" property="regGoodsStyle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REG_COMPANY_NAME" property="regCompanyName" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MG_FR_ID,MK_FR_ID,REMARK,BRAND_ID,MONGO_ID,ALTER_EMPL,ALTER_TIME,GOODS_CODE,GOODS_NAME,GOODS_TYPE,INNER_CODE,REG_EMPL_ID,REG_SHOP_ID,TIMESTAMP,CREATE_EMPL,CREATE_TIME,GOODS_SPELL,REG_EMPL_NAME,REG_SHOP_NAME,VALID_STATUS,GOODS_BARCODE,MG_CATEGORY_ID,MK_CATEGORY_ID,REG_COMPANY_ID,GOODS_SPEC_JSON,INNER_ANCC_CODE,REG_GOODS_STYLE,REG_COMPANY_NAME
+    </sql>
+
+
+    <!--插入表:TA_GOODS-->
+    <insert id="insert" >
+        INSERT INTO TA_GOODS(
+            ID
+            ,MG_FR_ID
+            ,MK_FR_ID
+            ,REMARK
+            ,BRAND_ID
+            ,MONGO_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,GOODS_CODE
+            ,GOODS_NAME
+            ,GOODS_TYPE
+            ,INNER_CODE
+            ,REG_EMPL_ID
+            ,REG_SHOP_ID
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,GOODS_SPELL
+            ,REG_EMPL_NAME
+            ,REG_SHOP_NAME
+            ,VALID_STATUS
+            ,GOODS_BARCODE
+            ,MG_CATEGORY_ID
+            ,MK_CATEGORY_ID
+            ,REG_COMPANY_ID
+            ,GOODS_SPEC_JSON
+            ,INNER_ANCC_CODE
+            ,REG_GOODS_STYLE
+            ,REG_COMPANY_NAME
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{mgFrId,jdbcType=VARCHAR}
+            , #{mkFrId,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{brandId,jdbcType=BIGINT}
+            , #{mongoId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{goodsCode,jdbcType=VARCHAR}
+            , #{goodsName,jdbcType=VARCHAR}
+            , #{goodsType,jdbcType=VARCHAR}
+            , #{innerCode,jdbcType=VARCHAR}
+            , #{regEmplId,jdbcType=BIGINT}
+            , #{regShopId,jdbcType=BIGINT}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{goodsSpell,jdbcType=VARCHAR}
+            , #{regEmplName,jdbcType=VARCHAR}
+            , #{regShopName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{goodsBarcode,jdbcType=VARCHAR}
+            , #{mgCategoryId,jdbcType=BIGINT}
+            , #{mkCategoryId,jdbcType=BIGINT}
+            , #{regCompanyId,jdbcType=BIGINT}
+            , #{goodsSpecJson,jdbcType=VARCHAR}
+            , #{innerAnccCode,jdbcType=VARCHAR}
+            , #{regGoodsStyle,jdbcType=VARCHAR}
+            , #{regCompanyName,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_GOODS-->
+    <update id="update" >
+        UPDATE /*MS-TA-GOODS-UPDATE*/ TA_GOODS
+        SET
+            MG_FR_ID        = #{mgFrId,jdbcType=VARCHAR}
+            ,MK_FR_ID        = #{mkFrId,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,BRAND_ID        = #{brandId,jdbcType=BIGINT}
+            ,MONGO_ID        = #{mongoId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,GOODS_CODE      = #{goodsCode,jdbcType=VARCHAR}
+            ,GOODS_NAME      = #{goodsName,jdbcType=VARCHAR}
+            ,GOODS_TYPE      = #{goodsType,jdbcType=VARCHAR}
+            ,INNER_CODE      = #{innerCode,jdbcType=VARCHAR}
+            ,REG_EMPL_ID     = #{regEmplId,jdbcType=BIGINT}
+            ,REG_SHOP_ID     = #{regShopId,jdbcType=BIGINT}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,GOODS_SPELL     = #{goodsSpell,jdbcType=VARCHAR}
+            ,REG_EMPL_NAME   = #{regEmplName,jdbcType=VARCHAR}
+            ,REG_SHOP_NAME   = #{regShopName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,GOODS_BARCODE   = #{goodsBarcode,jdbcType=VARCHAR}
+            ,MG_CATEGORY_ID  = #{mgCategoryId,jdbcType=BIGINT}
+            ,MK_CATEGORY_ID  = #{mkCategoryId,jdbcType=BIGINT}
+            ,REG_COMPANY_ID  = #{regCompanyId,jdbcType=BIGINT}
+            ,GOODS_SPEC_JSON = #{goodsSpecJson,jdbcType=VARCHAR}
+            ,INNER_ANCC_CODE = #{innerAnccCode,jdbcType=VARCHAR}
+            ,REG_GOODS_STYLE = #{regGoodsStyle,jdbcType=VARCHAR}
+            ,REG_COMPANY_NAME = #{regCompanyName,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_GOODS-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-GOODS-DELETEBYPRIMARY*/ FROM
+            TA_GOODS
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_GOODS-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取有效数据:TA_GOODS-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--修改商品信息-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-GOODS-UPDATESELECTIVE*/ TA_GOODS
+        <set>
+            <if test="mgFrId != null">MG_FR_ID = #{mgFrId,jdbcType=VARCHAR},</if>
+            <if test="mkFrId != null">MK_FR_ID = #{mkFrId,jdbcType=VARCHAR},</if>
+            <if test="remark != null">REMARK = #{remark,jdbcType=VARCHAR},</if>
+            <if test="brandId != null">BRAND_ID = #{brandId,jdbcType=BIGINT},</if>
+            <if test="alterEmpl != null">ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},</if>
+            <if test="alterTime != null">ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},</if>
+            <if test="goodsCode != null">GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},</if>
+            <if test="goodsName != null">GOODS_NAME = #{goodsName,jdbcType=VARCHAR},</if>
+            <if test="goodsType != null">GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},</if>
+            <if test="innerCode != null">INNER_CODE = #{innerCode,jdbcType=VARCHAR},</if>
+            <if test="regEmplId != null">REG_EMPL_ID = #{regEmplId,jdbcType=BIGINT},</if>
+            <if test="regShopId != null">REG_SHOP_ID = #{regShopId,jdbcType=BIGINT},</if>
+            <if test="timestamp != null">TIMESTAMP = #{timestamp,jdbcType=BIGINT},</if>
+            <if test="createEmpl != null">CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="goodsSpell != null">GOODS_SPELL = #{goodsSpell,jdbcType=VARCHAR},</if>
+            <if test="regEmplName != null">REG_EMPL_NAME = #{regEmplName,jdbcType=VARCHAR},</if>
+            <if test="regShopName != null">REG_SHOP_NAME = #{regShopName,jdbcType=VARCHAR},</if>
+            <if test="validStatus != null">VALID_STATUS = #{validStatus,jdbcType=INTEGER},</if>
+            <if test="goodsBarcode != null">GOODS_BARCODE = #{goodsBarcode,jdbcType=VARCHAR},</if>
+            <if test="mgCategoryId != null">MG_CATEGORY_ID = #{mgCategoryId,jdbcType=BIGINT},</if>
+            <if test="mkCategoryId != null">MK_CATEGORY_ID = #{mkCategoryId,jdbcType=BIGINT},</if>
+            <if test="regCompanyId != null">REG_COMPANY_ID = #{regCompanyId,jdbcType=BIGINT},</if>
+            <if test="goodsSpecJson != null">GOODS_SPEC_JSON = #{goodsSpecJson,jdbcType=VARCHAR},</if>
+            <if test="innerAnccCode != null">INNER_ANCC_CODE = #{innerAnccCode,jdbcType=VARCHAR},</if>
+            <if test="regGoodsStyle != null">REG_GOODS_STYLE = #{regGoodsStyle,jdbcType=VARCHAR},</if>
+            <if test="regCompanyName != null">REG_COMPANY_NAME = #{regCompanyName,jdbcType=VARCHAR},</if>
+            <if test="mongoId != null">MONGO_ID = #{mongoId,jdbcType=BIGINT}</if>
+        </set>
+        <where>
+            VALID_STATUS = 1
+            <if test="id != null">AND ID = #{id,jdbcType=BIGINT}</if>
+        </where>
+    </update>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-GOODS-UPDATEVALIDSTATUS*/ TA_GOODS
+        SET
+        VALID_STATUS = 0
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--微页面获取商品信息:TA_GOODS pageCount-->
+    <select id="getGoodsForMicroPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        tg_mg_category z
+        WHERE
+        FIND_IN_SET(z.ID, a.MG_FR_ID) &gt; 0
+        ) AS frCategory
+        FROM
+        ta_goods a
+        LEFT JOIN ta_goods_photo b on a.ID = b.GOODS_ID
+        WHERE
+        b.IS_SPU_PHOTO = 1
+        AND b.IS_MAST_PHOTO = 1
+        AND (a.ID = #{goodsId,jdbcType=BIGINT}
+        OR a.GOODS_NAME LIKE #{goodsName,jdbcType=VARCHAR})
+    </select>
+    <!--微页面获取商品信息:TA_GOODS pageResult-->
+    <select id="getGoodsForMicroPageResult"  resultType="java.util.Map">
+        SELECT
+        a.ID goodsId,
+        b.PHOTO_URL photoUrl,
+        a.GOODS_NAME goodsName,
+        a.GOODS_CODE goodsCode,
+        a.REG_SHOP_NAME regShopName,
+        a.REG_COMPANY_NAME regCompanyName,
+        (
+        SELECT
+        GROUP_CONCAT(z. NAME SEPARATOR '/')
+        FROM
+        tg_mg_category z
+        WHERE
+        FIND_IN_SET(z.ID, a.MG_FR_ID) &gt; 0
+        ) AS frCategory
+        FROM
+        ta_goods a
+        LEFT JOIN ta_goods_photo b on a.ID = b.GOODS_ID
+        WHERE
+        b.IS_SPU_PHOTO = 1
+        AND b.IS_MAST_PHOTO = 1
+        AND (a.ID = #{goodsId,jdbcType=BIGINT}
+        OR a.GOODS_NAME LIKE #{goodsName,jdbcType=VARCHAR})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--修改有效性-->
+    <update id="updateMongo" >
+        UPDATE /*MS-TA-GOODS-UPDATEMONGO*/ TA_GOODS
+        SET
+        MONGO_ID   =  null
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

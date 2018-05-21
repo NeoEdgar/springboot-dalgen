@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.HipUserDOMapper">
+    <!-- 自动生成,请修改 T_HIP_USER.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.HipUserDO">
+            <result column="AGE" property="age" jdbcType="INTEGER" javaType="Integer"/>
+            <result column="MID" property="mid" jdbcType="VARCHAR" javaType="String"/>
+            <result column="SEX" property="sex" jdbcType="VARCHAR" javaType="String"/>
+            <result column="IS_NEW" property="isNew" jdbcType="VARCHAR" javaType="String"/>
+            <result column="IS_VIP" property="isVip" jdbcType="VARCHAR" javaType="String"/>
+            <result column="VIP_ID" property="vipId" jdbcType="VARCHAR" javaType="String"/>
+            <result column="ID_CARD" property="idCard" jdbcType="VARCHAR" javaType="String"/>
+            <result column="IS_REAL" property="isReal" jdbcType="VARCHAR" javaType="String"/>
+            <result column="PAY_PWD" property="payPwd" jdbcType="VARCHAR" javaType="String"/>
+            <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+            <result column="USER_ID" property="userId" jdbcType="BIGINT" javaType="Long"/>
+            <result column="VIP_CODE" property="vipCode" jdbcType="VARCHAR" javaType="String"/>
+            <result column="LOGIN_PWD" property="loginPwd" jdbcType="VARCHAR" javaType="String"/>
+            <result column="MEMBER_ID" property="memberId" jdbcType="BIGINT" javaType="Long"/>
+            <result column="NOW_MCH_ID" property="nowMchId" jdbcType="VARCHAR" javaType="String"/>
+            <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" javaType="String"/>
+            <result column="USER_NICK" property="userNick" jdbcType="VARCHAR" javaType="String"/>
+            <result column="WX_OPEN_ID" property="wxOpenId" jdbcType="VARCHAR" javaType="String"/>
+            <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+            <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" javaType="String"/>
+            <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+            <result column="WX_UNION_ID" property="wxUnionId" jdbcType="VARCHAR" javaType="String"/>
+            <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+            <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <result column="FIRST_MCH_ID" property="firstMchId" jdbcType="VARCHAR" javaType="String"/>
+            <result column="REAL_INFO_ID" property="realInfoId" jdbcType="BIGINT" javaType="Long"/>
+            <result column="USER_QRCODE" property="userQrcode" jdbcType="VARCHAR" javaType="String"/>
+            <result column="USER_STATUS" property="userStatus" jdbcType="VARCHAR" javaType="String"/>
+            <result column="VALID_STATUS" property="validStatus" jdbcType="VARCHAR" javaType="String"/>
+            <result column="HEAD_PORTRAIT" property="headPortrait" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        AGE,MID,SEX,IS_NEW,IS_VIP,VIP_ID,ID_CARD,IS_REAL,PAY_PWD,REMARK,USER_ID,VIP_CODE,LOGIN_PWD,MEMBER_ID,NOW_MCH_ID,REAL_NAME,USER_NICK,WX_OPEN_ID,ALTER_EMPL,ALTER_TIME,TELEPHONE,TIMESTAMP,WX_UNION_ID,CREATE_EMPL,CREATE_TIME,FIRST_MCH_ID,REAL_INFO_ID,USER_QRCODE,USER_STATUS,VALID_STATUS,HEAD_PORTRAIT
+    </sql>
+
+
+        <!--插入表:T_HIP_USER-->
+        <insert id="insert" >
+                    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+                SELECT
+                LAST_INSERT_ID()
+            </selectKey>
+        INSERT INTO T_HIP_USER(
+            AGE
+            MID
+            ,SEX
+            ,IS_NEW
+            ,IS_VIP
+            ,VIP_ID
+            ,ID_CARD
+            ,IS_REAL
+            ,PAY_PWD
+            ,REMARK
+            ,USER_ID
+            ,VIP_CODE
+            ,LOGIN_PWD
+            ,MEMBER_ID
+            ,NOW_MCH_ID
+            ,REAL_NAME
+            ,USER_NICK
+            ,WX_OPEN_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TELEPHONE
+            ,TIMESTAMP
+            ,WX_UNION_ID
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,FIRST_MCH_ID
+            ,REAL_INFO_ID
+            ,USER_QRCODE
+            ,USER_STATUS
+            ,VALID_STATUS
+            ,HEAD_PORTRAIT
+        )VALUES(
+            #{age,jdbcType=INTEGER}
+            #{mid,jdbcType=VARCHAR}
+            ,#{sex,jdbcType=VARCHAR}
+            ,#{isNew,jdbcType=VARCHAR}
+            ,#{isVip,jdbcType=VARCHAR}
+            ,#{vipId,jdbcType=VARCHAR}
+            ,#{idCard,jdbcType=VARCHAR}
+            ,#{isReal,jdbcType=VARCHAR}
+            ,#{payPwd,jdbcType=VARCHAR}
+            ,#{remark,jdbcType=VARCHAR}
+            ,#{userId,jdbcType=BIGINT}
+            ,#{vipCode,jdbcType=VARCHAR}
+            ,#{loginPwd,jdbcType=VARCHAR}
+            ,#{memberId,jdbcType=BIGINT}
+            ,#{nowMchId,jdbcType=VARCHAR}
+            ,#{realName,jdbcType=VARCHAR}
+            ,#{userNick,jdbcType=VARCHAR}
+            ,#{wxOpenId,jdbcType=VARCHAR}
+            ,#{alterEmpl,jdbcType=BIGINT}
+            ,#{alterTime,jdbcType=TIMESTAMP}
+            ,#{telephone,jdbcType=VARCHAR}
+            ,#{timestamp,jdbcType=BIGINT}
+            ,#{wxUnionId,jdbcType=VARCHAR}
+            ,#{createEmpl,jdbcType=BIGINT}
+            ,#{createTime,jdbcType=TIMESTAMP}
+            ,#{firstMchId,jdbcType=VARCHAR}
+            ,#{realInfoId,jdbcType=BIGINT}
+            ,#{userQrcode,jdbcType=VARCHAR}
+            ,#{userStatus,jdbcType=VARCHAR}
+            ,#{validStatus,jdbcType=VARCHAR}
+            ,#{headPortrait,jdbcType=VARCHAR}
+        )
+        </insert>
+
+        <!--更新表:T_HIP_USER-->
+        <update id="update" >
+                    UPDATE /*MS-T-HIP-USER-UPDATE*/ T_HIP_USER
+            SET
+                    AGE             = #{age,jdbcType=INTEGER}
+                    ,MID             = #{mid,jdbcType=VARCHAR}
+                    ,SEX             = #{sex,jdbcType=VARCHAR}
+                    ,IS_NEW          = #{isNew,jdbcType=VARCHAR}
+                    ,IS_VIP          = #{isVip,jdbcType=VARCHAR}
+                    ,VIP_ID          = #{vipId,jdbcType=VARCHAR}
+                    ,ID_CARD         = #{idCard,jdbcType=VARCHAR}
+                    ,IS_REAL         = #{isReal,jdbcType=VARCHAR}
+                    ,PAY_PWD         = #{payPwd,jdbcType=VARCHAR}
+                    ,REMARK          = #{remark,jdbcType=VARCHAR}
+                    ,VIP_CODE        = #{vipCode,jdbcType=VARCHAR}
+                    ,LOGIN_PWD       = #{loginPwd,jdbcType=VARCHAR}
+                    ,MEMBER_ID       = #{memberId,jdbcType=BIGINT}
+                    ,NOW_MCH_ID      = #{nowMchId,jdbcType=VARCHAR}
+                    ,REAL_NAME       = #{realName,jdbcType=VARCHAR}
+                    ,USER_NICK       = #{userNick,jdbcType=VARCHAR}
+                    ,WX_OPEN_ID      = #{wxOpenId,jdbcType=VARCHAR}
+                    ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+                    ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+                    ,TELEPHONE       = #{telephone,jdbcType=VARCHAR}
+                    ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+                    ,WX_UNION_ID     = #{wxUnionId,jdbcType=VARCHAR}
+                    ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+                    ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+                    ,FIRST_MCH_ID    = #{firstMchId,jdbcType=VARCHAR}
+                    ,REAL_INFO_ID    = #{realInfoId,jdbcType=BIGINT}
+                    ,USER_QRCODE     = #{userQrcode,jdbcType=VARCHAR}
+                    ,USER_STATUS     = #{userStatus,jdbcType=VARCHAR}
+                    ,VALID_STATUS    = #{validStatus,jdbcType=VARCHAR}
+                    ,HEAD_PORTRAIT   = #{headPortrait,jdbcType=VARCHAR}
+            WHERE
+                USER_ID         = #{userId,jdbcType=BIGINT}
+        </update>
+
+        <!--根据主键删除数据:T_HIP_USER-->
+        <delete id="deleteByPrimary" >
+                    DELETE /*MS-T-HIP-USER-DELETEBYPRIMARY*/ FROM T_HIP_USER
+            WHERE
+                USER_ID = #{userId,jdbcType=BIGINT}
+        </delete>
+
+        <!--根据主键获取数据:T_HIP_USER-->
+        <select id="getByPrimary" resultMap="BaseResultMap">
+                    SELECT /*MS-T-HIP-USER-GETBYPRIMARY*/  <include refid="Base_Column_List" /> FROM T_HIP_USER
+            WHERE
+                USER_ID = #{userId,jdbcType=BIGINT}
+        </select>
+</mapper>

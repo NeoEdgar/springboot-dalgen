@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TgDosMerchTypeDetDOMapper">
+    <!-- ???��????,请修?? TG_DOS_MERCH_TYPE_DET.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TgDosMerchTypeDetDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DOS_ID" property="dosId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DOS_DATE" property="dosDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SALES_AMT" property="salesAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SALES_VOLUME" property="salesVolume" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ORDER_QUANTITY" property="orderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COUPONS_USE_NUMBER" property="couponsUseNumber" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COUPON_DISCOUNT_AMT" property="couponDiscountAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="PURCHASE_USERS_NUMBER" property="purchaseUsersNumber" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REFUND_ORDER_QUANTITY" property="refundOrderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,DOS_ID,REMARK,DOS_DATE,SALES_AMT,ALTER_EMPL,ALTER_TIME,ORDER_TYPE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,SALES_VOLUME,ORDER_QUANTITY,COUPONS_USE_NUMBER,COUPON_DISCOUNT_AMT,PURCHASE_USERS_NUMBER,REFUND_ORDER_QUANTITY
+    </sql>
+
+
+    <!--插入表:TG_DOS_MERCH_TYPE_DET-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TG_DOS_MERCH_TYPE_DET(
+            ID
+            ,DOS_ID
+            ,REMARK
+            ,DOS_DATE
+            ,SALES_AMT
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,ORDER_TYPE
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,SALES_VOLUME
+            ,ORDER_QUANTITY
+            ,COUPONS_USE_NUMBER
+            ,COUPON_DISCOUNT_AMT
+            ,PURCHASE_USERS_NUMBER
+            ,REFUND_ORDER_QUANTITY
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{dosId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{dosDate,jdbcType=TIMESTAMP}
+            , #{salesAmt,jdbcType=DECIMAL}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{orderType,jdbcType=VARCHAR}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{salesVolume,jdbcType=DECIMAL}
+            , #{orderQuantity,jdbcType=INTEGER}
+            , #{couponsUseNumber,jdbcType=INTEGER}
+            , #{couponDiscountAmt,jdbcType=DECIMAL}
+            , #{purchaseUsersNumber,jdbcType=INTEGER}
+            , #{refundOrderQuantity,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TG_DOS_MERCH_TYPE_DET-->
+    <update id="update" >
+        UPDATE /*MS-TG-DOS-MERCH-TYPE-DET-UPDATE*/ TG_DOS_MERCH_TYPE_DET
+        SET
+            DOS_ID          = #{dosId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,DOS_DATE        = #{dosDate,jdbcType=TIMESTAMP}
+            ,SALES_AMT       = #{salesAmt,jdbcType=DECIMAL}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,ORDER_TYPE      = #{orderType,jdbcType=VARCHAR}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,SALES_VOLUME    = #{salesVolume,jdbcType=DECIMAL}
+            ,ORDER_QUANTITY  = #{orderQuantity,jdbcType=INTEGER}
+            ,COUPONS_USE_NUMBER = #{couponsUseNumber,jdbcType=INTEGER}
+            ,COUPON_DISCOUNT_AMT = #{couponDiscountAmt,jdbcType=DECIMAL}
+            ,PURCHASE_USERS_NUMBER = #{purchaseUsersNumber,jdbcType=INTEGER}
+            ,REFUND_ORDER_QUANTITY = #{refundOrderQuantity,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TG_DOS_MERCH_TYPE_DET-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TG-DOS-MERCH-TYPE-DET-DELETEBYPRIMARY*/ FROM
+            TG_DOS_MERCH_TYPE_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TG_DOS_MERCH_TYPE_DET-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-TYPE-DET-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH_TYPE_DET
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取月度各类型的订单数据:TG_DOS_MERCH_TYPE_DET-->
+    <select id="getMonthlySalesByOrderType" resultType="java.util.Map">
+        SELECT
+            ORDER_TYPE orderType, SUM(ORDER_QUANTITY) orderQuantity, SUM(REFUND_ORDER_QUANTITY) refundOrderQuantity, SUM(SALES_AMT) salesAmt, SUM(SALES_VOLUME) salesVolume,
+            SUM(PURCHASE_USERS_NUMBER) purchaseUsersNumber, SUM(COUPONS_USE_NUMBER) couponsUseNumber, SUM(COUPON_DISCOUNT_AMT) couponDiscountAmt
+        FROM TG_DOS_MERCH_TYPE_DET
+        WHERE
+            DATE_FORMAT(DOS_DATE,'%Y%m') = DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{index,jdbcType=INTEGER} MONTH), '%Y%m')
+            GROUP BY ORDER_TYPE
+    </select>
+</mapper>

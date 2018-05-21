@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopSendAddrDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_SEND_ADDR.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopSendAddrDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PHONE" property="phone" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CITY_ID" property="cityId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SENDER" property="sender" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_DEFAULT" property="isDefault" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_MENTION" property="isMention" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="DISTRICT_ID" property="districtId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PROVINCE_ID" property="provinceId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MALL_ADDRESS" property="mallAddress" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SUBDISTICT_ID" property="subdistictId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,PHONE,CITY_ID,REMARK,SENDER,SHOP_ID,ALTER_EMPL,ALTER_TIME,IS_DEFAULT,IS_MENTION,TIMESTAMP,CREATE_EMPL,CREATE_TIME,DISTRICT_ID,PROVINCE_ID,MALL_ADDRESS,VALID_STATUS,SUBDISTICT_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_SEND_ADDR-->
+    <insert id="insert" >
+		INSERT INTO TA_SHOP_SEND_ADDR(
+		ID
+		,PHONE
+		,CITY_ID
+		,REMARK
+		,SENDER
+		,SHOP_ID
+		,ALTER_EMPL
+		,ALTER_TIME
+		,IS_DEFAULT
+		,IS_MENTION
+		,TIMESTAMP
+		,CREATE_EMPL
+		,CREATE_TIME
+		,DISTRICT_ID
+		,PROVINCE_ID
+		,MALL_ADDRESS
+		,VALID_STATUS
+		,SUBDISTICT_ID
+		)VALUES(
+		#{id,jdbcType=BIGINT}
+		, #{phone,jdbcType=VARCHAR}
+		, #{cityId,jdbcType=BIGINT}
+		, #{remark,jdbcType=VARCHAR}
+		,
+		#{sender,jdbcType=VARCHAR}
+		, #{shopId,jdbcType=BIGINT}
+		,
+		#{alterEmpl,jdbcType=BIGINT}
+		, #{alterTime,jdbcType=TIMESTAMP}
+		,
+		#{isDefault,jdbcType=INTEGER}
+		, #{isMention,jdbcType=INTEGER}
+		,
+		#{timestamp,jdbcType=BIGINT}
+		, #{createEmpl,jdbcType=BIGINT}
+		,
+		#{createTime,jdbcType=TIMESTAMP}
+		, #{districtId,jdbcType=BIGINT}
+		,
+		#{provinceId,jdbcType=BIGINT}
+		, #{mallAddress,jdbcType=VARCHAR}
+		,
+		#{validStatus,jdbcType=INTEGER}
+		, #{subdistictId,jdbcType=BIGINT}
+		)
+    </insert>
+
+    <!--更新表:TA_SHOP_SEND_ADDR-->
+    <update id="update" >
+		UPDATE
+		TA_SHOP_SEND_ADDR
+		SET
+		PHONE = #{phone,jdbcType=VARCHAR}
+		,CITY_ID =
+		#{cityId,jdbcType=BIGINT}
+		,REMARK = #{remark,jdbcType=VARCHAR}
+		,SENDER =
+		#{sender,jdbcType=VARCHAR}
+		,SHOP_ID = #{shopId,jdbcType=BIGINT}
+		,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,IS_DEFAULT =
+		#{isDefault,jdbcType=INTEGER}
+		,IS_MENTION =
+		#{isMention,jdbcType=INTEGER}
+		,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+		,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+		,CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP}
+		,DISTRICT_ID =
+		#{districtId,jdbcType=BIGINT}
+		,PROVINCE_ID =
+		#{provinceId,jdbcType=BIGINT}
+		,MALL_ADDRESS =
+		#{mallAddress,jdbcType=VARCHAR}
+		,VALID_STATUS =
+		#{validStatus,jdbcType=INTEGER}
+		,SUBDISTICT_ID =
+		#{subdistictId,jdbcType=BIGINT}
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_SEND_ADDR-->
+    <delete id="deleteByPrimary" >
+		DELETE /*MS-TA-SHOP-SEND-ADDR-DELETEBYPRIMARY*/ FROM
+		TA_SHOP_SEND_ADDR
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_SEND_ADDR-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-SEND-ADDR-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_SEND_ADDR
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TA_SHOP_SEND_ADDR-->
+    <update id="updateDefultById" >
+		UPDATE /*MS-TA-SHOP-SEND-ADDR-UPDATEDEFULTBYID*/ TA_SHOP_SEND_ADDR
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,IS_DEFAULT =
+		#{isDefault,jdbcType=INTEGER}
+		,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_SHOP_SEND_ADDR-->
+    <update id="updateNotDefultByShopId" >
+		UPDATE /*MS-TA-SHOP-SEND-ADDR-UPDATENOTDEFULTBYSHOPID*/ TA_SHOP_SEND_ADDR
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,IS_DEFAULT =
+		#{isDefault,jdbcType=INTEGER}
+		,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+		WHERE
+		VALID_STATUS = 1
+		AND
+		SHOP_ID = #{shopId,jdbcType=BIGINT}
+		AND
+		ID
+		&lt;&gt; #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_SHOP_SEND_ADDR-->
+    <update id="updateAddrNotValid" >
+		UPDATE /*MS-TA-SHOP-SEND-ADDR-UPDATEADDRNOTVALID*/ TA_SHOP_SEND_ADDR
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,VALID_STATUS = 0
+		,TIMESTAMP =
+		#{timestamp,jdbcType=BIGINT}
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_SHOP_SEND_ADDR-->
+    <update id="updateAddrByPrimary" >
+		UPDATE
+		TA_SHOP_SEND_ADDR
+		SET
+		<if test="phone != null || phone != ''">
+			PHONE = #{phone,jdbcType=VARCHAR}
+		</if>
+		<if test="cityId != null">
+			,CITY_ID =
+			#{cityId,jdbcType=BIGINT}
+		</if>
+		<if test="remark != null || remark != ''">
+			,REMARK = #{remark,jdbcType=VARCHAR}
+		</if>
+		<if test="sender != null || sender != ''">
+			,SENDER =
+			#{sender,jdbcType=VARCHAR}
+		</if>
+		<if test="alterEmpl != null">
+			,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+		</if>
+		<if test="districtId != null">
+			,DISTRICT_ID =
+			#{districtId,jdbcType=BIGINT}
+		</if>
+		<if test="provinceId != null">
+			,PROVINCE_ID =
+			#{provinceId,jdbcType=BIGINT}
+		</if>
+		<if test="mallAddress != null || mallAddress != ''">
+			,MALL_ADDRESS =
+			#{mallAddress,jdbcType=VARCHAR}
+		</if>
+		<if test="subdistictId != null">
+			,SUBDISTICT_ID =
+			#{subdistictId,jdbcType=BIGINT}
+		</if>
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_SHOP_SEND_ADDR pageCount-->
+    <select id="getAddrListCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_SHOP_SEND_ADDR
+		WHERE
+		VALID_STATUS = 1
+		AND
+		SHOP_ID = #{shopId,jdbcType=BIGINT}
+		
+    </select>
+    <!--根据主键获取数据:TA_SHOP_SEND_ADDR pageResult-->
+    <select id="getAddrListResult"  resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-SEND-ADDR-GETADDRLIST*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_SEND_ADDR
+		WHERE
+		VALID_STATUS = 1
+		AND
+		SHOP_ID = #{shopId,jdbcType=BIGINT}
+		ORDER BY  CREATE_TIME  desc
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP_SEND_ADDR-->
+    <select id="getDefaultAddr" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-SEND-ADDR-GETDEFAULTADDR*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP_SEND_ADDR
+		WHERE
+		SHOP_ID = #{shopId,jdbcType=BIGINT}
+		AND IS_DEFAULT = 1
+    </select>
+</mapper>

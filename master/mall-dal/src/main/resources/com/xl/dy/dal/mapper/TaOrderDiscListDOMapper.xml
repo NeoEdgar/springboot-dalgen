@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaOrderDiscListDOMapper">
+    <!-- ???��????,请修?? TA_ORDER_DISC_LIST.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaOrderDiscListDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="AMT" property="amt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="FACE_AMT" property="faceAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COUPON_USER_ID" property="couponUserId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,AMT,FACE_AMT,ORDER_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,COUPON_USER_ID
+    </sql>
+
+
+    <!--???�表:TA_ORDER_DISC_LIST-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ORDER_DISC_LIST(
+            ID
+            ,AMT
+            ,FACE_AMT
+            ,ORDER_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,COUPON_USER_ID
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{amt,jdbcType=DECIMAL}
+            , #{faceAmt,jdbcType=DECIMAL}
+            , #{orderId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{couponUserId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ORDER_DISC_LIST-->
+    <update id="update" >
+        UPDATE /*MS-TA-ORDER-DISC-LIST-UPDATE*/ TA_ORDER_DISC_LIST
+        SET
+            AMT             = #{amt,jdbcType=DECIMAL}
+            ,FACE_AMT        = #{faceAmt,jdbcType=DECIMAL}
+            ,ORDER_ID        = #{orderId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,COUPON_USER_ID  = #{couponUserId,jdbcType=BIGINT}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ORDER_DISC_LIST-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ORDER-DISC-LIST-DELETEBYPRIMARY*/ FROM
+            TA_ORDER_DISC_LIST
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ORDER_DISC_LIST-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ORDER-DISC-LIST-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ORDER_DISC_LIST
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

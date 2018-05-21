@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaRoleResDOMapper">
+    <!-- 自动生成,请修改 TA_ROLE_RES.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaRoleResDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="RES_NAME" property="resName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RES_CONTEXT" property="resContext" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,RES_NAME,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,RES_CONTEXT,VALID_STATUS
+    </sql>
+
+
+    <!--插入表:TA_ROLE_RES-->
+    <insert id="insert" >
+        INSERT INTO TA_ROLE_RES(
+            ID
+            ,REMARK
+            ,RES_NAME
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,RES_CONTEXT
+            ,VALID_STATUS
+        )VALUES(
+            #{id,jdbcType=BIGINT}
+            ,#{remark,jdbcType=VARCHAR}
+            ,#{resName,jdbcType=VARCHAR}
+            ,#{alterEmpl,jdbcType=BIGINT}
+            ,#{alterTime,jdbcType=TIMESTAMP}
+            ,#{timestamp,jdbcType=BIGINT}
+            ,#{createEmpl,jdbcType=BIGINT}
+            ,#{createTime,jdbcType=TIMESTAMP}
+            ,#{resContext,jdbcType=VARCHAR}
+            ,#{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TA_ROLE_RES-->
+    <update id="updateSelective" >
+            UPDATE /*MS-TA-ROLE-RES-UPDATESELECTIVE*/ TA_ROLE_RES
+            SET
+                RES_NAME = #{resName,jdbcType=VARCHAR},
+                RES_CONTEXT = #{resContext,jdbcType=VARCHAR},
+                ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+                ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+            WHERE
+                ID  = #{id,jdbcType=BIGINT}
+                AND VALID_STATUS = 1
+    </update>
+
+    <!--根据主键删除数据:TA_ROLE_RES-->
+    <delete id="deleteByPrimary" >
+            DELETE /*MS-TA-ROLE-RES-DELETEBYPRIMARY*/ FROM TA_ROLE_RES
+            WHERE
+                ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_ROLE_RES-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+            SELECT /*MS-TA-ROLE-RES-GETBYPRIMARY*/  <include refid="Base_Column_List" /> FROM TA_ROLE_RES
+            WHERE
+                ID = #{id,jdbcType=BIGINT}
+            AND VALID_STATUS = 1
+    </select>
+
+    <!--获取系统资源列表 pageCount-->
+    <select id="listSystemResourceCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ROLE_RES
+           WHERE VALID_STATUS = 1
+           <if test="res_name != null">
+               AND RES_NAME = #{res_name,jdbcType=VARCHAR}
+           </if>
+        
+    </select>
+    <!--获取系统资源列表 pageResult-->
+    <select id="listSystemResourceResult"  resultMap="BaseResultMap">
+        SELECT
+           ID
+           ,REMARK
+           ,RES_NAME
+           ,ALTER_EMPL
+           ,ALTER_TIME
+           ,TIMESTAMP
+           ,CREATE_EMPL
+           ,CREATE_TIME
+           ,RES_CONTEXT
+           ,VALID_STATUS
+           FROM TA_ROLE_RES
+           WHERE VALID_STATUS = 1
+           <if test="res_name != null">
+               AND RES_NAME = #{res_name,jdbcType=VARCHAR}
+           </if>
+        ORDER BY
+           ALTER_TIME desc
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--更新有效性状态-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-ROLE-RES-UPDATEVALIDSTATUS*/ TA_ROLE_RES
+            SET  VALID_STATUS = 0
+        WHERE
+        ID  = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

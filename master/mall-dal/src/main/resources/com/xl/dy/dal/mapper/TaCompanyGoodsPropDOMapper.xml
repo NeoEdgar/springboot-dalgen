@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaCompanyGoodsPropDOMapper">
+    <!-- 自动生成,请修改 TA_COMPANY_GOODS_PROP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaCompanyGoodsPropDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_CLAIMED" property="isClaimed" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_VALID_GOODS" property="isValidGoods" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="UNSHELVE_TIME" property="unshelveTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_END_DATE" property="validEndDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_FOREVER_VALID" property="isForeverValid" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_START_DATE" property="validStartDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_ANYTIME_REFUND" property="isAnytimeRefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COM_GOODS_SALE_STATUS" property="comGoodsSaleStatus" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <resultMap id="GoodsInfoOfShopLevel"  type="com.xl.dy.dal.resultmap.GoodsInfoOfShopLevel">
+        <result column="goodsId" property="goodsid"  javaType="Long"/>
+        <result column="shopId" property="shopid"  javaType="Long"/>
+        <result column="companyId" property="companyid"  javaType="Long"/>
+        <result column="mallId" property="mallid"  javaType="Long"/>
+        <result column="sales" property="sales"  javaType="Long"/>
+        <result column="companyName" property="companyname"  javaType="String"/>
+        <result column="saleStatus" property="salestatus"  javaType="String"/>
+        <result column="mallName" property="mallname"  javaType="String"/>
+        <result column="goodsName" property="goodsname"  javaType="String"/>
+        <result column="shopName" property="shopname"  javaType="String"/>
+        <result column="unshelveReason" property="unshelvereason"  javaType="String"/>
+        <result column="totalStore" property="totalstore"  javaType="java.math.BigDecimal"/>
+        <result column="claimTime" property="claimtime"  javaType="java.util.Date"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,REMARK,GOODS_ID,ALTER_EMPL,ALTER_TIME,COMPANY_ID,IS_CLAIMED,TIMESTAMP,CREATE_EMPL,CREATE_TIME,COMPANY_NAME,VALID_STATUS,IS_VALID_GOODS,UNSHELVE_TIME,VALID_END_DATE,IS_FOREVER_VALID,VALID_START_DATE,IS_ANYTIME_REFUND,COM_GOODS_SALE_STATUS
+    </sql>
+
+
+    <!--插入表:TA_COMPANY_GOODS_PROP-->
+    <insert id="insert" >
+        INSERT INTO TA_COMPANY_GOODS_PROP(
+            ID
+            ,REMARK
+            ,GOODS_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,COMPANY_ID
+            ,IS_CLAIMED
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,COMPANY_NAME
+            ,VALID_STATUS
+            ,IS_VALID_GOODS
+            ,UNSHELVE_TIME
+            ,VALID_END_DATE
+            ,IS_FOREVER_VALID
+            ,VALID_START_DATE
+            ,IS_ANYTIME_REFUND
+            ,COM_GOODS_SALE_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{companyId,jdbcType=BIGINT}
+            , #{isClaimed,jdbcType=INTEGER}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{companyName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{isValidGoods,jdbcType=INTEGER}
+            , #{unshelveTime,jdbcType=TIMESTAMP}
+            , #{validEndDate,jdbcType=TIMESTAMP}
+            , #{isForeverValid,jdbcType=INTEGER}
+            , #{validStartDate,jdbcType=TIMESTAMP}
+            , #{isAnytimeRefund,jdbcType=INTEGER}
+            , #{comGoodsSaleStatus,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_COMPANY_GOODS_PROP-->
+    <update id="update" >
+        UPDATE /*MS-TA-COMPANY-GOODS-PROP-UPDATE*/ TA_COMPANY_GOODS_PROP
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,COMPANY_ID      = #{companyId,jdbcType=BIGINT}
+            ,IS_CLAIMED      = #{isClaimed,jdbcType=INTEGER}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,COMPANY_NAME    = #{companyName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,IS_VALID_GOODS  = #{isValidGoods,jdbcType=INTEGER}
+            ,UNSHELVE_TIME   = #{unshelveTime,jdbcType=TIMESTAMP}
+            ,VALID_END_DATE  = #{validEndDate,jdbcType=TIMESTAMP}
+            ,IS_FOREVER_VALID = #{isForeverValid,jdbcType=INTEGER}
+            ,VALID_START_DATE = #{validStartDate,jdbcType=TIMESTAMP}
+            ,IS_ANYTIME_REFUND = #{isAnytimeRefund,jdbcType=INTEGER}
+            ,COM_GOODS_SALE_STATUS = #{comGoodsSaleStatus,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_COMPANY_GOODS_PROP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-COMPANY-GOODS-PROP-DELETEBYPRIMARY*/ FROM
+            TA_COMPANY_GOODS_PROP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_COMPANY_GOODS_PROP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_COMPANY_GOODS_PROP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_COMPANY_GOODS_PROP-->
+    <delete id="deleteByGoodsId" >
+        DELETE /*MS-TA-COMPANY-GOODS-PROP-DELETEBYGOODSID*/ FROM
+        TA_COMPANY_GOODS_PROP
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </delete>
+
+    <!--更新表:TA_COMPANY_GOODS_PROP-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-COMPANY-GOODS-PROP-UPDATESELECTIVE*/ TA_COMPANY_GOODS_PROP
+        <set>
+            <if test="remark!=null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsId!=null">
+                GOODS_ID = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="alterEmpl!=null">
+                ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime!=null">
+                ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="companyId!=null">
+                COMPANY_ID = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="timestamp!=null">
+                TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl!=null">
+                CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime!=null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="validStatus!=null">
+                VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="isValidGoods!=null">
+                IS_VALID_GOODS = #{isValidGoods,jdbcType=INTEGER},
+            </if>
+            <if test="validEndDate!=null">
+                VALID_END_DATE = #{validEndDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isForeverValid!=null">
+                IS_FOREVER_VALID = #{isForeverValid,jdbcType=INTEGER},
+            </if>
+            <if test="isClaimed!=null">
+                IS_CLAIMED    = #{isClaimed,jdbcType=INTEGER},
+            </if>
+            <if test="validStartDate!=null">
+                VALID_START_DATE = #{validStartDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isAnytimeRefund!=null">
+                IS_ANYTIME_REFUND = #{isAnytimeRefund,jdbcType=INTEGER},
+            </if>
+            <if test="comGoodsSaleStatus!=null">
+                COM_GOODS_SALE_STATUS = #{comGoodsSaleStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="unshelveTime!=null">
+                UNSHELVE_TIME   = #{unshelveTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            VALID_STATUS = 1
+            <if test="id!=null">
+                AND ID = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="goodsId!=null">
+                AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+            </if>
+            <if test="companyId!=null">
+                AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <!--根据主键获取数据:TA_COMPANY_GOODS_PROP-->
+    <select id="getCompanyGoodsPropByGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETCOMPANYGOODSPROPBYGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_COMPANY_GOODS_PROP
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_COMPANY_GOODS_PROP-->
+    <select id="getCompanyGoodsPropCountByGoodsId" resultType="int">
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETCOMPANYGOODSPROPCOUNTBYGOODSID*/  COUNT(*)
+        FROM TA_COMPANY_GOODS_PROP
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--获取待认领的商品列表:TA_COMPANY_GOODS_PROP pageCount-->
+    <select id="getClaimGoodsListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_COMPANY_GOODS_PROP CGP
+        LEFT JOIN TA_GOODS G
+        ON CGP.GOODS_ID = G.ID
+        LEFT JOIN TA_GOODS_PHOTO GP
+        ON G.ID = GP.GOODS_ID
+        WHERE
+        CGP.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND CGP.COM_GOODS_SALE_STATUS = #{comGoodsSaleStatus,jdbcType=VARCHAR}
+        AND G.MG_CATEGORY_ID = #{category,jdbcType=BIGINT}
+        AND GP.IS_MAST_PHOTO = 1
+        AND CGP.VALID_STATUS = 1
+    </select>
+    <!--获取待认领的商品列表:TA_COMPANY_GOODS_PROP pageResult-->
+    <select id="getClaimGoodsListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETCLAIMGOODSLIST*/  CGP.COMPANY_ID companyId,CGP.GOODS_ID goodsId,CGP.COM_GOODS_SALE_STATUS saleStatus,G.GOODS_NAME
+        goodsName,
+        G.GOODS_TYPE goodsType,G.MG_CATEGORY_ID category,GP.PHOTO_URL photoUrl,GP.IS_MAST_PHOTO isMastPhoto
+        FROM TA_COMPANY_GOODS_PROP CGP
+        LEFT JOIN TA_GOODS G
+        ON CGP.GOODS_ID = G.ID
+        LEFT JOIN TA_GOODS_PHOTO GP
+        ON G.ID = GP.GOODS_ID
+        WHERE
+        CGP.COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND CGP.COM_GOODS_SALE_STATUS = #{comGoodsSaleStatus,jdbcType=VARCHAR}
+        AND G.MG_CATEGORY_ID = #{category,jdbcType=BIGINT}
+        AND GP.IS_MAST_PHOTO = 1
+        AND CGP.VALID_STATUS = 1
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--getGoodsOfShopLevel pageCount-->
+    <select id="getGoodsOfShopLevelCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ (
+        SELECT T.shopName,T.mallName,T.shopId,T.mallId,T.companyName,T.companyId,T.goodsId
+        ,SGP.CLAIM_TIME claimTime,SGP.UNSHELVE_REASON unshelveReason,SGP.SHOP_GOODS_SALE_STATUS saleStatus,SGP.SHOP_GOODS_NAME goodsName
+        ,H.sales,H.totalStore
+        FROM
+        TA_SHOP_GOODS_PROP SGP
+        LEFT JOIN (SELECT SHOP_NAME shopName,COMPANY_NAME companyName,MALL_NAME mallName,GOODS_ID goodsId,SHOP_ID shopId ,COMPANY_ID companyId,MALL_ID mallId
+        FROM(SELECT DISTINCT GOODS_ID,SHOP_ID,COMPANY_ID,MALL_ID,SHOP_NAME,COMPANY_NAME,MALL_NAME FROM ta_shop_goods )X )T
+        ON SGP.GOODS_ID = T.goodsId
+        LEFT JOIN (SELECT  SHOP_ID shopId,GOODS_ID goodsId,SUM(SALES) sales,SUM(TOTAL_STORE) totalStore from ta_shop_goods GROUP BY SHOP_ID ,GOODS_ID) H
+        ON (T.shopId = H.shopId AND T.goodsId = H.goodsId )
+        )F
+        <where>
+            <if test="goodsId != null and goodsId != ''">AND F.goodsId = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="companyId != null and companyId != ''">AND F.companyId = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null and mallId != '' ">AND F.mallId = #{mallId,jdbcType=BIGINT}</if>
+            <if test="shopId != null and shopId != ''">AND F.shopId = #{shopId,jdbcType=BIGINT}</if>
+            <if test="shopName != null and shopName != ''">AND F.shopName like #{shopName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null and mallName != ''">AND F.mallName like #{mallName,jdbcType=VARCHAR}</if>
+            <if test="companyName != null and companyName != ''">AND F.companyName like #{companyName,jdbcType=VARCHAR}</if>
+            <if test="searchStr != null and searchStr != ''">AND F.goodsName like #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--getGoodsOfShopLevel pageResult-->
+    <select id="getGoodsOfShopLevelResult"  resultMap="GoodsInfoOfShopLevel">
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETGOODSOFSHOPLEVEL*/ 
+        shopName,companyName,mallName,goodsId,shopId,companyId,mallId
+        ,claimTime,unshelveReason,saleStatus,goodsName
+        ,sales,totalStore
+        FROM (
+        SELECT /*MS-TA-COMPANY-GOODS-PROP-GETGOODSOFSHOPLEVEL*/  T.shopName,T.mallName,T.shopId,T.mallId,T.companyName,T.companyId,T.goodsId
+        ,SGP.CLAIM_TIME claimTime,SGP.UNSHELVE_REASON unshelveReason,SGP.SHOP_GOODS_SALE_STATUS saleStatus,SGP.SHOP_GOODS_NAME goodsName
+        ,H.sales,H.totalStore
+        FROM
+        TA_SHOP_GOODS_PROP SGP
+        LEFT JOIN (SELECT /*MS-TA-COMPANY-GOODS-PROP-GETGOODSOFSHOPLEVEL*/  SHOP_NAME shopName,COMPANY_NAME companyName,MALL_NAME mallName,GOODS_ID goodsId,SHOP_ID shopId ,COMPANY_ID companyId,MALL_ID mallId
+        FROM(SELECT /*MS-TA-COMPANY-GOODS-PROP-GETGOODSOFSHOPLEVEL*/  DISTINCT GOODS_ID,SHOP_ID,COMPANY_ID,MALL_ID,SHOP_NAME,COMPANY_NAME,MALL_NAME FROM ta_shop_goods )X )T
+        ON SGP.GOODS_ID = T.goodsId
+        LEFT JOIN (SELECT /*MS-TA-COMPANY-GOODS-PROP-GETGOODSOFSHOPLEVEL*/   SHOP_ID shopId,GOODS_ID goodsId,SUM(SALES) sales,SUM(TOTAL_STORE) totalStore from ta_shop_goods GROUP BY SHOP_ID ,GOODS_ID) H
+        ON (T.shopId = H.shopId AND T.goodsId = H.goodsId )
+        )F
+        <where>
+            <if test="goodsId != null and goodsId != ''">AND F.goodsId = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="companyId != null and companyId != ''">AND F.companyId = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null and mallId != '' ">AND F.mallId = #{mallId,jdbcType=BIGINT}</if>
+            <if test="shopId != null and shopId != ''">AND F.shopId = #{shopId,jdbcType=BIGINT}</if>
+            <if test="shopName != null and shopName != ''">AND F.shopName like #{shopName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null and mallName != ''">AND F.mallName like #{mallName,jdbcType=VARCHAR}</if>
+            <if test="companyName != null and companyName != ''">AND F.companyName like #{companyName,jdbcType=VARCHAR}</if>
+            <if test="searchStr != null and searchStr != ''">AND F.goodsName like #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

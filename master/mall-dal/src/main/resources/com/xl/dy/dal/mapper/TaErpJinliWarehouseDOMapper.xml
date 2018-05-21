@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaErpJinliWarehouseDOMapper">
+    <!-- 自动生成,请修改 TA_ERP_JINLI_WAREHOUSE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaErpJinliWarehouseDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_LEAF" property="isLeaf" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_CODE" property="erpCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PARENT_CODE" property="parentCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="WAREHOUSE_CODE" property="warehouseCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="WAREHOUSE_NAME" property="warehouseName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="WAREHOUSE_LEVEL" property="warehouseLevel" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,IS_LEAF,REMARK,ERP_CODE,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,PARENT_CODE,VALID_STATUS,WAREHOUSE_CODE,WAREHOUSE_NAME,WAREHOUSE_LEVEL
+    </sql>
+
+
+    <!--插入表:TA_ERP_JINLI_WAREHOUSE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ERP_JINLI_WAREHOUSE(
+            ID
+            ,IS_LEAF
+            ,REMARK
+            ,ERP_CODE
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,PARENT_CODE
+            ,VALID_STATUS
+            ,WAREHOUSE_CODE
+            ,WAREHOUSE_NAME
+            ,WAREHOUSE_LEVEL
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{isLeaf,jdbcType=INTEGER}
+            , #{remark,jdbcType=VARCHAR}
+            , #{erpCode,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{parentCode,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{warehouseCode,jdbcType=VARCHAR}
+            , #{warehouseName,jdbcType=VARCHAR}
+            , #{warehouseLevel,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TA_ERP_JINLI_WAREHOUSE-->
+    <update id="update" >
+        UPDATE /*MS-TA-ERP-JINLI-WAREHOUSE-UPDATE*/ TA_ERP_JINLI_WAREHOUSE
+        SET
+            IS_LEAF         = #{isLeaf,jdbcType=INTEGER}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ERP_CODE        = #{erpCode,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,PARENT_CODE     = #{parentCode,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,WAREHOUSE_CODE  = #{warehouseCode,jdbcType=VARCHAR}
+            ,WAREHOUSE_NAME  = #{warehouseName,jdbcType=VARCHAR}
+            ,WAREHOUSE_LEVEL = #{warehouseLevel,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_ERP_JINLI_WAREHOUSE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ERP-JINLI-WAREHOUSE-DELETEBYPRIMARY*/ FROM
+            TA_ERP_JINLI_WAREHOUSE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_ERP_JINLI_WAREHOUSE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ERP-JINLI-WAREHOUSE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ERP_JINLI_WAREHOUSE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据部门类型获取部门信息-->
+    <select id="getErpWarehouse" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ERP-JINLI-WAREHOUSE-GETERPWAREHOUSE*/  <include refid="Base_Column_List" /> FROM TA_ERP_JINLI_WAREHOUSE 
+        WHERE ERP_CODE =  'jl'
+        AND WAREHOUSE_LEVEL&gt;1 ORDER BY WAREHOUSE_LEVEL ASC 
+    </select>
+</mapper>

@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopDOMapper">
+    <!-- ???��????,请修?? TA_SHOP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="POINT" property="point" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SALES" property="sales" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CITY_ID" property="cityId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ERP_SUP" property="erpSup" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_TYPE" property="erpType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_ACC_ID" property="erpAccId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ERP_STORE" property="erpStore" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LATITUDE" property="latitude" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="MALL_NAME" property="mallName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_TYPE" property="shopType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="LONGITUDE" property="longitude" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="DISTRICT_ID" property="districtId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="FREEZE_TIME" property="freezeTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PROVINCE_ID" property="provinceId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_STATUS" property="shopStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_SALE_DEPT" property="erpSaleDept" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ADDRESS" property="shopAddress" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_LOGO_URL" property="shopLogoUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ENTITY_MALL_ID" property="entityMallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="FREEZE_EMPL_ID" property="freezeEmplId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SUBDISTICT_ID" property="subdistictId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CLOSESTORE_TIME" property="closestoreTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ENTITY_MALL_NAME" property="entityMallName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="FREEZE_EMPL_NAME" property="freezeEmplName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MG_CATEGORY_TEXT" property="mgCategoryText" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_PURCHASE_DEPT" property="erpPurchaseDept" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CLOSESTORE_EMPL_ID" property="closestoreEmplId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CLOSESTORE_EMPL_NAME" property="closestoreEmplName" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,POINT,SALES,CITY_ID,ERP_SUP,MALL_ID,REMARK,ERP_TYPE,ERP_ACC_ID,ERP_STORE,LATITUDE,MALL_NAME,SHOP_NAME,SHOP_TYPE,ALTER_EMPL,ALTER_TIME,COMPANY_ID,LONGITUDE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,DISTRICT_ID,FREEZE_TIME,PROVINCE_ID,SHOP_STATUS,COMPANY_NAME,ERP_SALE_DEPT,SHOP_ADDRESS,SHOP_LOGO_URL,VALID_STATUS,ENTITY_MALL_ID,FREEZE_EMPL_ID,SUBDISTICT_ID,CLOSESTORE_TIME,ENTITY_MALL_NAME,FREEZE_EMPL_NAME,MG_CATEGORY_TEXT,ERP_PURCHASE_DEPT,CLOSESTORE_EMPL_ID,CLOSESTORE_EMPL_NAME
+    </sql>
+
+
+    <!--插入表:TA_SHOP-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SHOP(
+            ID
+            ,POINT
+            ,SALES
+            ,CITY_ID
+            ,ERP_SUP
+            ,MALL_ID
+            ,REMARK
+            ,ERP_TYPE
+            ,ERP_ACC_ID
+            ,ERP_STORE
+            ,LATITUDE
+            ,MALL_NAME
+            ,SHOP_NAME
+            ,SHOP_TYPE
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,COMPANY_ID
+            ,LONGITUDE
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,DISTRICT_ID
+            ,FREEZE_TIME
+            ,PROVINCE_ID
+            ,SHOP_STATUS
+            ,COMPANY_NAME
+            ,ERP_SALE_DEPT
+            ,SHOP_ADDRESS
+            ,SHOP_LOGO_URL
+            ,VALID_STATUS
+            ,ENTITY_MALL_ID
+            ,FREEZE_EMPL_ID
+            ,SUBDISTICT_ID
+            ,CLOSESTORE_TIME
+            ,ENTITY_MALL_NAME
+            ,FREEZE_EMPL_NAME
+            ,MG_CATEGORY_TEXT
+            ,ERP_PURCHASE_DEPT
+            ,CLOSESTORE_EMPL_ID
+            ,CLOSESTORE_EMPL_NAME
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{point,jdbcType=DECIMAL}
+            , #{sales,jdbcType=BIGINT}
+            , #{cityId,jdbcType=BIGINT}
+            , #{erpSup,jdbcType=VARCHAR}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{erpType,jdbcType=VARCHAR}
+            , #{erpAccId,jdbcType=BIGINT}
+            , #{erpStore,jdbcType=VARCHAR}
+            , #{latitude,jdbcType=DECIMAL}
+            , #{mallName,jdbcType=VARCHAR}
+            , #{shopName,jdbcType=VARCHAR}
+            , #{shopType,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{companyId,jdbcType=BIGINT}
+            , #{longitude,jdbcType=DECIMAL}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{districtId,jdbcType=BIGINT}
+            , #{freezeTime,jdbcType=TIMESTAMP}
+            , #{provinceId,jdbcType=BIGINT}
+            , #{shopStatus,jdbcType=VARCHAR}
+            , #{companyName,jdbcType=VARCHAR}
+            , #{erpSaleDept,jdbcType=VARCHAR}
+            , #{shopAddress,jdbcType=VARCHAR}
+            , #{shopLogoUrl,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{entityMallId,jdbcType=BIGINT}
+            , #{freezeEmplId,jdbcType=BIGINT}
+            , #{subdistictId,jdbcType=BIGINT}
+            , #{closestoreTime,jdbcType=TIMESTAMP}
+            , #{entityMallName,jdbcType=VARCHAR}
+            , #{freezeEmplName,jdbcType=VARCHAR}
+            , #{mgCategoryText,jdbcType=VARCHAR}
+            , #{erpPurchaseDept,jdbcType=VARCHAR}
+            , #{closestoreEmplId,jdbcType=BIGINT}
+            , #{closestoreEmplName,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-UPDATE*/ TA_SHOP
+        SET
+            POINT           = #{point,jdbcType=DECIMAL}
+            ,SALES           = #{sales,jdbcType=BIGINT}
+            ,CITY_ID         = #{cityId,jdbcType=BIGINT}
+            ,ERP_SUP         = #{erpSup,jdbcType=VARCHAR}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ERP_TYPE        = #{erpType,jdbcType=VARCHAR}
+            ,ERP_ACC_ID      = #{erpAccId,jdbcType=BIGINT}
+            ,ERP_STORE       = #{erpStore,jdbcType=VARCHAR}
+            ,LATITUDE        = #{latitude,jdbcType=DECIMAL}
+            ,MALL_NAME       = #{mallName,jdbcType=VARCHAR}
+            ,SHOP_NAME       = #{shopName,jdbcType=VARCHAR}
+            ,SHOP_TYPE       = #{shopType,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,COMPANY_ID      = #{companyId,jdbcType=BIGINT}
+            ,LONGITUDE       = #{longitude,jdbcType=DECIMAL}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,DISTRICT_ID     = #{districtId,jdbcType=BIGINT}
+            ,FREEZE_TIME     = #{freezeTime,jdbcType=TIMESTAMP}
+            ,PROVINCE_ID     = #{provinceId,jdbcType=BIGINT}
+            ,SHOP_STATUS     = #{shopStatus,jdbcType=VARCHAR}
+            ,COMPANY_NAME    = #{companyName,jdbcType=VARCHAR}
+            ,ERP_SALE_DEPT   = #{erpSaleDept,jdbcType=VARCHAR}
+            ,SHOP_ADDRESS    = #{shopAddress,jdbcType=VARCHAR}
+            ,SHOP_LOGO_URL   = #{shopLogoUrl,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,ENTITY_MALL_ID  = #{entityMallId,jdbcType=BIGINT}
+            ,FREEZE_EMPL_ID  = #{freezeEmplId,jdbcType=BIGINT}
+            ,SUBDISTICT_ID   = #{subdistictId,jdbcType=BIGINT}
+            ,CLOSESTORE_TIME = #{closestoreTime,jdbcType=TIMESTAMP}
+            ,ENTITY_MALL_NAME = #{entityMallName,jdbcType=VARCHAR}
+            ,FREEZE_EMPL_NAME = #{freezeEmplName,jdbcType=VARCHAR}
+            ,MG_CATEGORY_TEXT = #{mgCategoryText,jdbcType=VARCHAR}
+            ,ERP_PURCHASE_DEPT = #{erpPurchaseDept,jdbcType=VARCHAR}
+            ,CLOSESTORE_EMPL_ID = #{closestoreEmplId,jdbcType=BIGINT}
+            ,CLOSESTORE_EMPL_NAME = #{closestoreEmplName,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-DELETEBYPRIMARY*/ FROM
+            TA_SHOP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--查询该账号所关联的店铺:TA_SHOP-->
+    <select id="showEmplShop" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-SHOWEMPLSHOP*/  a.SHOP_NAME ,a.ID FROM ta_shop a LEFT JOIN TA_EMPL_SHOP
+		b ON a.ID =
+		b.SHOP_ID
+		LEFT JOIN TA_EMPL c ON c.ID = b.EMPL_ID
+		WHERE
+		c.ID =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="showAllShops" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-SHOWALLSHOPS*/  ID,SHOP_NAME
+		FROM TA_SHOP
+		WHERE
+		MALL_ID=
+		#{mallId,jdbcType=BIGINT}
+    </select>
+
+    <!--查询店铺列表 pageCount-->
+    <select id="getShopListByMallCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+
+		(SELECT
+		a.ID,a.SHOP_NAME,b.COMPANY_NAME,a.CREATE_TIME,a.SHOP_TYPE,a.SHOP_STATUS
+		FROM ta_shop a LEFT JOIN ta_company b ON a.COMPANY_ID=b.id) f
+		LEFT
+		JOIN
+		(SELECT D.ID, GROUP_CONCAT(e.name
+		SEPARATOR
+		',') CATEGORY_NAME FROM
+		TA_SHOP_MC_CATEGORY c LEFT JOIN ta_shop d ON
+		c.SHOP_ID=d.ID LEFT JOIN
+		TG_MG_CATEGORY e ON c.MG_CATEGORY_ID = e.id
+		GROUP BY d.id) g
+		ON f.ID =
+		g.ID
+		<where>
+			<if test="searchStr !=null">
+				f.SHOP_NAME like #{searchStr,jdbcType=VARCHAR}
+			</if>
+			<if test="shopStatus != null"> AND SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR}</if>
+		</where>
+		
+    </select>
+    <!--查询店铺列表 pageResult-->
+    <select id="getShopListByMallResult"  resultType="java.util.Map">
+		SELECT /*MS-TA-SHOP-GETSHOPLISTBYMALL*/ 
+		f.ID,f.SHOP_NAME,f.COMPANY_NAME,f.SHOP_TYPE ,f.SHOP_STATUS,f.CREATE_TIME,g.CATEGORY_NAME
+		from
+		(SELECT /*MS-TA-SHOP-GETSHOPLISTBYMALL*/ 
+		a.ID,a.SHOP_NAME,b.COMPANY_NAME,a.CREATE_TIME,a.SHOP_TYPE,a.SHOP_STATUS
+		FROM ta_shop a LEFT JOIN ta_company b ON a.COMPANY_ID=b.id) f
+		LEFT
+		JOIN
+		(SELECT /*MS-TA-SHOP-GETSHOPLISTBYMALL*/  D.ID, GROUP_CONCAT(e.name
+		SEPARATOR
+		',') CATEGORY_NAME FROM
+		TA_SHOP_MC_CATEGORY c LEFT JOIN ta_shop d ON
+		c.SHOP_ID=d.ID LEFT JOIN
+		TG_MG_CATEGORY e ON c.MG_CATEGORY_ID = e.id
+		GROUP BY d.id) g
+		ON f.ID =
+		g.ID
+		<where>
+			<if test="searchStr !=null">
+				f.SHOP_NAME like #{searchStr,jdbcType=VARCHAR}
+			</if>
+			<if test="shopStatus != null"> AND SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR}</if>
+		</where>
+		ORDER BY
+		f.CREATE_TIME desc
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getCategoryList" resultType="String">
+		SELECT /*MS-TA-SHOP-GETCATEGORYLIST*/  c.name FROM ta_shop a LEFT
+		JOIN
+		TA_SHOP_MC_CATEGORY b ON a.ID = b.SHOP_ID
+		LEFT JOIN tg_mg_category c ON
+		b.MG_CATEGORY_ID = c.ID
+		WHERE
+		a.ID =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getEmplAdminById" resultType="Long">
+		SELECT /*MS-TA-SHOP-GETEMPLADMINBYID*/  a.id FROM ta_empl a LEFT JOIN ta_shop b ON
+		a.PLATFORM_TYPE='SHOPPLATFORM' AND a.PLATFORM_ID = b.ID AND IS_ADMIN=1
+		WHERE
+		b.ID =
+		#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="findErpSaleDept" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FINDERPSALEDEPT*/  a.ERP_SALE_DEPT ,a.ID FROM ta_shop a LEFT
+		JOIN `ta_empl` b on a.`ID` = b.`PLATFORM_ID` and b.`PLATFORM_TYPE`
+		='SHOPPLATFORM' WHERE B.`ID` =#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getShopAreaById" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-GETSHOPAREABYID*/  LONGITUDE,LATITUDE FROM TA_SHOP WHERE
+		ID =#{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="findShopByShopName" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FINDSHOPBYSHOPNAME*/  ID FROM TA_SHOP WHERE
+		SHOP_NAME =#{shopName,jdbcType=VARCHAR}
+    </select>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+		UPDATE /*MS-TA-SHOP-UPDATEVALIDSTATUS*/ TA_SHOP
+		SET
+		VALID_STATUS = 0
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据专业公司ID获取所有旗下店铺-->
+    <select id="getShopByCompanyId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-GETSHOPBYCOMPANYID*/  <include refid="Base_Column_List" /> FROM TA_SHOP WHERE
+		COMPANY_ID = #{companyId,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--查询店铺列表 pageCount-->
+    <select id="getShopListCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_SHOP
+		WHERE
+		VALID_STATUS = 1
+		<if test="shopName !=null">
+			AND SHOP_NAME like #{shopName,jdbcType=VARCHAR}
+		</if>
+    </select>
+    <!--查询店铺列表 pageResult-->
+    <select id="getShopListResult"  resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-GETSHOPLIST*/  <include refid="Base_Column_List" />
+		FROM TA_SHOP
+		WHERE
+		VALID_STATUS = 1
+		<if test="shopName !=null">
+			AND SHOP_NAME like #{shopName,jdbcType=VARCHAR}
+		</if>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--选择性更新表:TA_EMPL-->
+    <update id="updateByPrimarySelective" >
+		UPDATE /*MS-TA-SHOP-UPDATEBYPRIMARYSELECTIVE*/ TA_SHOP
+		<set>
+			<if test="cityId != null">
+				CITY_ID = #{cityId,jdbcType=BIGINT},
+			</if>
+			<if test="mallId != null">
+				MALL_ID = #{mallId,jdbcType=BIGINT},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				LATITUDE = #{latitude,jdbcType=DECIMAL},
+			</if>
+			<if test="shopName != null">
+				SHOP_NAME = #{shopName,jdbcType=VARCHAR},
+			</if>
+			<if test="shopType != null">
+				SHOP_TYPE = #{shopType,jdbcType=VARCHAR},
+			</if>
+			
+			
+			
+			
+			<if test="erpSup != null">
+				ERP_SUP         = #{erpSup,jdbcType=VARCHAR},
+			</if>
+			<if test="erpType != null">
+				ERP_TYPE        = #{erpType,jdbcType=VARCHAR},
+			</if>
+			<if test="erpAccId != null">
+				ERP_ACC_ID      = #{erpAccId,jdbcType=BIGINT},
+			</if>
+			<if test="erpStore != null">
+				ERP_STORE       = #{erpStore,jdbcType=VARCHAR},
+			</if>
+			<if test="erpPurchaseDept != null">
+				ERP_PURCHASE_DEPT = #{erpPurchaseDept,jdbcType=VARCHAR},
+			</if>
+			<if test="erpSaleDept != null">
+				ERP_SALE_DEPT   = #{erpSaleDept,jdbcType=VARCHAR},
+			</if>
+			
+			
+			
+			<if test="alterEmpl != null">
+				ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="alterTime != null">
+				ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=BIGINT},
+			</if>
+			<if test="longitude != null">
+				LONGITUDE = #{longitude,jdbcType=DECIMAL},
+			</if>
+			<if test="timestamp != null">
+				TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+			</if>
+			<if test="longitude != null">
+				LONGITUDE = #{longitude,jdbcType=DECIMAL},
+			</if>
+			<if test="createEmpl != null">
+				CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="districtId != null">
+				DISTRICT_ID = #{districtId,jdbcType=BIGINT},
+			</if>
+			<if test="provinceId != null">
+				PROVINCE_ID = #{provinceId,jdbcType=BIGINT},
+			</if>
+			<if test="shopStatus != null">
+				SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="shopAddress != null">
+				SHOP_ADDRESS = #{shopAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="shopLogoUrl != null">
+				SHOP_LOGO_URL = #{shopLogoUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="validStatus != null">
+				VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+			</if>
+			<if test="subdistictId != null">
+				SUBDISTICT_ID = #{subdistictId,jdbcType=BIGINT},
+			</if>
+			<if test="closestoreTime != null">
+				CLOSESTORE_TIME = #{closestoreTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="mgCategoryText != null">
+				MG_CATEGORY_TEXT = #{mgCategoryText,jdbcType=VARCHAR},
+			</if>
+			<if test="closestoreEmplId != null">
+				CLOSESTORE_EMPL_ID = #{closestoreEmplId,jdbcType=BIGINT},
+			</if>
+			<if test="closestoreEmplName != null">
+				CLOSESTORE_EMPL_NAME =
+				#{closestoreEmplName,jdbcType=VARCHAR},
+			</if>
+			<if test="entityMallId != null">
+				ENTITY_MALL_ID =
+				#{entityMallId,jdbcType=BIGINT},
+			</if>
+			<if test="entityMallName != null">
+				ENTITY_MALL_NAME =
+				#{entityMallName,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_SHOP-->
+    <select id="getShopInfoById" resultType="java.util.Map">
+		SELECT
+		a.id,a.SHOP_NAME,a.SHOP_LOGO_URL,a.SHOP_TYPE,a.ENTITY_MALL_NAME ,c.MALL_NAME
+		,d.COMPANY_NAME,a.SHOP_ADDRESS,a.SHOP_STATUS,a.CREATE_TIME,b.EMPL_NAME
+		,b.MOBILE_TEL,b.MAIL,b.PAPER_NO FROM ta_shop
+		a LEFT JOIN ta_empl b ON b.PLATFORM_TYPE='SHOPPLATFORM' AND
+		a.ID=b.PLATFORM_ID
+		LEFT JOIN ta_mall c ON a.MALL_ID=c.ID
+		LEFT JOIN
+		ta_company d ON a.COMPANY_ID = d.ID
+		LEFT JOIN ta_empl e ON
+		a.CREATE_EMPL=e.ID
+		WHERE
+		a.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据商场店铺打烊:TA_SHOP-->
+    <select id="changeShopStatusByMall" resultType="Long">
+		UPDATE TA_SHOP
+		SET SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR},
+		CLOSESTORE_EMPL_ID = #{emplId,jdbcType=BIGINT},
+		CLOSESTORE_EMPL_NAME= #{closeEmplName,jdbcType=VARCHAR},
+		CLOSESTORE_TIME= #{closeTime,jdbcType=TIMESTAMP},
+		ALTER_EMPL= #{alterEmplId,jdbcType=BIGINT},
+		ALTER_TIME= #{alterTime,jdbcType=TIMESTAMP},
+		TIMESTAMP= #{timeStamp,jdbcType=BIGINT}
+		WHERE
+		MALL_ID = #{mallId,jdbcType=BIGINT}
+    </select>
+
+    <!--微页面获取店铺信息:TA_SHOP pageCount-->
+    <select id="getShopForMicroPageCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+
+		ta_shop
+		WHERE
+		(id = #{shopId,jdbcType=BIGINT}
+		OR SHOP_NAME LIKE #{searchStr,jdbcType=VARCHAR})
+    </select>
+    <!--微页面获取店铺信息:TA_SHOP pageResult-->
+    <select id="getShopForMicroPageResult"  resultType="java.util.Map">
+		SELECT
+		id shopId,
+		SHOP_LOGO_URL shopLogoUrl,
+		SHOP_NAME shopName,
+		COMPANY_NAME companyName,
+		MALL_NAME mallName
+		FROM
+		ta_shop
+		WHERE
+		(id = #{shopId,jdbcType=BIGINT}
+		OR SHOP_NAME LIKE #{searchStr,jdbcType=VARCHAR})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据商场获得店铺信息:TA_SHOP-->
+    <select id="findShopmessageByMall" resultType="java.util.Map">
+		SELECT
+		ID shopId,
+		SHOP_NAME shopName
+		FROM
+		ta_shop
+		WHERE
+		MALL_ID = #{mallId,jdbcType=BIGINT}
+    </select>
+</mapper>

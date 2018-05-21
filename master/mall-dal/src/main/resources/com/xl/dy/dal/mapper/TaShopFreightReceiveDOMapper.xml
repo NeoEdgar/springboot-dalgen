@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopFreightReceiveDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_FREIGHT_RECEIVE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopFreightReceiveDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONT_UNIT" property="contUnit" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ADDR_CODES" property="addrCodes" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ADDR_NAMES" property="addrNames" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="FIRST_UNIT" property="firstUnit" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CONT_UNIT_FARE" property="contUnitFare" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="FIRST_UNIT_FARE" property="firstUnitFare" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="FREIGHT_COUNT_MODE" property="freightCountMode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_FREIGHT_TEMPLET_ID" property="shopFreightTempletId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,CONT_UNIT,ADDR_CODES,ADDR_NAMES,ALTER_EMPL,ALTER_TIME,FIRST_UNIT,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,CONT_UNIT_FARE,FIRST_UNIT_FARE,FREIGHT_COUNT_MODE,SHOP_FREIGHT_TEMPLET_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_FREIGHT_RECEIVE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SHOP_FREIGHT_RECEIVE(
+            ID
+            ,REMARK
+            ,CONT_UNIT
+            ,ADDR_CODES
+            ,ADDR_NAMES
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,FIRST_UNIT
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,CONT_UNIT_FARE
+            ,FIRST_UNIT_FARE
+            ,FREIGHT_COUNT_MODE
+            ,SHOP_FREIGHT_TEMPLET_ID
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{contUnit,jdbcType=DECIMAL}
+            , #{addrCodes,jdbcType=VARCHAR}
+            , #{addrNames,jdbcType=LONGVARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{firstUnit,jdbcType=DECIMAL}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{contUnitFare,jdbcType=DECIMAL}
+            , #{firstUnitFare,jdbcType=DECIMAL}
+            , #{freightCountMode,jdbcType=VARCHAR}
+            , #{shopFreightTempletId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_FREIGHT_RECEIVE-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-FREIGHT-RECEIVE-UPDATE*/ TA_SHOP_FREIGHT_RECEIVE
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,CONT_UNIT       = #{contUnit,jdbcType=DECIMAL}
+            ,ADDR_CODES      = #{addrCodes,jdbcType=VARCHAR}
+            ,ADDR_NAMES      = #{addrNames,jdbcType=LONGVARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,FIRST_UNIT      = #{firstUnit,jdbcType=DECIMAL}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,CONT_UNIT_FARE  = #{contUnitFare,jdbcType=DECIMAL}
+            ,FIRST_UNIT_FARE = #{firstUnitFare,jdbcType=DECIMAL}
+            ,FREIGHT_COUNT_MODE = #{freightCountMode,jdbcType=VARCHAR}
+            ,SHOP_FREIGHT_TEMPLET_ID = #{shopFreightTempletId,jdbcType=BIGINT}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_FREIGHT_RECEIVE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-FREIGHT-RECEIVE-DELETEBYPRIMARY*/ FROM
+            TA_SHOP_FREIGHT_RECEIVE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_RECEIVE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-FREIGHT-RECEIVE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_FREIGHT_RECEIVE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_RECEIVE-->
+    <select id="getFreightTempletByShopId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-SHOP-FREIGHT-RECEIVE-GETFREIGHTTEMPLETBYSHOPID*/  <include refid="Base_Column_List" /> FROM ta_shop_freight_templet a LEFT JOIN
+		ta_shop_freight_receive b ON a.ID = b.SHOP_FREIGHT_TEMPLET_ID
+		WHERE a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_FREIGHT_RECEIVE-->
+    <delete id="deleteByTempletId" >
+        DELETE /*MS-TA-SHOP-FREIGHT-RECEIVE-DELETEBYTEMPLETID*/ FROM
+            TA_SHOP_FREIGHT_RECEIVE
+        WHERE
+            SHOP_FREIGHT_TEMPLET_ID = #{shopFreightTempletId,jdbcType=BIGINT}
+    </delete>
+</mapper>

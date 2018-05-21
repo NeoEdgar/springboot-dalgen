@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaGoodsDetailPagesDOMapper">
+    <!-- 自动生成,请修改 TA_GOODS_DETAIL_PAGES.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaGoodsDetailPagesDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="URL" property="url" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="DISPLAY_PLATFORM" property="displayPlatform" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,URL,REMARK,GOODS_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,DISPLAY_PLATFORM
+    </sql>
+
+
+    <!--插入表:TA_GOODS_DETAIL_PAGES-->
+    <insert id="insert" >
+        INSERT INTO TA_GOODS_DETAIL_PAGES(
+            ID
+            ,INX
+            ,URL
+            ,REMARK
+            ,GOODS_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,DISPLAY_PLATFORM
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{url,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{displayPlatform,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_GOODS_DETAIL_PAGES-->
+    <update id="update" >
+        UPDATE /*MS-TA-GOODS-DETAIL-PAGES-UPDATE*/ TA_GOODS_DETAIL_PAGES
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,URL             = #{url,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,DISPLAY_PLATFORM = #{displayPlatform,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_GOODS_DETAIL_PAGES-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-GOODS-DETAIL-PAGES-DELETEBYPRIMARY*/ FROM
+            TA_GOODS_DETAIL_PAGES
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_GOODS_DETAIL_PAGES-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-DETAIL-PAGES-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_DETAIL_PAGES
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_GOODS_DETAIL_PAGES-->
+    <delete id="deleteByGoodsId" >
+        DELETE /*MS-TA-GOODS-DETAIL-PAGES-DELETEBYGOODSID*/ FROM
+        TA_GOODS_DETAIL_PAGES
+        WHERE
+        GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+    </delete>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-GOODS-DETAIL-PAGES-UPDATEVALIDSTATUS*/ TA_GOODS_DETAIL_PAGES
+        SET
+        VALID_STATUS    = 0
+        WHERE
+        GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+    </update>
+
+    <!--根据商品ID获取数据:TA_GOODS_DETAIL_PAGES-->
+    <select id="getGoodsDetailByGoodsId" resultType="String">
+        SELECT /*MS-TA-GOODS-DETAIL-PAGES-GETGOODSDETAILBYGOODSID*/  URL
+        FROM TA_GOODS_DETAIL_PAGES
+        WHERE
+        GOODS_ID   = #{goodsId,jdbcType=BIGINT}
+        AND  VALID_STATUS    = 1
+    </select>
+</mapper>

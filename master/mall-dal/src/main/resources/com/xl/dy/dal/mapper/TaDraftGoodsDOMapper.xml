@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaDraftGoodsDOMapper">
+    <!-- 自动生成,请修改 TA_DRAFT_GOODS.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaDraftGoodsDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_PHOTO" property="goodsPhoto" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DRAFT_UNIT_ID" property="draftUnitId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="GOODS_CATEGORY" property="goodsCategory" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DRAFT_GOODS_JSON" property="draftGoodsJson" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,GOODS_ID,ALTER_EMPL,ALTER_TIME,GOODS_NAME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,GOODS_PHOTO,DRAFT_UNIT_ID,VALID_STATUS,GOODS_CATEGORY,DRAFT_GOODS_JSON
+    </sql>
+
+
+    <!--插入表:TA_DRAFT_GOODS-->
+    <insert id="insert" >
+        INSERT INTO TA_DRAFT_GOODS(
+        ID
+        ,REMARK
+        ,GOODS_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,GOODS_NAME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,GOODS_PHOTO
+        ,DRAFT_UNIT_ID
+        ,VALID_STATUS
+        ,GOODS_CATEGORY
+        ,DRAFT_GOODS_JSON
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{goodsName,jdbcType=VARCHAR}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{goodsPhoto,jdbcType=VARCHAR}
+        , #{draftUnitId,jdbcType=BIGINT}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{goodsCategory,jdbcType=VARCHAR}
+        , #{draftGoodsJson,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_DRAFT_GOODS-->
+    <update id="update" >
+        UPDATE /*MS-TA-DRAFT-GOODS-UPDATE*/ TA_DRAFT_GOODS
+        SET
+        REMARK = #{remark,jdbcType=VARCHAR}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,GOODS_NAME = #{goodsName,jdbcType=VARCHAR}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,GOODS_PHOTO = #{goodsPhoto,jdbcType=VARCHAR}
+        ,DRAFT_UNIT_ID = #{draftUnitId,jdbcType=BIGINT}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,GOODS_CATEGORY = #{goodsCategory,jdbcType=VARCHAR}
+        ,DRAFT_GOODS_JSON = #{draftGoodsJson,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_DRAFT_GOODS-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-DRAFT-GOODS-DELETEBYPRIMARY*/ FROM
+        TA_DRAFT_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_DRAFT_GOODS-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-DRAFT-GOODS-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_DRAFT_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TA_DRAFT_GOODS-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-DRAFT-GOODS-UPDATESELECTIVE*/ TA_DRAFT_GOODS
+        <set>
+            <if test="remark!=null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsId!=null">
+                GOODS_ID = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="alterEmpl!=null">
+                ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime!=null">
+                ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="goodsName!=null">
+                GOODS_NAME = #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp!=null">
+                TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl!=null">
+                CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime!=null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="goodsPhoto!=null">
+                GOODS_PHOTO = #{goodsPhoto,jdbcType=VARCHAR},
+            </if>
+            <if test="draftUnitId!=null">
+                DRAFT_UNIT_ID = #{draftUnitId,jdbcType=BIGINT},
+            </if>
+            <if test="validStatus!=null">
+                VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="goodsCategory!=null">
+                GOODS_CATEGORY = #{goodsCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="draftGoodsJson!=null">
+                DRAFT_GOODS_JSON = #{draftGoodsJson,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--获取草稿箱列表 pageCount-->
+    <select id="getDraftGoodsListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_DRAFT_GOODS
+        <where>
+            <if test="draftUnitId!=null">
+                DRAFT_UNIT_ID = #{draftUnitId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+    <!--获取草稿箱列表 pageResult-->
+    <select id="getDraftGoodsListResult"  resultMap="BaseResultMap">
+        SELECT /*MS-TA-DRAFT-GOODS-GETDRAFTGOODSLIST*/  <include refid="Base_Column_List" />
+        FROM TA_DRAFT_GOODS
+        <where>
+            <if test="draftUnitId!=null">
+                DRAFT_UNIT_ID = #{draftUnitId,jdbcType=BIGINT}
+            </if>
+        </where>
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaGoodsPropDOMapper">
+    <!-- 自动生成,请修改 TA_GOODS_PROP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaGoodsPropDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="GOODS_PROP_NAME" property="goodsPropName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_PROP_TYPE_ID" property="goodsPropTypeId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_PROP_TYPE_NAME" property="goodsPropTypeName" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,SKU_ID,REMARK,GOODS_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,GOODS_PROP_NAME,GOODS_PROP_TYPE_ID,GOODS_PROP_TYPE_NAME
+    </sql>
+
+
+    <!--插入表:TA_GOODS_PROP-->
+    <insert id="insert" >
+        INSERT INTO TA_GOODS_PROP(
+        ID
+        ,SKU_ID
+        ,REMARK
+        ,GOODS_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,VALID_STATUS
+        ,GOODS_PROP_NAME
+        ,GOODS_PROP_TYPE_ID
+        ,GOODS_PROP_TYPE_NAME
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{skuId,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{goodsPropName,jdbcType=VARCHAR}
+        , #{goodsPropTypeId,jdbcType=BIGINT}
+        , #{goodsPropTypeName,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_GOODS_PROP-->
+    <update id="update" >
+        UPDATE /*MS-TA-GOODS-PROP-UPDATE*/ TA_GOODS_PROP
+        SET
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        ,REMARK = #{remark,jdbcType=VARCHAR}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,GOODS_PROP_NAME = #{goodsPropName,jdbcType=VARCHAR}
+        ,GOODS_PROP_TYPE_ID = #{goodsPropTypeId,jdbcType=BIGINT}
+        ,GOODS_PROP_TYPE_NAME = #{goodsPropTypeName,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_GOODS_PROP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-GOODS-PROP-DELETEBYPRIMARY*/ FROM
+        TA_GOODS_PROP
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键删除数据:TA_GOODS_PROP-->
+    <delete id="deleteByGoodsId" >
+        DELETE /*MS-TA-GOODS-PROP-DELETEBYGOODSID*/ FROM
+        TA_GOODS_PROP
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键删除数据:TA_GOODS_PROP-->
+    <delete id="deleteBySkuId" >
+        DELETE /*MS-TA-GOODS-PROP-DELETEBYSKUID*/ FROM
+        TA_GOODS_PROP
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_GOODS_PROP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-PROP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_PROP
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-GOODS-PROP-UPDATEVALIDSTATUS*/ TA_GOODS_PROP
+        SET
+        VALID_STATUS = 0
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </update>
+
+    <!--根据商品ID或者属性类型ID获取数据-->
+    <select id="getGoodsPropByGoodsIdOrPropTypeId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-PROP-GETGOODSPROPBYGOODSIDORPROPTYPEID*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_PROP
+        <where>
+            VALID_STATUS = 1
+            <if test="goodsId!=null">AND GOODS_ID = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="goodsPropTypeId!=null">AND GOODS_PROP_TYPE_ID = #{goodsPropTypeId,jdbcType=BIGINT}</if>
+        </where>
+    </select>
+
+    <!--根据skuId获取属性信息:TA_GOODS_PROP-->
+    <select id="getGoodPropInfoBySkuId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-PROP-GETGOODPROPINFOBYSKUID*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_PROP
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据skuId获取属性信息:TA_GOODS_PROP-->
+    <select id="getGoodsInfoBySkuId" resultType="java.util.Map">
+        SELECT
+        GOODS_PROP_TYPE_NAME goodsPropTypeName,
+        GOODS_PROP_NAME goodsPropName
+        FROM
+        ta_goods_prop
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据skuId获取属性信息:TA_GOODS_PROP-->
+    <select id="getGoodsInfoByGoodsId" resultType="String">
+        SELECT
+        GOODS_PROP_TYPE_NAME goodsPropTypeName
+        FROM
+        ta_goods_prop
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+        GROUP BY GOODS_PROP_TYPE_NAME
+    </select>
+
+    <!--更新表:TA_GOODS_PROP-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-GOODS-PROP-UPDATESELECTIVE*/ TA_GOODS_PROP
+        GOODS_PROP_NAME = #{goodsPropName,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

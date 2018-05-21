@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaEmplRoleAuthDOMapper">
+    <!-- 自动生成,请修改 TA_EMPL_ROLE_AUTH.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaEmplRoleAuthDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EMPL_ID" property="emplId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ROLE_ID" property="roleId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,NAME,EMPL_ID,REMARK,ROLE_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS
+    </sql>
+
+
+    <!--插入表:TA_EMPL_ROLE_AUTH-->
+    <insert id="insert" >
+        INSERT INTO TA_EMPL_ROLE_AUTH(
+            ID
+            ,NAME
+            ,EMPL_ID
+            ,REMARK
+            ,ROLE_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{name,jdbcType=VARCHAR}
+            , #{emplId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{roleId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TA_EMPL_ROLE_AUTH-->
+    <update id="update" >
+        UPDATE /*MS-TA-EMPL-ROLE-AUTH-UPDATE*/ TA_EMPL_ROLE_AUTH
+        SET
+            NAME            = #{name,jdbcType=VARCHAR}
+            ,EMPL_ID         = #{emplId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ROLE_ID         = #{roleId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_EMPL_ROLE_AUTH-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-EMPL-ROLE-AUTH-DELETEBYPRIMARY*/ FROM
+            TA_EMPL_ROLE_AUTH
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键删除数据:TA_EMPL_ROLE_AUTH-->
+    <delete id="deleteByRoleIdAndEnplId" >
+        DELETE /*MS-TA-EMPL-ROLE-AUTH-DELETEBYROLEIDANDENPLID*/ FROM
+            TA_EMPL_ROLE_AUTH
+        WHERE
+            ROLE_ID = #{roleId,jdbcType=BIGINT}
+            AND
+            EMPL_ID = #{EmplId,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_EMPL_ROLE_AUTH-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-EMPL-ROLE-AUTH-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_EMPL_ROLE_AUTH
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_EMPL_ROLE_AUTH-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-EMPL-ROLE-AUTH-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_EMPL_ROLE_AUTH
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS    =  1
+    </select>
+
+    <!--根据主键获取数据:TA_EMPL_ROLE_AUTH-->
+    <select id="getByRoleIdAndEmplId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-EMPL-ROLE-AUTH-GETBYROLEIDANDEMPLID*/  <include refid="Base_Column_List" />
+        FROM TA_EMPL_ROLE_AUTH
+        WHERE
+            ROLE_ID = #{roleId,jdbcType=BIGINT}
+            AND
+            EMPL_ID = #{emplId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据用户ID获取角色列表-->
+    <select id="getByUserId" resultMap="BaseResultMap">
+		SELECT /*MS-TA-EMPL-ROLE-AUTH-GETBYUSERID*/  <include refid="Base_Column_List" />
+		FROM TA_EMPL_ROLE_AUTH
+		WHERE
+		EMPL_ID = #{emplId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--删除角色授权:TA_EMPL_ROLE_AUTH-->
+    <delete id="deleteRoleAuthById" >
+		UPDATE /*MS-TA-EMPL-ROLE-AUTH-DELETEROLEAUTHBYID*/ TA_EMPL_ROLE_AUTH
+		SET
+		VALID_STATUS = 0
+		WHERE
+		ID =
+		#{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--删除角色授权:TA_EMPL_ROLE_AUTH-->
+    <delete id="deleteByEmplId" >
+		  DELETE /*MS-TA-EMPL-ROLE-AUTH-DELETEBYEMPLID*/ FROM
+            TA_EMPL_ROLE_AUTH
+        WHERE
+            EMPL_ID = #{EmplId,jdbcType=BIGINT}
+    </delete>
+
+    <!--更新表:-->
+    <update id="updateByPrimary" >
+		UPDATE /*MS-TA-EMPL-ROLE-AUTH-UPDATEBYPRIMARY*/ TA_EMPL_ROLE_AUTH
+		SET
+		<if test="emplId != null">
+			EMPL_ID         = #{emplId,jdbcType=BIGINT},
+		</if>
+		<if test="remark != null and remark != ''">
+			REMARK          = #{remark,jdbcType=VARCHAR},
+		</if>
+		<if test="roleId != null">
+			ROLE_ID         = #{roleId,jdbcType=BIGINT},
+		</if>
+		<if test="alterEmpl != null">
+			ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT},
+		</if>
+		<if test="alterTime != null">
+			ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="timestamp != null">
+			TIMESTAMP       = #{timestamp,jdbcType=BIGINT},
+		</if>
+		<if test="createEmpl != null">
+			CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT},
+		</if>
+		<if test="createTime != null">
+			CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="validStatus != null">
+			VALID_STATUS    = #{validStatus,jdbcType=INTEGER},
+		</if>
+		<if test="name != null and name != ''">
+			 NAME            = #{name,jdbcType=VARCHAR}
+		</if>
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_EMPL_ROLE_AUTH-->
+    <update id="updateRole" >
+		UPDATE /*MS-TA-EMPL-ROLE-AUTH-UPDATEROLE*/ TA_EMPL_ROLE_AUTH
+		SET
+		ALTER_EMPL =
+		#{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME =
+		#{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP =
+		#{timestamp,jdbcType=BIGINT}
+		,CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP}
+		,VALID_STATUS =
+		#{validStatus,jdbcType=INTEGER}
+		WHERE
+		ROLE_ID =
+		#{roleId,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_ROLE-->
+    <select id="getRoleIdByEmplId" resultType="Long">
+		SELECT /*MS-TA-EMPL-ROLE-AUTH-GETROLEIDBYEMPLID*/  a.ROLE_ID as ROLE_ID FROM TA_EMPL_ROLE_AUTH a LEFT JOIN TA_EMPL b ON
+		a.EMPL_ID=b.ID
+		WHERE
+		b.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据EmolID获取名字:TA_ROLE-->
+    <select id="getNameByEmplId" resultType="String">
+        SELECT /*MS-TA-EMPL-ROLE-AUTH-GETNAMEBYEMPLID*/  NAME
+        FROM TA_EMPL_ROLE_AUTH
+        WHERE
+        EMPL_ID = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

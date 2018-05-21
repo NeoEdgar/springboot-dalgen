@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaSmsRecordDOMapper">
+    <!-- 自动生成,请修改 TA_SMS_RECORD.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaSmsRecordDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CONTENT" property="content" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,CONTENT,ALTER_EMPL,ALTER_TIME,TELEPHONE,TIMESTAMP,CREATE_EMPL,CREATE_TIME
+    </sql>
+
+
+    <!--插入表:TA_SMS_RECORD-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SMS_RECORD(
+            ID
+            ,REMARK
+            ,CONTENT
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TELEPHONE
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{content,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{telephone,jdbcType=VARCHAR}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+</mapper>

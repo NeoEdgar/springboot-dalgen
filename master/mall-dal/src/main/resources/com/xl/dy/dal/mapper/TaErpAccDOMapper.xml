@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaErpAccDOMapper">
+    <!-- 自动生成,请修改 TA_ERP_ACC.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaErpAccDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_REG_ID" property="erpRegId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ERP_ACC_NAME" property="erpAccName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,ERP_REG_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,ERP_ACC_NAME,VALID_STATUS
+    </sql>
+
+
+    <!--插入表:TA_ERP_ACC-->
+    <insert id="insert" >
+        INSERT INTO TA_ERP_ACC(
+            ID
+            ,REMARK
+            ,ERP_REG_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,ERP_ACC_NAME
+            ,VALID_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{erpRegId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{erpAccName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TA_ERP_ACC-->
+    <update id="update" >
+        UPDATE /*MS-TA-ERP-ACC-UPDATE*/ TA_ERP_ACC
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ERP_REG_ID      = #{erpRegId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,ERP_ACC_NAME    = #{erpAccName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_ERP_ACC-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ERP-ACC-DELETEBYPRIMARY*/ FROM
+            TA_ERP_ACC
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_ERP_ACC-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ERP-ACC-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ERP_ACC
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_ERP_ACC-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ERP-ACC-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_ERP_ACC
+        <where>
+            VALID_STATUS    = 1
+            <if test="id != null ">AND ID = #{id,jdbcType=BIGINT}</if>
+            <if test="erpRegId != null">AND ERP_REG_ID  = #{erpRegId,jdbcType=BIGINT}</if>
+            <if test="erpAccName != null">AND ERP_ACC_NAME    = #{erpAccName,jdbcType=VARCHAR}</if>
+        </where>
+    </select>
+
+    <!--根据主键获取数据:TA_ERP_ACC-->
+    <select id="getResultByPrimary" resultType="java.util.Map">
+        SELECT /*MS-TA-ERP-ACC-GETRESULTBYPRIMARY*/  a.ERP_ACC_NAME AS erpAccName
+        	  ,b.ERP_REG_NAME AS erpRegName
+        	  ,b.INIT_PARAM   AS initParam
+        	  ,b.DRIVE        AS drive
+        	  ,b.ERP_TYPE     AS erpType
+        FROM TA_ERP_ACC a left JOIN TA_ERP_REG b on a.ERP_REG_ID = b.ID
+        WHERE
+        a.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取业务系统账号分页列表 pageCount-->
+    <select id="getErpAccPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ERP_ACC a left JOIN TA_ERP_REG b on a.ERP_REG_ID = b.ID
+		WHERE a.VALID_STATUS = 1
+		AND b.VALID_STATUS = 1
+		<if test="Name != null">
+			AND a.ERP_ACC_NAME LIKE
+			CONCAT('%',(#{Name,jdbcType=VARCHAR}),'%')
+		</if>
+		
+    </select>
+    <!--获取业务系统账号分页列表 pageResult-->
+    <select id="getErpAccPageResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-ERP-ACC-GETERPACCPAGE*/  a.ID AS id
+              ,a.ERP_ACC_NAME AS erpAccName
+        	  ,b.ERP_REG_NAME AS erpRegName
+        	  ,b.ERP_TYPE   AS erpType
+        	  ,b.DRIVE        AS drive
+        FROM TA_ERP_ACC a left JOIN TA_ERP_REG b on a.ERP_REG_ID = b.ID
+		WHERE a.VALID_STATUS = 1
+		AND b.VALID_STATUS = 1
+		<if test="Name != null">
+			AND a.ERP_ACC_NAME LIKE
+			CONCAT('%',(#{Name,jdbcType=VARCHAR}),'%')
+		</if>
+		ORDER BY a.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaRetainageChginvDOMapper">
+    <!-- ???��????,请修?? TA_RETAINAGE_CHGINV.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaRetainageChginvDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DISCOUNT" property="discount" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RETAINAGE" property="retainage" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="START_SALES" property="startSales" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TARGET_SALES" property="targetSales" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ADVANCE_REVIEW_ID" property="advanceReviewId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,DISCOUNT,ALTER_EMPL,ALTER_TIME,RETAINAGE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,START_SALES,TARGET_SALES,VALID_STATUS,ADVANCE_REVIEW_ID
+    </sql>
+
+
+    <!--???�表:TA_RETAINAGE_CHGINV-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_RETAINAGE_CHGINV(
+            ID
+            ,REMARK
+            ,DISCOUNT
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,RETAINAGE
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,START_SALES
+            ,TARGET_SALES
+            ,VALID_STATUS
+            ,ADVANCE_REVIEW_ID
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{discount,jdbcType=DECIMAL}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{retainage,jdbcType=DECIMAL}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{startSales,jdbcType=BIGINT}
+            , #{targetSales,jdbcType=BIGINT}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{advanceReviewId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--?��?�表:TA_RETAINAGE_CHGINV-->
+    <update id="update" >
+        UPDATE /*MS-TA-RETAINAGE-CHGINV-UPDATE*/ TA_RETAINAGE_CHGINV
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,DISCOUNT        = #{discount,jdbcType=DECIMAL}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,RETAINAGE       = #{retainage,jdbcType=DECIMAL}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,START_SALES     = #{startSales,jdbcType=BIGINT}
+            ,TARGET_SALES    = #{targetSales,jdbcType=BIGINT}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,ADVANCE_REVIEW_ID = #{advanceReviewId,jdbcType=BIGINT}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_RETAINAGE_CHGINV-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-RETAINAGE-CHGINV-DELETEBYPRIMARY*/ FROM
+            TA_RETAINAGE_CHGINV
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_RETAINAGE_CHGINV-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-RETAINAGE-CHGINV-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_RETAINAGE_CHGINV
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取可变尾款最低价:TA_RETAINAGE_CHGINV-->
+    <select id="getRetainageInYes" resultType="java.math.BigDecimal">
+        SELECT
+        RETAINAGE
+        FROM
+        ta_retainage_chginv
+        WHERE
+        ADVANCE_REVIEW_ID = #{advenceReviewid,jdbcType=BIGINT}
+        ORDER BY RETAINAGE ASC
+        LIMIT 1
+    </select>
+
+    <!--删除商品变价:TA_RETAINAGE_CHGINV-->
+    <delete id="deleteByAdvanceReview" >
+        DELETE /*MS-TA-RETAINAGE-CHGINV-DELETEBYADVANCEREVIEW*/ FROM
+        TA_RETAINAGE_CHGINV
+        WHERE
+        ADVANCE_REVIEW_ID = #{advanceReviewId,jdbcType=BIGINT}
+    </delete>
+
+    <!--获得商品变价:TA_RETAINAGE_CHGINV-->
+    <select id="getByAdvanceReview" resultMap="BaseResultMap">
+        SELECT /*MS-TA-RETAINAGE-CHGINV-GETBYADVANCEREVIEW*/  <include refid="Base_Column_List" />
+        FROM TA_RETAINAGE_CHGINV
+        WHERE
+        ADVANCE_REVIEW_ID = #{advanceReviewId,jdbcType=BIGINT}
+    </select>
+</mapper>

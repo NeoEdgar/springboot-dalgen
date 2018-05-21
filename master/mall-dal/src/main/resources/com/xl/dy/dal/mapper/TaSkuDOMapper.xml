@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaSkuDOMapper">
+    <!-- 自动生成,请修改 TA_SKU.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaSkuDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="BRAND_ID" property="brandId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SKU_TITLE" property="skuTitle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SKU_PROP_JSON" property="skuPropJson" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+    <resultMap id="GoodDetailVO"  type="com.xl.dy.dal.resultmap.GoodDetailVO">
+        <result column="skuId" property="skuid"  javaType="Long"/>
+        <result column="skuPropJson" property="skupropjson"  javaType="String"/>
+        <result column="totalStore" property="totalstore"  javaType="java.math.BigDecimal"/>
+        <result column="comDirectPrice" property="comdirectprice"  javaType="java.math.BigDecimal"/>
+        <result column="price" property="price"  javaType="java.math.BigDecimal"/>
+        <result column="saleStatus" property="salestatus"  javaType="String"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,REMARK,BRAND_ID,GOODS_ID,SKU_TITLE,ALTER_EMPL,ALTER_TIME,GOODS_CODE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,SKU_PROP_JSON,VALID_STATUS
+    </sql>
+
+
+    <!--插入表:TA_SKU-->
+    <insert id="insert" >
+        INSERT INTO TA_SKU(
+        ID
+        ,REMARK
+        ,BRAND_ID
+        ,GOODS_ID
+        ,SKU_TITLE
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,GOODS_CODE
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,SKU_PROP_JSON
+        ,VALID_STATUS
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{brandId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{skuTitle,jdbcType=VARCHAR}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{goodsCode,jdbcType=VARCHAR}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{skuPropJson,jdbcType=VARCHAR}
+        , #{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TA_SKU-->
+    <update id="update" >
+        UPDATE /*MS-TA-SKU-UPDATE*/ TA_SKU
+        SET
+        REMARK = #{remark,jdbcType=VARCHAR}
+        ,BRAND_ID = #{brandId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,SKU_TITLE = #{skuTitle,jdbcType=VARCHAR}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,SKU_PROP_JSON = #{skuPropJson,jdbcType=VARCHAR}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SKU-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SKU-DELETEBYPRIMARY*/ FROM
+        TA_SKU
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键删除数据:TA_SKU-->
+    <delete id="deleteByGoodsId" >
+        DELETE /*MS-TA-SKU-DELETEBYGOODSID*/ FROM
+        TA_SKU
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SKU-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SKU-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SKU
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取有效数据:TA_SKU-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SKU-GETBYPRIMARYSELECTIVE*/  ID
+        FROM TA_SKU
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据商品ID获取所有skuID:TA_SKU-->
+    <select id="getSkuIdByGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SKU-GETSKUIDBYGOODSID*/  ID
+        FROM TA_SKU
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--查询某一个商品下的sku信息-->
+    <select id="findSkuDetail" resultMap="GoodDetailVO">
+        SELECT /*MS-TA-SKU-FINDSKUDETAIL*/  s.ID as skuId,s.SKU_PROP_JSON AS skuPropJson,TOTAL_STORE as totalStore,COM_DIRECT_PRICE as
+        comDirectPrice,SALE_STATUS as saleStatus
+        FROM ta_sku s left JOIN ta_company_goods cg on s.ID = cg.SKU_ID
+        left join ta_shop_goods sg on sg.SKU_ID = cg.SKU_ID
+        WHERE s.GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </select>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-SKU-UPDATEVALIDSTATUS*/ TA_SKU
+        SET
+        VALID_STATUS = 0
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </update>
+
+    <!--查询某一个商品下的sku信息-->
+    <select id="findSkuDetailOfShop" resultMap="GoodDetailVO">
+        SELECT /*MS-TA-SKU-FINDSKUDETAILOFSHOP*/  sgp.GOODS_PRICE price,s.ID as skuId,s.SKU_PROP_JSON AS skuPropJson,TOTAL_STORE as
+        totalStore,COM_DIRECT_PRICE as comDirectPrice
+        FROM ta_sku s left JOIN ta_company_goods cg on s.ID = cg.SKU_ID
+        left join ta_shop_goods sg on sg.SKU_ID = cg.SKU_ID
+        left join TA_SHOP_GOODS_PRICE sgp on sg.ID = sgp.SHOP_GOODS_ID
+        WHERE s.GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND sg.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND s.VALID_STATUS = 1
+    </select>
+
+    <!--更新表:TA_SKU-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-SKU-UPDATESELECTIVE*/ TA_SKU
+        <set>
+            <if test="remark!=null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId!=null">
+                BRAND_ID = #{brandId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId!=null">
+                GOODS_ID = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="skuTitle!=null">
+                SKU_TITLE = #{skuTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="alterEmpl!=null">
+                ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime!=null">
+                ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="goodsCode!=null">
+                GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp!=null">
+                TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl!=null">
+                CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime!=null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="skuPropJson!=null">
+                SKU_PROP_JSON = #{skuPropJson,jdbcType=VARCHAR},
+            </if>
+            <if test="validStatus!=null">
+                VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+            </if>
+        </set>
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据商品ID获取所有skuID:TA_SKU-->
+    <select id="getSkuByGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SKU-GETSKUBYGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_SKU
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+</mapper>

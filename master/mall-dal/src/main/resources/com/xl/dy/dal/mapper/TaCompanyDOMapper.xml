@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaCompanyDOMapper">
+    <!-- 自动生成,请修改 TA_COMPANY.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaCompanyDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MONGO_ID" property="mongoId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COMPANY_STATUS" property="companyStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MG_CATEGORY_TEXT" property="mgCategoryText" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,MONGO_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,COMPANY_NAME,VALID_STATUS,COMPANY_STATUS,MG_CATEGORY_TEXT
+    </sql>
+
+
+    <!--插入表:TA_COMPANY-->
+    <insert id="insert" >
+		INSERT INTO TA_COMPANY(
+		ID
+		,REMARK
+		,MONGO_ID
+		,ALTER_EMPL
+		,ALTER_TIME
+		,TIMESTAMP
+		,CREATE_EMPL
+		,CREATE_TIME
+		,COMPANY_NAME
+		,VALID_STATUS
+		,COMPANY_STATUS
+		)VALUES(
+		#{id,jdbcType=BIGINT}
+		, #{remark,jdbcType=VARCHAR}
+		, #{mongoId,jdbcType=VARCHAR}
+		, #{alterEmpl,jdbcType=BIGINT}
+		, #{alterTime,jdbcType=TIMESTAMP}
+		, #{timestamp,jdbcType=BIGINT}
+		, #{createEmpl,jdbcType=BIGINT}
+		, #{createTime,jdbcType=TIMESTAMP}
+		, #{companyName,jdbcType=VARCHAR}
+		, #{validStatus,jdbcType=INTEGER}
+		, #{companyStatus,jdbcType=VARCHAR}
+		)
+    </insert>
+
+    <!--更新表:TA_COMPANY-->
+    <update id="update" >
+		UPDATE /*MS-TA-COMPANY-UPDATE*/ TA_COMPANY
+		SET
+		REMARK = #{remark,jdbcType=VARCHAR}
+		,MONGO_ID = #{mongoId,jdbcType=VARCHAR}
+		,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+		,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+		,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+		,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+		,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		,COMPANY_NAME = #{companyName,jdbcType=VARCHAR}
+		,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+		,COMPANY_STATUS = #{companyStatus,jdbcType=VARCHAR}
+	
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_COMPANY-->
+    <delete id="deleteByPrimary" >
+		DELETE /*MS-TA-COMPANY-DELETEBYPRIMARY*/ FROM
+		TA_COMPANY
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+		SELECT /*MS-TA-COMPANY-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+		FROM TA_COMPANY
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取专业公司信息-->
+    <select id="getCompanyDetail" resultType="java.util.Map">
+		SELECT /*MS-TA-COMPANY-GETCOMPANYDETAIL*/ 
+		a.ID AS id
+		,a.CREATE_EMPL AS createEmpl
+		,a.CREATE_TIME AS createTime
+		,a.COMPANY_NAME AS companyName
+		,a.COMPANY_STATUS AS companyStatus
+		,a.REMARK AS remark
+		,b.ID AS emplId
+		,b.MAIL AS mail
+		,b.IS_ADMIN AS isAdmin
+		,b.PAPER_NO AS paperNo
+		,b.EMPL_NAME AS emplName
+		,b.USER_NAME AS userName
+		,b.MOBILE_TEL AS mobileTel
+		,b.EMPL_STATUS AS emplStatus
+		,b.PLATFORM_ID AS platformId
+		,b.PLATFORM_TYPE AS platformType,
+		c.EMPL_NAME createEmplName,
+		(SELECT /*MS-TA-COMPANY-GETCOMPANYDETAIL*/  GROUP_CONCAT(NAME) FROM tg_mg_category WHERE id in(SELECT /*MS-TA-COMPANY-GETCOMPANYDETAIL*/  MG_CATEGORY_ID FROM ta_company_mc_category where COMPANY_ID = a.ID)) mainCat
+		FROM TA_COMPANY a
+		LEFT JOIN TA_EMPL b
+		ON a.ID = b.PLATFORM_ID
+		LEFT JOIN TA_EMPL c
+		ON a.CREATE_EMPL = c.ID
+		WHERE a.ID = #{id,jdbcType=BIGINT} and b.PLATFORM_TYPE = 'COMPANYPLATFORM' and b.IS_ADMIN = 1 and
+		b.EMPL_STATUS = 'NORMAL'
+    </select>
+
+    <!--获取专业公司分页列表 pageCount-->
+    <select id="findCompanyPageCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ tg_mg_category WHERE id in(SELECT MG_CATEGORY_ID FROM ta_company_mc_category where COMPANY_ID = a.ID)) mainCat
+		FROM TA_COMPANY a
+		LEFT JOIN TA_EMPL b
+		ON a.ID = b.PLATFORM_ID
+		WHERE b.PLATFORM_TYPE = 'COMPANYPLATFORM' and b.IS_ADMIN = 1 and
+		b.EMPL_STATUS = 'NORMAL'
+		<if test="companyName != null">
+			AND a.COMPANY_NAME LIKE
+			CONCAT('%',(#{companyName,jdbcType=VARCHAR}),'%')
+		</if>
+		<if test="companyStatus != null">
+			AND a.COMPANY_STATUS = #{companyStatus,jdbcType=VARCHAR}
+		</if>
+		
+    </select>
+    <!--获取专业公司分页列表 pageResult-->
+    <select id="findCompanyPageResult"  resultType="java.util.Map">
+		SELECT /*MS-TA-COMPANY-FINDCOMPANYPAGE*/ 
+		a.ID AS id
+		,a.CREATE_EMPL AS createEmpl
+		,a.CREATE_TIME AS createTime
+		,a.COMPANY_NAME AS companyName
+		,a.COMPANY_STATUS AS companyStatus
+		,a.REMARK AS remark
+		,b.ID AS emplId
+		,b.MAIL AS mail
+		,b.IS_ADMIN AS isAdmin
+		,b.PAPER_NO AS paperNo
+		,b.EMPL_NAME AS emplName
+		,b.USER_NAME AS userName
+		,b.MOBILE_TEL AS mobileTel
+		,b.EMPL_STATUS AS emplStatus
+		,b.PLATFORM_ID AS platformId
+		,b.PLATFORM_TYPE AS platformType,
+		(SELECT /*MS-TA-COMPANY-FINDCOMPANYPAGE*/  GROUP_CONCAT(NAME) FROM tg_mg_category WHERE id in(SELECT /*MS-TA-COMPANY-FINDCOMPANYPAGE*/  MG_CATEGORY_ID FROM ta_company_mc_category where COMPANY_ID = a.ID)) mainCat
+		FROM TA_COMPANY a
+		LEFT JOIN TA_EMPL b
+		ON a.ID = b.PLATFORM_ID
+		WHERE b.PLATFORM_TYPE = 'COMPANYPLATFORM' and b.IS_ADMIN = 1 and
+		b.EMPL_STATUS = 'NORMAL'
+		<if test="companyName != null">
+			AND a.COMPANY_NAME LIKE
+			CONCAT('%',(#{companyName,jdbcType=VARCHAR}),'%')
+		</if>
+		<if test="companyStatus != null">
+			AND a.COMPANY_STATUS = #{companyStatus,jdbcType=VARCHAR}
+		</if>
+		ORDER BY a.CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--选择性更新表:TA_COMPANY-->
+    <update id="updateByPrimarySelective" >
+		UPDATE /*MS-TA-COMPANY-UPDATEBYPRIMARYSELECTIVE*/ TA_COMPANY
+		<set>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="alterEmpl != null">
+				ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="alterTime != null">
+				ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="timestamp != null">
+				TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+			</if>
+			<if test="createEmpl != null">
+				CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="companyName != null">
+				COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+			</if>
+			<if test="validStatus != null">
+				VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+			</if>
+			<if test="companyStatus != null">
+				COMPANY_STATUS = #{companyStatus,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getCompanyInfoByPrimary" resultType="java.util.Map">
+		SELECT /*MS-TA-COMPANY-GETCOMPANYINFOBYPRIMARY*/  a.COMPANY_NAME,a.COMPANY_STATUS,b.EMPL_NAME,b.MOBILE_TEL,b.MAIL ,a.CREATE_TIME FROM TA_EMPL b 
+		LEFT JOIN   TA_COMPANY a 
+		on  a.ID=b.PLATFORM_ID
+	 	AND
+		 b.PLATFORM_TYPE='COMPANYPLATFORM'
+	 	WHERE
+		a.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getCompanyCategory" resultType="String">
+		SELECT /*MS-TA-COMPANY-GETCOMPANYCATEGORY*/  A.`NAME` from   TA_COMPANY_MC_CATEGORY  b  
+		 LEFT JOIN TG_MG_CATEGORY a  on 
+		  b.MG_CATEGORY_ID = a.ID 
+		  WHERE 
+		  b.COMPANY_ID=#{companyId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+		SELECT /*MS-TA-COMPANY-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+		FROM TA_COMPANY
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getNameByPrimary" resultType="java.lang.String">
+		SELECT
+		COMPANY_NAME companyName
+		FROM TA_COMPANY
+		WHERE
+		ID = #{id,jdbcType=BIGINT}
+		AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键获取数据:TA_COMPANY-->
+    <select id="getAllCompanyInfo" resultType="java.util.Map">
+		SELECT
+		ID  id,
+		COMPANY_NAME companyName
+		FROM TA_COMPANY
+		WHERE
+		 VALID_STATUS = 1
+    </select>
+</mapper>

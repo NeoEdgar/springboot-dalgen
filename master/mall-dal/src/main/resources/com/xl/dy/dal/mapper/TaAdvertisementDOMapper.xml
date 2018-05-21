@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaAdvertisementDOMapper">
+    <!-- 自动生成,请修改 TA_ADVERTISEMENT.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaAdvertisementDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LINK_URL" property="linkUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="HTML_DATA" property="htmlData" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_DISPLAY" property="isDisplay" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PUTAWAY_TIME" property="putawayTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SOLDOUT_TIME" property="soldoutTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ADVERTISE_NAME" property="advertiseName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ADVERTISE_TYPE" property="advertiseType" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,MALL_ID,REMARK,LINK_URL,HTML_DATA,ALTER_EMPL,ALTER_TIME,IS_DISPLAY,TIMESTAMP,CREATE_EMPL,CREATE_TIME,PUTAWAY_TIME,SOLDOUT_TIME,VALID_STATUS,ADVERTISE_NAME,ADVERTISE_TYPE
+    </sql>
+
+
+    <!--插入表:TA_ADVERTISEMENT-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ADVERTISEMENT(
+            ID
+            ,INX
+            ,MALL_ID
+            ,REMARK
+            ,LINK_URL
+            ,HTML_DATA
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,IS_DISPLAY
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,PUTAWAY_TIME
+            ,SOLDOUT_TIME
+            ,VALID_STATUS
+            ,ADVERTISE_NAME
+            ,ADVERTISE_TYPE
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{linkUrl,jdbcType=VARCHAR}
+            , #{htmlData,jdbcType=LONGVARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{isDisplay,jdbcType=INTEGER}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{putawayTime,jdbcType=TIMESTAMP}
+            , #{soldoutTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{advertiseName,jdbcType=VARCHAR}
+            , #{advertiseType,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_ADVERTISEMENT-->
+    <update id="update" >
+        UPDATE /*MS-TA-ADVERTISEMENT-UPDATE*/ TA_ADVERTISEMENT
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,LINK_URL        = #{linkUrl,jdbcType=VARCHAR}
+            ,HTML_DATA       = #{htmlData,jdbcType=LONGVARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,IS_DISPLAY      = #{isDisplay,jdbcType=INTEGER}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,PUTAWAY_TIME    = #{putawayTime,jdbcType=TIMESTAMP}
+            ,SOLDOUT_TIME    = #{soldoutTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,ADVERTISE_NAME  = #{advertiseName,jdbcType=VARCHAR}
+            ,ADVERTISE_TYPE  = #{advertiseType,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_ADVERTISEMENT-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ADVERTISEMENT-DELETEBYPRIMARY*/ FROM
+            TA_ADVERTISEMENT
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_ADVERTISEMENT-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ADVERTISEMENT-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ADVERTISEMENT
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取Advertisement分页列表 pageCount-->
+    <select id="findAdvertisementPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ADVERTISEMENT
+        WHERE
+        ADVERTISE_TYPE  = #{advertiseType,jdbcType=VARCHAR}
+        <if test="mallId != null">
+            AND  MALL_ID         = #{mallId,jdbcType=BIGINT}
+        </if>
+        
+    </select>
+    <!--获取Advertisement分页列表 pageResult-->
+    <select id="findAdvertisementPageResult"  resultMap="BaseResultMap">
+        SELECT /*MS-TA-ADVERTISEMENT-FINDADVERTISEMENTPAGE*/  <include refid="Base_Column_List" /> FROM TA_ADVERTISEMENT
+        WHERE
+        ADVERTISE_TYPE  = #{advertiseType,jdbcType=VARCHAR}
+        <if test="mallId != null">
+            AND  MALL_ID         = #{mallId,jdbcType=BIGINT}
+        </if>
+        ORDER BY INX DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--更新表:TA_ADVERTISEMENT-->
+    <update id="updateByPrimarySelective" >
+        UPDATE /*MS-TA-ADVERTISEMENT-UPDATEBYPRIMARYSELECTIVE*/ TA_ADVERTISEMENT
+        <set>
+            <if test="inx != null ">
+                INX             = #{inx,jdbcType=INTEGER},
+            </if>
+            <if test="mallId != null ">
+                MALL_ID         = #{mallId,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null ">
+                REMARK          = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="linkUrl != null ">
+                LINK_URL        = #{linkUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="htmlData != null ">
+                HTML_DATA       = #{htmlData,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="advertiseName != null ">
+                ADVERTISE_NAME  = #{advertiseName,jdbcType=VARCHAR},
+            </if>
+            <if test="advertiseType != null ">
+                ADVERTISE_TYPE  = #{advertiseType,jdbcType=VARCHAR},
+            </if>
+            <if test="alterEmpl != null ">
+                ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime != null ">
+                ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDisplay != null ">
+                IS_DISPLAY      = #{isDisplay,jdbcType=INTEGER},
+            </if>
+            <if test="timestamp != null ">
+                TIMESTAMP       = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl != null ">
+                CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="putawayTime != null ">
+                PUTAWAY_TIME    = #{putawayTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="soldoutTime != null ">
+                SOLDOUT_TIME    = #{soldoutTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="validStatus != null ">
+                VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            </if>
+        </set>
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

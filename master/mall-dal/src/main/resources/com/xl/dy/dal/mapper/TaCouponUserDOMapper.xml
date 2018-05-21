@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaCouponUserDOMapper">
+    <!-- ???��????,请修?? TA_COUPON_USER.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaCouponUserDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="USER_ID" property="userId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="COUPON_ID" property="couponId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COUPON_USE_STATUS" property="couponUseStatus" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,USER_ID,COUPON_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,COUPON_USE_STATUS
+    </sql>
+
+
+    <!--插入表:TA_COUPON_USER-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_COUPON_USER(
+            ID
+            ,REMARK
+            ,USER_ID
+            ,COUPON_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,COUPON_USE_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{userId,jdbcType=BIGINT}
+            , #{couponId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{couponUseStatus,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_COUPON_USER-->
+    <update id="update" >
+        UPDATE /*MS-TA-COUPON-USER-UPDATE*/ TA_COUPON_USER
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,USER_ID         = #{userId,jdbcType=BIGINT}
+            ,COUPON_ID       = #{couponId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,COUPON_USE_STATUS = #{couponUseStatus,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_COUPON_USER-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-COUPON-USER-DELETEBYPRIMARY*/ FROM
+            TA_COUPON_USER
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_COUPON_USER-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COUPON-USER-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_COUPON_USER
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取领取的优惠券数量:TA_COUPON_USER-->
+    <select id="getUsesByPrimary" resultType="java.lang.Integer">
+        SELECT
+        COUNT(0)
+        FROM
+        TA_COUPON_USER
+        WHERE
+        COUPON_ID = #{couponId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取使用的优惠券数量:TA_COUPON_USER-->
+    <select id="getUsedByPrimary" resultType="java.lang.Integer">
+        SELECT
+        COUNT(0)
+        FROM
+        TA_COUPON_USER
+        WHERE
+        COUPON_ID = #{couponId,jdbcType=BIGINT}
+        AND COUPON_USE_STATUS ="UNUSED"
+    </select>
+
+    <!--获得主键:TA_COUPON_USER-->
+    <select id="getPrimaryIdByCouponId" resultType="java.lang.Long">
+        SELECT
+        ID id
+        FROM
+        TA_COUPON_USER
+        WHERE
+        COUPON_ID = #{couponId,jdbcType=BIGINT}
+    </select>
+</mapper>

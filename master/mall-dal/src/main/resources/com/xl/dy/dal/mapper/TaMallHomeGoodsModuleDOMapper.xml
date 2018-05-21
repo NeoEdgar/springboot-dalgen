@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaMallHomeGoodsModuleDOMapper">
+    <!-- ???��????,请修?? TA_MALL_HOME_GOODS_MODULE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaMallHomeGoodsModuleDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MODULE_INX" property="moduleInx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MODULE_NAME" property="moduleName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MALL_ID,REMARK,ALTER_EMPL,ALTER_TIME,MODULE_INX,TIMESTAMP,CREATE_EMPL,CREATE_TIME,MODULE_NAME,VALID_STATUS
+    </sql>
+
+
+    <!--???�表:TA_MALL_HOME_GOODS_MODULE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_MALL_HOME_GOODS_MODULE(
+            ID
+            ,MALL_ID
+            ,REMARK
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,MODULE_INX
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,MODULE_NAME
+            ,VALID_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{moduleInx,jdbcType=INTEGER}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{moduleName,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--?��?�表:TA_MALL_HOME_GOODS_MODULE-->
+    <update id="update" >
+        UPDATE /*MS-TA-MALL-HOME-GOODS-MODULE-UPDATE*/ TA_MALL_HOME_GOODS_MODULE
+        SET
+            MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,MODULE_INX      = #{moduleInx,jdbcType=INTEGER}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,MODULE_NAME     = #{moduleName,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_MALL_HOME_GOODS_MODULE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-MALL-HOME-GOODS-MODULE-DELETEBYPRIMARY*/ FROM
+            TA_MALL_HOME_GOODS_MODULE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_MALL_HOME_GOODS_MODULE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MALL-HOME-GOODS-MODULE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_MALL_HOME_GOODS_MODULE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--:TA_MALL_HOME_GOODS_MODULE-->
+    <select id="getModuleByMall" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MALL-HOME-GOODS-MODULE-GETMODULEBYMALL*/  <include refid="Base_Column_List" />
+        FROM TA_MALL_HOME_GOODS_MODULE
+        WHERE
+        MALL_ID = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

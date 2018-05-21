@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaOrderDOMapper">
+    <!-- 自动生成,请修改 TA_ORDER.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaOrderDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VIP_ID" property="vipId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="LOGI_ID" property="logiId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="PAY_AMT" property="payAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SQ_CODE" property="sqCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VIP_MSG" property="vipMsg" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GROUP_ID" property="groupId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_POINT" property="isPoint" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="R_LOGI_ID" property="rLogiId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VIP_NAME" property="vipName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="AL_PAY_AMT" property="alPayAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COUPON_ID" property="couponId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_CANVER" property="isCanver" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_COUPON" property="isCoupon" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_REFUND" property="isRefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MALL_NAME" property="mallName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MALL_TYPE" property="mallType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAR_VALUE" property="parValue" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="POINT_AMT" property="pointAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="FAM_MEM_NUM" property="famMemNum" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_INVOICE" property="isInvoice" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MOBILE_TEL" property="mobileTel" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_CODE" property="orderCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TRACK_CODE" property="trackCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MALL_STATUS" property="mallStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAY_COM_TIME" property="payComTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PAY_DISC_AMT" property="payDiscAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="R_TRACK_CODE" property="rTrackCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REFUND_TYPE" property="refundType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SEND_ADDR_ID" property="sendAddrId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="AL_REFUND_AMT" property="alRefundAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_TYPE" property="invoiceType" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_FAMILY_VIP" property="isFamilyVip" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MALL_MONGO_ID" property="mallMongoId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_STATUS" property="orderStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAY_MODE_JSON" property="payModeJson" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PAY_TOTAL_AMT" property="payTotalAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="REFUND_CAUSE" property="refundCause" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SALE_UNIT_AFF" property="saleUnitAff" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_MONGO_ID" property="shopMongoId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="USER_GROUP_ID" property="userGroupId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CONSUME_POINT" property="consumePoint" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COUPON_USER_ID" property="couponUserId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DY_VIP_LEVEL_ID" property="dyVipLevelId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="FIRST_PAY_TIME" property="firstPayTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GET_GOODS_MODE" property="getGoodsMode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_TITLE" property="invoiceTitle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_COM_TIME" property="orderComTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ORDER_FUNDS_ID" property="orderFundsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ORI_ORDER_CODE" property="oriOrderCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="RECIVE_ADDR_ID" property="reciveAddrId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REFUND_ADDR_ID" property="refundAddrId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DEPOSIT_PAY_AMT" property="depositPayAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="INVOICE_BANK_NO" property="invoiceBankNo" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LAST_PARAGRAPH" property="lastParagraph" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="PAY_POSTAGE_AMT" property="payPostageAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COMPANY_MONGO_ID" property="companyMongoId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="DY_VIP_LEVEL_NAME" property="dyVipLevelName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_EXISTS_REFUND" property="isExistsRefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="INVOICE_BANK_NAME" property="invoiceBankName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ISMALLAGRREFUND" property="ismallagrrefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ISSHOPAGRREFUND" property="isshopagrrefund" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SQ_SHIPPER_EMPL_ID" property="sqShipperEmplId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="EVALUATION_STATUS" property="evaluationStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_TAXPAYER_NO" property="invoiceTaxpayerNo" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ORDER_REFUND_STATUS" property="orderRefundStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SQ_SHIPPER_EMPL_NAME" property="sqShipperEmplName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_REGISTERED_TEL" property="invoiceRegisteredTel" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_REGISTERED_UNIT" property="invoiceRegisteredUnit" jdbcType="VARCHAR" javaType="String"/>
+        <result column="INVOICE_REGISTERED_ADDRESS" property="invoiceRegisteredAddress" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,VIP_ID,LOGI_ID,MALL_ID,PAY_AMT,REMARK,SHOP_ID,SQ_CODE,VIP_MSG,GROUP_ID,IS_POINT,R_LOGI_ID,VIP_NAME,AL_PAY_AMT,COUPON_ID,IS_CANVER,IS_COUPON,IS_REFUND,MALL_NAME,MALL_TYPE,PAR_VALUE,POINT_AMT,SHOP_NAME,ALTER_EMPL,ALTER_TIME,COMPANY_ID,FAM_MEM_NUM,IS_INVOICE,MOBILE_TEL,ORDER_CODE,ORDER_TYPE,PAY_STATUS,TIMESTAMP,TRACK_CODE,CREATE_EMPL,CREATE_TIME,MALL_STATUS,PAY_COM_TIME,PAY_DISC_AMT,R_TRACK_CODE,REFUND_TYPE,SEND_ADDR_ID,AL_REFUND_AMT,COMPANY_NAME,INVOICE_TYPE,IS_FAMILY_VIP,MALL_MONGO_ID,ORDER_STATUS,PAY_MODE_JSON,PAY_TOTAL_AMT,REFUND_CAUSE,SALE_UNIT_AFF,SHOP_MONGO_ID,USER_GROUP_ID,VALID_STATUS,CONSUME_POINT,COUPON_USER_ID,DY_VIP_LEVEL_ID,FIRST_PAY_TIME,GET_GOODS_MODE,INVOICE_TITLE,ORDER_COM_TIME,ORDER_FUNDS_ID,ORI_ORDER_CODE,RECIVE_ADDR_ID,REFUND_ADDR_ID,DEPOSIT_PAY_AMT,INVOICE_BANK_NO,LAST_PARAGRAPH,PAY_POSTAGE_AMT,COMPANY_MONGO_ID,DY_VIP_LEVEL_NAME,IS_EXISTS_REFUND,INVOICE_BANK_NAME,ISMALLAGRREFUND,ISSHOPAGRREFUND,SQ_SHIPPER_EMPL_ID,EVALUATION_STATUS,INVOICE_TAXPAYER_NO,ORDER_REFUND_STATUS,SQ_SHIPPER_EMPL_NAME,INVOICE_REGISTERED_TEL,INVOICE_REGISTERED_UNIT,INVOICE_REGISTERED_ADDRESS
+    </sql>
+
+
+    <!--???�表:TA_ORDER-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ORDER(
+            ID
+            ,ADDR
+            ,VIP_ID
+            ,CITY_ID
+            ,LOGI_ID
+            ,MALL_ID
+            ,PAY_AMT
+            ,REMARK
+            ,SHOP_ID
+            ,SQ_CODE
+            ,VIP_MSG
+            ,VIP_NAME
+            ,AL_PAY_AMT
+            ,CITY_NAME
+            ,IS_CANVER
+            ,IS_REFUND
+            ,MALL_NAME
+            ,MALL_TYPE
+            ,POINT_AMT
+            ,SHOP_NAME
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,COMPANY_ID
+            ,FAM_MEM_NUM
+            ,IS_INVOICE
+            ,MOBILE_TEL
+            ,ORDER_CODE
+            ,ORDER_TYPE
+            ,PAY_STATUS
+            ,TIMESTAMP
+            ,TRACK_CODE
+            ,TRACK_TIME
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,DISTRICT_ID
+            ,MALL_STATUS
+            ,PAY_COM_TIME
+            ,PAY_DISC_AMT
+            ,PROVINCE_ID
+            ,AL_REFUND_AMT
+            ,COMPANY_NAME
+            ,INVOICE_TYPE
+            ,IS_FAMILY_VIP
+            ,MALL_MONGO_ID
+            ,ORDER_STATUS
+            ,PAY_MODE_JSON
+            ,PAY_TOTAL_AMT
+            ,REFUND_CAUSE
+            ,SALE_UNIT_AFF
+            ,SHOP_MONGO_ID
+            ,CONSUME_POINT
+            ,DISTRICT_NAME
+            ,DY_VIP_LEVEL_ID
+            ,FIRST_PAY_TIME
+            ,GET_GOODS_MODE
+            ,INVOICE_TITLE
+            ,ORDER_FUNDS_ID
+            ,ORI_ORDER_CODE
+            ,PROVINCE_NAME
+            ,SUBDISTICT_ID
+            ,INVOICE_BANK_NO
+            ,PAY_POSTAGE_AMT
+            ,RECEI_EMPL_NAME
+            ,COMPANY_MONGO_ID
+            ,DY_VIP_LEVEL_NAME
+            ,IS_EXISTS_REFUND
+            ,ORDER_CLOSE_TIME
+            ,PICKUP_LOCATION
+            ,RECEI_MOBILE_TEL
+            ,SUBDISTICT_NAME
+            ,INVOICE_BANK_NAME
+            ,SQ_SHIPPER_EMPL_ID
+            ,EVALUATION_STATUS
+            ,INVOICE_TAXPAYER_NO
+            ,SQ_SHIPPER_EMPL_NAME
+            ,SQ_SHIPPER_MOBILE_TEL
+            ,INVOICE_REGISTERED_TEL
+            ,SHOP_PICKUP_LOCATION_ID
+            ,INVOICE_REGISTERED_UNIT
+            ,INVOICE_REGISTERED_ADDRESS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{addr,jdbcType=VARCHAR}
+            , #{vipId,jdbcType=BIGINT}
+            , #{cityId,jdbcType=BIGINT}
+            , #{logiId,jdbcType=BIGINT}
+            , #{mallId,jdbcType=BIGINT}
+            , #{payAmt,jdbcType=DECIMAL}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{sqCode,jdbcType=VARCHAR}
+            , #{vipMsg,jdbcType=VARCHAR}
+            , #{vipName,jdbcType=VARCHAR}
+            , #{alPayAmt,jdbcType=DECIMAL}
+            , #{cityName,jdbcType=VARCHAR}
+            , #{isCanver,jdbcType=INTEGER}
+            , #{isRefund,jdbcType=INTEGER}
+            , #{mallName,jdbcType=VARCHAR}
+            , #{mallType,jdbcType=VARCHAR}
+            , #{pointAmt,jdbcType=DECIMAL}
+            , #{shopName,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{companyId,jdbcType=BIGINT}
+            , #{famMemNum,jdbcType=INTEGER}
+            , #{isInvoice,jdbcType=INTEGER}
+            , #{mobileTel,jdbcType=VARCHAR}
+            , #{orderCode,jdbcType=VARCHAR}
+            , #{orderType,jdbcType=VARCHAR}
+            , #{payStatus,jdbcType=VARCHAR}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{trackCode,jdbcType=VARCHAR}
+            , #{trackTime,jdbcType=TIMESTAMP}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{districtId,jdbcType=BIGINT}
+            , #{mallStatus,jdbcType=VARCHAR}
+            , #{payComTime,jdbcType=TIMESTAMP}
+            , #{payDiscAmt,jdbcType=DECIMAL}
+            , #{provinceId,jdbcType=BIGINT}
+            , #{alRefundAmt,jdbcType=DECIMAL}
+            , #{companyName,jdbcType=VARCHAR}
+            , #{invoiceType,jdbcType=INTEGER}
+            , #{isFamilyVip,jdbcType=INTEGER}
+            , #{mallMongoId,jdbcType=VARCHAR}
+            , #{orderStatus,jdbcType=VARCHAR}
+            , #{payModeJson,jdbcType=VARCHAR}
+            , #{payTotalAmt,jdbcType=DECIMAL}
+            , #{refundCause,jdbcType=VARCHAR}
+            , #{saleUnitAff,jdbcType=VARCHAR}
+            , #{shopMongoId,jdbcType=VARCHAR}
+            , #{consumePoint,jdbcType=DECIMAL}
+            , #{districtName,jdbcType=VARCHAR}
+            , #{dyVipLevelId,jdbcType=BIGINT}
+            , #{firstPayTime,jdbcType=TIMESTAMP}
+            , #{getGoodsMode,jdbcType=VARCHAR}
+            , #{invoiceTitle,jdbcType=VARCHAR}
+            , #{orderFundsId,jdbcType=BIGINT}
+            , #{oriOrderCode,jdbcType=VARCHAR}
+            , #{provinceName,jdbcType=VARCHAR}
+            , #{subdistictId,jdbcType=BIGINT}
+            , #{invoiceBankNo,jdbcType=VARCHAR}
+            , #{payPostageAmt,jdbcType=DECIMAL}
+            , #{receiEmplName,jdbcType=VARCHAR}
+            , #{companyMongoId,jdbcType=VARCHAR}
+            , #{dyVipLevelName,jdbcType=VARCHAR}
+            , #{isExistsRefund,jdbcType=INTEGER}
+            , #{orderCloseTime,jdbcType=TIMESTAMP}
+            , #{pickupLocation,jdbcType=VARCHAR}
+            , #{receiMobileTel,jdbcType=VARCHAR}
+            , #{subdistictName,jdbcType=VARCHAR}
+            , #{invoiceBankName,jdbcType=VARCHAR}
+            , #{sqShipperEmplId,jdbcType=BIGINT}
+            , #{evaluationStatus,jdbcType=VARCHAR}
+            , #{invoiceTaxpayerNo,jdbcType=VARCHAR}
+            , #{sqShipperEmplName,jdbcType=VARCHAR}
+            , #{sqShipperMobileTel,jdbcType=VARCHAR}
+            , #{invoiceRegisteredTel,jdbcType=VARCHAR}
+            , #{shopPickupLocationId,jdbcType=BIGINT}
+            , #{invoiceRegisteredUnit,jdbcType=VARCHAR}
+            , #{invoiceRegisteredAddress,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ORDER-->
+    <update id="update" >
+        UPDATE /*MS-TA-ORDER-UPDATE*/ TA_ORDER
+        SET
+            ADDR            = #{addr,jdbcType=VARCHAR}
+            ,VIP_ID          = #{vipId,jdbcType=BIGINT}
+            ,CITY_ID         = #{cityId,jdbcType=BIGINT}
+            ,LOGI_ID         = #{logiId,jdbcType=BIGINT}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,PAY_AMT         = #{payAmt,jdbcType=DECIMAL}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,SQ_CODE         = #{sqCode,jdbcType=VARCHAR}
+            ,VIP_MSG         = #{vipMsg,jdbcType=VARCHAR}
+            ,VIP_NAME        = #{vipName,jdbcType=VARCHAR}
+            ,AL_PAY_AMT      = #{alPayAmt,jdbcType=DECIMAL}
+            ,CITY_NAME       = #{cityName,jdbcType=VARCHAR}
+            ,IS_CANVER       = #{isCanver,jdbcType=INTEGER}
+            ,IS_REFUND       = #{isRefund,jdbcType=INTEGER}
+            ,MALL_NAME       = #{mallName,jdbcType=VARCHAR}
+            ,MALL_TYPE       = #{mallType,jdbcType=VARCHAR}
+            ,POINT_AMT       = #{pointAmt,jdbcType=DECIMAL}
+            ,SHOP_NAME       = #{shopName,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,COMPANY_ID      = #{companyId,jdbcType=BIGINT}
+            ,FAM_MEM_NUM     = #{famMemNum,jdbcType=INTEGER}
+            ,IS_INVOICE      = #{isInvoice,jdbcType=INTEGER}
+            ,MOBILE_TEL      = #{mobileTel,jdbcType=VARCHAR}
+            ,ORDER_CODE      = #{orderCode,jdbcType=VARCHAR}
+            ,ORDER_TYPE      = #{orderType,jdbcType=VARCHAR}
+            ,PAY_STATUS      = #{payStatus,jdbcType=VARCHAR}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,TRACK_CODE      = #{trackCode,jdbcType=VARCHAR}
+            ,TRACK_TIME      = #{trackTime,jdbcType=TIMESTAMP}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,DISTRICT_ID     = #{districtId,jdbcType=BIGINT}
+            ,MALL_STATUS     = #{mallStatus,jdbcType=VARCHAR}
+            ,PAY_COM_TIME    = #{payComTime,jdbcType=TIMESTAMP}
+            ,PAY_DISC_AMT    = #{payDiscAmt,jdbcType=DECIMAL}
+            ,PROVINCE_ID     = #{provinceId,jdbcType=BIGINT}
+            ,AL_REFUND_AMT   = #{alRefundAmt,jdbcType=DECIMAL}
+            ,COMPANY_NAME    = #{companyName,jdbcType=VARCHAR}
+            ,INVOICE_TYPE    = #{invoiceType,jdbcType=INTEGER}
+            ,IS_FAMILY_VIP   = #{isFamilyVip,jdbcType=INTEGER}
+            ,MALL_MONGO_ID   = #{mallMongoId,jdbcType=VARCHAR}
+            ,ORDER_STATUS    = #{orderStatus,jdbcType=VARCHAR}
+            ,PAY_MODE_JSON   = #{payModeJson,jdbcType=VARCHAR}
+            ,PAY_TOTAL_AMT   = #{payTotalAmt,jdbcType=DECIMAL}
+            ,REFUND_CAUSE    = #{refundCause,jdbcType=VARCHAR}
+            ,SALE_UNIT_AFF   = #{saleUnitAff,jdbcType=VARCHAR}
+            ,SHOP_MONGO_ID   = #{shopMongoId,jdbcType=VARCHAR}
+            ,CONSUME_POINT   = #{consumePoint,jdbcType=DECIMAL}
+            ,DISTRICT_NAME   = #{districtName,jdbcType=VARCHAR}
+            ,DY_VIP_LEVEL_ID = #{dyVipLevelId,jdbcType=BIGINT}
+            ,FIRST_PAY_TIME  = #{firstPayTime,jdbcType=TIMESTAMP}
+            ,GET_GOODS_MODE  = #{getGoodsMode,jdbcType=VARCHAR}
+            ,INVOICE_TITLE   = #{invoiceTitle,jdbcType=VARCHAR}
+            ,ORDER_FUNDS_ID  = #{orderFundsId,jdbcType=BIGINT}
+            ,ORI_ORDER_CODE  = #{oriOrderCode,jdbcType=VARCHAR}
+            ,PROVINCE_NAME   = #{provinceName,jdbcType=VARCHAR}
+            ,SUBDISTICT_ID   = #{subdistictId,jdbcType=BIGINT}
+            ,INVOICE_BANK_NO = #{invoiceBankNo,jdbcType=VARCHAR}
+            ,PAY_POSTAGE_AMT = #{payPostageAmt,jdbcType=DECIMAL}
+            ,RECEI_EMPL_NAME = #{receiEmplName,jdbcType=VARCHAR}
+            ,COMPANY_MONGO_ID = #{companyMongoId,jdbcType=VARCHAR}
+            ,DY_VIP_LEVEL_NAME = #{dyVipLevelName,jdbcType=VARCHAR}
+            ,IS_EXISTS_REFUND = #{isExistsRefund,jdbcType=INTEGER}
+            ,ORDER_CLOSE_TIME = #{orderCloseTime,jdbcType=TIMESTAMP}
+            ,PICKUP_LOCATION = #{pickupLocation,jdbcType=VARCHAR}
+            ,RECEI_MOBILE_TEL = #{receiMobileTel,jdbcType=VARCHAR}
+            ,SUBDISTICT_NAME = #{subdistictName,jdbcType=VARCHAR}
+            ,INVOICE_BANK_NAME = #{invoiceBankName,jdbcType=VARCHAR}
+            ,SQ_SHIPPER_EMPL_ID = #{sqShipperEmplId,jdbcType=BIGINT}
+            ,EVALUATION_STATUS = #{evaluationStatus,jdbcType=VARCHAR}
+            ,INVOICE_TAXPAYER_NO = #{invoiceTaxpayerNo,jdbcType=VARCHAR}
+            ,SQ_SHIPPER_EMPL_NAME = #{sqShipperEmplName,jdbcType=VARCHAR}
+            ,SQ_SHIPPER_MOBILE_TEL = #{sqShipperMobileTel,jdbcType=VARCHAR}
+            ,INVOICE_REGISTERED_TEL = #{invoiceRegisteredTel,jdbcType=VARCHAR}
+            ,SHOP_PICKUP_LOCATION_ID = #{shopPickupLocationId,jdbcType=BIGINT}
+            ,INVOICE_REGISTERED_UNIT = #{invoiceRegisteredUnit,jdbcType=VARCHAR}
+            ,INVOICE_REGISTERED_ADDRESS = #{invoiceRegisteredAddress,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ORDER-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ORDER-DELETEBYPRIMARY*/ FROM
+            TA_ORDER
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ORDER-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ORDER-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ORDER
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获取优惠卷订单列表:TA_ORDER-->
+    <select id="getshopCouponOrder" resultType="java.util.Map">
+        SELECT
+        b.VIP_NAME vipName,
+        b.MOBILE_TEL mobiletel,
+        b.PAY_TOTAL_AMT payTotalAmt,
+        b.CREATE_TIME orderTime
+        FROM
+        ta_order_disc_list a
+        LEFT JOIN TA_ORDER b ON a.ORDER_ID = b.ID
+        WHERE
+        a.COUPON_USER_ID = #{couponUserId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据ShopId获取不同类型的订单:TA_ORDER pageCount-->
+    <select id="getShopOrderListCount"  resultType="int">
+		SELECT
+          COUNT(*) AS total 
+        FROM
+ TA_ORDER WHERE ORDER_TYPE = #{orderType,jdbcType=VARCHAR}
+		AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="evaluationStatus != null and evaluationStatus != '' ">
+			AND EVALUATION_STATUS =
+			#{evaluationStatus,jdbcType=VARCHAR}
+		</if>
+		
+    </select>
+    <!--根据ShopId获取不同类型的订单:TA_ORDER pageResult-->
+    <select id="getShopOrderListResult"  resultType="java.util.Map">
+		SELECT /*MS-TA-ORDER-GETSHOPORDERLIST*/  ID id,VIP_NAME vipName,ORDER_STATUS
+		orderStatus,ORDER_REFUND_STATUS orderRefundStatus,PAY_AMT
+		payAmt,CREATE_TIME createTime FROM TA_ORDER WHERE ORDER_TYPE = #{orderType,jdbcType=VARCHAR}
+		AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+		<if test="orderStatus != null and orderStatus != '' ">
+			AND ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR}
+		</if>
+		<if test="evaluationStatus != null and evaluationStatus != '' ">
+			AND EVALUATION_STATUS =
+			#{evaluationStatus,jdbcType=VARCHAR}
+		</if>
+		ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

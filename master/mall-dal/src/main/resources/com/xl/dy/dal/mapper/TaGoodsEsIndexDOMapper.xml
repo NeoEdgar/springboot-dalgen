@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaGoodsEsIndexDOMapper">
+    <!-- 自动生成,请修改 TA_GOODS_ES_INDEX.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaGoodsEsIndexDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ES_ID" property="esId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="PRICE" property="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SHOP_SCORE" property="shopScore" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CATEGORY_ID" property="categoryId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_HAVE_STORE" property="isHaveStore" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CATEGORY_NAME" property="categoryName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_FAMILY_ONLY" property="isFamilyOnly" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="PAY_MAN_COUNTS" property="payManCounts" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_PHOTO_URL" property="shopPhotoUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_GOODS_NAME" property="shopGoodsName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="IS_MARKETING_ACTIVITIES" property="isMarketingActivities" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MARKETING_ACTIVITIES_LIST" property="marketingActivitiesList" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,ES_ID,PRICE,REMARK,SHOP_ID,GOODS_ID,SHOP_NAME,ALTER_EMPL,ALTER_TIME,SHOP_SCORE,TIMESTAMP,CATEGORY_ID,CREATE_EMPL,CREATE_TIME,IS_HAVE_STORE,VALID_STATUS,CATEGORY_NAME,IS_FAMILY_ONLY,PAY_MAN_COUNTS,SHOP_PHOTO_URL,SHOP_GOODS_NAME,IS_MARKETING_ACTIVITIES,MARKETING_ACTIVITIES_LIST
+    </sql>
+
+
+    <!--插入表:TA_GOODS_ES_INDEX-->
+    <insert id="insert" >
+        INSERT INTO TA_GOODS_ES_INDEX(
+        ID
+        ,ES_ID
+        ,PRICE
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,SHOP_NAME
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,SHOP_SCORE
+        ,TIMESTAMP
+        ,CATEGORY_ID
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,IS_HAVE_STORE
+        ,VALID_STATUS
+        ,CATEGORY_NAME
+        ,IS_FAMILY_ONLY
+        ,PAY_MAN_COUNTS
+        ,SHOP_PHOTO_URL
+        ,SHOP_GOODS_NAME
+        ,IS_MARKETING_ACTIVITIES
+        ,MARKETING_ACTIVITIES_LIST
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{esId,jdbcType=VARCHAR}
+        , #{price,jdbcType=DECIMAL}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=VARCHAR}
+        , #{goodsId,jdbcType=VARCHAR}
+        , #{shopName,jdbcType=VARCHAR}
+        , #{alterEmpl,jdbcType=VARCHAR}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{shopScore,jdbcType=DECIMAL}
+        , #{timestamp,jdbcType=VARCHAR}
+        , #{categoryId,jdbcType=VARCHAR}
+        , #{createEmpl,jdbcType=VARCHAR}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{isHaveStore,jdbcType=INTEGER}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{categoryName,jdbcType=VARCHAR}
+        , #{isFamilyOnly,jdbcType=INTEGER}
+        , #{payManCounts,jdbcType=VARCHAR}
+        , #{shopPhotoUrl,jdbcType=VARCHAR}
+        , #{shopGoodsName,jdbcType=VARCHAR}
+        , #{isMarketingActivities,jdbcType=INTEGER}
+        , #{marketingActivitiesList,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_GOODS_ES_INDEX-->
+    <update id="update" >
+        UPDATE /*MS-TA-GOODS-ES-INDEX-UPDATE*/ TA_GOODS_ES_INDEX
+        SET
+        ES_ID           = #{esId,jdbcType=VARCHAR}
+        ,PRICE           = #{price,jdbcType=DECIMAL}
+        ,REMARK          = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID         = #{shopId,jdbcType=VARCHAR}
+        ,GOODS_ID        = #{goodsId,jdbcType=VARCHAR}
+        ,SHOP_NAME       = #{shopName,jdbcType=VARCHAR}
+        ,ALTER_EMPL      = #{alterEmpl,jdbcType=VARCHAR}
+        ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+        ,SHOP_SCORE      = #{shopScore,jdbcType=DECIMAL}
+        ,TIMESTAMP       = #{timestamp,jdbcType=VARCHAR}
+        ,CATEGORY_ID     = #{categoryId,jdbcType=VARCHAR}
+        ,CREATE_EMPL     = #{createEmpl,jdbcType=VARCHAR}
+        ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+        ,IS_HAVE_STORE   = #{isHaveStore,jdbcType=INTEGER}
+        ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+        ,CATEGORY_NAME   = #{categoryName,jdbcType=VARCHAR}
+        ,IS_FAMILY_ONLY  = #{isFamilyOnly,jdbcType=INTEGER}
+        ,PAY_MAN_COUNTS  = #{payManCounts,jdbcType=VARCHAR}
+        ,SHOP_PHOTO_URL  = #{shopPhotoUrl,jdbcType=VARCHAR}
+        ,SHOP_GOODS_NAME = #{shopGoodsName,jdbcType=VARCHAR}
+        ,IS_MARKETING_ACTIVITIES = #{isMarketingActivities,jdbcType=INTEGER}
+        ,MARKETING_ACTIVITIES_LIST = #{marketingActivitiesList,jdbcType=VARCHAR}
+        WHERE
+        ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_GOODS_ES_INDEX-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-GOODS-ES-INDEX-DELETEBYPRIMARY*/ FROM
+        TA_GOODS_ES_INDEX
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_GOODS_ES_INDEX-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-ES-INDEX-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_ES_INDEX
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TA_GOODS_ES_INDEX-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-GOODS-ES-INDEX-UPDATESELECTIVE*/ TA_GOODS_ES_INDEX
+        <set>
+            <if test="esId!=null"> ES_ID = #{esId,jdbcType=VARCHAR},</if>
+            <if test="price!=null">PRICE = #{price,jdbcType=DECIMAL},</if>
+            <if test="remark!=null and remark != ''">REMARK = #{remark,jdbcType=VARCHAR},</if>
+            <if test="shopId!=null">SHOP_ID = #{shopId,jdbcType=VARCHAR},</if>
+            <if test="goodsId!=null">GOODS_ID = #{goodsId,jdbcType=VARCHAR},</if>
+            <if test="shopName!=null and shopName != ''">SHOP_NAME = #{shopName,jdbcType=VARCHAR},</if>
+            <if test="alterEmpl!=null">ALTER_EMPL = #{alterEmpl,jdbcType=VARCHAR},</if>
+            <if test="alterTime!=null">ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},</if>
+            <if test="shopScore!=null">SHOP_SCORE = #{shopScore,jdbcType=DECIMAL},</if>
+            <if test="timestamp!=null">TIMESTAMP = #{timestamp,jdbcType=VARCHAR},</if>
+            <if test="categoryId!=null and categoryId != ''">categoryId = #{categoryId,jdbcType=VARCHAR},</if>
+            <if test="createEmpl!=null">CREATE_EMPL = #{createEmpl,jdbcType=VARCHAR},</if>
+            <if test="createTime!=null">CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="isHaveStore!=null">IS_HAVE_STORE = #{isHaveStore,jdbcType=INTEGER},</if>
+            <if test="validStatus!=null">VALID_STATUS = #{validStatus,jdbcType=INTEGER},</if>
+            <if test="categoryName!=null and categoryName != ''">CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},</if>
+            <if test="isFamilyOnly!=null">IS_FAMILY_ONLY = #{isFamilyOnly,jdbcType=INTEGER},</if>
+            <if test="payManCounts!=null">PAY_MAN_COUNTS = #{payManCounts,jdbcType=VARCHAR},</if>
+            <if test="shopPhotoUrl!=null and shopPhotoUrl != ''">SHOP_PHOTO_URL = #{shopPhotoUrl,jdbcType=VARCHAR},</if>
+            <if test="shopGoodsName!=null and shopGoodsName != ''">SHOP_GOODS_NAME = #{shopGoodsName,jdbcType=VARCHAR},</if>
+            <if test="shopPhotoUrl!=null">IS_MARKETING_ACTIVITIES = #{isMarketingActivities,jdbcType=INTEGER},</if>
+            <if test="marketingActivitiesList!=null and marketingActivitiesList != ''">MARKETING_ACTIVITIES_LIST = #{marketingActivitiesList,jdbcType=VARCHAR},</if>
+        </set>
+        <where>
+            <if test="id!=null">ID = #{id,jdbcType=BIGINT}</if>
+            <if test="esId!=null">AND ES_ID = #{esId,jdbcType=VARCHAR}</if>
+            <if test="shopId!=null">AND SHOP_ID = #{shopId,jdbcType=VARCHAR}</if>
+            <if test="goodsId!=null">AND GOODS_ID = #{goodsId,jdbcType=VARCHAR}</if>
+        </where>
+    </update>
+
+    <!--根据条件获取数据:TA_GOODS_ES_INDEX-->
+    <select id="getBySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-ES-INDEX-GETBYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_ES_INDEX
+        <where>
+            <if test="id!=null">  ID = #{id,jdbcType=BIGINT}</if>
+            <if test="esId!=null"> AND ES_ID = #{esId,jdbcType=VARCHAR}</if>
+            <if test="shopId!=null"> AND SHOP_ID = #{shopId,jdbcType=VARCHAR}</if>
+            <if test="goodsId!=null">AND GOODS_ID = #{goodsId,jdbcType=VARCHAR}</if>
+        </where>
+    </select>
+
+    <!--根据条件删除数据:TA_GOODS_ES_INDEX-->
+    <delete id="deleteBySelective" >
+        DELETE /*MS-TA-GOODS-ES-INDEX-DELETEBYSELECTIVE*/ FROM
+        TA_GOODS_ES_INDEX
+        <where>
+            <if test="id!=null">  ID = #{id,jdbcType=BIGINT}</if>
+            <if test="esId!=null"> AND ES_ID = #{esId,jdbcType=VARCHAR}</if>
+            <if test="shopId!=null"> AND SHOP_ID = #{shopId,jdbcType=VARCHAR}</if>
+            <if test="goodsId!=null">AND GOODS_ID = #{goodsId,jdbcType=VARCHAR}</if>
+        </where>
+    </delete>
+
+    <!--根据条件获取数据:TA_GOODS_ES_INDEX-->
+    <select id="getBatchBySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-GOODS-ES-INDEX-GETBATCHBYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_GOODS_ES_INDEX
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=VARCHAR}
+    </select>
+</mapper>

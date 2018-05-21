@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaMallHomeShopDOMapper">
+    <!-- ???��????,请修?? TA_MALL_HOME_SHOP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaMallHomeShopDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="BRAND" property="brand" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="END_TIME" property="endTime" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="PHOTO_URL" property="photoUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="START_TIME" property="startTime" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_NAME" property="createName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SHOW_STATUS" property="showStatus" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="INTRODUCTION" property="introduction" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,INX,BRAND,MALL_ID,REMARK,SHOP_ID,END_TIME,PHOTO_URL,ALTER_EMPL,ALTER_TIME,START_TIME,TIMESTAMP,CREATE_EMPL,CREATE_NAME,CREATE_TIME,SHOW_STATUS,VALID_STATUS,INTRODUCTION
+    </sql>
+
+
+    <!--???�表:TA_MALL_HOME_SHOP-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_MALL_HOME_SHOP(
+            ID
+            ,INX
+            ,BRAND
+            ,MALL_ID
+            ,REMARK
+            ,SHOP_ID
+            ,END_TIME
+            ,PHOTO_URL
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,START_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_NAME
+            ,CREATE_TIME
+            ,SHOW_STATUS
+            ,VALID_STATUS
+            ,INTRODUCTION
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{brand,jdbcType=VARCHAR}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{endTime,jdbcType=DATE}
+            , #{photoUrl,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{startTime,jdbcType=DATE}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createName,jdbcType=VARCHAR}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{showStatus,jdbcType=VARCHAR}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{introduction,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_MALL_HOME_SHOP-->
+    <update id="update" >
+        UPDATE /*MS-TA-MALL-HOME-SHOP-UPDATE*/ TA_MALL_HOME_SHOP
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,BRAND           = #{brand,jdbcType=VARCHAR}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,END_TIME        = #{endTime,jdbcType=DATE}
+            ,PHOTO_URL       = #{photoUrl,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,START_TIME      = #{startTime,jdbcType=DATE}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_NAME     = #{createName,jdbcType=VARCHAR}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,SHOW_STATUS     = #{showStatus,jdbcType=VARCHAR}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,INTRODUCTION    = #{introduction,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_MALL_HOME_SHOP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-MALL-HOME-SHOP-DELETEBYPRIMARY*/ FROM
+            TA_MALL_HOME_SHOP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_MALL_HOME_SHOP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-MALL-HOME-SHOP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_MALL_HOME_SHOP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--获得商场首页商品管理:TA_MALL_HOME_SHOP pageCount-->
+    <select id="getHomeShopByMallCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        TA_MALL_HOME_SHOP
+        WHERE
+        MALL_ID = #{mallId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+        
+    </select>
+    <!--获得商场首页商品管理:TA_MALL_HOME_SHOP pageResult-->
+    <select id="getHomeShopByMallResult"  resultType="java.util.Map">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        TA_MALL_HOME_SHOP
+        WHERE
+        MALL_ID = #{mallId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+        ORDER BY INX DESC
+        limit #{startRow},#{limit}
+    </select>
+</mapper>

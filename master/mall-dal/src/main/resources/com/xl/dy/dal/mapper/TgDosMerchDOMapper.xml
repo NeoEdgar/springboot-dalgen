@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TgDosMerchDOMapper">
+    <!-- 自动生成,请修改 TG_DOS_MERCH.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TgDosMerchDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DOS_DATE" property="dosDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="MALL_NAME" property="mallName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SALES_AMT" property="salesAmt" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SALES_VOLUME" property="salesVolume" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ORDER_QUANTITY" property="orderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MAXIMUM_TURNOVER" property="maximumTurnover" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="PURCHASE_USERS_NUMBER" property="purchaseUsersNumber" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REFUND_ORDER_QUANTITY" property="refundOrderQuantity" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MALL_ID,REMARK,SHOP_ID,DOS_DATE,MALL_NAME,SALES_AMT,SHOP_NAME,ALTER_EMPL,ALTER_TIME,COMPANY_ID,TIMESTAMP,CREATE_EMPL,CREATE_TIME,COMPANY_NAME,SALES_VOLUME,ORDER_QUANTITY,MAXIMUM_TURNOVER,PURCHASE_USERS_NUMBER,REFUND_ORDER_QUANTITY
+    </sql>
+
+
+    <!--插入表:TG_DOS_MERCH-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TG_DOS_MERCH(
+            ID
+            ,MALL_ID
+            ,REMARK
+            ,SHOP_ID
+            ,DOS_DATE
+            ,MALL_NAME
+            ,SALES_AMT
+            ,SHOP_NAME
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,COMPANY_ID
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,COMPANY_NAME
+            ,SALES_VOLUME
+            ,ORDER_QUANTITY
+            ,MAXIMUM_TURNOVER
+            ,PURCHASE_USERS_NUMBER
+            ,REFUND_ORDER_QUANTITY
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{mallId,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{dosDate,jdbcType=TIMESTAMP}
+            , #{mallName,jdbcType=VARCHAR}
+            , #{salesAmt,jdbcType=DECIMAL}
+            , #{shopName,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{companyId,jdbcType=BIGINT}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{companyName,jdbcType=VARCHAR}
+            , #{salesVolume,jdbcType=DECIMAL}
+            , #{orderQuantity,jdbcType=INTEGER}
+            , #{maximumTurnover,jdbcType=DECIMAL}
+            , #{purchaseUsersNumber,jdbcType=INTEGER}
+            , #{refundOrderQuantity,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:TG_DOS_MERCH-->
+    <update id="update" >
+        UPDATE /*MS-TG-DOS-MERCH-UPDATE*/ TG_DOS_MERCH
+        SET
+            MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,DOS_DATE        = #{dosDate,jdbcType=TIMESTAMP}
+            ,MALL_NAME       = #{mallName,jdbcType=VARCHAR}
+            ,SALES_AMT       = #{salesAmt,jdbcType=DECIMAL}
+            ,SHOP_NAME       = #{shopName,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,COMPANY_ID      = #{companyId,jdbcType=BIGINT}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,COMPANY_NAME    = #{companyName,jdbcType=VARCHAR}
+            ,SALES_VOLUME    = #{salesVolume,jdbcType=DECIMAL}
+            ,ORDER_QUANTITY  = #{orderQuantity,jdbcType=INTEGER}
+            ,MAXIMUM_TURNOVER = #{maximumTurnover,jdbcType=DECIMAL}
+            ,PURCHASE_USERS_NUMBER = #{purchaseUsersNumber,jdbcType=INTEGER}
+            ,REFUND_ORDER_QUANTITY = #{refundOrderQuantity,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TG_DOS_MERCH-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TG-DOS-MERCH-DELETEBYPRIMARY*/ FROM
+            TG_DOS_MERCH
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TG_DOS_MERCH-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键获取数据:TG_DOS_MERCH-->
+    <select id="getShopWeekSale" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-GETSHOPWEEKSALE*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH
+        WHERE
+            SHOP_ID = #{shopId,jdbcType=BIGINT}
+            LIMIT 7
+    </select>
+
+    <!--根据主键获取数据:TG_DOS_MERCH-->
+    <select id="getShopMonthSale" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-GETSHOPMONTHSALE*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH
+        WHERE
+            SHOP_ID = #{shopId,jdbcType=BIGINT}
+            LIMIT 30
+    </select>
+
+    <!--根据主键获取数据:TG_DOS_MERCH-->
+    <select id="getShopQuarterSale" resultMap="BaseResultMap">
+        SELECT /*MS-TG-DOS-MERCH-GETSHOPQUARTERSALE*/  <include refid="Base_Column_List" />
+        FROM TG_DOS_MERCH
+        WHERE
+            SHOP_ID = #{shopId,jdbcType=BIGINT}
+            LIMIT 90
+    </select>
+
+    <!--获取月份时间内求和数据-->
+    <select id="getMonthlyPeriodSaleDate" resultType="java.util.Map">
+        SELECT /*MS-TG-DOS-MERCH-GETMONTHLYPERIODSALEDATE*/  SUM(ORDER_QUANTITY) orderQuantity, SUM(REFUND_ORDER_QUANTITY) refundOrderQuantity, SUM(SALES_AMT) salesAmt, SUM(SALES_VOLUME) salesVolume, SUM(PURCHASE_USERS_NUMBER) purchaseUsersNumber, MAX(MAXIMUM_TURNOVER) maximumTurnover
+        FROM tg_dos_merch
+        <where>
+            <if test="mallId != null">
+                AND MALL_ID = #{mallId,jdbcType=BIGINT}
+            </if>
+            <if test="companyId != null">
+                AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId != null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+            <if test="index != null">
+                AND DATE_FORMAT(DOS_DATE,'%Y%m') = DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{index,jdbcType=INTEGER} MONTH), '%Y%m')
+            </if>
+        </where>
+    </select>
+
+    <!--获取时间段内求和数据,适用于天,周-->
+    <select id="getDailyPeriodSaleDate" resultType="java.util.Map">
+        SELECT /*MS-TG-DOS-MERCH-GETDAILYPERIODSALEDATE*/  SUM(ORDER_QUANTITY) orderQuantity, SUM(REFUND_ORDER_QUANTITY) refundOrderQuantity, SUM(SALES_AMT) salesAmt, SUM(SALES_VOLUME) salesVolume, SUM(PURCHASE_USERS_NUMBER) purchaseUsersNumber, MAX(MAXIMUM_TURNOVER) maximumTurnover
+        FROM tg_dos_merch
+        <where>
+            <if test="mallId != null">
+                AND MALL_ID = #{mallId,jdbcType=BIGINT}
+            </if>
+            <if test="companyId != null">
+                AND COMPANY_ID = #{companyId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId != null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+            <if test="beginIndex != null and endIndex != null">
+                AND DATE_FORMAT(DOS_DATE,'%Y%m%d')
+                    BETWEEN DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{beginIndex,jdbcType=INTEGER} DAY), '%Y%m%d')
+                    AND DATE_FORMAT(DATE_SUB(curdate(), INTERVAL #{endIndex,jdbcType=INTEGER} DAY), '%Y%m%d')
+            </if>
+        </where>
+    </select>
+
+    <!--获取专业公司下有效店铺数正常/打烊:TG_DOS_MERCH-->
+    <select id="getCompanyShopCount" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GETCOMPANYSHOPCOUNT*/  COUNT(*) shopCount FROM ta_shop
+        WHERE
+        COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND SHOP_STATUS IN ("NORMAL","CLOSESTORE")
+    </select>
+
+    <!--获取商场下有效店铺数正常/打烊:TG_DOS_MERCH-->
+    <select id="getMallShopCount" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GETMALLSHOPCOUNT*/  COUNT(*) shopCount FROM ta_shop
+        WHERE
+        MALL_ID = #{mallId,jdbcType=BIGINT}
+        AND SHOP_STATUS IN ("NORMAL","CLOSESTORE")
+    </select>
+
+    <!--获取专业公司下有效店铺数 外部/内部:TG_DOS_MERCH-->
+    <select id="getCompanyShopCountByType" resultType="java.lang.Integer">
+        SELECT /*MS-TG-DOS-MERCH-GETCOMPANYSHOPCOUNTBYTYPE*/  COUNT(*) shopCount FROM ta_shop
+        WHERE
+        COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND SHOP_TYPE = #{shopType,jdbcType=VARCHAR}
+        AND SHOP_STATUS IN ("NORMAL","CLOSESTORE")
+    </select>
+</mapper>

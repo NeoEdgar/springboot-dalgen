@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaOrderEvaluateDOMapper">
+    <!-- ???��????,请修?? TA_ORDER_EVALUATE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaOrderEvaluateDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="STAR" property="star" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VIP_ID" property="vipId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IMAGES" property="images" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VIP_TXT" property="vipTxt" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_IMAGE" property="isImage" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ORDER_ID" property="orderId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_TXT" property="shopTxt" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="SHOP_EMPL" property="shopEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="IS_RESPONSE" property="isResponse" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ORDER_DEPT_ID" property="orderDeptId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="EVALUATE_TIME" property="evaluateTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="RESPONSE_TIME" property="responseTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SHOP_EMPL_NAME" property="shopEmplName" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,STAR,SKU_ID,VIP_ID,IMAGES,MALL_ID,SHOP_ID,VIP_TXT,GOODS_ID,IS_IMAGE,ORDER_ID,SHOP_TXT,SHOP_EMPL,SHOP_NAME,ALTER_EMPL,ALTER_TIME,COMPANY_ID,TIMESTAMP,CREATE_EMPL,CREATE_TIME,IS_RESPONSE,ORDER_DEPT_ID,EVALUATE_TIME,RESPONSE_TIME,SHOP_EMPL_NAME
+    </sql>
+
+
+    <!--???�表:TA_ORDER_EVALUATE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_ORDER_EVALUATE(
+            ID
+            ,STAR
+            ,SKU_ID
+            ,VIP_ID
+            ,IMAGES
+            ,MALL_ID
+            ,SHOP_ID
+            ,VIP_TXT
+            ,GOODS_ID
+            ,IS_IMAGE
+            ,ORDER_ID
+            ,SHOP_TXT
+            ,SHOP_EMPL
+            ,SHOP_NAME
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,COMPANY_ID
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,IS_RESPONSE
+            ,ORDER_DEPT_ID
+            ,EVALUATE_TIME
+            ,RESPONSE_TIME
+            ,SHOP_EMPL_NAME
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{star,jdbcType=INTEGER}
+            , #{skuId,jdbcType=BIGINT}
+            , #{vipId,jdbcType=BIGINT}
+            , #{images,jdbcType=VARCHAR}
+            , #{mallId,jdbcType=BIGINT}
+            , #{shopId,jdbcType=BIGINT}
+            , #{vipTxt,jdbcType=LONGVARCHAR}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{isImage,jdbcType=INTEGER}
+            , #{orderId,jdbcType=BIGINT}
+            , #{shopTxt,jdbcType=LONGVARCHAR}
+            , #{shopEmpl,jdbcType=BIGINT}
+            , #{shopName,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{companyId,jdbcType=BIGINT}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{isResponse,jdbcType=INTEGER}
+            , #{orderDeptId,jdbcType=BIGINT}
+            , #{evaluateTime,jdbcType=TIMESTAMP}
+            , #{responseTime,jdbcType=TIMESTAMP}
+            , #{shopEmplName,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_ORDER_EVALUATE-->
+    <update id="update" >
+        UPDATE /*MS-TA-ORDER-EVALUATE-UPDATE*/ TA_ORDER_EVALUATE
+        SET
+            STAR            = #{star,jdbcType=INTEGER}
+            ,SKU_ID          = #{skuId,jdbcType=BIGINT}
+            ,VIP_ID          = #{vipId,jdbcType=BIGINT}
+            ,IMAGES          = #{images,jdbcType=VARCHAR}
+            ,MALL_ID         = #{mallId,jdbcType=BIGINT}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,VIP_TXT         = #{vipTxt,jdbcType=LONGVARCHAR}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,IS_IMAGE        = #{isImage,jdbcType=INTEGER}
+            ,ORDER_ID        = #{orderId,jdbcType=BIGINT}
+            ,SHOP_TXT        = #{shopTxt,jdbcType=LONGVARCHAR}
+            ,SHOP_EMPL       = #{shopEmpl,jdbcType=BIGINT}
+            ,SHOP_NAME       = #{shopName,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,COMPANY_ID      = #{companyId,jdbcType=BIGINT}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,IS_RESPONSE     = #{isResponse,jdbcType=INTEGER}
+            ,ORDER_DEPT_ID   = #{orderDeptId,jdbcType=BIGINT}
+            ,EVALUATE_TIME   = #{evaluateTime,jdbcType=TIMESTAMP}
+            ,RESPONSE_TIME   = #{responseTime,jdbcType=TIMESTAMP}
+            ,SHOP_EMPL_NAME  = #{shopEmplName,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_ORDER_EVALUATE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-ORDER-EVALUATE-DELETEBYPRIMARY*/ FROM
+            TA_ORDER_EVALUATE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_ORDER_EVALUATE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-ORDER-EVALUATE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_ORDER_EVALUATE
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

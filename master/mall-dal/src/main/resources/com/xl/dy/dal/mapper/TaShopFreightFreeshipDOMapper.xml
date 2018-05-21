@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopFreightFreeshipDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_FREIGHT_FREESHIP.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopFreightFreeshipDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ADDR_CODES" property="addrCodes" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ADDR_NAMES" property="addrNames" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SHOP_FREIGHT_TEMPLET_ID" property="shopFreightTempletId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,ADDR_CODES,ADDR_NAMES,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,SHOP_FREIGHT_TEMPLET_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_FREIGHT_FREESHIP-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SHOP_FREIGHT_FREESHIP(
+            ID
+            ,REMARK
+            ,ADDR_CODES
+            ,ADDR_NAMES
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,SHOP_FREIGHT_TEMPLET_ID
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{addrCodes,jdbcType=VARCHAR}
+            , #{addrNames,jdbcType=LONGVARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{shopFreightTempletId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_FREIGHT_FREESHIP-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-FREIGHT-FREESHIP-UPDATE*/ TA_SHOP_FREIGHT_FREESHIP
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ADDR_CODES      = #{addrCodes,jdbcType=VARCHAR}
+            ,ADDR_NAMES      = #{addrNames,jdbcType=LONGVARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,SHOP_FREIGHT_TEMPLET_ID = #{shopFreightTempletId,jdbcType=BIGINT}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_FREIGHT_FREESHIP-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-FREIGHT-FREESHIP-DELETEBYPRIMARY*/ FROM
+            TA_SHOP_FREIGHT_FREESHIP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_FREIGHT_FREESHIP-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-FREIGHT-FREESHIP-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_FREIGHT_FREESHIP
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_FREIGHT_FREESHIP-->
+    <delete id="deleteByTempletId" >
+		DELETE /*MS-TA-SHOP-FREIGHT-FREESHIP-DELETEBYTEMPLETID*/ FROM
+		TA_SHOP_FREIGHT_FREESHIP
+		WHERE
+		SHOP_FREIGHT_TEMPLET_ID = #{shopFreightTempletId,jdbcType=BIGINT}
+    </delete>
+</mapper>

@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopGoodsDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_GOODS.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopGoodsDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SALES" property="sales" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MALL_ID" property="mallId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_ON_SALE" property="isOnSale" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MALL_NAME" property="mallName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_NAME" property="shopName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="COMPANY_ID" property="companyId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="GOODS_TYPE" property="goodsType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="ERP_GOODS_ID" property="erpGoodsId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TOTAL_STORE" property="totalStore" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ERP_SALE_CODE" property="erpSaleCode" jdbcType="VARCHAR" javaType="String"/>
+        <result column="EVALUATE_NUM" property="evaluateNum" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SHOP_PHOTO_URL" property="shopPhotoUrl" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_GOODS_CODE" property="shopGoodsCode" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <resultMap id="StoreInfo"  type="com.xl.dy.dal.resultmap.StoreInfo">
+        <result column="shopId" property="shopid"  javaType="Long"/>
+        <result column="totalStore" property="totalstore"  javaType="java.math.BigDecimal"/>
+    </resultMap>
+    <resultMap id="GoodsInfo"  type="com.xl.dy.dal.resultmap.GoodsInfo">
+        <result column="goodsId" property="goodsid"  javaType="Long"/>
+        <result column="shopId" property="shopid"  javaType="Long"/>
+        <result column="companyId" property="companyid"  javaType="Long"/>
+        <result column="mallId" property="mallid"  javaType="Long"/>
+        <result column="shopName" property="shopname"  javaType="String"/>
+        <result column="companyName" property="companyname"  javaType="String"/>
+        <result column="mallName" property="mallname"  javaType="String"/>
+        <result column="goodsCode" property="goodscode"  javaType="String"/>
+        <result column="mgFrId" property="mgfrid"  javaType="String"/>
+        <result column="goodsName" property="goodsname"  javaType="String"/>
+        <result column="regCompanyName" property="regcompanyname"  javaType="String"/>
+        <result column="regShopName" property="regshopname"  javaType="String"/>
+        <result column="unshelveReason" property="unshelvereason"  javaType="String"/>
+        <result column="unshelveOperator" property="unshelveoperator"  javaType="String"/>
+        <result column="createEmpl" property="createempl"  javaType="String"/>
+        <result column="createTime" property="createtime"  javaType="java.util.Date"/>
+        <result column="claimTime" property="claimtime"  javaType="java.util.Date"/>
+        <result column="unshelveTime" property="unshelvetime"  javaType="java.util.Date"/>
+        <result column="alterTime" property="altertime"  javaType="java.util.Date"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,SALES,SKU_ID,MALL_ID,REMARK,SHOP_ID,GOODS_ID,IS_ON_SALE,MALL_NAME,SHOP_NAME,ALTER_EMPL,ALTER_TIME,COMPANY_ID,GOODS_CODE,GOODS_TYPE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,ERP_GOODS_ID,TOTAL_STORE,COMPANY_NAME,ERP_SALE_CODE,EVALUATE_NUM,VALID_STATUS,SHOP_PHOTO_URL,SHOP_GOODS_CODE
+    </sql>
+
+
+    <!--插入表:TA_SHOP_GOODS-->
+    <insert id="insert" >
+        INSERT INTO TA_SHOP_GOODS(
+        ID
+        ,SALES
+        ,SKU_ID
+        ,MALL_ID
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,IS_ON_SALE
+        ,MALL_NAME
+        ,SHOP_NAME
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,COMPANY_ID
+        ,GOODS_CODE
+        ,GOODS_TYPE
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,ERP_GOODS_ID
+        ,TOTAL_STORE
+        ,COMPANY_NAME
+        ,ERP_SALE_CODE
+        ,EVALUATE_NUM
+        ,VALID_STATUS
+        ,SHOP_PHOTO_URL
+        ,SHOP_GOODS_CODE
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{sales,jdbcType=DECIMAL}
+        , #{skuId,jdbcType=BIGINT}
+        , #{mallId,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{isOnSale,jdbcType=INTEGER}
+        , #{mallName,jdbcType=VARCHAR}
+        , #{shopName,jdbcType=VARCHAR}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{companyId,jdbcType=BIGINT}
+        , #{goodsCode,jdbcType=VARCHAR}
+        , #{goodsType,jdbcType=VARCHAR}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{erpGoodsId,jdbcType=VARCHAR}
+        , #{totalStore,jdbcType=DECIMAL}
+        , #{companyName,jdbcType=VARCHAR}
+        , #{erpSaleCode,jdbcType=VARCHAR}
+        , #{evaluateNum,jdbcType=INTEGER}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{shopPhotoUrl,jdbcType=VARCHAR}
+        , #{shopGoodsCode,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_GOODS-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-GOODS-UPDATE*/ TA_SHOP_GOODS
+        SET
+        SALES = #{sales,jdbcType=DECIMAL}
+        ,SKU_ID = #{skuId,jdbcType=BIGINT}
+        ,MALL_ID = #{mallId,jdbcType=BIGINT}
+        ,REMARK = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID = #{shopId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,IS_ON_SALE = #{isOnSale,jdbcType=INTEGER}
+        ,MALL_NAME = #{mallName,jdbcType=VARCHAR}
+        ,SHOP_NAME = #{shopName,jdbcType=VARCHAR}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        ,GOODS_CODE = #{goodsCode,jdbcType=VARCHAR}
+        ,GOODS_TYPE = #{goodsType,jdbcType=VARCHAR}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,ERP_GOODS_ID = #{erpGoodsId,jdbcType=VARCHAR}
+        ,TOTAL_STORE = #{totalStore,jdbcType=DECIMAL}
+        ,COMPANY_NAME = #{companyName,jdbcType=VARCHAR}
+        ,ERP_SALE_CODE = #{erpSaleCode,jdbcType=VARCHAR}
+        ,EVALUATE_NUM = #{evaluateNum,jdbcType=INTEGER}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,SHOP_PHOTO_URL = #{shopPhotoUrl,jdbcType=VARCHAR}
+        ,SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-GOODS-DELETEBYPRIMARY*/ FROM
+        TA_SHOP_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GOODS-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据goodsId和shopid获取数据:TA_SHOP_GOODS-->
+    <select id="getShopGoodsByGoodsIdAndShopIdAndCompanyId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSBYGOODSIDANDSHOPIDANDCOMPANYID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        <where>
+            VALID_STATUS = 1
+            <if test="shopId != null ">AND SHOP_ID = #{shopId,jdbcType=BIGINT}</if>
+            <if test="goodsId != null">AND GOODS_ID = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="companyId != null">AND COMPANY_ID = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null">AND MALL_ID = #{mallId,jdbcType=BIGINT}</if>
+        </where>
+    </select>
+
+    <!--根据专业公司ID和商品ID获取所有的sku信息:TA_SHOP_GOODS-->
+    <select id="getShopGoodsInfoByCompanyIdAndGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSINFOBYCOMPANYIDANDGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        WHERE
+        COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--获取某个专业公司下某个spu的总库存:TA_SHOP_GOODS-->
+    <select id="getTotalStorageOfCompanyByCompanyIdAndGoodsId" resultType="java.math.BigDecimal">
+        SELECT /*MS-TA-SHOP-GOODS-GETTOTALSTORAGEOFCOMPANYBYCOMPANYIDANDGOODSID*/  GOODS_ID,SUM(TOTAL_STORE)
+        FROM TA_SHOP_GOODS
+        WHERE
+        COMPANY_ID = #{companyId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--修改有效性-->
+    <update id="updateValidStatus" >
+        UPDATE /*MS-TA-SHOP-GOODS-UPDATEVALIDSTATUS*/ TA_SHOP_GOODS
+        SET
+        VALID_STATUS = 0
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </update>
+
+    <!--根据所给信息修改表:TA_SHOP_GOODS-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-SHOP-GOODS-UPDATESELECTIVE*/ TA_SHOP_GOODS
+        <set>
+            <if test="skuId != null">SKU_ID = #{skuId,jdbcType=BIGINT},</if>
+            <if test="mallId != null">MALL_ID = #{mallId,jdbcType=BIGINT},</if>
+            <if test="remark != null and remark != ''">REMARK = #{remark,jdbcType=VARCHAR},</if>
+            <if test="shopId != null">SHOP_ID = #{shopId,jdbcType=BIGINT},</if>
+            <if test="goodsId != null">GOODS_ID = #{goodsId,jdbcType=BIGINT},</if>
+            <if test="shopName != null and shopName != ''">SHOP_NAME = #{shopName,jdbcType=VARCHAR},</if>
+            <if test="alterEmpl != null">ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},</if>
+            <if test="alterTime != null">ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},</if>
+            <if test="companyId != null">COMPANY_ID = #{companyId,jdbcType=BIGINT},</if>
+            <if test="goodsCode != null and goodsCode != ''">GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},</if>
+            <if test="goodsType != null and goodsType != ''">GOODS_TYPE = #{goodsType,jdbcType=VARCHAR},</if>
+            <if test="timestamp != null">TIMESTAMP = #{timestamp,jdbcType=BIGINT},</if>
+            <if test="createEmpl != null">CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="erpGoodsId != null and erpGoodsId != ''">ERP_GOODS_ID = #{erpGoodsId,jdbcType=VARCHAR},</if>
+            <if test="totalStore != null">TOTAL_STORE = #{totalStore,jdbcType=DECIMAL},</if>
+            <if test="erpSaleCode != null and erpSaleCode != ''">ERP_SALE_CODE = #{erpSaleCode,jdbcType=VARCHAR},</if>
+            <if test="validStatus != null">VALID_STATUS = #{validStatus,jdbcType=INTEGER},</if>
+            <if test="shopGoodsCode != null and shopGoodsCode != ''">SHOP_GOODS_CODE = #{shopGoodsCode,jdbcType=VARCHAR},</if>
+            <if test="shopPhotoUrl != null and shopPhotoUrl != ''">SHOP_PHOTO_URL = #{shopPhotoUrl,jdbcType=VARCHAR},</if>
+            <if test="sales != null">SALES = #{sales,jdbcType=DECIMAL},</if>
+        </set>
+        <where>
+            VALID_STATUS = 1
+            <if test="id != null">AND ID = #{id,jdbcType=BIGINT}</if>
+            <if test="skuId != null">AND SKU_ID = #{skuId,jdbcType=BIGINT}</if>
+            <if test="goodsId != null">AND GOODS_ID = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="shopId != null">AND SHOP_ID = #{shopId,jdbcType=BIGINT}</if>
+        </where>
+    </update>
+
+    <!--根据店铺ID和产品ID获取某个店铺某类产品的总库存-->
+    <select id="getTotalById" resultMap="StoreInfo">
+        SELECT /*MS-TA-SHOP-GOODS-GETTOTALBYID*/  shopId,totalStore FROM(SELECT /*MS-TA-SHOP-GOODS-GETTOTALBYID*/  SHOP_ID shopId,SUM(TOTAL_STORE) totalStore FROM ta_shop_goods WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        GROUP BY SHOP_ID) F WHERE F.shopId = #{shopId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据店铺ID和产品ID获取某个店铺某类产品的总库存-->
+    <select id="getTotalByMallIdAndShopIdAndGoodsId" resultType="java.math.BigDecimal">
+        SELECT /*MS-TA-SHOP-GOODS-GETTOTALBYMALLIDANDSHOPIDANDGOODSID*/  SUM(TOTAL_STORE) totalStore
+        FROM TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND MALL_ID = #{mallId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据产品ID获取某类产品的总库存-->
+    <select id="getTotalByGoodsIdAndSkuId" resultType="java.math.BigDecimal">
+        SELECT /*MS-TA-SHOP-GOODS-GETTOTALBYGOODSIDANDSKUID*/  SUM(TOTAL_STORE) totalStore
+        FROM TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND SKU_ID = #{skuId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据条件获取信息-->
+    <select id="getByPrimarySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETBYPRIMARYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据条件获取不重复的信息-->
+    <select id="getDistinctShopGoodsInfoByShopIdAndGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETDISTINCTSHOPGOODSINFOBYSHOPIDANDGOODSID*/  SHOP_NAME,MALL_NAME,COMPANY_NAME
+        FROM TA_SHOP_GOODS
+        <where>
+            VALID_STATUS = 1
+            <if test="shopId != null ">AND SHOP_ID = #{shopId,jdbcType=BIGINT}</if>
+            <if test="goodId != null">AND GOODS_ID = #{goodId,jdbcType=BIGINT}</if>
+            <if test="companyId != null">AND COMPANY_ID = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null">AND MALL_ID = #{mallId,jdbcType=BIGINT}</if>
+        </where>
+        GROUP BY SHOP_NAME
+    </select>
+
+    <!--根据skuId获取信息-->
+    <select id="getShopGoodsBySkuId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSBYSKUID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--获取店铺优惠券商品:TA_SHOP_GOODS pageCount-->
+    <select id="getShopCouponGoodsPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ ta_shop_goods_price x WHERE x.GOODS_ID = a.GOODS_ID AND x.SHOP_ID = a.SHOP_ID AND
+        x.SALE_TYPE = "NORMAL" AND x.PRICE_TYPE = "VIPRICE"
+    </select>
+    <!--获取店铺优惠券商品:TA_SHOP_GOODS pageResult-->
+    <select id="getShopCouponGoodsPageResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-SHOP-GOODS-GETSHOPCOUPONGOODSPAGE*/ 
+        d.id couponReviewId,
+        a.GOODS_ID goodsId,
+        a.SHOP_GOODS_NAME shopGoodsName,
+        a.SHOP_PHOTO_URL shopGoodsUrl,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPCOUPONGOODSPAGE*/  x.GOODS_PRICE FROM ta_shop_goods_price x WHERE x.GOODS_ID = a.GOODS_ID AND x.SHOP_ID = a.SHOP_ID AND
+        x.SALE_TYPE = "NORMAL" AND x.PRICE_TYPE = "VIPRICE"ORDER BY x.GOODS_PRICE ASC LIMIT 1
+        ) price,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPCOUPONGOODSPAGE*/  IFNULL(SUM(IFNULL(TOTAL_STORE,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID =
+        a.SHOP_ID AND VALID_STATUS = 1
+        ) totalStore ,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPCOUPONGOODSPAGE*/  IFNULL(SUM(IFNULL(TOTAL_STORE,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID =
+        a.SHOP_ID AND VALID_STATUS = 1
+        ) -
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPCOUPONGOODSPAGE*/  IFNULL(SUM(IFNULL(SALES,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID = a.SHOP_ID
+        AND VALID_STATUS = 1
+        ) AS store
+        FROM
+        ta_coupon_review d
+        LEFT JOIN ta_shop_goods_prop a ON a.GOODS_ID = a.GOODS_ID AND a.SHOP_ID=d.SHOP_ID
+        LEFT JOIN ta_goods b on a.GOODS_ID = b.ID
+        LEFT JOIN tg_mg_category c ON b.MG_CATEGORY_ID = c.ID
+        WHERE
+        a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND d.COUPON_ID = #{couponId,jdbcType=BIGINT}
+        AND d.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取店铺所有商品:TA_SHOP_GOODS pageCount-->
+    <select id="getShopGoodsPageBySaleCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ ta_shop_goods_price x WHERE x.GOODS_ID = a.GOODS_ID AND x.SHOP_ID = a.SHOP_ID AND
+        x.SALE_TYPE = "NORMAL" AND x.PRICE_TYPE = "VIPRICE"
+    </select>
+    <!--获取店铺所有商品:TA_SHOP_GOODS pageResult-->
+    <select id="getShopGoodsPageBySaleResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/ 
+        a.GOODS_ID goodsId,
+        a.SHOP_GOODS_NAME shopGoodsName,
+        a.SHOP_PHOTO_URL shopGoodsUrl,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  x.GOODS_PRICE FROM ta_shop_goods_price x WHERE x.GOODS_ID = a.GOODS_ID AND x.SHOP_ID = a.SHOP_ID AND
+        x.SALE_TYPE = "NORMAL" AND x.PRICE_TYPE = "VIPRICE"ORDER BY x.GOODS_PRICE ASC LIMIT 1
+        ) price,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  IFNULL(SUM(IFNULL(SALES,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID = a.SHOP_ID
+        AND VALID_STATUS = 1
+        ) sales,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  IFNULL(SUM(IFNULL(TOTAL_STORE,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID =
+        a.SHOP_ID AND VALID_STATUS = 1
+        ) totalStore ,
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  IFNULL(SUM(IFNULL(TOTAL_STORE,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID =
+        a.SHOP_ID AND VALID_STATUS = 1
+        ) -
+        (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  IFNULL(SUM(IFNULL(SALES,0)),0) FROM TA_SHOP_GOODS WHERE GOODS_ID = a.GOODS_ID AND SHOP_ID = a.SHOP_ID
+        AND VALID_STATUS = 1
+        ) AS store
+        FROM
+        ta_shop_goods_prop a
+        LEFT JOIN ta_goods b on a.GOODS_ID = b.ID
+        LEFT JOIN tg_mg_category c ON b.MG_CATEGORY_ID = c.ID
+        WHERE
+        a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        <if test="firstCategory != null">
+            AND c.PID in (SELECT /*MS-TA-SHOP-GOODS-GETSHOPGOODSPAGEBYSALE*/  ID FROM tg_mg_category WHERE PID = #{firstCategory,jdbcType=BIGINT})
+        </if>
+        <if test="secondCategory != null">
+            AND c.PID = #{secondCategory,jdbcType=BIGINT}
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--活动店铺商品spu级别:TA_SHOP_GOODS pageCount-->
+    <select id="getSeckillShopGoodsCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_shop_goods a
+        LEFT JOIN ta_shop_goods_prop b on a.GOODS_ID = b.GOODS_ID
+        LEFT JOIN ta_shop_goods_price c on a.GOODS_ID = c.GOODS_ID
+        WHERE
+        a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND c.SALE_TYPE = "NORMAL"
+        AND c.PRICE_TYPE = "VIPRICE"
+        AND b.SHOP_GOODS_SALE_STATUS = "SELLING"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        <if test="searchStr != null ">
+            AND b.SHOP_GOODS_NAME like #{searchStr,jdbcType=VARCHAR}
+        </if>
+        GROUP BY
+        a.GOODS_ID
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--活动店铺商品spu级别:TA_SHOP_GOODS pageResult-->
+    <select id="getSeckillShopGoodsResult"  resultType="java.util.Map">
+        SELECT
+        a.SHOP_ID shopId,
+        a.GOODS_ID goodsId,
+        IFNULL(sum(a.SALES), 0) goodsSales,
+        IFNULL(sum(a.EVALUATE_NUM), 0) evaluateNum,
+        a.CREATE_TIME createTime,
+        b.SHOP_PHOTO_URL shopPhotoUrl,
+        b.SHOP_GOODS_NAME shopGoodsName,
+        c.GOODS_PRICE goodsPrice,
+        IFNULL(sum(a.TOTAL_STORE),0) store
+        FROM
+        ta_shop_goods a
+        LEFT JOIN ta_shop_goods_prop b on a.GOODS_ID = b.GOODS_ID
+        LEFT JOIN ta_shop_goods_price c on a.GOODS_ID = c.GOODS_ID
+        WHERE
+        a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND c.SALE_TYPE = "NORMAL"
+        AND c.PRICE_TYPE = "VIPRICE"
+        AND b.SHOP_GOODS_SALE_STATUS = "SELLING"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        <if test="searchStr != null ">
+            AND b.SHOP_GOODS_NAME like #{searchStr,jdbcType=VARCHAR}
+        </if>
+        GROUP BY
+        a.GOODS_ID
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--根据商品id获得商品sku级别:TA_SHOP_GOODS-->
+    <select id="getSeckillShopGoodsSku" resultType="java.util.Map">
+        SELECT
+        a.ID shopGoodsId,
+        a.SKU_ID skuId,
+        b.SKU_TITLE skuTitle
+        FROM
+        ta_shop_goods a
+        LEFT JOIN ta_sku b on a.SKU_ID = b.ID
+        WHERE
+        a.GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        ORDER BY a.ID
+    </select>
+
+    <!--设置秒杀库存界面信息:TA_SHOP_GOODS-->
+    <select id="getMegForSetSeckill" resultType="java.util.Map">
+        SELECT
+        a.ID shopGoodsId,
+        e.SHOP_GOODS_NAME shopGoodsName,
+        e.SHOP_PHOTO_URL shopPhotoUrl,
+        a.TOTAL_STORE totalStore,
+        b.GOODS_PRICE goodsPrice,
+        d.Id skuId,
+        d.SKU_TITLE skuTitle,
+        f.PHOTO_URL skuPhotoUrl
+        FROM
+        ta_shop_goods a
+        LEFT JOIN ta_shop_goods_price b ON b.SHOP_GOODS_ID = a.ID
+        LEFT JOIN TA_SHOP_GOODS_STORE c ON a.ID = c.SHOP_GOODS_ID
+        LEFT JOIN ta_sku d ON a.SKU_ID = d.Id
+        LEFT JOIN ta_shop_goods_prop e on a.GOODS_ID = e.GOODS_ID
+        LEFT JOIN ta_goods_photo f ON f.SKU_ID = d.ID
+        WHERE
+        a.ID = #{shopGoodsId,jdbcType=BIGINT}
+        AND b.SALE_TYPE = "NORMAL"
+        AND b.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        AND d.VALID_STATUS = 1
+        AND e.VALID_STATUS = 1
+        AND f.VALID_STATUS = 1
+    </select>
+
+    <!--删除店铺商品:TA_SHOP_GOODS-->
+    <delete id="deleteShopGoods" >
+        DELETE /*MS-TA-SHOP-GOODS-DELETESHOPGOODS*/ FROM
+        TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopId!=null and shopId!= ''">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--删除店铺商品:TA_SHOP_GOODS-->
+    <delete id="deleteShopGoodsBySkuId" >
+        DELETE /*MS-TA-SHOP-GOODS-DELETESHOPGOODSBYSKUID*/ FROM
+        TA_SHOP_GOODS
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        <if test="shopId!=null and shopId!= ''">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据条件获取信息-->
+    <select id="getBySelective" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-GETBYSELECTIVE*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS
+        <where>
+            <if test="id!=null">
+                ID = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="goodsId!=null">
+                AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId!=null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+            <if test="mallId!=null">
+                AND MALL_ID = #{mallId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+    <!--getGoodsPage pageCount-->
+    <select id="getGoodsPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ (
+        SELECT T.shopName,T.mallName,T.shopId,T.mallId
+        ,CGP.GOODS_ID goodsId,CGP.COMPANY_ID companyId,CGP.COMPANY_NAME companyName
+        ,G.GOODS_CODE goodsCode,G.GOODS_NAME goodsName,G.MG_FR_ID mgFrId ,G.REG_COMPANY_NAME
+        regCompanyName,G.REG_SHOP_NAME regShopName,G.CREATE_TIME createTime
+        ,G.ALTER_TIME alterTime,G.REG_EMPL_NAME createEmpl
+        ,SGP.CLAIM_TIME claimTime,SGP.UNSHELVE_REASON unshelveReason,SGP.UNSHELVE_TIME
+        unshelveTime,SGP.UNSHELVE_OPERATOR unshelveOperator
+        FROM
+        TA_COMPANY_GOODS_PROP CGP
+        LEFT JOIN (SELECT SHOP_NAME shopName,COMPANY_NAME companyName,MALL_NAME mallName,GOODS_ID goodsId,SHOP_ID shopId
+        ,COMPANY_ID companyId,MALL_ID mallId
+        FROM(SELECT DISTINCT GOODS_ID,SHOP_ID,COMPANY_ID,MALL_ID,SHOP_NAME,COMPANY_NAME,MALL_NAME FROM ta_shop_goods )X
+        )T
+        ON CGP.GOODS_ID = T.goodsId
+        LEFT JOIN TA_GOODS G
+        ON G.ID = CGP.GOODS_ID
+        LEFT JOIN TA_SHOP_GOODS_PROP SGP
+        ON SGP.GOODS_ID = G.ID
+        )F
+        <where>
+            <if test="goodsId != null">AND F.goodsId = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="companyId != null">AND F.companyId = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null">AND F.mallId = #{mallId,jdbcType=BIGINT}</if>
+            <if test="shopName != null">AND F.shopName like #{shopName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null">AND F.mallName like #{mallName,jdbcType=VARCHAR}</if>
+            <if test="companyName != null">AND F.companyName like #{companyName,jdbcType=VARCHAR}</if>
+            <if test="catStr != null">AND F.mgFrId like #{catStr,jdbcType=VARCHAR}</if>
+            <if test="searchStr != null">AND CONCAT(IFNULL(F.goodsCode,''),IFNULL(F.goodsName,'')) like
+                #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <!--getGoodsPage pageResult-->
+    <select id="getGoodsPageResult"  resultMap="GoodsInfo">
+        SELECT /*MS-TA-SHOP-GOODS-GETGOODSPAGE*/ 
+        shopName,companyName,mallName,goodsId,shopId,companyId,mallId
+        ,goodsCode,goodsName,mgFrId,regCompanyName,regShopName
+        ,alterTime,createEmpl,createTime ,claimTime,unshelveReason,unshelveTime,unshelveOperator
+        FROM (
+        SELECT /*MS-TA-SHOP-GOODS-GETGOODSPAGE*/  T.shopName,T.mallName,T.shopId,T.mallId
+        ,CGP.GOODS_ID goodsId,CGP.COMPANY_ID companyId,CGP.COMPANY_NAME companyName
+        ,G.GOODS_CODE goodsCode,G.GOODS_NAME goodsName,G.MG_FR_ID mgFrId ,G.REG_COMPANY_NAME
+        regCompanyName,G.REG_SHOP_NAME regShopName,G.CREATE_TIME createTime
+        ,G.ALTER_TIME alterTime,G.REG_EMPL_NAME createEmpl
+        ,SGP.CLAIM_TIME claimTime,SGP.UNSHELVE_REASON unshelveReason,SGP.UNSHELVE_TIME
+        unshelveTime,SGP.UNSHELVE_OPERATOR unshelveOperator
+        FROM
+        TA_COMPANY_GOODS_PROP CGP
+        LEFT JOIN (SELECT /*MS-TA-SHOP-GOODS-GETGOODSPAGE*/  SHOP_NAME shopName,COMPANY_NAME companyName,MALL_NAME mallName,GOODS_ID goodsId,SHOP_ID shopId
+        ,COMPANY_ID companyId,MALL_ID mallId
+        FROM(SELECT /*MS-TA-SHOP-GOODS-GETGOODSPAGE*/  DISTINCT GOODS_ID,SHOP_ID,COMPANY_ID,MALL_ID,SHOP_NAME,COMPANY_NAME,MALL_NAME FROM ta_shop_goods )X
+        )T
+        ON CGP.GOODS_ID = T.goodsId
+        LEFT JOIN TA_GOODS G
+        ON G.ID = CGP.GOODS_ID
+        LEFT JOIN TA_SHOP_GOODS_PROP SGP
+        ON SGP.GOODS_ID = G.ID
+        )F
+        <where>
+            <if test="goodsId != null">AND F.goodsId = #{goodsId,jdbcType=BIGINT}</if>
+            <if test="companyId != null">AND F.companyId = #{companyId,jdbcType=BIGINT}</if>
+            <if test="mallId != null">AND F.mallId = #{mallId,jdbcType=BIGINT}</if>
+            <if test="shopName != null">AND F.shopName like #{shopName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null">AND F.mallName like #{mallName,jdbcType=VARCHAR}</if>
+            <if test="companyName != null">AND F.companyName like #{companyName,jdbcType=VARCHAR}</if>
+            <if test="catStr != null">AND F.mgFrId like #{catStr,jdbcType=VARCHAR}</if>
+            <if test="searchStr != null">AND CONCAT(IFNULL(F.goodsCode,''),IFNULL(F.goodsName,'')) like
+                #{searchStr,jdbcType=VARCHAR}
+            </if>
+        </where>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--售卖状态,活动店铺商品spu级别:TA_SHOP_GOODS pageCount-->
+    <select id="getShopGoodsBySaleStatusCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_shop_goods a
+        LEFT JOIN ta_shop_goods_prop b on a.GOODS_ID = b.GOODS_ID
+        LEFT JOIN ta_shop_goods_price c on a.GOODS_ID = c.GOODS_ID
+        WHERE
+        a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND c.SALE_TYPE = "NORMAL"
+        AND c.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        <if test="saleStatus != null">
+            AND b.SHOP_GOODS_SALE_STATUS = #{saleStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="searchStr != null ">
+            AND b.SHOP_GOODS_NAME like #{searchStr,jdbcType=VARCHAR}
+        </if>
+        GROUP BY
+        a.GOODS_ID
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--售卖状态,活动店铺商品spu级别:TA_SHOP_GOODS pageResult-->
+    <select id="getShopGoodsBySaleStatusResult"  resultType="java.util.Map">
+        SELECT
+        a.SHOP_ID shopId,
+        a.GOODS_ID goodsId,
+        IFNULL(sum(a.SALES), 0) goodsSales,
+        IFNULL(sum(a.EVALUATE_NUM), 0) evaluateNum,
+        a.CREATE_TIME createTime,
+        b.SHOP_PHOTO_URL shopPhotoUrl,
+        b.SHOP_GOODS_NAME shopGoodsName,
+        c.GOODS_PRICE goodsPrice,
+        IFNULL(sum(a.TOTAL_STORE),0) store
+        FROM
+        ta_shop_goods a
+        LEFT JOIN ta_shop_goods_prop b on a.GOODS_ID = b.GOODS_ID
+        LEFT JOIN ta_shop_goods_price c on a.GOODS_ID = c.GOODS_ID
+        WHERE
+        a.SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND c.SALE_TYPE = "NORMAL"
+        AND c.PRICE_TYPE = "VIPRICE"
+        AND a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND c.VALID_STATUS = 1
+        <if test="saleStatus != null">
+            AND b.SHOP_GOODS_SALE_STATUS = #{saleStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="searchStr != null ">
+            AND b.SHOP_GOODS_NAME like #{searchStr,jdbcType=VARCHAR}
+        </if>
+        GROUP BY
+        a.GOODS_ID
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取一个店铺的某个goodsId的销量:TA_SHOP_GOODS-->
+    <select id="getSalesByGoodsId" resultType="java.math.BigDecimal">
+        SELECT
+        IFNULL(SUM(IFNULL(SALES,0)),0)
+        FROM
+        TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+</mapper>

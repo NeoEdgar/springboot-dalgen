@@ -1,0 +1,111 @@
+server:
+  port: 8082
+  undertow:
+    max-http-post-size: 10
+    io-threads: 4
+    worker-threads: 20
+    buffer-size: 1024
+    buffers-per-region: 1024
+    direct-buffers: true
+
+
+
+security:
+  basic:
+    enabled: true
+    path: /admin
+  user:
+    name: hipay
+    password: xinglong828
+
+endpoints:
+  metrics:
+    sensitive: false
+    enabled: true
+  health:
+    sensitive: false
+    enabled: true
+
+spring:
+  redis:
+    host: 47.104.160.160
+    port: 6379
+    password: dayuan
+    pool:
+      max-active: 300
+      max-wait: 1000
+      max-idle: 100
+      min-idle: 0
+    timeout: 100000
+    database: 0
+
+  application:
+    name: mall-platform
+    
+  data:
+    mongodb:
+      uri: mongodb://47.104.159.10:12345/dy_mall_test
+
+  datasource:
+#      url: jdbc:mysql://47.104.159.10:3306/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+#      username: root
+#      password: dayuan
+      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://rm-m5e7b16r75f9f94r3yo.mysql.rds.aliyuncs.com:3306/supermarket?useUnicode=true&characterEncoding=UTF-8
+#      username: shangcheng
+#      password: Dayuan1234@
+      url: jdbc:mysql://rm-m5e7b16r75f9f94r3yo.mysql.rds.aliyuncs.com/mall-pf
+      username: dayuanai
+      password: Dayuan1234@
+      initialSize: 5    # 初始化大小
+      minIdle: 5        # 最小
+      maxActive: 20     # 最大
+      maxWait: 60000    # 获取连接等待超时的时间
+      timeBetweenEvictionRunsMillis: 60000    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      minEvictableIdleTimeMillis: 300000      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true                    # 打开PSCache
+      maxPoolPreparedStatementPerConnectionSize: 20   # 指定每个连接上PSCache的大小
+      filters: stat,wall,log4j                        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000  # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      useGlobalDataSourceStat: true
+
+  session:
+    store-type: redis
+
+  http:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+
+  devtools:
+    restart:
+      enabled: true
+      exclude: static/**
+
+Kdniao:
+  EBusinessID: 1330544
+  AppKey: 8add2829-ad53-4e0c-b128-9fcfef46cf54
+  ReqURL: http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx
+
+JiGuang:
+  masterSecret: eed491a31942aab9071258d7
+  appKey: f6191725983bb68f69a0d1e6
+  pushUrl: https://api.jpush.cn/v3/push
+
+GeTui:
+  appId: 3aSH1dEm0H7Xfi7hSLoYK3
+  appKey: s7YZfmTb4l6U3g4nkcZeS4
+  masterSecret: 1aHHwswYWTAx3aoq5GUsJ5
+  url: http://sdk.open.api.igexin.com/apiex.htm
+  
+swiftpass:
+  pay:
+    appId: wx1b468c340acd675a
+    mchId: 7551000001                                                   #商户号
+    key: 9d101c97133837e13dde2d32a5054abb                                 #密钥
+    reqUrl: https://pay.swiftpass.cn/pay/gateway                          #支付请求url，无需更改
+    notifyUrl: http://47.104.160.160/pay/swiftpass/swiftNotify   #通知回调url

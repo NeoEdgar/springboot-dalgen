@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopGroupGoodsDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_GROUP_GOODS.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopGroupGoodsDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SHOP_GOODS_GROUP_ID" property="shopGoodsGroupId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,SHOP_ID,GOODS_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,SHOP_GOODS_GROUP_ID
+    </sql>
+
+
+    <!--插入表:TA_SHOP_GROUP_GOODS-->
+    <insert id="insert" >
+        INSERT INTO TA_SHOP_GROUP_GOODS(
+        ID
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,VALID_STATUS
+        ,SHOP_GOODS_GROUP_ID
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{shopGoodsGroupId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--更新表:TA_SHOP_GROUP_GOODS-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-GROUP-GOODS-UPDATE*/ TA_SHOP_GROUP_GOODS
+        SET
+        REMARK = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID = #{shopId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,SHOP_GOODS_GROUP_ID = #{shopGoodsGroupId,jdbcType=BIGINT}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_GROUP_GOODS-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-GROUP-GOODS-DELETEBYPRIMARY*/ FROM
+        TA_SHOP_GROUP_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GROUP_GOODS-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GROUP-GOODS-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GROUP_GOODS
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_GROUP_GOODS-->
+    <delete id="deleteShopGroupGoodsByGroupIdAndGoodsId" >
+        DELETE /*MS-TA-SHOP-GROUP-GOODS-DELETESHOPGROUPGOODSBYGROUPIDANDGOODSID*/ FROM
+        TA_SHOP_GROUP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopGoodsGroupId!=null">
+            AND SHOP_GOODS_GROUP_ID = #{shopGoodsGroupId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据主键删除数据:TA_SHOP_GROUP_GOODS-->
+    <delete id="deleteShopGroupGoods" >
+        DELETE /*MS-TA-SHOP-GROUP-GOODS-DELETESHOPGROUPGOODS*/ FROM
+        TA_SHOP_GROUP_GOODS
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GROUP_GOODS-->
+    <select id="getByShopIdAndGoodsId" resultType="Long">
+        SELECT /*MS-TA-SHOP-GROUP-GOODS-GETBYSHOPIDANDGOODSID*/  SHOP_GOODS_GROUP_ID
+        FROM TA_SHOP_GROUP_GOODS
+        WHERE
+        SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </select>
+</mapper>

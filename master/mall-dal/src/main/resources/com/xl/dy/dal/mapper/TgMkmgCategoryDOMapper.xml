@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TgMkmgCategoryDOMapper">
+    <!-- 自动生成,请修改 TG_MKMG_CATEGORY.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TgMkmgCategoryDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MG_CATEGORY_ID" property="mgCategoryId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="MK_CATEGORY_ID" property="mkCategoryId" jdbcType="BIGINT" javaType="Long"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REMARK,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,VALID_STATUS,MG_CATEGORY_ID,MK_CATEGORY_ID
+    </sql>
+
+
+    <!--插入表:TG_MKMG_CATEGORY-->
+    <insert id="insert" >
+        INSERT INTO TG_MKMG_CATEGORY(
+            ID
+            ,REMARK
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,VALID_STATUS
+            ,MG_CATEGORY_ID
+            ,MK_CATEGORY_ID
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{remark,jdbcType=VARCHAR}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{mgCategoryId,jdbcType=BIGINT}
+            , #{mkCategoryId,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <!--更新表:TG_MKMG_CATEGORY-->
+    <update id="update" >
+        UPDATE /*MS-TG-MKMG-CATEGORY-UPDATE*/ TG_MKMG_CATEGORY
+        SET
+            REMARK          = #{remark,jdbcType=VARCHAR}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,MG_CATEGORY_ID  = #{mgCategoryId,jdbcType=BIGINT}
+            ,MK_CATEGORY_ID  = #{mkCategoryId,jdbcType=BIGINT}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TG_MKMG_CATEGORY-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TG-MKMG-CATEGORY-DELETEBYPRIMARY*/ FROM
+            TG_MKMG_CATEGORY
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据经营类目删除数据:TG_MKMG_CATEGORY-->
+    <delete id="deleteByMkCategoryId" >
+        DELETE /*MS-TG-MKMG-CATEGORY-DELETEBYMKCATEGORYID*/ FROM
+            TG_MKMG_CATEGORY
+        WHERE
+            MK_CATEGORY_ID = #{mkCategoryId,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TG_MKMG_CATEGORY-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TG-MKMG-CATEGORY-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TG_MKMG_CATEGORY
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据MkCategoryId获取数据:TG_MKMG_CATEGORY-->
+    <select id="getByMkCategoryId" resultMap="BaseResultMap">
+        SELECT /*MS-TG-MKMG-CATEGORY-GETBYMKCATEGORYID*/  <include refid="Base_Column_List" />
+        FROM TG_MKMG_CATEGORY
+        WHERE
+        MK_CATEGORY_ID = #{mkCategoryId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据MkCategoryId获取数据:TG_MKMG_CATEGORY-->
+    <select id="getByMgCategoryId" resultMap="BaseResultMap">
+        SELECT /*MS-TG-MKMG-CATEGORY-GETBYMGCATEGORYID*/  <include refid="Base_Column_List" />
+        FROM TG_MKMG_CATEGORY
+        WHERE
+        MG_CATEGORY_ID  = #{mgCategoryId,jdbcType=BIGINT}
+    </select>
+
+    <!--更新表:TG_MKMG_CATEGORY-->
+    <update id="updateByPrimarySelective" >
+        UPDATE /*MS-TG-MKMG-CATEGORY-UPDATEBYPRIMARYSELECTIVE*/ TG_MKMG_CATEGORY
+        <set>
+            <if test="remark != null ">
+                REMARK          = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="alterEmpl != null ">
+                ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime != null ">
+                ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null ">
+                TIMESTAMP       = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl != null ">
+                CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="validStatus != null ">
+                VALID_STATUS    = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="mgCategoryId != null ">
+                MG_CATEGORY_ID  = #{mgCategoryId,jdbcType=BIGINT},
+            </if>
+            <if test="mkCategoryId != null ">
+                MK_CATEGORY_ID  = #{mkCategoryId,jdbcType=BIGINT}
+            </if>
+        </set>
+        WHERE
+                ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据MgCategoryId获取数据:TG_MKMG_CATEGORY-->
+    <select id="getMkIdByMgCategoryId" resultType="Long">
+        SELECT /*MS-TG-MKMG-CATEGORY-GETMKIDBYMGCATEGORYID*/  MK_CATEGORY_ID
+        FROM TG_MKMG_CATEGORY
+        WHERE
+        MG_CATEGORY_ID  = #{mgCategoryId,jdbcType=BIGINT}
+    </select>
+</mapper>

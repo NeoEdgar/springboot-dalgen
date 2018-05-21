@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaSeckillReviewDOMapper">
+    <!-- ???��????,请修?? TA_SECKILL_REVIEW.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaSeckillReviewDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="INX" property="inx" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="DISCOUNT" property="discount" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SECKILL_ID" property="seckillId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SHOP_GOODS_ID" property="shopGoodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SECKILL_PRICE" property="seckillPrice" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="ACTIVE_INVENTORY" property="activeInventory" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SECKILL_REVIEW_STATUS" property="seckillReviewStatus" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <resultMap id="ExamineSeckillGoodsVO"  type="com.xl.dy.dal.resultmap.ExamineSeckillGoodsVO">
+        <result column="seckillId" property="seckillid"  javaType="Long"/>
+        <result column="seckillName" property="seckillname"  javaType="String"/>
+        <result column="categorySet" property="categoryset"  javaType="Long"/>
+        <result column="perRegisteLimit" property="perregistelimit"  javaType="Integer"/>
+        <result column="notice" property="notice"  javaType="String"/>
+        <result column="categoryName" property="categoryname"  javaType="String"/>
+        <result column="seckillReviewId" property="seckillreviewid"  javaType="Long"/>
+        <result column="activeInventory" property="activeinventory"  javaType="java.math.BigDecimal"/>
+        <result column="reason" property="reason"  javaType="String"/>
+        <result column="seckillReviewStatus" property="seckillreviewstatus"  javaType="String"/>
+        <result column="shopName" property="shopname"  javaType="String"/>
+        <result column="mallName" property="mallname"  javaType="String"/>
+        <result column="companyName" property="companyname"  javaType="String"/>
+        <result column="skuPhotoUrl" property="skuphotourl"  javaType="String"/>
+        <result column="skutitle" property="skutitle"  javaType="String"/>
+        <result column="discount" property="discount"  javaType="java.math.BigDecimal"/>
+        <result column="seckillPrice" property="seckillprice"  javaType="java.math.BigDecimal"/>
+        <result column="goodsPrice" property="goodsprice"  javaType="java.math.BigDecimal"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,INX,REASON,REMARK,SHOP_ID,DISCOUNT,ALTER_EMPL,ALTER_TIME,SECKILL_ID,TIMESTAMP,CREATE_EMPL,CREATE_TIME,SHOP_GOODS_ID,VALID_STATUS,SECKILL_PRICE,ACTIVE_INVENTORY,SECKILL_REVIEW_STATUS
+    </sql>
+
+
+    <!--???�表:TA_SECKILL_REVIEW-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO TA_SECKILL_REVIEW(
+            ID
+            ,INX
+            ,REASON
+            ,REMARK
+            ,SHOP_ID
+            ,DISCOUNT
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,SECKILL_ID
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,SHOP_GOODS_ID
+            ,VALID_STATUS
+            ,SECKILL_PRICE
+            ,ACTIVE_INVENTORY
+            ,SECKILL_REVIEW_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{inx,jdbcType=INTEGER}
+            , #{reason,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{discount,jdbcType=DECIMAL}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{seckillId,jdbcType=BIGINT}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{shopGoodsId,jdbcType=BIGINT}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{seckillPrice,jdbcType=DECIMAL}
+            , #{activeInventory,jdbcType=DECIMAL}
+            , #{seckillReviewStatus,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_SECKILL_REVIEW-->
+    <update id="update" >
+        UPDATE /*MS-TA-SECKILL-REVIEW-UPDATE*/ TA_SECKILL_REVIEW
+        SET
+            INX             = #{inx,jdbcType=INTEGER}
+            ,REASON          = #{reason,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,DISCOUNT        = #{discount,jdbcType=DECIMAL}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,SECKILL_ID      = #{seckillId,jdbcType=BIGINT}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,SHOP_GOODS_ID   = #{shopGoodsId,jdbcType=BIGINT}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,SECKILL_PRICE   = #{seckillPrice,jdbcType=DECIMAL}
+            ,ACTIVE_INVENTORY = #{activeInventory,jdbcType=DECIMAL}
+            ,SECKILL_REVIEW_STATUS = #{seckillReviewStatus,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--?��??主�?????��?��??:TA_SECKILL_REVIEW-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SECKILL-REVIEW-DELETEBYPRIMARY*/ FROM
+            TA_SECKILL_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--?��??主�???��???��??:TA_SECKILL_REVIEW-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SECKILL-REVIEW-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SECKILL_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--查询店铺列表 pageCount-->
+    <select id="getSeckillReviewListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+ tg_mg_category A
+        WHERE find_in_set(A.ID, h.MG_FR_ID)) as
+        fr_category
+        FROM `ta_seckill_review` a
+        LEFT JOIN TA_SHOP_GOODS b on
+        a.`SHOP_GOODS_ID`= b.id
+        LEFT JOIN TA_GOODS h on h.id = b.GOODS_ID
+        LEFT
+        JOIN TA_SHOP_GOODS_PRICE c on c.SHOP_GOODS_ID= b.id
+        LEFT JOIN TA_SKU d
+        ON d.id= b.sku_id
+        LEFT JOIN ta_shop e on e.`ID`= a.`SHOP_ID`
+        LEFT JOIN
+        TA_GOODS_PHOTO f on f.SKU_ID= d.id
+        LEFT JOIN TA_SECKILL g on g.id=
+        a.`SECKILL_ID`
+        <where>
+            f.IS_MAST_PHOTO=1
+            and
+            a.`SECKILL_ID`= #{seckillId,jdbcType=BIGINT}
+            <if test="companyName != null"> AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null"> AND MALL_NAME = #{mallName,jdbcType=VARCHAR}</if>
+            <if test="shopName != null"> AND COMPANY_NAME = #{shopName,jdbcType=VARCHAR}</if>
+            <if test="seckillReviewStatus != null"> AND SECKILL_REVIEW_STATUS =
+                #{seckillReviewStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null"> AND DATE_FORMAT(CREATE_TIME
+                ,'%Y-%m-%d')=#{createTime,jdbcType=TIMESTAMP}</if>
+            <if test="searchStr !=null"> AND SKU_TITLE LIKE
+                CONCAT('%',#{searchStr,jdbcType=VARCHAR},'%')</if>
+        </where>
+        
+    </select>
+    <!--查询店铺列表 pageResult-->
+    <select id="getSeckillReviewListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-SECKILL-REVIEW-GETSECKILLREVIEWLIST*/  a.`ID`,
+        a.`SECKILL_ID`,
+        d.SKU_TITLE,
+        c.GOODS_PRICE,
+        a.SECKILL_PRICE,
+        (a.SECKILL_PRICE/c.GOODS_PRICE) count,
+        a.ACTIVE_INVENTORY,
+        a.CREATE_TIME,
+        e.`SHOP_NAME`,
+        e.`MALL_NAME`,
+        e.`COMPANY_NAME`,
+        a.`SECKILL_REVIEW_STATUS`,
+        f.PHOTO_URL,
+        b.sku_id,
+        a.`SHOP_GOODS_ID`,
+        h.MG_FR_ID,
+        (SELECT /*MS-TA-SECKILL-REVIEW-GETSECKILLREVIEWLIST*/  GROUP_CONCAT(A.NAME SEPARATOR
+        '/')
+        FROM tg_mg_category A
+        WHERE find_in_set(A.ID, h.MG_FR_ID)) as
+        fr_category
+        FROM `ta_seckill_review` a
+        LEFT JOIN TA_SHOP_GOODS b on
+        a.`SHOP_GOODS_ID`= b.id
+        LEFT JOIN TA_GOODS h on h.id = b.GOODS_ID
+        LEFT
+        JOIN TA_SHOP_GOODS_PRICE c on c.SHOP_GOODS_ID= b.id
+        LEFT JOIN TA_SKU d
+        ON d.id= b.sku_id
+        LEFT JOIN ta_shop e on e.`ID`= a.`SHOP_ID`
+        LEFT JOIN
+        TA_GOODS_PHOTO f on f.SKU_ID= d.id
+        LEFT JOIN TA_SECKILL g on g.id=
+        a.`SECKILL_ID`
+        <where>
+            f.IS_MAST_PHOTO=1
+            and
+            a.`SECKILL_ID`= #{seckillId,jdbcType=BIGINT}
+            <if test="companyName != null"> AND COMPANY_NAME = #{companyName,jdbcType=VARCHAR}</if>
+            <if test="mallName != null"> AND MALL_NAME = #{mallName,jdbcType=VARCHAR}</if>
+            <if test="shopName != null"> AND COMPANY_NAME = #{shopName,jdbcType=VARCHAR}</if>
+            <if test="seckillReviewStatus != null"> AND SECKILL_REVIEW_STATUS =
+                #{seckillReviewStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null"> AND DATE_FORMAT(CREATE_TIME
+                ,'%Y-%m-%d')=#{createTime,jdbcType=TIMESTAMP}</if>
+            <if test="searchStr !=null"> AND SKU_TITLE LIKE
+                CONCAT('%',#{searchStr,jdbcType=VARCHAR},'%')</if>
+        </where>
+        ORDER BY CREATE_TIME DESC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--允许报名列表:TA_SECKILL_REVIEW pageCount-->
+    <select id="showAllowSeckillListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        `ta_seckill` a
+        WHERE
+        a.`SECKILL_STATUS` = 'ING'
+        AND a.VALID_STATUS =1
+        AND a.ID NOT IN (SELECT SECKILL_ID FROM ta_seckill_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+    </select>
+    <!--允许报名列表:TA_SECKILL_REVIEW pageResult-->
+    <select id="showAllowSeckillListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-SECKILL-REVIEW-SHOWALLOWSECKILLLIST*/ 
+        a.id seckillId,
+        a.`NAME` seckillName ,
+        a.PUTAWAY_TIME putawayTime,
+        a.SOLDOUT_TIME soldoutTime,
+        a.PER_REGISTE_LIMIT perRegisteLimit,
+        a.PER_BUY_LIMIT perBuyLimit,
+        a.NOTICE NOTICE
+        FROM
+        `ta_seckill` a
+        WHERE
+        a.`SECKILL_STATUS` = 'ING'
+        AND a.VALID_STATUS =1
+        AND a.ID NOT IN (SELECT /*MS-TA-SECKILL-REVIEW-SHOWALLOWSECKILLLIST*/  SECKILL_ID FROM ta_seckill_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--已报名列表:TA_SECKILL_REVIEW pageCount-->
+    <select id="showRegisteredSeckillListCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        `ta_seckill` a
+        WHERE
+        a.`SECKILL_STATUS` = 'ING'
+        AND a.VALID_STATUS =1
+        AND a.ID IN (SELECT SECKILL_ID FROM ta_seckill_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+    </select>
+    <!--已报名列表:TA_SECKILL_REVIEW pageResult-->
+    <select id="showRegisteredSeckillListResult"  resultType="java.util.Map">
+        SELECT /*MS-TA-SECKILL-REVIEW-SHOWREGISTEREDSECKILLLIST*/ 
+        a.id seckillId,
+        a.`NAME` seckillName ,
+        a.PUTAWAY_TIME putawayTime,
+        a.SOLDOUT_TIME soldoutTime,
+        a.PER_REGISTE_LIMIT perRegisteLimit,
+        a.PER_BUY_LIMIT perBuyLimit,
+        a.NOTICE NOTICE
+        FROM
+        `ta_seckill` a
+        WHERE
+        a.`SECKILL_STATUS` = 'ING'
+        AND a.VALID_STATUS =1
+        AND a.ID IN (SELECT /*MS-TA-SECKILL-REVIEW-SHOWREGISTEREDSECKILLLIST*/  SECKILL_ID FROM ta_seckill_review WHERE SHOP_ID = #{shopId,jdbcType=BIGINT})
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取秒杀报名数:TA_SECKILL_REVIEW-->
+    <select id="getCountBySeckillId" resultType="java.lang.Long">
+        SELECT
+        count(*)
+        FROM
+        `ta_seckill_review`
+        WHERE
+        SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+    </select>
+
+    <!--获取秒杀活动商品:TA_SECKILL_REVIEW pageCount-->
+    <select id="getGoodsBySeckillIdCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_seckill_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_shop_goods e ON e.ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_sku f ON f.ID = e.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SHOP_GOODS_ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_goods_photo h on h.SKU_ID = f.ID
+        WHERE
+        a.SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+        AND SECKILL_REVIEW_STATUS = "PASS"
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        
+    </select>
+    <!--获取秒杀活动商品:TA_SECKILL_REVIEW pageResult-->
+    <select id="getGoodsBySeckillIdResult"  resultType="java.util.Map">
+        SELECT
+        a.ID seckillReviewId,
+        b.SHOP_NAME shopName,
+        c.MALL_NAME mallName,
+        d.COMPANY_NAME companyName,
+        h.PHOTO_URL skuPhotoUrl,
+        f.SKU_TITLE skutitle,
+        a.DISCOUNT discount,
+        a.SECKILL_PRICE seckillPrice,
+        g.GOODS_PRICE goodsPrice,
+        a.INX inx,
+        a.ACTIVE_INVENTORY activeInventory
+        FROM
+        ta_seckill_review a
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_shop_goods e ON e.ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_sku f ON f.ID = e.SKU_ID
+        LEFT JOIN ta_shop_goods_price g ON g.SHOP_GOODS_ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_goods_photo h on h.SKU_ID = f.ID
+        WHERE
+        a.SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+        AND SECKILL_REVIEW_STATUS = "PASS"
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        ORDER BY
+        a.INX ASC
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获取审核商品:TA_SECKILL_REVIEW pageCount-->
+    <select id="getExamineSeckillGoodsCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        ta_seckill z
+        LEFT JOIN ta_seckill_review a ON z.ID=a.SECKILL_ID
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_shop_goods e ON e.ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_sku f on f.ID = e.SKU_ID
+        LEFT JOIN ta_shop_goods_price g on g.SHOP_GOODS_ID = a.SHOP_GOODS_ID
+        LEFT JOIN tg_mg_category y ON y.id = z.CATEGORY_SET
+        LEFT JOIN ta_goods_photo x on x.SKU_ID = f.ID
+        WHERE
+        a.SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+        AND SECKILL_REVIEW_STATUS = #{seckillReviewStatus,jdbcType=VARCHAR}
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        <if test="companyName!=null">
+            AND d.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName!=null">
+            AND c.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName!=null">
+            AND b.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="skutitle!=null">
+            AND f.SKU_TITLE LIKE #{skutitle,jdbcType=VARCHAR}
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--获取审核商品:TA_SECKILL_REVIEW pageResult-->
+    <select id="getExamineSeckillGoodsResult"  resultMap="ExamineSeckillGoodsVO">
+        SELECT
+        z.ID seckillId,
+        z.`NAME` seckillName,
+        z.CATEGORY_SET categorySet,
+        z.PER_REGISTE_LIMIT perRegisteLimit,
+        z.NOTICE notice,
+        y.`NAME` categoryName,
+        a.ID seckillReviewId,
+        a.REASON reason,
+        a.SECKILL_REVIEW_STATUS seckillReviewStatus,
+        a.ACTIVE_INVENTORY activeInventory,
+        b.SHOP_NAME shopName,
+        c.MALL_NAME mallName,
+        d.COMPANY_NAME companyName,
+        x.PHOTO_URL skuPhotoUrl,
+        f.SKU_TITLE skutitle,
+        a.DISCOUNT discount,
+        a.SECKILL_PRICE seckillPrice,
+        g.GOODS_PRICE goodsPrice
+        FROM
+        ta_seckill z
+        LEFT JOIN ta_seckill_review a ON z.ID=a.SECKILL_ID
+        LEFT JOIN ta_shop b ON b.ID = a.SHOP_ID
+        LEFT JOIN ta_mall c ON c.ID = b.MALL_ID
+        LEFT JOIN ta_company d ON d.ID = b.COMPANY_ID
+        LEFT JOIN ta_shop_goods e ON e.ID = a.SHOP_GOODS_ID
+        LEFT JOIN ta_sku f on f.ID = e.SKU_ID
+        LEFT JOIN ta_shop_goods_price g on g.SHOP_GOODS_ID = a.SHOP_GOODS_ID
+        LEFT JOIN tg_mg_category y ON y.id = z.CATEGORY_SET
+        LEFT JOIN ta_goods_photo x on x.SKU_ID = f.ID
+        WHERE
+        a.SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+        AND SECKILL_REVIEW_STATUS = #{seckillReviewStatus,jdbcType=VARCHAR}
+        AND g.SALE_TYPE = "NORMAL"
+        AND g.PRICE_TYPE = "VIPRICE"
+        <if test="companyName!=null">
+            AND d.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName!=null">
+            AND c.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName!=null">
+            AND b.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="skutitle!=null">
+            AND f.SKU_TITLE LIKE #{skutitle,jdbcType=VARCHAR}
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--获得店铺商品报名数:TA_SECKILL_REVIEW-->
+    <select id="getSumByShopGoods" resultType="java.lang.Integer">
+        SELECT
+        IFNULL(sum(ACTIVE_INVENTORY),0)
+        FROM
+        `ta_seckill_review`
+        WHERE
+        SHOP_GOODS_ID = #{shopGoodsId,jdbcType=BIGINT}
+        AND SECKILL_ID = #{seckillId,jdbcType=BIGINT}
+    </select>
+
+    <!--获得店铺已报名的秒杀商品:TA_SECKILL_REVIEW-->
+    <select id="getRegistedShopGoods" resultType="java.util.Map">
+        SELECT
+        b.SHOP_PHOTO_URL photoUrl,
+        d.SHOP_GOODS_NAME goodsName,
+        a.ID seckillReviewId,
+        a.SECKILL_REVIEW_STATUS seckillreviewStatus,
+        a.REASON REASON,
+        c.SKU_TITLE skuTitle
+        FROM
+        `ta_seckill_review` a
+        LEFT JOIN ta_shop_goods b ON a.SHOP_GOODS_ID =b.ID
+        LEFT JOIN ta_sku c ON b.SKU_ID = c.ID
+        LEFT JOIN ta_shop_goods_prop d ON b.GOODS_ID = d.GOODS_ID
+        WHERE a.SECKILL_ID =#{seckillId,jdbcType=BIGINT}
+        AND a.SHOP_ID =#{shopId,jdbcType=BIGINT}
+    </select>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.ShechemEsCouponDetailDOMapper">
+    <!-- 自动生成,请修改 SHECHEM_ES_COUPON_DETAIL.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.ShechemEsCouponDetailDO">
+        <id column="ID" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MID" property="mid" jdbcType="VARCHAR" javaType="String"/>
+        <result column="STATUS" property="status" jdbcType="BIT" javaType="Boolean"/>
+        <result column="DISPLAY" property="display" jdbcType="BIT" javaType="Boolean"/>
+        <result column="SALE_IMG" property="saleImg" jdbcType="VARCHAR" javaType="String"/>
+        <result column="COUPON_ID" property="couponId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_REFUND" property="isRefund" jdbcType="BIT" javaType="Boolean"/>
+        <result column="OUTLET_ID" property="outletId" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOW_CITY" property="showCity" jdbcType="VARCHAR" javaType="String"/>
+        <result column="LIMIT_SALE" property="limitSale" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SALE_PRICE" property="salePrice" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SHARE_THUMB" property="shareThumb" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHARE_TITLE" property="shareTitle" jdbcType="VARCHAR" javaType="String"/>
+        <result column="VOLUME_PLUS" property="volumePlus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SALE_CONTENT" property="saleContent" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="SHELVES_BTIME" property="shelvesBtime" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SHELVES_ETIME" property="shelvesEtime" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="CONSUME_PROMPT" property="consumePrompt" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="COUPON_CONTENT" property="couponContent" jdbcType="LONGVARCHAR" javaType="String"/>
+        <result column="IS_APPOINTMENT" property="isAppointment" jdbcType="BIT" javaType="Boolean"/>
+        <result column="SPECIAL_PROMPT" property="specialPrompt" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHARE_DESCRIPTION" property="shareDescription" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,MID,STATUS,DISPLAY,SALE_IMG,COUPON_ID,IS_REFUND,OUTLET_ID,SHOW_CITY,LIMIT_SALE,SALE_PRICE,SHARE_THUMB,SHARE_TITLE,VOLUME_PLUS,SALE_CONTENT,SHELVES_BTIME,SHELVES_ETIME,CONSUME_PROMPT,COUPON_CONTENT,IS_APPOINTMENT,SPECIAL_PROMPT,SHARE_DESCRIPTION
+    </sql>
+
+
+    <!--插入表:SHECHEM_ES_COUPON_DETAIL-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO SHECHEM_ES_COUPON_DETAIL(
+            ID
+            ,MID
+            ,STATUS
+            ,DISPLAY
+            ,SALE_IMG
+            ,COUPON_ID
+            ,IS_REFUND
+            ,OUTLET_ID
+            ,SHOW_CITY
+            ,LIMIT_SALE
+            ,SALE_PRICE
+            ,SHARE_THUMB
+            ,SHARE_TITLE
+            ,VOLUME_PLUS
+            ,SALE_CONTENT
+            ,SHELVES_BTIME
+            ,SHELVES_ETIME
+            ,CONSUME_PROMPT
+            ,COUPON_CONTENT
+            ,IS_APPOINTMENT
+            ,SPECIAL_PROMPT
+            ,SHARE_DESCRIPTION
+        )VALUES(
+             #{id,jdbcType=INTEGER}
+            , #{mid,jdbcType=VARCHAR}
+            , #{status,jdbcType=BIT}
+            , #{display,jdbcType=BIT}
+            , #{saleImg,jdbcType=VARCHAR}
+            , #{couponId,jdbcType=INTEGER}
+            , #{isRefund,jdbcType=BIT}
+            , #{outletId,jdbcType=VARCHAR}
+            , #{showCity,jdbcType=VARCHAR}
+            , #{limitSale,jdbcType=INTEGER}
+            , #{salePrice,jdbcType=INTEGER}
+            , #{shareThumb,jdbcType=VARCHAR}
+            , #{shareTitle,jdbcType=VARCHAR}
+            , #{volumePlus,jdbcType=INTEGER}
+            , #{saleContent,jdbcType=LONGVARCHAR}
+            , #{shelvesBtime,jdbcType=INTEGER}
+            , #{shelvesEtime,jdbcType=INTEGER}
+            , #{consumePrompt,jdbcType=LONGVARCHAR}
+            , #{couponContent,jdbcType=LONGVARCHAR}
+            , #{isAppointment,jdbcType=BIT}
+            , #{specialPrompt,jdbcType=VARCHAR}
+            , #{shareDescription,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:SHECHEM_ES_COUPON_DETAIL-->
+    <update id="update" >
+        UPDATE /*MS-SHECHEM-ES-COUPON-DETAIL-UPDATE*/ SHECHEM_ES_COUPON_DETAIL
+        SET
+            MID             = #{mid,jdbcType=VARCHAR}
+            ,STATUS          = #{status,jdbcType=BIT}
+            ,DISPLAY         = #{display,jdbcType=BIT}
+            ,SALE_IMG        = #{saleImg,jdbcType=VARCHAR}
+            ,COUPON_ID       = #{couponId,jdbcType=INTEGER}
+            ,IS_REFUND       = #{isRefund,jdbcType=BIT}
+            ,OUTLET_ID       = #{outletId,jdbcType=VARCHAR}
+            ,SHOW_CITY       = #{showCity,jdbcType=VARCHAR}
+            ,LIMIT_SALE      = #{limitSale,jdbcType=INTEGER}
+            ,SALE_PRICE      = #{salePrice,jdbcType=INTEGER}
+            ,SHARE_THUMB     = #{shareThumb,jdbcType=VARCHAR}
+            ,SHARE_TITLE     = #{shareTitle,jdbcType=VARCHAR}
+            ,VOLUME_PLUS     = #{volumePlus,jdbcType=INTEGER}
+            ,SALE_CONTENT    = #{saleContent,jdbcType=LONGVARCHAR}
+            ,SHELVES_BTIME   = #{shelvesBtime,jdbcType=INTEGER}
+            ,SHELVES_ETIME   = #{shelvesEtime,jdbcType=INTEGER}
+            ,CONSUME_PROMPT  = #{consumePrompt,jdbcType=LONGVARCHAR}
+            ,COUPON_CONTENT  = #{couponContent,jdbcType=LONGVARCHAR}
+            ,IS_APPOINTMENT  = #{isAppointment,jdbcType=BIT}
+            ,SPECIAL_PROMPT  = #{specialPrompt,jdbcType=VARCHAR}
+            ,SHARE_DESCRIPTION = #{shareDescription,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据主键删除数据:SHECHEM_ES_COUPON_DETAIL-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-SHECHEM-ES-COUPON-DETAIL-DELETEBYPRIMARY*/ FROM
+            SHECHEM_ES_COUPON_DETAIL
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据主键获取数据:SHECHEM_ES_COUPON_DETAIL-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-SHECHEM-ES-COUPON-DETAIL-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM SHECHEM_ES_COUPON_DETAIL
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </select>
+</mapper>

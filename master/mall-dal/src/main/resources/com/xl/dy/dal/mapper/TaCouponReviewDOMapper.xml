@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaCouponReviewDOMapper">
+    <!-- 自动生成,请修改 TA_COUPON_REVIEW.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaCouponReviewDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR" javaType="String"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="COUPON_ID" property="couponId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="SHOP_GOODS_ID" property="shopGoodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="COUPON_REVIEW_STATUS" property="couponReviewStatus" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        ID,REASON,REMARK,SHOP_ID,GOODS_ID,COUPON_ID,ALTER_EMPL,ALTER_TIME,TIMESTAMP,CREATE_EMPL,CREATE_TIME,SHOP_GOODS_ID,VALID_STATUS,COUPON_REVIEW_STATUS
+    </sql>
+
+
+    <!--插入表:TA_COUPON_REVIEW-->
+    <insert id="insert" >
+        INSERT INTO TA_COUPON_REVIEW(
+            ID
+            ,REASON
+            ,REMARK
+            ,SHOP_ID
+            ,GOODS_ID
+            ,COUPON_ID
+            ,ALTER_EMPL
+            ,ALTER_TIME
+            ,TIMESTAMP
+            ,CREATE_EMPL
+            ,CREATE_TIME
+            ,SHOP_GOODS_ID
+            ,VALID_STATUS
+            ,COUPON_REVIEW_STATUS
+        )VALUES(
+             #{id,jdbcType=BIGINT}
+            , #{reason,jdbcType=VARCHAR}
+            , #{remark,jdbcType=VARCHAR}
+            , #{shopId,jdbcType=BIGINT}
+            , #{goodsId,jdbcType=BIGINT}
+            , #{couponId,jdbcType=BIGINT}
+            , #{alterEmpl,jdbcType=BIGINT}
+            , #{alterTime,jdbcType=TIMESTAMP}
+            , #{timestamp,jdbcType=BIGINT}
+            , #{createEmpl,jdbcType=BIGINT}
+            , #{createTime,jdbcType=TIMESTAMP}
+            , #{shopGoodsId,jdbcType=BIGINT}
+            , #{validStatus,jdbcType=INTEGER}
+            , #{couponReviewStatus,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--更新表:TA_COUPON_REVIEW-->
+    <update id="update" >
+        UPDATE /*MS-TA-COUPON-REVIEW-UPDATE*/ TA_COUPON_REVIEW
+        SET
+            REASON          = #{reason,jdbcType=VARCHAR}
+            ,REMARK          = #{remark,jdbcType=VARCHAR}
+            ,SHOP_ID         = #{shopId,jdbcType=BIGINT}
+            ,GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+            ,COUPON_ID       = #{couponId,jdbcType=BIGINT}
+            ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+            ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+            ,TIMESTAMP       = #{timestamp,jdbcType=BIGINT}
+            ,CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT}
+            ,CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP}
+            ,SHOP_GOODS_ID   = #{shopGoodsId,jdbcType=BIGINT}
+            ,VALID_STATUS    = #{validStatus,jdbcType=INTEGER}
+            ,COUPON_REVIEW_STATUS = #{couponReviewStatus,jdbcType=VARCHAR}
+        WHERE
+            ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据主键删除数据:TA_COUPON_REVIEW-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-COUPON-REVIEW-DELETEBYPRIMARY*/ FROM
+            TA_COUPON_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_COUPON_REVIEW-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-COUPON-REVIEW-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_COUPON_REVIEW
+        WHERE
+            ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--查看审核报名详情:TA_COUPON_REVIEW pageCount-->
+    <select id="findCouponReviewPageCount"  resultType="int">
+        SELECT
+          COUNT(*) AS total 
+        FROM
+
+        tg_mg_category z
+        WHERE
+        FIND_IN_SET(z.ID, g.MG_FR_ID) &gt; 0
+        ) AS frCategory,
+        (SELECT
+        IFNULL(SUM(IFNULL(SALES,0)),0)
+        FROM
+        TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = a.GOODS_ID
+        AND SHOP_ID = a.SHOP_ID
+        AND VALID_STATUS = 1
+        ) sales
+        FROM
+        ta_coupon_review a
+        LEFT JOIN ta_shop_goods_prop b ON a.GOODS_ID = b.GOODS_ID
+        AND a.SHOP_ID = b.SHOP_ID
+        LEFT JOIN ta_shop e ON e.ID = a.SHOP_ID
+        LEFT JOIN ta_goods g ON g.id = b.GOODS_ID
+        WHERE
+        a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND e.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND a.COUPON_ID = #{couponId,jdbcType=BIGINT}
+        <if test="couponReviewStatus != null">
+            AND a.COUPON_REVIEW_STATUS = #{couponReviewStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName != null">
+            AND e.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName != null">
+            AND e.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="companyName != null">
+            AND e.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopGoodsName !=null">
+            AND b.SHOP_GOODS_NAME CONCAT('%',#{shopGoodsName,jdbcType=VARCHAR},'%')
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+    </select>
+    <!--查看审核报名详情:TA_COUPON_REVIEW pageResult-->
+    <select id="findCouponReviewPageResult"  resultType="java.util.Map">
+        SELECT
+        a.ID couponreviewId,
+        a.COUPON_ID couponId,
+        a.COUPON_REVIEW_STATUS couponReviewStatus,
+        a.SHOP_ID shopId,
+        a.REASON reason,
+        a.GOODS_ID goodsId,
+        e.SHOP_NAME shopName,
+        e.MALL_NAME mallName,
+        e.COMPANY_NAME companyName,
+        g.MG_FR_ID mgFrId,
+        b.SHOP_GOODS_NAME shopGoodsName,
+        b.SHOP_PHOTO_URL shopGoodsUrl,
+        (
+        SELECT
+        GROUP_CONCAT(z. NAME SEPARATOR '/')
+        FROM
+        tg_mg_category z
+        WHERE
+        FIND_IN_SET(z.ID, g.MG_FR_ID) &gt; 0
+        ) AS frCategory,
+        (SELECT
+        IFNULL(SUM(IFNULL(SALES,0)),0)
+        FROM
+        TA_SHOP_GOODS
+        WHERE
+        GOODS_ID = a.GOODS_ID
+        AND SHOP_ID = a.SHOP_ID
+        AND VALID_STATUS = 1
+        ) sales
+        FROM
+        ta_coupon_review a
+        LEFT JOIN ta_shop_goods_prop b ON a.GOODS_ID = b.GOODS_ID
+        AND a.SHOP_ID = b.SHOP_ID
+        LEFT JOIN ta_shop e ON e.ID = a.SHOP_ID
+        LEFT JOIN ta_goods g ON g.id = b.GOODS_ID
+        WHERE
+        a.VALID_STATUS = 1
+        AND b.VALID_STATUS = 1
+        AND e.VALID_STATUS = 1
+        AND g.VALID_STATUS = 1
+        AND a.COUPON_ID = #{couponId,jdbcType=BIGINT}
+        <if test="couponReviewStatus != null">
+            AND a.COUPON_REVIEW_STATUS = #{couponReviewStatus,jdbcType=VARCHAR}
+        </if>
+        <if test="shopName != null">
+            AND e.SHOP_NAME LIKE #{shopName,jdbcType=VARCHAR}
+        </if>
+        <if test="mallName != null">
+            AND e.MALL_NAME LIKE #{mallName,jdbcType=VARCHAR}
+        </if>
+        <if test="companyName != null">
+            AND e.COMPANY_NAME LIKE #{companyName,jdbcType=VARCHAR}
+        </if>
+        <if test="shopGoodsName !=null">
+            AND b.SHOP_GOODS_NAME CONCAT('%',#{shopGoodsName,jdbcType=VARCHAR},'%')
+        </if>
+        <trim prefix="ORDER BY">
+            <if test="sortColumn != null and sortType != null">${sortColumn} ${sortType}</if>
+        </trim>
+        limit #{startRow},#{limit}
+    </select>
+
+    <!--更新表:TA_COUPON_REVIEW-->
+    <update id="updateByPrimarySelective" >
+        UPDATE /*MS-TA-COUPON-REVIEW-UPDATEBYPRIMARYSELECTIVE*/ TA_COUPON_REVIEW
+        <set>
+            <if test="reason != null">
+                REASON          = #{reason,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                REMARK          = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                SHOP_ID         = #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="couponId != null">
+                COUPON_ID       = #{couponId,jdbcType=BIGINT},
+            </if>
+            <if test="alterEmpl != null">
+                ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime != null">
+                ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="timestamp != null">
+                TIMESTAMP       = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl != null">
+                CREATE_EMPL     = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopGoodsId != null">
+                SHOP_GOODS_ID   = #{shopGoodsId,jdbcType=INTEGER},
+            </if>
+            <if test="validStatus != null">
+                VALID_STATUS    = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="couponReviewStatus != null">
+                COUPON_REVIEW_STATUS = #{couponReviewStatus,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE
+        ID              = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--根据店铺ID和商品ID获取数据:TA_COUPON_REVIEW-->
+    <select id="getCouponReviewByShopIdAndGoodsId" resultType="Long">
+        SELECT /*MS-TA-COUPON-REVIEW-GETCOUPONREVIEWBYSHOPIDANDGOODSID*/  COUPON_ID
+        FROM TA_COUPON_REVIEW
+        WHERE
+        SHOP_ID         = #{shopId,jdbcType=BIGINT}
+        AND
+        GOODS_ID        = #{goodsId,jdbcType=BIGINT}
+        AND
+        VALID_STATUS    = 1
+    </select>
+
+    <!--获得优惠券报名商品:TA_COUPON_REVIEW-->
+    <select id="getRegisteredByCoupon" resultType="java.lang.Long">
+        SELECT
+        count(0)
+        FROM
+        `ta_coupon_review`
+        WHERE
+        COUPON_ID = #{couponId,jdbcType=BIGINT}
+        AND COUPON_REVIEW_STATUS = "PASS"
+        AND VALID_STATUS = 1
+        GROUP BY
+        COUPON_ID
+    </select>
+
+    <!--获得商品优惠券使用量:TA_COUPON_REVIEW-->
+    <select id="getUsedCoupon" resultType="java.lang.Long">
+        SELECT
+        COUNT(0)
+        FROM
+        ta_coupon_review a
+        LEFT JOIN TA_COUPON_USER b ON a.COUPON_ID = b.COUPON_ID
+        WHERE
+        a.VALID_STATUS=1
+        AND b.VALID_STATUS =1
+        AND	a.GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND b.COUPON_USE_STATUS ="USED"
+    </select>
+
+    <!--通过优惠券审核:TA_COUPON_REVIEW-->
+    <select id="passCoupon" resultType="java.lang.Long">
+        UPDATE TA_COUPON_REVIEW
+        SET
+        COUPON_REVIEW_STATUS = "PASS"
+        ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+        WHERE
+        ID              = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据店铺商品id获取数据:TA_COUPON_REVIEW-->
+    <select id="getByShopAndGoodsId" resultType="java.lang.Integer">
+        SELECT /*MS-TA-COUPON-REVIEW-GETBYSHOPANDGOODSID*/  count(0)
+        FROM TA_COUPON_REVIEW
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        AND COUPON_ID = #{couponId,jdbcType=BIGINT}
+        AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+    </select>
+
+    <!--重新报名:TA_COUPON_REVIEW-->
+    <select id="reEnroll" resultType="java.lang.Long">
+        UPDATE ta_coupon_review
+        SET
+        COUPON_REVIEW_STATUS = "UNCHECK"
+        ,ALTER_EMPL      = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME      = #{alterTime,jdbcType=TIMESTAMP}
+        WHERE
+        id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

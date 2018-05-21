@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.ShechemEsGoodsAttributeDOMapper">
+    <!-- 自动生成,请修改 SHECHEM_ES_GOODS_ATTRIBUTE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.ShechemEsGoodsAttributeDO">
+        <id column="ID" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="MID" property="mid" jdbcType="VARCHAR" javaType="String"/>
+        <result column="UID" property="uid" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="STATUS" property="status" jdbcType="BIT" javaType="Boolean"/>
+        <result column="DISPLAY" property="display" jdbcType="BIT" javaType="Boolean"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="INPUTTIME" property="inputtime" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="UPDATETIME" property="updatetime" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ATTRIBUTE_ID" property="attributeId" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ATTRIBUTE_TEXT" property="attributeText" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ATTRIBUTE_TYPE" property="attributeType" jdbcType="BIT" javaType="Boolean"/>
+        <result column="ATTRIBUTE_PRICE" property="attributePrice" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="ATTRIBUTE_THUMB" property="attributeThumb" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ATTRIBUTE_PACKAGE_PRICE" property="attributePackagePrice" jdbcType="INTEGER" javaType="Integer"/>
+    </resultMap>
+
+    <resultMap id="OldGoodsAttributeVO"  type="com.xl.dy.dal.resultmap.OldGoodsAttributeVO">
+        <result column="attributeText" property="attributetext"  javaType="String"/>
+        <result column="title" property="title"  javaType="String"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,MID,UID,STATUS,DISPLAY,GOODS_ID,INPUTTIME,UPDATETIME,ATTRIBUTE_ID,ATTRIBUTE_TEXT,ATTRIBUTE_TYPE,ATTRIBUTE_PRICE,ATTRIBUTE_THUMB,ATTRIBUTE_PACKAGE_PRICE
+    </sql>
+
+
+    <!--插入表:SHECHEM_ES_GOODS_ATTRIBUTE-->
+    <insert id="insert" >
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT
+            LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO SHECHEM_ES_GOODS_ATTRIBUTE(
+            ID
+            ,_UID
+            ,MID
+            ,UID
+            ,STATUS
+            ,DISPLAY
+            ,GOODS_ID
+            ,INPUTTIME
+            ,UPDATETIME
+            ,ATTRIBUTE_ID
+            ,ATTRIBUTE_TEXT
+            ,ATTRIBUTE_TYPE
+            ,ATTRIBUTE_PRICE
+            ,ATTRIBUTE_THUMB
+            ,ATTRIBUTE_PACKAGE_PRICE
+        )VALUES(
+             #{id,jdbcType=INTEGER}
+            , #{Uid,jdbcType=INTEGER}
+            , #{mid,jdbcType=VARCHAR}
+            , #{uid,jdbcType=INTEGER}
+            , #{status,jdbcType=BIT}
+            , #{display,jdbcType=BIT}
+            , #{goodsId,jdbcType=INTEGER}
+            , #{inputtime,jdbcType=INTEGER}
+            , #{updatetime,jdbcType=INTEGER}
+            , #{attributeId,jdbcType=INTEGER}
+            , #{attributeText,jdbcType=VARCHAR}
+            , #{attributeType,jdbcType=BIT}
+            , #{attributePrice,jdbcType=INTEGER}
+            , #{attributeThumb,jdbcType=VARCHAR}
+            , #{attributePackagePrice,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <!--更新表:SHECHEM_ES_GOODS_ATTRIBUTE-->
+    <update id="update" >
+        UPDATE /*MS-SHECHEM-ES-GOODS-ATTRIBUTE-UPDATE*/ SHECHEM_ES_GOODS_ATTRIBUTE
+        SET
+            _UID            = #{Uid,jdbcType=INTEGER}
+            ,MID             = #{mid,jdbcType=VARCHAR}
+            ,UID             = #{uid,jdbcType=INTEGER}
+            ,STATUS          = #{status,jdbcType=BIT}
+            ,DISPLAY         = #{display,jdbcType=BIT}
+            ,GOODS_ID        = #{goodsId,jdbcType=INTEGER}
+            ,INPUTTIME       = #{inputtime,jdbcType=INTEGER}
+            ,UPDATETIME      = #{updatetime,jdbcType=INTEGER}
+            ,ATTRIBUTE_ID    = #{attributeId,jdbcType=INTEGER}
+            ,ATTRIBUTE_TEXT  = #{attributeText,jdbcType=VARCHAR}
+            ,ATTRIBUTE_TYPE  = #{attributeType,jdbcType=BIT}
+            ,ATTRIBUTE_PRICE = #{attributePrice,jdbcType=INTEGER}
+            ,ATTRIBUTE_THUMB = #{attributeThumb,jdbcType=VARCHAR}
+            ,ATTRIBUTE_PACKAGE_PRICE = #{attributePackagePrice,jdbcType=INTEGER}
+        WHERE
+            ID              = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!--根据主键删除数据:SHECHEM_ES_GOODS_ATTRIBUTE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-SHECHEM-ES-GOODS-ATTRIBUTE-DELETEBYPRIMARY*/ FROM
+            SHECHEM_ES_GOODS_ATTRIBUTE
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!--根据主键获取数据:SHECHEM_ES_GOODS_ATTRIBUTE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-SHECHEM-ES-GOODS-ATTRIBUTE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM SHECHEM_ES_GOODS_ATTRIBUTE
+        WHERE
+            ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!--根据主键获取数据:SHECHEM_ES_GOODS_ATTRIBUTE-->
+    <select id="getByOldGoodsPropById" resultMap="OldGoodsAttributeVO">
+        SELECT /*MS-SHECHEM-ES-GOODS-ATTRIBUTE-GETBYOLDGOODSPROPBYID*/  a.attribute_text AS attributeText
+        	  ,b.title AS title
+        FROM SHECHEM_ES_GOODS_ATTRIBUTE a left JOIN SHECHEM_ES_ATTRIBUTE b on a.attribute_id = b.id
+        WHERE
+        a.goods_id = #{goodsId,jdbcType=BIGINT}
+    </select>
+</mapper>

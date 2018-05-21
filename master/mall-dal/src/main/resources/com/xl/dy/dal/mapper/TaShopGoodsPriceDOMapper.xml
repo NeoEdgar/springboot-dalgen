@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xl.dy.dal.mapper.TaShopGoodsPriceDOMapper">
+    <!-- 自动生成,请修改 TA_SHOP_GOODS_PRICE.xml -->
+    <resultMap id="BaseResultMap"  type="com.xl.dy.dal.dataobject.TaShopGoodsPriceDO">
+        <id column="ID" property="id" jdbcType="BIGINT" javaType="Long"/>
+        <result column="SKU_ID" property="skuId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR" javaType="String"/>
+        <result column="SHOP_ID" property="shopId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="GOODS_ID" property="goodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="IS_COUPON" property="isCoupon" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="SALE_TYPE" property="saleType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="ALTER_EMPL" property="alterEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="ALTER_TIME" property="alterTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="PRICE_TYPE" property="priceType" jdbcType="VARCHAR" javaType="String"/>
+        <result column="TIMESTAMP" property="timestamp" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_EMPL" property="createEmpl" jdbcType="BIGINT" javaType="Long"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result column="GOODS_PRICE" property="goodsPrice" jdbcType="DECIMAL" javaType="java.math.BigDecimal"/>
+        <result column="SHOP_GOODS_ID" property="shopGoodsId" jdbcType="BIGINT" javaType="Long"/>
+        <result column="VALID_STATUS" property="validStatus" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="IS_VIPLEV_UNIFY" property="isViplevUnify" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="VIPLEV_PRICE_JSON" property="viplevPriceJson" jdbcType="VARCHAR" javaType="String"/>
+        <result column="MARKETING_ACTIVITIES" property="marketingActivities" jdbcType="VARCHAR" javaType="String"/>
+    </resultMap>
+
+    <resultMap id="PriceInfo"  type="com.xl.dy.dal.resultmap.PriceInfo">
+        <result column="minPrice" property="minprice"  javaType="java.math.BigDecimal"/>
+        <result column="maxPrice" property="maxprice"  javaType="java.math.BigDecimal"/>
+    </resultMap>
+    <resultMap id="PriceRangeInfoOfShop"  type="com.xl.dy.dal.resultmap.PriceRangeInfoOfShop">
+        <result column="minPrice" property="minprice"  javaType="java.math.BigDecimal"/>
+        <result column="maxPrice" property="maxprice"  javaType="java.math.BigDecimal"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,SKU_ID,REMARK,SHOP_ID,GOODS_ID,IS_COUPON,SALE_TYPE,ALTER_EMPL,ALTER_TIME,PRICE_TYPE,TIMESTAMP,CREATE_EMPL,CREATE_TIME,GOODS_PRICE,SHOP_GOODS_ID,VALID_STATUS,IS_VIPLEV_UNIFY,VIPLEV_PRICE_JSON,MARKETING_ACTIVITIES
+    </sql>
+
+
+    <!--???�表:TA_SHOP_GOODS_PRICE-->
+    <insert id="insert" >
+        INSERT INTO TA_SHOP_GOODS_PRICE(
+        ID
+        ,SKU_ID
+        ,REMARK
+        ,SHOP_ID
+        ,GOODS_ID
+        ,IS_COUPON
+        ,SALE_TYPE
+        ,ALTER_EMPL
+        ,ALTER_TIME
+        ,PRICE_TYPE
+        ,TIMESTAMP
+        ,CREATE_EMPL
+        ,CREATE_TIME
+        ,GOODS_PRICE
+        ,SHOP_GOODS_ID
+        ,VALID_STATUS
+        ,IS_VIPLEV_UNIFY
+        ,VIPLEV_PRICE_JSON
+        ,MARKETING_ACTIVITIES
+        )VALUES(
+        #{id,jdbcType=BIGINT}
+        , #{skuId,jdbcType=BIGINT}
+        , #{remark,jdbcType=VARCHAR}
+        , #{shopId,jdbcType=BIGINT}
+        , #{goodsId,jdbcType=BIGINT}
+        , #{isCoupon,jdbcType=INTEGER}
+        , #{saleType,jdbcType=VARCHAR}
+        , #{alterEmpl,jdbcType=BIGINT}
+        , #{alterTime,jdbcType=TIMESTAMP}
+        , #{priceType,jdbcType=VARCHAR}
+        , #{timestamp,jdbcType=BIGINT}
+        , #{createEmpl,jdbcType=BIGINT}
+        , #{createTime,jdbcType=TIMESTAMP}
+        , #{goodsPrice,jdbcType=DECIMAL}
+        , #{shopGoodsId,jdbcType=BIGINT}
+        , #{validStatus,jdbcType=INTEGER}
+        , #{isViplevUnify,jdbcType=INTEGER}
+        , #{viplevPriceJson,jdbcType=VARCHAR}
+        , #{marketingActivities,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <!--?��?�表:TA_SHOP_GOODS_PRICE-->
+    <update id="update" >
+        UPDATE /*MS-TA-SHOP-GOODS-PRICE-UPDATE*/ TA_SHOP_GOODS_PRICE
+        SET
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        ,REMARK = #{remark,jdbcType=VARCHAR}
+        ,SHOP_ID = #{shopId,jdbcType=BIGINT}
+        ,GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        ,IS_COUPON = #{isCoupon,jdbcType=INTEGER}
+        ,SALE_TYPE = #{saleType,jdbcType=VARCHAR}
+        ,ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT}
+        ,ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP}
+        ,PRICE_TYPE = #{priceType,jdbcType=VARCHAR}
+        ,TIMESTAMP = #{timestamp,jdbcType=BIGINT}
+        ,CREATE_EMPL = #{createEmpl,jdbcType=BIGINT}
+        ,CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        ,GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL}
+        ,SHOP_GOODS_ID = #{shopGoodsId,jdbcType=BIGINT}
+        ,VALID_STATUS = #{validStatus,jdbcType=INTEGER}
+        ,IS_VIPLEV_UNIFY = #{isViplevUnify,jdbcType=INTEGER}
+        ,VIPLEV_PRICE_JSON = #{viplevPriceJson,jdbcType=VARCHAR}
+        ,MARKETING_ACTIVITIES = #{marketingActivities,jdbcType=VARCHAR}
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!--更新表:TA_SHOP_GOODS_PRICE-->
+    <update id="updateSelective" >
+        UPDATE /*MS-TA-SHOP-GOODS-PRICE-UPDATESELECTIVE*/ TA_SHOP_GOODS_PRICE
+        <set>
+            <if test="skuId != null">
+                SKU_ID = #{skuId,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null and remark != ''">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                SHOP_ID = #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                GOODS_ID = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="saleType != null and saleType != ''">
+                SALE_TYPE = #{saleType,jdbcType=VARCHAR},
+            </if>
+            <if test="alterEmpl != null">
+                ALTER_EMPL = #{alterEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="alterTime != null">
+                ALTER_TIME = #{alterTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="priceType != null and priceType != ''">
+                PRICE_TYPE = #{priceType,jdbcType=VARCHAR},
+            </if>
+            <if test="timestamp != null">
+                TIMESTAMP = #{timestamp,jdbcType=BIGINT},
+            </if>
+            <if test="createEmpl != null">
+                CREATE_EMPL = #{createEmpl,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="goodsPrice != null">
+                GOODS_PRICE = #{goodsPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="shopGoodsId != null">
+                SHOP_GOODS_ID = #{shopGoodsId,jdbcType=BIGINT},
+            </if>
+            <if test="validStatus != null">
+                VALID_STATUS = #{validStatus,jdbcType=INTEGER},
+            </if>
+            <if test="isViplevUnify != null">
+                IS_VIPLEV_UNIFY = #{isViplevUnify,jdbcType=INTEGER},
+            </if>
+            <if test="viplevPriceJson != null and viplevPriceJson != ''">
+                VIPLEV_PRICE_JSON = #{viplevPriceJson,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                ID = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="skuId != null">
+                AND SKU_ID = #{skuId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId != null">
+                AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_PRICE-->
+    <delete id="deleteByPrimary" >
+        DELETE /*MS-TA-SHOP-GOODS-PRICE-DELETEBYPRIMARY*/ FROM
+        TA_SHOP_GOODS_PRICE
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <!--根据主键获取数据:TA_SHOP_GOODS_PRICE-->
+    <select id="getByPrimary" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETBYPRIMARY*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <!--根据店铺商品信息ID获取价格列表:TA_SHOP_GOODS_PRICE-->
+    <select id="getShopGoodsPriceByShopGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETSHOPGOODSPRICEBYSHOPGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SHOP_GOODS_ID = #{shopGoodsId,jdbcType=BIGINT}
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据店铺SKUID获取价格:TA_SHOP_GOODS_PRICE-->
+    <select id="getShopGoodsPriceBySkuId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETSHOPGOODSPRICEBYSKUID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+        AND VALID_STATUS = 1
+    </select>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_PRICE-->
+    <delete id="deleteShopGoodsPrice" >
+        DELETE /*MS-TA-SHOP-GOODS-PRICE-DELETESHOPGOODSPRICE*/ FROM
+        TA_SHOP_GOODS_PRICE
+        WHERE
+        GOODS_ID = #{goodsId,jdbcType=BIGINT}
+        <if test="shopId!=null">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据主键删除数据:TA_SHOP_GOODS_PRICE-->
+    <delete id="deleteShopGoodsPriceBySkuIdAndShopId" >
+        DELETE /*MS-TA-SHOP-GOODS-PRICE-DELETESHOPGOODSPRICEBYSKUIDANDSHOPID*/ FROM
+        TA_SHOP_GOODS_PRICE
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        <if test="shopId!=null and shopId != '' ">
+            AND SHOP_ID = #{shopId,jdbcType=BIGINT}
+        </if>
+    </delete>
+
+    <!--根据商场ID,店铺ID和产品ID获取某个商场某个店铺某类产品的的价格区间-->
+    <select id="getPriceByShopGoodsId" resultMap="PriceInfo">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETPRICEBYSHOPGOODSID*/  MIN(GOODS_PRICE) minPrice,MAX(GOODS_PRICE) maxPrice FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据shopsAndGoods:TA_SHOP_GOODS_PRICE-->
+    <select id="getByShopGoodsId" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETBYSHOPGOODSID*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SHOP_ID = #{shopId,jdbcType=BIGINT}
+        AND GOODS_ID = #{goodsId,jdbcType=BIGINT}
+    </select>
+
+    <!--根据skuId和参加的活动获得数据:TA_SHOP_GOODS_PRICE-->
+    <select id="getActivityGoods" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETACTIVITYGOODS*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SKU_ID = #{skuId,jdbcType=BIGINT}
+        AND MARKETING_ACTIVITIES IS NOT NULL
+    </select>
+
+    <!--获得原价时商品信息:TA_SHOP_GOODS_PRICE-->
+    <select id="getNormalPriceMeg" resultMap="BaseResultMap">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETNORMALPRICEMEG*/  <include refid="Base_Column_List" />
+        FROM TA_SHOP_GOODS_PRICE
+        WHERE
+        SHOP_GOODS_ID = #{shopGoodsId,jdbcType=BIGINT}
+        AND SALE_TYPE = "NORMAL"
+        AND PRICE_TYPE = "VIPRICE"
+    </select>
+
+    <!--根据goodsId获取指导价范围:TA_COMPANY_GOODS-->
+    <select id="getDirectPriceRangeByGoodsId" resultMap="PriceRangeInfoOfShop">
+        SELECT /*MS-TA-SHOP-GOODS-PRICE-GETDIRECTPRICERANGEBYGOODSID*/  T.minPrice,T.maxPrice
+        FROM(SELECT /*MS-TA-SHOP-GOODS-PRICE-GETDIRECTPRICERANGEBYGOODSID*/  SHOP_ID shopId,GOODS_ID goodsId,MIN(GOODS_PRICE) minPrice,MAX(GOODS_PRICE) maxPrice
+        FROM TA_SHOP_GOODS_PRICE GROUP BY SHOP_ID,GOODS_ID) T
+        WHERE
+        T.shopId = #{shopId,jdbcType=BIGINT}
+        AND T.goodsId = #{goodsId,jdbcType=BIGINT}
+    </select>
+</mapper>
