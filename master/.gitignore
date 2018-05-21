@@ -1,0 +1,24 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+.project
+.classpath
+.settings
+*.log
+out
+*.lst
+/mall-platform/src/test/
+/mall-erp/target/
+/mall-dal/target/
+/mall-common/target/
+/mall-business/target/
+/target/
+/mall-exception/target/
+/mall-platform/target/
+/mall-platform/src/main/java/com/xl/dy/platform/serviceImpl/shop/ShopRenovationServiceImpl.java
+mall-common/src/test/java/com/xl/dy/common/util/dy/SortUtilTest.java
+mall-common/src/test/java/com/xl/dy/common/util/dy/SortUtilTestTest.java

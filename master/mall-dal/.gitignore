@@ -1,0 +1,22 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+.project
+.classpath
+.settings
+*.log
+out
+*.lst
+.lst
+D:\projectSpace\dy\dymall\mall-master\mall-dal\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst
+/mall-platform/src/test/
+/mall-erp/target/
+/mall-dal/target/
+/mall-common/target/
+/target/
+/mall-exception/target/
+/mall-platform/target/
